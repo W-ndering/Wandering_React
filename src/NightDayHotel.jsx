@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import bg1 from "./assets/bg/7-1_밤의호텔.svg";
 import bg2 from "./assets/bg/8-2_아침호텔.svg";
@@ -12,7 +12,7 @@ import styles from "./NightDayHotel.module.css";
 
 export default function NightDayHotel() {
   const navigate = useNavigate();
-  const NEXT_ROUTE = "/busstop"; // 다음 경로 주소 설정 (임시)
+  const NEXT_ROUTE = "/busstop"; // 다음 스토리 경로 설정 (임시)
   const [idx, setIdx] = useState(0);
   const storyCuts = [
     {
@@ -99,6 +99,39 @@ export default function NightDayHotel() {
     bg: storyCuts[0].bg,
     char: storyCuts[0].char,
   });
+  const [displayedText, setDisplayedText] = useState(""); // 현재 화면에 찍힌 텍스트
+  const [isTyping, setIsTyping] = useState(false); // 타이핑 진행 중 여부
+  const typingTimerRef = useRef(null); // 타이핑 interval 저장
+
+  useEffect(() => { // 텍스트 타이핑 효과
+    const text = current.text;
+
+    if (typingTimerRef.current) {
+      clearInterval(typingTimerRef.current);
+      typingTimerRef.current = null;
+    }
+
+    if (!text) { setDisplayedText(""); setIsTyping(false); return; }
+    setDisplayedText(""); setIsTyping(true);
+
+    let i = 0;
+    typingTimerRef.current = setInterval(() => {
+      i++;
+      setDisplayedText(text.slice(0, i));
+      if (i >= text.length) {
+        clearInterval(typingTimerRef.current);
+        typingTimerRef.current = null;
+        setIsTyping(false);
+      }
+    }, 50);
+
+    return () => {
+      if (typingTimerRef.current) {
+        clearInterval(typingTimerRef.current);
+        typingTimerRef.current = null;
+      }
+    };
+  }, [current.text]);
 
   useEffect(() => {
     const cut = storyCuts[idx];
@@ -124,11 +157,24 @@ export default function NightDayHotel() {
   // Enter키로 다음 컷으로 이동
   useEffect(() => {
     const onKey = (e) => {
-      if (e.key === "Enter") handleNext();
+      if (e.key !== "Enter") return;
+
+      // 타이핑 중이면 타이머를 멈추고 즉시 완성
+      if (isTyping && current.text) {
+        if (typingTimerRef.current) {
+          clearInterval(typingTimerRef.current);
+          typingTimerRef.current = null;
+        }
+        setDisplayedText(current.text);
+        setIsTyping(false);
+        return;
+      }
+      // 그 외엔 다음 컷
+      handleNext();
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  });
+  }, [isTyping, current.id, current.text]);
 
   return (
     <div className={styles.viewport}>
@@ -157,7 +203,7 @@ export default function NightDayHotel() {
               {current.speaker && (
                 <div className={styles.speaker}>{current.speaker}</div>
               )}
-              <div className={styles.content}>{current.text}</div>
+              <div className={styles.content}>{displayedText}</div>
             </div>
           </div>
         )}
