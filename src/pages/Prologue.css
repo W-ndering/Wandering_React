@@ -1,0 +1,205 @@
+/* ================================
+    Prologue Layout Base
+================================= */
+
+.prologue-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000; /* 기본 배경은 검은색 */
+  overflow: hidden;
+  outline: none; /* 포커스 테두리 제거 */
+}
+
+/* ================================
+    Background Layer
+================================= */
+.prologue-game-area {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  z-index: 1; /* 맨 뒤 (기본 배경) */
+  opacity: 0; /* 기본적으로 숨김 */
+  transition: opacity 1.5s ease-in; /* 서서히 나타나는 효과 */
+}
+
+/* 시퀀스 1 (배경 보이기) */
+.prologue-container[data-sequence="1"] .prologue-game-area {
+  opacity: 1;
+}
+
+/* ================================
+    Black Overlay Layer
+================================= */
+.prologue-black-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: #000;
+  z-index: 2; /* 배경 위, 캐릭터 아래 */
+  opacity: 1; /* 기본(시퀀스 0)은 어두움 */
+  transition: opacity 1.5s ease-out;
+  pointer-events: none; /* 클릭 통과 */
+}
+
+/* 시퀀스 1~2 (서서히 사라짐) */
+.prologue-container[data-sequence="1"] .prologue-black-overlay,
+.prologue-container[data-sequence="2"] .prologue-black-overlay {
+  opacity: 0;
+}
+
+/* ================================
+    Player Character Layer
+================================= */
+.prologue-player-character {
+  /* 기본 설정 (위치 및 z-index) */
+  position: absolute;
+  z-index: 5; /* 🔥 오버레이보다 위, 대화 상자보다 아래 */
+  color: white; /* 텍스트 색상 (테스트용) */
+  
+  /* 위치 설정 */
+  /* 초기 위치 (왼쪽 100px) */
+  left: 100px; 
+  bottom: 80px;
+
+  /* 기본적으로 숨김 */
+  opacity: 1;
+  transition: left 0.1s linear; /* 등장 효과와 움직임 효과 병합 */
+
+  /* 추가된 스타일 (이미지 표시 및 정렬) */
+  width: 200px;
+  height: 200px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center bottom;
+  transform: translateX(-50%); /* left: 100px 기준 중앙 정렬 */
+
+  /* 기존 불필요 스타일 제거/정리 */
+  /* background-color: none; */
+  /* border-top-left-radius: 6px; */
+  /* border-top-right-radius: 6px; */
+  /* display: flex; */
+  /* align-items: center; */
+  /* justify-content: center; */
+}
+
+/* 시퀀스 1~2 (캐릭터 등장) */
+.prologue-container[data-sequence="1"] .prologue-player-character,
+.prologue-container[data-sequence="2"] .prologue-player-character {
+  opacity: 1;
+}
+
+/* ================================
+    Dialogue Box Layer (가정: z-index 10)
+================================= */
+/* .dialogue-box-container {
+    z-index: 10;
+} */
+
+/* ================================
+    Choice Buttons (대화 상자 위)
+================================= */
+.prologue-choices-container {
+  position: absolute;
+  bottom: 210px; /* 대화상자 위쪽 위치 */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 11; /* 대화 상자보다 위 */
+    
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 75%;
+  max-width: 1024px;
+  align-items: center;
+}
+
+.prologue-choice-button {
+  background-color: rgba(0, 0, 0, 0.85);
+  border: 2px solid #fff;
+  color: white;
+  padding: 15px 25px;
+  border-radius: 8px;
+  font-size: 1.25rem;
+  font-family: monospace;
+  cursor: pointer;
+  width: 80%;
+  max-width: 600px;
+  text-align: center;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.prologue-choice-button:hover {
+  background-color: #fff;
+  color: #000;
+  transform: scale(1.02);
+}
+
+/* ================================
+    Optional UI / Object Layers
+================================= */
+.prologue-object-scene {
+  position: absolute;
+  bottom: 120px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.prologue-status-ui {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.status-ui {
+  width: 300px;
+  z-index: 11;
+}
+
+.prologue-object {
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 12; /* 캐릭터보다 위 */
+  
+  /* 추가된 스타일 */
+  position: absolute;
+  top: 20%;
+  width: 150px;
+  animation: appear 0.8s ease;
+}
+
+.prologue-status-window {
+  background-size: contain;
+  background-repeat: no-repeat;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.6);
+  z-index: 13; /* 상태창 최상위 */
+}
+
+.status-text {
+  margin-top: 160px;
+  font-size: 16px;
+  color: #222;
+  text-align: center;
+  white-space: pre-line;
+}
+
+
+/* ================================
+    Keyframes
+================================= */
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

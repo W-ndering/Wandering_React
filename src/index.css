@@ -1,14 +1,38 @@
-/* src/index.css */
-body, html, #root {
-  margin: 0;
-  padding: 0;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden; /* 게임 화면에서 스크롤바 방지 */
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  background-color: #000;
+/* src/index.css (전역 CSS 파일) */
+
+/* -------------------------------------------
+   전역 폰트 정의 (@font-face)
+   ------------------------------------------- */
+@font-face {
+    font-family: 'CustomFont'; /* 이 이름은 그대로 사용 가능 */
+    /* 🚨 폰트 경로: src/assets/font/ 폴더에 있다고 가정 */
+    src: url('../assets/font/DungGeunMo.woff2') format('woff2'),
+         url('../assets/font/DungGeunMo.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
 
+/* -------------------------------------------
+   전체 적용 (body, html, #root) - 기존 코드와 통합
+   ------------------------------------------- */
+body, html, #root {
+    /* 기존 코드의 설정 유지 */
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden; /* 게임 화면에서 스크롤바 방지 */
+    background-color: #000;
+}
+
+/* body에 정의된 'CustomFont'를 프로젝트 전체에 상속 */
+body {
+    /* 기존 코드의 폰트 대신 CustomFont 적용 */
+    font-family: 'CustomFont', sans-serif !important;
+    line-height: 1.5; /* 가독성을 위한 기본 설정 */
+}
+
+/* 모든 요소에 box-sizing 적용 (기존 코드 유지) */
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }

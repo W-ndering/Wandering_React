@@ -1,12 +1,14 @@
 /* src/components/DialogueBox.css */
 .dialogue-box-container {
   position: absolute;
-  bottom: 40px;
+  top: -100px; /* 사용자가 요청한 위치 */
   left: 50%;
   transform: translateX(-50%);
-  width: 100%;
-  max-width: 1440px;
-  height: 1440px;
+  width: 100%; /* 사용자가 요청한 크기 */
+  max-width: 1440px; /* 사용자가 요청한 크기 */
+  height: 800px; /* 사용자가 요청한 크기 */
+
+  z-index: 10;
   
   /* (수정) 임시 스타일 제거 */
   /* background-color: rgba(0, 0, 0, 0.8); */
@@ -20,22 +22,35 @@
 
   padding: 24px;
   box-sizing: border-box;
+
+  /* (수정) 컨테이너가 매우 크므로 스크롤을 허용합니다. */
+  /* overflow: auto; */ /* 텍스트를 절대 위치로 변경하므로 이 속성 제거 */
+  position: relative; /* (추가) 자식 요소의 absolute 기준점 */
 }
 
 .dialogue-text {
-  color: white;
+  color: black;
   font-size: 1.5rem; /* 24px */
   font-family: monospace;
-  height: 100%;
+  white-space: pre-line;
+  
+  /* (수정) 텍스트가 상자 하단에 위치하도록 절대 위치로 변경 */
+  position: absolute;
+  width: 90%; /* 상자 너비의 90% */
+  bottom: 100px; /* 상자 하단에서 100px 위 (SVG 디자인에 따라 조정 필요) */
+  left: 50%;
+  transform: translateX(-50%);
+  
+  height: 350px; /* (유지) 100% -> auto로 변경해야 텍스트가 보입니다. */
   overflow-y: auto;
   margin: 0;
 }
 
-.typing-cursor {
+.typing-cursor { /* (수정) .dialogue-cursor -> .typing-cursor */
   display: inline-block;
   width: 8px;
   height: 24px;
-  background-color: white;
+  background-color: black; /* (수정) gray -> black (텍스트 색상과 일치) */
   margin-left: 4px;
   animation: blink 1s step-end infinite;
 }
@@ -45,7 +60,6 @@
     background-color: transparent;
   }
   50% {
-    background-color: white;
+    background-color: black;
   }
 }
-
