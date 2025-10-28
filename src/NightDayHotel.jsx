@@ -12,7 +12,7 @@ import styles from "./NightDayHotel.module.css";
 
 export default function NightDayHotel() {
   const navigate = useNavigate();
-  const NEXT_ROUTE = "/mountain"; // 다음 경로 주소 설정
+  const NEXT_ROUTE = "/busstop"; // 다음 경로 주소 설정 (임시)
   const [idx, setIdx] = useState(0);
   const storyCuts = [
     {
