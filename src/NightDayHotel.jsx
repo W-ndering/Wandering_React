@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import bg1 from "./assets/bg/7-1_밤의호텔.svg";
 import bg2 from "./assets/bg/8-2_아침호텔.svg";
 import char1 from "./assets/char/잠옷_주인공1.svg";
@@ -10,6 +11,8 @@ import phone from "./assets/obj/핸드폰_검색.svg"
 import styles from "./NightDayHotel.module.css";
 
 export default function NightDayHotel() {
+  const navigate = useNavigate();
+  const NEXT_ROUTE = "/mountain"; // 다음 경로 주소 설정
   const [idx, setIdx] = useState(0);
   const storyCuts = [
     {
@@ -91,7 +94,6 @@ export default function NightDayHotel() {
       char: "none"
     }
   ];
-  const NEXT_ROUTE = "/next-route-dummy"; // 다음 경로 주소 설정
   const [current, setCurrent] = useState(storyCuts[0]); // 현재 보여지는 컷
   const [lastVisual, setLastVisual] = useState({ // 이전 컷의 배경/캐릭터 (유지를 위해서)
     bg: storyCuts[0].bg,
