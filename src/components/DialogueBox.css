@@ -1,0 +1,51 @@
+/* src/components/DialogueBox.css */
+.dialogue-box-container {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1440px;
+  height: 1440px;
+  
+  /* (수정) 임시 스타일 제거 */
+  /* background-color: rgba(0, 0, 0, 0.8); */
+  /* border: 2px solid #ccc; */
+  /* border-radius: 8px; */
+  
+  /* 실제 이미지를 사용할 경우 */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; /* 배경 이미지 반복 방지 */
+
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.dialogue-text {
+  color: white;
+  font-size: 1.5rem; /* 24px */
+  font-family: monospace;
+  height: 100%;
+  overflow-y: auto;
+  margin: 0;
+}
+
+.typing-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 24px;
+  background-color: white;
+  margin-left: 4px;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  from, to {
+    background-color: transparent;
+  }
+  50% {
+    background-color: white;
+  }
+}
+
