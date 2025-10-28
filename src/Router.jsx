@@ -5,6 +5,7 @@ import Airport from "./pages/Airport";
 import View from "./pages/View";
 import Rest from "./pages/Rest";
 import Walk from "./pages/Walk";
+import Reminiscene from "./pages/Reminiscene";
 
 const Router = () => (
   <BrowserRouter>
@@ -15,6 +16,7 @@ const Router = () => (
       <Route path="/Walk" element={<Walk/>} />
       <Route path="/View" element={<View/>} />
       <Route path="/Rest" element={<Rest/>} />
+      <Route path="/Reminiscene" element={<Reminiscene/>} />
     </Routes>
   </BrowserRouter>
 );
