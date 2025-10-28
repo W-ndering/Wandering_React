@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import bg1 from "./assets/bg/13-5_산입구.svg";
 import bg2 from "./assets/bg/14-5_산중턱.svg";
@@ -7,7 +7,6 @@ import char2 from "./assets/char/힘든_주인공2.svg";
 import textbox from "./assets/obj/text_box.svg";
 import choicebox from "./assets/obj/선택지.svg";
 import intericon from "./assets/obj/interaction.svg";
-
 import styles from "./Mountain.module.css";
 
 export default function Mountain() {
@@ -64,7 +63,40 @@ export default function Mountain() {
     bg: storyCuts[0].bg,
     char: storyCuts[0].char,
   });
-  const isEnterLocked = [4, 7].includes(current?.id); // Enter로 못 넘어가는 컷 설정
+  const isEnterLocked = [4, 7].includes(current.id); // Enter로 못 넘어가는 컷 설정
+  const [displayedText, setDisplayedText] = useState(""); // 현재 화면에 찍힌 텍스트
+  const [isTyping, setIsTyping] = useState(false); // 타이핑 진행 중 여부
+  const typingTimerRef = useRef(null); // 타이핑 interval 저장
+
+  useEffect(() => { // 텍스트 타이핑 효과
+    const text = current.text;
+
+    if (typingTimerRef.current) {
+      clearInterval(typingTimerRef.current);
+      typingTimerRef.current = null;
+    }
+
+    if (!text) { setDisplayedText(""); setIsTyping(false); return; }
+    setDisplayedText(""); setIsTyping(true);
+
+    let i = 0;
+    typingTimerRef.current = setInterval(() => {
+      i++;
+      setDisplayedText(text.slice(0, i));
+      if (i >= text.length) {
+        clearInterval(typingTimerRef.current);
+        typingTimerRef.current = null;
+        setIsTyping(false);
+      }
+    }, 50);
+
+    return () => {
+      if (typingTimerRef.current) {
+        clearInterval(typingTimerRef.current);
+        typingTimerRef.current = null;
+      }
+    };
+  }, [current.text]);
 
   useEffect(() => {
     const cut = storyCuts[idx];
@@ -80,8 +112,8 @@ export default function Mountain() {
     setLastVisual({ bg: merged.bg, char: merged.char });
   }, [idx]);
 
-  const handleNext = () => {
-    if (current?.id === 7) {
+  const handleNext = (choiceIndex = null) => {
+    if (current.id === 7) { // 선택지에 따른 분기
       if (choiceIndex === 0) {
         navigate("/climbdown"); // 힘드니 내려간다 선택
       } else {
@@ -89,24 +121,31 @@ export default function Mountain() {
       }
       return;
     }
-    setIdx(idx + 1);
+    setIdx(idx + 1); // 아닐 땐 다음 컷으로
   };
 
-  // Enter키로 다음 컷으로 이동 --------인터랙트, 복수선택지 있는 스토리는 수정 필요
+  // Enter키로 다음 컷으로 이동
   useEffect(() => {
     const onKey = (e) => {
-      if (e.key === "Enter") {
-        if (isEnterLocked) return;
-        handleNext();
+      if (e.key !== "Enter") return;
+      if ([4, 7].includes(current.id)) return;
+
+      // 타이핑 중이면 타이머를 멈추고 즉시 완성
+      if (isTyping && current.text) {
+        if (typingTimerRef.current) {
+          clearInterval(typingTimerRef.current);
+          typingTimerRef.current = null;
+        }
+        setDisplayedText(current.text);
+        setIsTyping(false);
+        return;
       }
+      // 그 외엔 다음 컷
+      handleNext();
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [isEnterLocked, idx]);
-
-  const handleClick = () => { // 인터랙션 클릭하여 다음 컷으로 이동
-    setIdx(idx + 1);
-  };
+  }, [isTyping, current.id, current.text]);
 
   return (
     <div className={styles.viewport}>
@@ -139,7 +178,7 @@ export default function Mountain() {
               {current.speaker && (
                 <div className={styles.speaker}>{current.speaker}</div>
               )}
-              <div className={styles.content}>{current.text}</div>
+              <div className={styles.content}>{displayedText}</div>
             </div>
           </div>
         )}
@@ -156,7 +195,7 @@ export default function Mountain() {
                   <div
                     key={i}
                     className={styles.choiceItem}
-                    onClick={() => handleClick(i)}
+                    onClick={() => handleNext(i)}
                   >
                     <img
                       src={current.choice.src}
@@ -170,8 +209,7 @@ export default function Mountain() {
             ) : (
               <div // 하나인 경우
                 className={styles.choiceItem}
-                tabIndex={0}
-                onClick={() => handleClick(0)}
+                onClick={() => handleNext(0)}
               >
                 <img
                   src={current.choice.src}
@@ -192,7 +230,7 @@ export default function Mountain() {
             {current.popup && (
               <img src={current.popup} alt="인터랙션아이콘"
                 className={styles.popupInterImage}
-                onClick={handleClick}
+                onClick={handleNext}
               />
             )}
           </div>
