@@ -1,0 +1,21 @@
+/* src/pages/scenes/Scene.css */
+
+.scene-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  outline: none;
+}
+
+.player-character {
+  position: absolute;
+  height: 150px; /* (임시) 캐릭터 높이 */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  transition: left 100ms linear;
+}

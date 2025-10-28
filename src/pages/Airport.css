@@ -1,108 +1,111 @@
-/* src/pages/Stage1.css */
+/* src/pages/Airport.css */
 
 /* ======================================= */
-/* 1. 게임 영역 (Stage1) 컨테이너 스타일 */
+/* 1. 게임 영역 (Airport) 컨테이너 스타일 */
 /* ======================================= */
 .game-area {
   position: relative;
+  width: 100vw;
+  height: 100vh;
   
-  /* 🚀 핵심 수정: 화면 전체 크기로 설정 */
-  width: 100vw; /* Viewport Width (화면 전체 너비) */
-  height: 100vh; /* Viewport Height (화면 전체 높이) */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   
-  /* 배경 이미지 (2560x1920) 설정 */
-  background-size: cover; /* 비율을 유지하며 영역을 덮도록 확대/축소 */
-  background-position: center; /* 이미지를 중앙에 배치 */
-  background-repeat: no-repeat; /* 배경 반복 방지 */
+  overflow: hidden;
+  outline: none;
   
-  overflow: hidden; /* 영역을 벗어나는 요소 숨김 */
-  outline: none; /* 포커스 시 테두리 제거 */
-  
-  /* 커서 변경: 대화 상호작용이 가능함을 시각적으로 나타냄 */
-  cursor: pointer; 
+  /* (수정) 기본 커서는 auto, 상호작용 가능한 요소에서 pointer로 변경 */
+  cursor: auto; 
 }
 
 /* ======================================= */
-/* 2. 캐릭터 및 NPC 공통 스타일 */
+/* 2. 플레이어 캐릭터 스타일 */
 /* ======================================= */
-.player-character,
-.npc-character {
+.player-character {
   position: absolute;
-  width: 60px;
-  height: 100px;
+  /* (수정) 너비와 높이는 JS에서 또는 여기서 고정값으로 설정 */
+  /* width: 100px; */ /* 예시 */
+  height: 150px; /* 예시 (캐릭터 애셋 비율에 맞게 조절) */
   
-  /* 실제 이미지 사용 시 */
   background-size: contain;
   background-repeat: no-repeat;
-  background-position: bottom center; /* 이미지를 요소 하단 중앙에 배치 */
+  background-position: bottom center;
   
-  /* 모든 요소에 transition 적용 (이동 시 부드러운 효과) */
-  transition: all 100ms linear;
+  transition: left 100ms linear; /* left 이동만 transition */
 }
 
-/* 플레이어 캐릭터 (임시 색상 제거 및 실제 이미지 사용 준비) */
-.player-character {
-  /* background-color: #3498db;  // 임시 스타일 제거 또는 주석 처리 */
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px;
-}
+/* (제거) NPC 관련 스타일 모두 삭제 */
+/* .npc-character, .npc-label, .npc-container, .exclamation-mark, .player-label 등 */
 
-/* NPC 캐릭터 (임시 색상 제거 및 실제 이미지 사용 준비) */
-.npc-character {
-  /* background-color: #2ecc71;  // 임시 스타일 제거 또는 주석 처리 */
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px;
-}
 
 /* ======================================= */
-/* 3. 라벨 및 컨테이너 스타일 */
+/* 3. (NEW) 인트로 및 Dim 스타일 */
 /* ======================================= */
 
-.player-label, 
-.npc-label {
-  color: white;
-  font-size: 0.75rem; /* 12px */
+/* Prologue.css와 유사한 Dim 오버레이 */
+.airport-dim-overlay {
   position: absolute;
-  top: -20px;
+  inset: 0; /* top:0, left:0, right:0, bottom:0 */
+  background-color: rgba(0, 0, 0, 0.7); /* 70% 검은색 */
+  z-index: 5; /* 캐릭터(기본)와 대화상자(10) 사이 */
+  transition: opacity 0.5s ease;
+  pointer-events: none; /* 클릭 통과 */
+}
+
+/* 인트로 "공항" 텍스트 */
+.airport-intro-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 4rem; /* 64px */
+  font-weight: bold;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+  z-index: 6; /* Dim 오버레이 위 */
+  pointer-events: none;
+}
+
+/* ======================================= */
+/* 4. (NEW) 선택지 스타일 */
+/* ======================================= */
+
+/* Prologue.css와 유사한 선택지 컨테이너 */
+.airport-choices-container {
+  position: absolute;
+  /* (수정) 텍스트박스 아래에 배치 (DialogueBox.css의 bottom: 40px 기준) */
+  bottom: 200px; /* 예시 위치 (대화상자 높이만큼 조절) */
   left: 50%;
   transform: translateX(-50%);
-  text-shadow: 1px 1px 2px black;
-}
-
-/* NPC 컨테이너 (NPC가 속한 영역, 느낌표 위치 기준용) */
-.npc-container {
-  /* absolute로 설정하면 내부 NPC 위치 잡기가 불편해질 수 있으므로, 
-     Stage1.jsx의 렌더링 방식(NPC 위치를 left로 직접 지정)을 위해 제거하거나 수정하는 것을 권장하나, 
-     기존 코드를 유지합니다. */
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-}
-
-
-/* ======================================= */
-/* 4. 느낌표 (Exclamation Mark) 스타일 */
-/* ======================================= */
-.exclamation-mark {
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  
-  /* 임시 스타일 제거 및 실제 이미지 사용 준비 */
-  /* background-color: #f1c40f; 
-  border-radius: 50%; */
+  z-index: 11; /* 대화 상자(10)보다 위 */
   
   display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 75%;
+  max-width: 600px; /* 선택지 최대 너비 */
   align-items: center;
-  justify-content: center;
-  color: black;
-  font-weight: bold;
-  font-size: 1.5rem; /* 24px */
+}
 
-  /* 실제 이미지 사용 시 */
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+.airport-choice-button {
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 2px solid #333;
+  color: #222;
+  padding: 15px 25px;
+  border-radius: 8px;
+  font-size: 1.25rem;
+  font-family: monospace;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.airport-choice-button:hover {
+  background-color: #fff;
+  color: #000;
+  transform: scale(1.02);
+  border-color: #000;
 }
