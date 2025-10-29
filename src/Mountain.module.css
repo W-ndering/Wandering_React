@@ -163,7 +163,7 @@
     width: 2560px;
     height: 1440px;
     background: #00000066;
-    z-index: 1;
+    z-index: 3;
     pointer-events: none;
 }
 

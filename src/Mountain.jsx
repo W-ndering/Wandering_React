@@ -67,7 +67,7 @@ export default function Mountain() {
   const [isTyping, setIsTyping] = useState(false); // 타이핑 진행 중 여부
   const typingTimerRef = useRef(null); // 타이핑 interval 저장
 
-  const [charX, setCharX] = useState(1800); // 시작 x좌표(px) — 필요에 따라 조정
+  const [charX, setCharX] = useState(2040); // 시작 x좌표(px) — 필요에 따라 조정
   const keysRef = useRef({ left: false, right: false });
   const SPEED = 500;
   const minX = 0;
@@ -138,6 +138,15 @@ export default function Mountain() {
     };
     setCurrent(merged); // 현재 보여줄 컷으로 설정
     setLastVisual({ bg: merged.bg, char: merged.char });
+
+    if (cut.id === 6) {
+      setCharX(100);
+    }
+
+    if (cut.id === 7) {
+      setCharX(1000);
+    }
+    
   }, [idx]);
 
   const handleNext = async (choiceIndex = null) => {
