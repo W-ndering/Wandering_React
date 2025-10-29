@@ -1,0 +1,281 @@
+.viewport {
+    position: fixed;
+    inset: 0;
+    background: #0e0f12;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.stage {
+    position: relative;
+    width: 2560px;
+    height: 1440px;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2560px;
+    height: 1440px;
+    object-fit: contain;
+    user-select: none;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.character {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    user-select: none;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.charNPC {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    user-select: none;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.textboxWrap {
+    position: absolute;
+    left: 50%;
+    top: 28%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    z-index: 6;
+    text-align: center;
+}
+
+.textboxImage {
+    display: block;
+    width: 1440px;
+    height: 1440px;
+    user-select: none;
+    z-index: 0;
+}
+
+.textboxContent {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 1;
+    width: 1150px;
+    text-align: left;
+}
+
+.centerText {
+    text-align: center;
+}
+
+.upText {
+    top: 46%;
+}
+
+.upTextMulti {
+    top: 49%;
+}
+
+.speaker {
+    font-family: 'DungGeunMo';
+    color: black;
+    white-space: pre-wrap;
+    word-break: keep-all;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 140%;
+    letter-spacing: 2%;
+    margin-bottom: 10px;
+}
+
+.content {
+    font-family: 'DungGeunMo';
+    color: black;
+    white-space: pre-wrap;
+    word-break: keep-all;
+    font-weight: 400;
+    font-size: 60px;
+    line-height: 140%;
+    letter-spacing: 2%;
+}
+
+.choiceWrap {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    text-align: center;
+}
+
+.choiceWrapSingle {
+    top: 53%
+}
+
+.choiceImage {
+    display: block;
+    height: auto;
+    cursor: pointer;
+}
+
+.choiceText {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: pre-wrap;
+    pointer-events: none;
+    font-family: "DungGeunMo";
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 140%;
+    letter-spacing: 2%;
+    text-align: center;
+    color: white;
+    width: 1225px;
+}
+
+.choiceList {
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+    align-items: center;
+}
+
+.choiceItem {
+    position: relative;
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+.popupWrap {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 4;
+    text-align: center;
+    width: 1440px;
+    height: 1440px;
+}
+
+.bgDim {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2560px;
+    height: 1440px;
+    background: #00000066;
+    z-index: 4;
+    pointer-events: none;
+}
+
+.ddim {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2560px;
+    height: 1440px;
+    background: #00000066;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.titleText {
+    font-family: 'DungGeunMo';
+    font-weight: 400;
+    font-size: 120px;
+    line-height: 140%;
+    letter-spacing: 2%;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    color: white;
+}
+
+.circle {
+    position: absolute;
+    top: 60%;
+    left: 105%;
+    width: 192px;
+    height: 192px;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 50%;
+    box-shadow: -11px -5px 9.4px -1px #00000033 inset;
+    z-index: 10;
+}
+
+.popupInterImage {
+    position: absolute;
+    top: 60%;
+    left: 105%;
+    width: 120px;
+    height: 120px;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+.popupObjImage {
+    width: 720px;
+    height: 720px;
+    position: absolute;
+    top: 34%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.popupLine {
+    display: block;
+    font-size: inherit;
+}
+
+.popupLineSmall {
+    font-size: 52px;
+}
+
+.popupText {
+    position: absolute;
+    top: 79%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: pre-wrap;
+    pointer-events: none;
+    font-family: "DungGeunMo";
+    font-weight: 400;
+    font-size: 60px;
+    line-height: 140%;
+    letter-spacing: 2%;
+    color: black;
+    z-index: 2;
+}
+
+.popupSingleImage {
+    width: 720px;
+    height: 720px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    pointer-events: auto;
+    z-index: 2;
+}
