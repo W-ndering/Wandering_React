@@ -4,8 +4,8 @@
   top: -100px; /* 사용자가 요청한 위치 */
   left: 50%;
   transform: translateX(-50%);
-  width: 100%; /* 사용자가 요청한 크기 */
-  max-width: 1440px; /* 사용자가 요청한 크기 */
+  width: 75%; /* 사용자가 요청한 크기 */
+  max-width: 1080px; /* 사용자가 요청한 크기 */
   height: 800px; /* 사용자가 요청한 크기 */
 
   z-index: 10;
@@ -30,18 +30,18 @@
 
 .dialogue-text {
   color: black;
-  font-size: 1.5rem; /* 24px */
-  font-family: monospace;
+  font-size: 2rem; /* 24px */
+  
   white-space: pre-line;
   
   /* (수정) 텍스트가 상자 하단에 위치하도록 절대 위치로 변경 */
   position: absolute;
   width: 90%; /* 상자 너비의 90% */
   bottom: 100px; /* 상자 하단에서 100px 위 (SVG 디자인에 따라 조정 필요) */
-  left: 50%;
+  left: 55%;
   transform: translateX(-50%);
   
-  height: 350px; /* (유지) 100% -> auto로 변경해야 텍스트가 보입니다. */
+  height: 325px; /* (유지) 100% -> auto로 변경해야 텍스트가 보입니다. */
   overflow-y: auto;
   margin: 0;
 }
@@ -62,4 +62,43 @@
   50% {
     background-color: black;
   }
+}
+
+/** 화자 이름 박스 */
+.speaker-name-box {
+  position: absolute;
+  /* 위치 조정: 
+    텍스트 영역(.dialogue-text)이 bottom: 100px, height: 325px 이므로,
+    텍스트 영역 바로 위에 오도록 bottom 값을 (100 + 325)px 근처로 설정합니다.
+  */
+  bottom: 470px; /* 100px (text-bottom) + 325px (text-height) + 5px (margin) */
+  
+  /* 좌표 조정:
+    텍스트 영역이 left: 55%, transform: translateX(-50%)로 중앙 정렬되어 있고
+    width: 90% 이므로, 텍스트 영역의 시작점(왼쪽)에 맞춥니다.
+    (55% - 45% = 10%)
+  */
+  left: 8%; /* (55% - 90%/2) */
+  
+  background-color: none; /* 어두운 배경 */
+  color: black;
+  padding: 8px 16px;
+  font-size: 1.7rem; /* 텍스트보다 약간 작게 */
+  font-weight: normal;
+  z-index: 11; /* 텍스트 박스 위에 표시 */
+}
+
+/** 효과: 작게 + 색상 변경 */
+.dialogue-effect-small {
+  font-size: 1.125rem; /* 18px (기본 24px보다 작게) */
+  color: #777777; /* 회색 */
+}
+
+/** 효과: 크게 */
+.dialogue-effect-large {
+  font-size: 4rem; /* 32px (기본 24px보다 크게) */
+  font-weight: bold;
+  color: #000000; /* 강조를 위한 붉은 계열 색상 (예시) */
+  /* 인라인으로 적용되므로 수직 정렬이 약간 틀어질 수 있습니다. */
+  vertical-align: middle; 
 }

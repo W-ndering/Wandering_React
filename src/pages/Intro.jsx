@@ -19,6 +19,7 @@ const BACKGROUND_INTERVAL = 2000; // 2초
 const NICKNAME_STORAGE_KEY = 'NICKNAME';
 
 function Intro() {
+  const BACKEND_KEY = import.meta.env.VITE_BACKEND_DOMAIN_KEY;
         // 세션 저장소에서 초기 닉네임을 불러오는 함수
     const getInitialNickname = () => {
         // 'NICKNAME' 키로 저장된 값이 있으면 반환, 없으면 빈 문자열 반환
@@ -43,7 +44,36 @@ function Intro() {
   };
 
   // 시작 버튼 클릭 처리
-  const handleStartGame = () => {
+  const handleStartGame = async () => {
+    try {
+    const response = await fetch(`${BACKEND_KEY}/game/start`, {
+      method: 'POST', // 💡 요청 메서드
+      headers: {
+        // Content-Type 헤더는 서버가 요구할 때만 추가합니다.
+        // 빈 바디 요청이므로 생략해도 되지만, 서버 사양에 따라 포함할 수도 있습니다.
+        // 'Content-Type': 'application/json', 
+      },
+      // body 속성을 완전히 생략하여 빈 바디를 전송합니다.
+    });
+
+    if (!response.ok) {
+      // 서버에서 200번대가 아닌 응답이 오면 오류 처리
+      console.error('❌ 게임 시작 이벤트 서버 요청 실패:', response.status);
+    } else {
+      console.log('✅ 게임 시작 이벤트 서버 요청 성공!');
+      const data = await response.json();
+      // 응답 객체에서 'id' 값을 추출하여 sessionStorage에 저장
+      if (data && data.id) {
+        sessionStorage.setItem('playerId', data.id);
+        console.log(`🔑 Player ID 저장 성공: ${data.id}`); 
+      } else {
+        console.warn('⚠️ 서버 응답에 ID 필드가 없습니다.');
+      }
+      // 서버의 응답이 있다면 여기서 처리 (ex: await response.json())
+    }
+  } catch (error) {
+    console.error('❌ 네트워크 오류 발생:', error);
+  }
     // 닉네임 유효성 검사 또는 저장이 필요하면 여기에 추가
     sessionStorage.setItem(NICKNAME_STORAGE_KEY, nickname);
     console.log('게임 시작! 닉네임:', nickname);

@@ -1,5 +1,5 @@
 /* ================================
-    Prologue Layout Base
+   Prologue Layout Base
 ================================= */
 
 .prologue-container {
@@ -12,7 +12,7 @@
 }
 
 /* ================================
-    Background Layer
+   Background Layer
 ================================= */
 .prologue-game-area {
   position: absolute;
@@ -27,13 +27,15 @@
   transition: opacity 1.5s ease-in; /* 서서히 나타나는 효과 */
 }
 
-/* 시퀀스 1 (배경 보이기) */
-.prologue-container[data-sequence="1"] .prologue-game-area {
+/* (수정) 시퀀스 1, 2, 3 (배경 보이기) */
+.prologue-container[data-sequence="1"] .prologue-game-area,
+.prologue-container[data-sequence="2"] .prologue-game-area,
+.prologue-container[data-sequence="3"] .prologue-game-area {
   opacity: 1;
 }
 
 /* ================================
-    Black Overlay Layer
+   Black Overlay Layer
 ================================= */
 .prologue-black-overlay {
   position: absolute;
@@ -45,14 +47,15 @@
   pointer-events: none; /* 클릭 통과 */
 }
 
-/* 시퀀스 1~2 (서서히 사라짐) */
+/* (수정) 시퀀스 1~3 (서서히 사라짐 및 숨김 유지) */
 .prologue-container[data-sequence="1"] .prologue-black-overlay,
-.prologue-container[data-sequence="2"] .prologue-black-overlay {
+.prologue-container[data-sequence="2"] .prologue-black-overlay,
+.prologue-container[data-sequence="3"] .prologue-black-overlay {
   opacity: 0;
 }
 
 /* ================================
-    Player Character Layer
+   Player Character Layer
 ================================= */
 .prologue-player-character {
   /* 기본 설정 (위치 및 z-index) */
@@ -65,9 +68,9 @@
   left: 100px; 
   bottom: 80px;
 
-  /* 기본적으로 숨김 */
-  opacity: 1;
-  transition: left 0.1s linear; /* 등장 효과와 움직임 효과 병합 */
+  /* (수정) 기본적으로 숨김 */
+  opacity: 0;
+  transition: opacity 1.5s ease-in, left 0.1s linear; /* (수정) 등장 효과 추가 */
 
   /* 추가된 스타일 (이미지 표시 및 정렬) */
   width: 200px;
@@ -76,31 +79,24 @@
   background-size: contain;
   background-position: center bottom;
   transform: translateX(-50%); /* left: 100px 기준 중앙 정렬 */
-
-  /* 기존 불필요 스타일 제거/정리 */
-  /* background-color: none; */
-  /* border-top-left-radius: 6px; */
-  /* border-top-right-radius: 6px; */
-  /* display: flex; */
-  /* align-items: center; */
-  /* justify-content: center; */
 }
 
-/* 시퀀스 1~2 (캐릭터 등장) */
+/* (수정) 시퀀스 1, 2, 3 (캐릭터 등장 및 유지) */
 .prologue-container[data-sequence="1"] .prologue-player-character,
-.prologue-container[data-sequence="2"] .prologue-player-character {
+.prologue-container[data-sequence="2"] .prologue-player-character,
+.prologue-container[data-sequence="3"] .prologue-player-character {
   opacity: 1;
 }
 
 /* ================================
-    Dialogue Box Layer (가정: z-index 10)
+   Dialogue Box Layer (가정: z-index 10)
 ================================= */
 /* .dialogue-box-container {
     z-index: 10;
 } */
 
 /* ================================
-    Choice Buttons (대화 상자 위)
+   Choice Buttons (대화 상자 위)
 ================================= */
 .prologue-choices-container {
   position: absolute;
@@ -139,39 +135,67 @@
 }
 
 /* ================================
-    Optional UI / Object Layers
+   Optional UI / Object Layers
 ================================= */
 .prologue-object-scene {
   position: absolute;
-  bottom: 120px;
+  /* (수정) bottom: -150px -> 50px. 화면에 보이도록 수정 */
+  bottom: 50px;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 9; /* 대화 상자(10)보다 살짝 뒤 */
 }
 
 .prologue-status-ui {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  position: relative; /* 자식 요소의 absolute 기준점 */
+  /* (수정) flex 제거. 너비만 설정 */
+  width: 700px;
 }
 
 .status-ui {
-  width: 300px;
-  z-index: 11;
+  /* (수정) 너비를 100%로 하여 부모(.prologue-status-ui)를 따르게 함 */
+  width: 100%; 
+  /* (수정) z-index: 13 -> 11. 래퍼(12)보다 낮게 설정 */
+  z-index: 11; /* 래퍼의 배경 */
+  display: block; /* 이미지 하단 여백 제거 */
 }
 
+/* (추가) .prologue-status-ui 내부의 래퍼 div 스타일링 */
+.prologue-status-ui > div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 12; /* 배경 이미지(.status-ui) 위에 위치 */
+  
+  /* (추가) 이 래퍼를 flex-column 컨테이너로 만듦 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* 위에서부터 정렬 */
+  
+  padding-top: 5%; /* .prologue-object의 top: 5%를 대체 */
+  box-sizing: border-box;
+}
+
+
 .prologue-object {
+  /* (수정) position: absolute 제거. flex-item으로 만듦 */
   background-size: contain;
   background-repeat: no-repeat;
-  z-index: 12; /* 캐릭터보다 위 */
+  z-index: 13; /* z-index 재조정 (래퍼 12보다 높음) */
   
-  /* 추가된 스타일 */
-  position: absolute;
-  top: 20%;
-  width: 150px;
+  /* (수정) position: absolute 관련 속성 제거 */
+  /* position: absolute; */
+  /* top: 5%; */
+
+  width: 400px;
   animation: appear 0.8s ease;
+  /* (수정) 요청대로 gap: 0 (margin-bottom: 0) */
+  margin-bottom: 0;
 }
 
 .prologue-status-window {
@@ -181,17 +205,30 @@
   z-index: 13; /* 상태창 최상위 */
 }
 
+/* (추가) 오브젝트 이름 텍스트 스타일 */
+.status-object-name {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #222;
+  text-align: center;
+  margin-top: 70px; /* 오브젝트와 이름 사이 간격 */
+  margin-bottom: 20px; /* 이름과 설명 텍스트 사이 간격 */
+  z-index: 15;
+}
+
 .status-text {
-  margin-top: 160px;
-  font-size: 16px;
+  /* (수정) position: relative 제거. flex-item으로 만듦 */
+  margin-top: 0px; /* 요청대로 gap 0 (margin 0) */
+  font-size: 1.5rem;
   color: #222;
   text-align: center;
   white-space: pre-line;
+  z-index: 15; /* 래퍼(12) 및 오브젝트(13)보다 높음 */
 }
 
 
 /* ================================
-    Keyframes
+   Keyframes
 ================================= */
 @keyframes appear {
   from {
@@ -203,3 +240,4 @@
     transform: scale(1);
   }
 }
+

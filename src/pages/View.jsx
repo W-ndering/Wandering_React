@@ -7,7 +7,10 @@ import './View.css'; // 공통 씬 CSS (신규)
 import infoBg from '../assets/bg/4_1_1번선택지_유명관광지.svg'; // 예시 경로
 
 const DIALOGUES = [
-  "관광지에 오니 여행 온 기분이 든다.",
+    {
+    speaker: null,
+    dialogue: [{ type: 'normal', content: "관광지에 오니 여행 온 기분이 든다." }]
+  }
   // (대사 끝 -> 다음 씬으로)
 ];
 
@@ -62,7 +65,9 @@ function View() {
       {activeDialogue && (
         <DialogueBox
           key={dialogueIndex}
-          text={activeDialogue}
+          // (수정!) 'text' prop 대신 'dialogue'와 'speaker' prop을 전달합니다.
+          dialogue={activeDialogue.dialogue}
+          speaker={activeDialogue.speaker}
           isTyping={isTyping}
           onTypingStart={() => setIsTyping(true)}
           onTypingComplete={() => setIsTyping(false)}

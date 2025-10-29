@@ -4,12 +4,10 @@
    전역 폰트 정의 (@font-face)
    ------------------------------------------- */
 @font-face {
-    font-family: 'CustomFont'; /* 이 이름은 그대로 사용 가능 */
-    /* 🚨 폰트 경로: src/assets/font/ 폴더에 있다고 가정 */
-    src: url('../assets/font/DungGeunMo.woff2') format('woff2'),
-         url('../assets/font/DungGeunMo.woff') format('woff');
+    font-family: 'RoundedFixedsys';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/DungGeunMo.woff') format('woff');
     font-weight: normal;
-    font-style: normal;
+    font-display: swap;
 }
 
 /* -------------------------------------------
@@ -28,7 +26,7 @@ body, html, #root {
 /* body에 정의된 'CustomFont'를 프로젝트 전체에 상속 */
 body {
     /* 기존 코드의 폰트 대신 CustomFont 적용 */
-    font-family: 'CustomFont', sans-serif !important;
+    font-family: 'RoundedFixedsys', sans-serif;
     line-height: 1.5; /* 가독성을 위한 기본 설정 */
 }
 

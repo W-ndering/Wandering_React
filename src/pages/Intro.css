@@ -86,7 +86,8 @@
     
     /* 텍스트 스타일 */
     color: black; /* 하얀 배경에 검은 텍스트 */
-    font-size: 1.5rem; 
+    font-size: 1.5rem;
+    font-family: RoundedFixedsys; 
     font-weight: bold;
     text-align: center;
     padding: 0 15px; /* 좌우 패딩 */

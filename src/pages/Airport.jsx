@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import DialogueBox from '../components/DialogueBox';
 import './Airport.css'; // Airport.css 임포트
@@ -8,7 +8,7 @@ import mainChar from '../assets/char/캐리어_주인공1.svg';
 
 // --- 상수 정의 ---
 const MOVE_SPEED = 15;
-const GROUND_Y = 80; // 바닥 Y좌표 (px)
+const GROUND_Y = 10; // 바닥 Y좌표 (px)
 const CHARACTER_WIDTH = 100; // 캐릭터 너비 (실제 애셋 크기에 맞게 조절)
 
 // --- 애셋 경로 ---
@@ -18,7 +18,22 @@ const ASSET_PATHS = {
   character: mainChar,
 };
 
-const AIRPORT_DIALOGUES = [`맛집 간판, 관광 안내판, 번화가 거리.`,`장시간 비행과 이동으로 피곤하지만,\n여행 온 기분이 물씬 나는 거리이다.`,`무얼 먼저 할까?`];
+// (수정) DialogueBox prop 구조에 맞게 배열 변경
+const AIRPORT_DIALOGUES = [
+  {
+    speaker: null,
+    dialogue: [{ type: 'normal', content: `맛집 간판, 관광 안내판, 번화가 거리.` }]
+  },
+  {
+    speaker: null,
+    dialogue: [{ type: 'normal', content: `장시간 비행과 이동으로 피곤하지만,\n여행 온 기분이 물씬 나는 거리이다.` }]
+  },
+  {
+    speaker: null,
+    dialogue: [{ type: 'normal', content: `무얼 먼저 할까?` }]
+  }
+];
+
 const AIRPORT_CHOICES = [
   { id: 'view', text: "유명 관광지로 향해 사진을 남긴다." },
   { id: 'rest', text: "숙소로 가서 짐부터 둔다." },
@@ -26,13 +41,15 @@ const AIRPORT_CHOICES = [
 ];
 
 function Airport() {
+  const BACKEND_KEY = import.meta.env.VITE_BACKEND_DOMAIN_KEY;
+  const playerid = sessionStorage.getItem("playerId") || "0";
   // --- 상태 관리 ---
   const [sequenceStep, setSequenceStep] = useState(0); // 0: 인트로, 1: 메인(이동), 2: 대사1, 3: 대사2, 4: 선택지
   const [charX, setCharX] = useState(0); // 캐릭터 위치
   
   // 대화 상태
   const [dialogueIndex, setDialogueIndex] = useState(0);
-  const [activeDialogue, setActiveDialogue] = useState(null);
+  const [activeDialogue, setActiveDialogue] = useState(null); // (수정) 초기값 null
   const [isTyping, setIsTyping] = useState(false);
   const [showChoices, setShowChoices] = useState(false);
 
@@ -113,17 +130,86 @@ function Airport() {
   }, [handleInteraction, sequenceStep]); // sequenceStep 의존성 추가
 
   // --- 4. 선택지 클릭 핸들러 ---
-  const handleChoiceClick = (choiceId) => {
+  const handleChoiceClick = async (choiceId) => {
     console.log("선택:", choiceId);
     
     // TODO: 여기에 내비게이팅 및 POST 로직을 구현합니다.
     if (choiceId === 'view') {
+      try {
+        const response = await fetch(`${BACKEND_KEY}/player/${playerid}/choice`, {
+          method: 'POST', // 💡 요청 메서드
+          headers: {
+            // Content-Type 헤더는 서버가 요구할 때만 추가합니다.
+            // 빈 바디 요청이므로 생략해도 되지만, 서버 사양에 따라 포함할 수도 있습니다.
+            'Content-Type': 'application/json', 
+          },
+          body: JSON.stringify({
+            "sceneId" : 1,
+            "optionKey" : 1,
+          }),
+        });
+
+    if (!response.ok) {
+      // 서버에서 200번대가 아닌 응답이 오면 오류 처리
+      console.error('❌ 선택지 정보 전달 실패:', response.status);
+    } else {
+      console.log('✅ 1번선택지 정보 전달 성공');
+    }
+  } catch (error) {
+    console.error('❌ 네트워크 오류 발생:', error);
+  }
       navigate('/view');
       console.log("관광지");
     } else if (choiceId === 'rest') {
+      try {
+        const response = await fetch(`${BACKEND_KEY}/player/${playerid}/choice`, {
+          method: 'POST', // 💡 요청 메서드
+          headers: {
+            // Content-Type 헤더는 서버가 요구할 때만 추가합니다.
+            // 빈 바디 요청이므로 생략해도 되지만, 서버 사양에 따라 포함할 수도 있습니다.
+            'Content-Type': 'application/json', 
+          },
+          body: JSON.stringify({
+            "sceneId" : 1,
+            "optionKey" : 2,
+          }),
+        });
+
+    if (!response.ok) {
+      // 서버에서 200번대가 아닌 응답이 오면 오류 처리
+      console.error('❌ 선택지 정보 전달 실패:', response.status);
+    } else {
+      console.log('✅ 2번선택지 정보 전달 성공');
+    }
+  } catch (error) {
+    console.error('❌ 네트워크 오류 발생:', error);
+  }
       navigate('/rest');
       console.log("호텔");
     } else if (choiceId === 'walk') {
+            try {
+        const response = await fetch(`${BACKEND_KEY}/player/${playerid}/choice`, {
+          method: 'POST', // 💡 요청 메서드
+          headers: {
+            // Content-Type 헤더는 서버가 요구할 때만 추가합니다.
+            // 빈 바디 요청이므로 생략해도 되지만, 서버 사양에 따라 포함할 수도 있습니다.
+            'Content-Type': 'application/json', 
+          },
+          body: JSON.stringify({
+            "sceneId" : 1,
+            "optionKey" : 3,
+          }),
+        });
+
+    if (!response.ok) {
+      // 서버에서 200번대가 아닌 응답이 오면 오류 처리
+      console.error('❌ 선택지 정보 전달 실패:', response.status);
+    } else {
+      console.log('✅ 3번 선택지 정보 전달 성공');
+    }
+  } catch (error) {
+    console.error('❌ 네트워크 오류 발생:', error);
+  }
       navigate('/walk');
       console.log("걷기");
     }
@@ -162,7 +248,6 @@ function Airport() {
           style={{
             left: `${charX}px`,
             bottom: `${GROUND_Y}px`,
-            width: `${CHARACTER_WIDTH}px`, // 너비 적용
             backgroundImage: `url(${ASSET_PATHS.character})` // 실제 이미지
           }}
         />
@@ -172,7 +257,9 @@ function Airport() {
       {activeDialogue && (
         <DialogueBox
           key={dialogueIndex} // index 변경 시 리셋
-          text={activeDialogue}
+          // (수정) text prop 대신 dialogue와 speaker prop 전달
+          dialogue={activeDialogue.dialogue}
+          speaker={activeDialogue.speaker}
           isTyping={isTyping}
           onTypingStart={() => setIsTyping(true)}
           onTypingComplete={() => setIsTyping(false)}
@@ -198,3 +285,4 @@ function Airport() {
 }
 
 export default Airport;
+

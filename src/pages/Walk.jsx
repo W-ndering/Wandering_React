@@ -8,8 +8,15 @@ import restBg from '../assets/bg/6_1_3번선택지_길거리.svg'; // 예시 경
 import mainChar from '../assets/char/기본_주인공2.svg';
 
 const DIALOGUES = [
-  "무작정 걸으니,\n아름다운 도시의 풍경이 눈에 들어온다.",
-  "최근에 이렇게\n마음이 편했던 적이 있었나?",
+    {
+    speaker: null,
+    dialogue: [{ type: 'normal', content: "무작정 걸으니,\n아름다운 도시의 풍경이 눈에 들어온다." }]
+  },
+  // 5: 독백
+  {
+    speaker: null,
+    dialogue: [{ type: 'normal', content: "최근에 이렇게\n마음이 편했던 적이 있었나?" }]
+  }
 ];
 const GROUND_Y = 80;
 const CHARACTER_WIDTH = 100;
@@ -101,7 +108,9 @@ function Walk() {
       {activeDialogue && (
         <DialogueBox
           key={dialogueIndex}
-          text={activeDialogue}
+          // (수정!) 'text' prop 대신 'dialogue'와 'speaker' prop을 전달합니다.
+          dialogue={activeDialogue.dialogue}
+          speaker={activeDialogue.speaker}
           isTyping={isTyping}
           onTypingStart={() => setIsTyping(true)}
           onTypingComplete={() => setIsTyping(false)}
