@@ -5,7 +5,7 @@ import NightDayHotel from "./NightDayHotel";
 const Router = () => (
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<NightDayHotel />} />
+      <Route path="/nightdayhotel" element={<NightDayHotel />} />
     </Routes>
   </BrowserRouter>
 );

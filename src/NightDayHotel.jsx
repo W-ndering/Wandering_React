@@ -293,6 +293,7 @@ export default function NightDayHotel() {
               src={current.choice.src}
               alt="선택지박스"
               className={styles.choiceImage}
+              onClick={handleNext}
             />
             {current.choice.text && (
               <div className={styles.choiceText}>
@@ -304,7 +305,7 @@ export default function NightDayHotel() {
 
         {current.popup && ( // 팝업창(아이템)
           <div className={styles.popupWrap}>
-            <img src={current.popup.src} alt="팝업창" className={styles.popupImage} />
+            <img src={current.popup.src} alt="팝업창" className={styles.popupImage} onClick={handleNext}/>
 
             {current.popup.obj && (
               <img src={current.popup.obj} alt="팝업창오브제" className={styles.popupObjImage} />
