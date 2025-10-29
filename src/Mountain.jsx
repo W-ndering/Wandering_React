@@ -63,10 +63,38 @@ export default function Mountain() {
     bg: storyCuts[0].bg,
     char: storyCuts[0].char,
   });
-  const isEnterLocked = [4, 7].includes(current.id); // Enter로 못 넘어가는 컷 설정
   const [displayedText, setDisplayedText] = useState(""); // 현재 화면에 찍힌 텍스트
   const [isTyping, setIsTyping] = useState(false); // 타이핑 진행 중 여부
   const typingTimerRef = useRef(null); // 타이핑 interval 저장
+
+  const [charX, setCharX] = useState(1800); // 시작 x좌표(px) — 필요에 따라 조정
+  const keysRef = useRef({ left: false, right: false });
+  const SPEED = 500;
+  const minX = 0;
+  const maxX = 2160;
+  const moveTimerRef = useRef(null);
+  const lastTimeRef = useRef(null);
+
+  const SCENE_ID = 5;
+
+  // 선택 결과 서버에 전송
+  async function postChoice({ sceneId, optionKey }) {
+    try {
+      const res = await fetch(`https://leekhoon.store/player/${playerId}/choice`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ sceneId, optionKey }),
+      });
+
+      if (res.ok) {
+        console.log(`✅ 서버 전송 성공 : 선택한 선택지 번호: ${optionKey}`);
+      } else {
+        console.warn(`⚠️ 서버 응답 오류 (${res.status})`);
+      }
+    } catch (err) {
+      console.error("❌ 서버 연결 실패:", err);
+    }
+  }
 
   useEffect(() => { // 텍스트 타이핑 효과
     const text = current.text;
@@ -112,16 +140,22 @@ export default function Mountain() {
     setLastVisual({ bg: merged.bg, char: merged.char });
   }, [idx]);
 
-  const handleNext = (choiceIndex = null) => {
-    if (current.id === 7) { // 선택지에 따른 분기
+  const handleNext = async (choiceIndex = null) => {
+    if (current.id === 7 && choiceIndex !== null) {
+      const optionKey = choiceIndex + 1; // 힘드니 내려간다=1, 계속 올라간다=2
+
+      // 아직 playerId 미정 -> sceneId, optionKey만 전송
+      postChoice({ sceneId: SCENE_ID, optionKey });
+
       if (choiceIndex === 0) {
-        navigate("/climbdown"); // 힘드니 내려간다 선택
+        navigate("/climbdown");
       } else {
-        navigate("/traveler"); // 계속 올라간다 선택
+        navigate("/traveler");
       }
       return;
     }
-    setIdx(idx + 1); // 아닐 땐 다음 컷으로
+
+    setIdx(idx + 1);
   };
 
   // Enter키로 다음 컷으로 이동
@@ -147,6 +181,64 @@ export default function Mountain() {
     return () => window.removeEventListener("keydown", onKey);
   }, [isTyping, current.id, current.text]);
 
+  // 키 입력 등록
+  useEffect(() => {
+    const down = (e) => {
+      if (e.key === "a" || e.key === "ArrowLeft") {
+        if (!keysRef.current.left) keysRef.current.left = true;
+      }
+      if (e.key === "d" || e.key === "ArrowRight") {
+        if (!keysRef.current.right) keysRef.current.right = true;
+      }
+    };
+    const up = (e) => {
+      if (e.key === "a" || e.key === "ArrowLeft") keysRef.current.left = false;
+      if (e.key === "d" || e.key === "ArrowRight") keysRef.current.right = false;
+    };
+    window.addEventListener("keydown", down);
+    window.addEventListener("keyup", up);
+    return () => {
+      window.removeEventListener("keydown", down);
+      window.removeEventListener("keyup", up);
+    };
+  }, []);
+
+
+  // 이동 루프
+  useEffect(() => {
+    // 루프 시작 시 초기화
+    lastTimeRef.current = null;
+    if (moveTimerRef.current) {
+      clearInterval(moveTimerRef.current);
+      moveTimerRef.current = null;
+    }
+
+    moveTimerRef.current = setInterval(() => {
+      if (!current.char) return;
+
+      const now = performance.now();
+      if (lastTimeRef.current == null) {
+        lastTimeRef.current = now; // 첫 틱은 이동하지 않음 (초반 튐 방지)
+        return;
+      }
+      const dt = (now - lastTimeRef.current) / 1000;
+      lastTimeRef.current = now;
+
+      const { left, right } = keysRef.current;
+      const dir = (left ? -1 : 0) + (right ? 1 : 0);
+      if (dir !== 0) {
+        setCharX(x => Math.max(minX, Math.min(maxX, x + dir * SPEED * dt)));
+      }
+    }, 16);
+
+    return () => {
+      if (moveTimerRef.current) {
+        clearInterval(moveTimerRef.current);
+        moveTimerRef.current = null;
+      }
+    };
+  }, [current.char, SPEED, minX, maxX]);
+
   return (
     <div className={styles.viewport}>
 
@@ -163,8 +255,18 @@ export default function Mountain() {
           <div className={styles.titleText}>{current.title}</div>
         )}
 
-        {current.char && ( // 캐릭터
-          <img src={current.char} alt="캐릭터" className={styles.character} />
+        {/* 캐릭터 */}
+        {current.char && (
+          <img
+            src={current.char}
+            alt="캐릭터"
+            className={styles.character}
+            style={{
+              position: "absolute",
+              bottom: 65,
+              left: `${charX}px`,
+            }}
+          />
         )}
 
         {current.text && ( // 텍스트창

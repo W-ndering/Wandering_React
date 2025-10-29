@@ -30,8 +30,6 @@
 
 .character {
     position: absolute;
-    left: 480px;
-    bottom: 65px;
     width: 400px;
     height: 400px;
     user-select: none;
