@@ -33,6 +33,15 @@
     width: 400px;
     height: 400px;
     user-select: none;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.charNPC {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    user-select: none;
     z-index: 2;
     pointer-events: none;
 }
@@ -43,7 +52,7 @@
     top: 28%;
     transform: translate(-50%, -50%);
     cursor: pointer;
-    z-index: 3;
+    z-index: 5;
     text-align: center;
 }
 
@@ -74,6 +83,10 @@
     top: 46%;
 }
 
+.upTextMulti {
+    top: 49%;
+}
+
 .speaker {
     font-family: 'DungGeunMo';
     color: black;
@@ -99,7 +112,7 @@
 
 .choiceWrap {
     position: absolute;
-    top: 62%;
+    top: 70%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 4;
@@ -130,6 +143,7 @@
     letter-spacing: 2%;
     text-align: center;
     color: white;
+    width: 1225px;
 }
 
 .choiceList {
@@ -150,7 +164,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 2;
+    z-index: 5;
     text-align: center;
     width: 1440px;
     height: 1440px;
@@ -163,7 +177,7 @@
     width: 2560px;
     height: 1440px;
     background: #00000066;
-    z-index: 3;
+    z-index: 4;
     pointer-events: none;
 }
 
@@ -178,14 +192,14 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 10;
+    z-index: 2;
     color: white;
 }
 
 .circle {
     position: absolute;
-    top: 62%;
-    left: 76.2%;
+    top: 60%;
+    left: 105%;
     width: 192px;
     height: 192px;
     transform: translate(-50%, -50%);
@@ -197,12 +211,48 @@
 
 .popupInterImage {
     position: absolute;
-    top: 62%;
-    left: 76.2%;
+    top: 60%;
+    left: 105%;
     width: 120px;
     height: 120px;
     transform: translate(-50%, -50%);
     z-index: 10;
     cursor: pointer;
     pointer-events: auto;
+}
+
+.popupObjImage {
+    width: 720px;
+    height: 720px;
+    position: absolute;
+    top: 34%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.popupLine {
+    display: block;
+    font-size: inherit;
+}
+
+.popupLineSmall {
+    font-size: 52px;
+}
+
+.popupText {
+    position: absolute;
+    top: 79%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: pre-wrap;
+    pointer-events: none;
+    font-family: "DungGeunMo";
+    font-weight: 400;
+    font-size: 60px;
+    line-height: 140%;
+    letter-spacing: 2%;
+    color: black;
+    z-index: 2;
 }
