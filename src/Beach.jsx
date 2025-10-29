@@ -29,7 +29,8 @@ export default function Beach() {
         },
         {
             id: 4,
-            text: "걷다 보니 문득 생각이 들었다.", //#00000033
+            text: "걷다 보니 문득 생각이 들었다.",
+            dim: "#00000033"
         },
         {
             id: 5,
