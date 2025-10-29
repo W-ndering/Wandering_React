@@ -103,6 +103,15 @@ export default function NightDayHotel() {
   const [isTyping, setIsTyping] = useState(false); // 타이핑 진행 중 여부
   const typingTimerRef = useRef(null); // 타이핑 interval 저장
 
+  const [charX, setCharX] = useState(500); // 시작 x좌표(px) — 필요에 따라 조정
+  const keysRef = useRef({ left: false, right: false });
+  const SPEED = 500;
+  const minX = 0;
+  const maxX = 2160;
+  const moveTimerRef = useRef(null);
+  const lastTimeRef = useRef(null);
+
+
   useEffect(() => { // 텍스트 타이핑 효과
     const text = current.text;
 
@@ -176,6 +185,65 @@ export default function NightDayHotel() {
     return () => window.removeEventListener("keydown", onKey);
   }, [isTyping, current.id, current.text]);
 
+  // 키 입력 등록
+  useEffect(() => {
+    const down = (e) => {
+      if (e.key === "a" || e.key === "ArrowLeft") {
+        if (!keysRef.current.left) keysRef.current.left = true;
+      }
+      if (e.key === "d" || e.key === "ArrowRight") {
+        if (!keysRef.current.right) keysRef.current.right = true;
+      }
+    };
+    const up = (e) => {
+      if (e.key === "a" || e.key === "ArrowLeft") keysRef.current.left = false;
+      if (e.key === "d" || e.key === "ArrowRight") keysRef.current.right = false;
+    };
+    window.addEventListener("keydown", down);
+    window.addEventListener("keyup", up);
+    return () => {
+      window.removeEventListener("keydown", down);
+      window.removeEventListener("keyup", up);
+    };
+  }, []);
+
+
+  // 이동 루프
+  useEffect(() => {
+    // 루프 시작 시 초기화
+    lastTimeRef.current = null;
+    if (moveTimerRef.current) {
+      clearInterval(moveTimerRef.current);
+      moveTimerRef.current = null;
+    }
+
+    moveTimerRef.current = setInterval(() => {
+      if (!current.char) return;
+
+      const now = performance.now();
+      if (lastTimeRef.current == null) {
+        lastTimeRef.current = now; // 첫 틱은 이동하지 않음 (초반 튐 방지)
+        return;
+      }
+      const dt = (now - lastTimeRef.current) / 1000;
+      lastTimeRef.current = now;
+
+      const { left, right } = keysRef.current;
+      const dir = (left ? -1 : 0) + (right ? 1 : 0);
+      if (dir !== 0) {
+        setCharX(x => Math.max(minX, Math.min(maxX, x + dir * SPEED * dt)));
+      }
+    }, 16);
+
+    return () => {
+      if (moveTimerRef.current) {
+        clearInterval(moveTimerRef.current);
+        moveTimerRef.current = null;
+      }
+    };
+  }, [current.char, SPEED, minX, maxX]);
+
+
   return (
     <div className={styles.viewport}>
 
@@ -188,8 +256,18 @@ export default function NightDayHotel() {
         {/* 특정 장면에서 배경 dim */}
         {[3, 4, 5, 6, 9, 10, 11].includes(current.id) && <div className={styles.bgDim} />}
 
-        {current.char && ( // 캐릭터
-          <img src={current.char} alt="캐릭터" className={styles.character} />
+        {/* 캐릭터 */}
+        {current.char && (
+          <img
+            src={current.char}
+            alt="캐릭터"
+            className={styles.character}
+            style={{
+              position: "absolute",
+              bottom: 75,
+              left: `${charX}px`,
+            }}
+          />
         )}
 
         {current.text && ( // 텍스트창

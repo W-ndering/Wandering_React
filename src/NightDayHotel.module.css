@@ -30,8 +30,6 @@
 
 .character {
     position: absolute;
-    left: 480px;
-    bottom: 75px;
     width: 400px;
     height: 400px;
     user-select: none;
@@ -74,7 +72,7 @@
 }
 
 .upText {
-  top: 46%;
+    top: 46%;
 }
 
 .speaker {
