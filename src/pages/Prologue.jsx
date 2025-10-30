@@ -12,7 +12,7 @@ import statusUI from '../assets/obj/상태창.svg';
 import book from '../assets/obj/책.svg';
 import ticket from '../assets/obj/티켓.svg';
 
-const nickname = sessionStorage.getItem("NICKNAME") || "player";
+
 
 const PROLOGUE_DIALOGUES = [
   // 0: 독백
@@ -50,6 +50,7 @@ const PROLOGUE_DIALOGUES = [
 // --- 상수 ---
 
 function Prologue() {
+  const nickname = sessionStorage.getItem("NICKNAME") || "player";
   const [sequenceStep, setSequenceStep] = useState(0);
   const [dialogueIndex, setDialogueIndex] = useState(0);
   const [activeDialogue, setActiveDialogue] = useState(PROLOGUE_DIALOGUES[0]);
