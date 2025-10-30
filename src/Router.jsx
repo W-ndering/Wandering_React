@@ -14,6 +14,7 @@ import ClimbDown from "./pages/ClimbDown";
 import CabinIndoor from "./pages/CabinIndoor";
 import CabinSunset from "./pages/CabinSunset";
 import Beach from "./pages/Beach";
+import Result from "./pages/Result";
 
 const Router = () => (
   <BrowserRouter>
@@ -34,6 +35,7 @@ const Router = () => (
       <Route path="/cabinindoor" element={<CabinIndoor />} />
       <Route path="/cabinsunset" element={<CabinSunset />} />
       <Route path="/beach" element={<Beach />} />
+       <Route path="/result" element={<Result />} />
     </Routes>
   </BrowserRouter>
 );
