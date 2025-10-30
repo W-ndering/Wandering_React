@@ -4,14 +4,18 @@ import bg1 from "./assets/bg/18-8_오두막집.svg";
 import bg2 from "./assets/bg/19-8_오두막집거실.svg";
 import char1 from "./assets/char/산데굴_주인공1.svg";
 import char2 from "./assets/char/산데굴_주인공2.svg";
-import char3 from "./assets/char/기본_주인공.svg";
+import char3 from "./assets/char/기본_주인공1.svg";
+import char4 from "./assets/char/아줌마.svg";
+import char5 from "./assets/char/아저씨.svg";
 import textbox from "./assets/obj/text_box.svg";
 import choicebox from "./assets/obj/선택지.svg";
 import statebox from "./assets/obj/상태창.svg";
 import food from "./assets/obj/음식.svg";
+import styles from "./CabinIndoor.module.css"
 
 export default function CabinIndoor() {
   const navigate = useNavigate();
+  const NEXT_ROUTE = "/cabinfront"; // 다음 스토리 (오두막집앞)
   const [idx, setIdx] = useState(0);
   const storyCuts = [
     {
@@ -27,10 +31,12 @@ export default function CabinIndoor() {
       id: 2,
       char: char1,
       text: "누가 날 구해준 건가?"
-      
+
     },
     {
       id: 3,
+      char: char2,
+      npc1: { src: char4, x: 1250 },
       speaker: "player",
       text: "누구...세요?"
     },
@@ -57,26 +63,31 @@ export default function CabinIndoor() {
     {
       id: 8,
       speaker: "player",
-      text: "감사합니다..", // 우측에 가면 다음 컷
+      text: "감사합니다..", // 문에 가면 다음 컷
     },
     {
       id: 9,
+      char: "none",
+      npc1: "none",
       bg: "#282828"
     },
     {
       id: 10,
-      bg: bg2 // 배경 변경
+      bg: bg2
     },
     {
       id: 11,
       popup: {
+        type: "state",
         src: statebox,
+        obj: food,
         text: "카레라이스\n호불호가 갈리지 않을 듯한 최상의 카레이다."
       }
     },
     {
       id: 12,
-      char: char1,//할머니도
+      char: char3,
+      npc1: { src: char4, x: 1250 },
       text: "아주머니와 함께 카레라이스를 먹으니 어머니 생각이 나 눈물이 맺힌다."
     },
     {
@@ -101,7 +112,8 @@ export default function CabinIndoor() {
     {
       id: 17,
       speaker: "아주머니",
-      text: "여보, 왔어요? 이 학생 일어났어." //할아버지 추가등장
+      text: "여보, 왔어요? 이 학생 일어났어.", //할아버지 등장
+      npc2: { src: char5, x: 1800 }
     },
     {
       id: 18,
@@ -123,7 +135,8 @@ export default function CabinIndoor() {
   const [lastVisual, setLastVisual] = useState({ // 이전 컷의 배경/캐릭터 (유지를 위해서)
     bg: storyCuts[0].bg,
     char: storyCuts[0].char,
-    npc: storyCuts[0].npc ?? null,
+    npc1: storyCuts[0].npc1 ?? null,
+    npc2: storyCuts[0].npc2 ?? null
   });
   const [displayedText, setDisplayedText] = useState(""); // 현재 화면에 찍힌 텍스트
   const [isTyping, setIsTyping] = useState(false); // 타이핑 진행 중 여부
@@ -137,27 +150,6 @@ export default function CabinIndoor() {
   const maxX = 2160;
   const moveTimerRef = useRef(null);
   const lastTimeRef = useRef(null);
-
-  const SCENE_ID = 5;
-
-  // 선택 결과 서버에 전송
-  async function postChoice({ sceneId, optionKey }) {
-    try {
-      const res = await fetch(`https://leekhoon.store/player/${playerId}/choice`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ sceneId, optionKey }),
-      });
-
-      if (res.ok) {
-        console.log(`✅ 서버 전송 성공 : 선택한 선택지 번호: ${optionKey}`);
-      } else {
-        console.warn(`⚠️ 서버 응답 오류 (${res.status})`);
-      }
-    } catch (err) {
-      console.error("❌ 서버 연결 실패:", err);
-    }
-  }
 
   useEffect(() => { // 텍스트 타이핑 효과
     const text = current.text;
@@ -198,40 +190,35 @@ export default function CabinIndoor() {
         cut.char === "none" // 캐릭터 사용 안 하는 경우
           ? null
           : (cut.char ?? lastVisual.char), // char 입력 없으면 이전 char 유지
-      npc: cut.npc === "none" ? null : (cut.npc ?? lastVisual.npc)
+      npc1: cut.npc1 === "none" ? null : (cut.npc1 ?? lastVisual.npc1),
+      npc2: cut.npc2 === "none" ? null : (cut.npc2 ?? lastVisual.npc2),
     };
     setCurrent(merged); // 현재 보여줄 컷으로 설정
-    setLastVisual({ bg: merged.bg, char: merged.char, npc: merged.npc });
+    setLastVisual({ bg: merged.bg, char: merged.char, npc1: merged.npc1, npc2: merged.npc2 });
 
     navigatedRef.current = false;
 
-    if (cut.id === 10) {
-      setCharX(1300);
+    if (cut.id === 3) {
+      setCharX(280);
+    }
+
+    if (cut.id === 12) {
+      setCharX(150);
     }
   }, [idx]);
 
-  const handleNext = async (choiceIndex = null) => {
-    if (current.id === 8 && choiceIndex !== null) {
-      const optionKey = choiceIndex + 1;
-
-      postChoice({ sceneId: SCENE_ID, optionKey });
-
-      // if (choiceIndex === 0) {
-      //   navigate("/climbdown");
-      // } else {
-      //   navigate("/traveler");
-      // }
-      // return;
-    }
-
-    setIdx(idx + 1);
+  const handleNext = async () => {
+    if (idx < storyCuts.length - 1) setIdx(idx + 1);
+    else (
+      navigate(NEXT_ROUTE)
+    )
   };
 
-  // Enter키로 다음 컷으로 이동
+  // Space바로 다음 컷으로 이동
   useEffect(() => {
     const onKey = (e) => {
-      if (e.key !== "Enter") return;
-      if ([3, 8, 11].includes(current.id)) return;
+      if (e.code !== "Space") return;
+      if ([8].includes(current.id)) return;
 
       // 타이핑 중이면 타이머를 멈추고 즉시 완성
       if (isTyping && current.text) {
@@ -253,16 +240,16 @@ export default function CabinIndoor() {
   // 키 입력 등록
   useEffect(() => {
     const down = (e) => {
-      if (e.key === "a" || e.key === "ArrowLeft") {
+      if (e.key === "ArrowLeft") {
         if (!keysRef.current.left) keysRef.current.left = true;
       }
-      if (e.key === "d" || e.key === "ArrowRight") {
+      if (e.key === "ArrowRight") {
         if (!keysRef.current.right) keysRef.current.right = true;
       }
     };
     const up = (e) => {
-      if (e.key === "a" || e.key === "ArrowLeft") keysRef.current.left = false;
-      if (e.key === "d" || e.key === "ArrowRight") keysRef.current.right = false;
+      if (e.key === "ArrowLeft") keysRef.current.left = false;
+      if (e.key === "ArrowRight") keysRef.current.right = false;
     };
     window.addEventListener("keydown", down);
     window.addEventListener("keyup", up);
@@ -307,177 +294,187 @@ export default function CabinIndoor() {
     };
   }, [current.char, SPEED, minX, maxX]);
 
-
-  // 마지막 컷에서 우측 끝 도달 시 다음 페이지로 이동
+  // 특정 컷에서 문에 도달 시 다음 페이지로 이동
   useEffect(() => {
-    if (current.id !== 11) return;
-    const EDGE = maxX - 5;
+    if (current.id !== 8) return;
+    const EDGE = maxX - 550;
     if (!navigatedRef.current && charX >= EDGE) {
       navigatedRef.current = true;
-      navigate("/climbdown");
+      handleNext();
     }
   }, [current.id, charX, maxX, navigate]);
 
   return (
     <div className={styles.viewport}>
 
-      <div className={styles.stage}>
-        {current.bg.startsWith("#") // 배경
-          ? <div className={styles.background} style={{ backgroundColor: current.bg }} />
-          : <img src={current.bg} alt="배경" className={styles.background} />
-        }
+      {current.bg.startsWith("#") // 배경
+        ? <div className={styles.background} style={{ backgroundColor: current.bg }} />
+        : <img src={current.bg} alt="배경" className={styles.background} />
+      }
 
-        {/* 특정 장면에서 배경 dim */}
-        {[5, 8, 10].includes(current.id) && <div className={styles.bgDim} />}
+      {/* 특정 장면에서 배경 dim */}
+      {[1, 11].includes(current.id) && <div className={styles.bgDim} />}
 
-        {current.title && ( // 새로운 스토리 도입 시 제목
-          <div className={styles.titleText}>{current.title}</div>
-        )}
+      {current.title && ( // 새로운 스토리 도입 시 제목
+        <div className={styles.titleText}>{current.title}</div>
+      )}
 
-        {/* 캐릭터 */}
-        {current.char && (
-          <img
-            src={current.char}
-            alt="캐릭터"
-            className={styles.character}
-            style={{
-              position: "absolute",
-              bottom: 65,
-              left: `${charX}px`,
-            }}
-          />
-        )}
+      {/* 캐릭터 */}
+      {current.char && (
+        <img
+          src={current.char}
+          alt="캐릭터"
+          className={styles.character}
+          style={{
+            position: "absolute",
+            bottom: 60,
+            left: `${charX}px`,
+          }}
+        />
+      )}
 
-        {/* NPC */}
-        {current.npc?.src && (
-          <img
-            src={current.npc.src}
-            alt="npc"
-            className={styles.charNPC}
-            style={{
-              position: "absolute",
-              bottom: 65,
-              left: `${current.npc.x ?? 1650}px`,
-            }}
-          />
-        )}
+      {/* NPC */}
+      {current.npc1?.src && (
+        <img
+          src={current.npc1.src}
+          alt="npc"
+          className={styles.charNPC}
+          style={{
+            position: "absolute",
+            bottom: 65,
+            left: `${current.npc1.x}px`,
+          }}
+        />
+      )}
 
-        {current.text && ( // 텍스트창
-          <div className={styles.textboxWrap}>
-            <img src={textbox} alt="텍스트박스" className={styles.textboxImage} />
+      {current.npc2?.src && (
+        <img
+          src={current.npc2.src}
+          alt="npc"
+          className={styles.charNPC}
+          style={{
+            position: "absolute",
+            bottom: 65,
+            left: `${current.npc2.x}px`,
+          }}
+        />
+      )}
 
-            {(() => {
-              const hasLineBreak = current.text.includes("\n"); // 텍스트 줄바꿈 유무
+      {current.text && ( // 텍스트창
+        <div className={styles.textboxWrap}>
+          <img src={textbox} alt="텍스트박스" className={styles.textboxImage} />
 
-              return (
-                <div
-                  className={[
-                    styles.textboxContent,
-                    !current.speaker ? styles.centerText : "",           // 화자 없으면 가운데정렬
-                    current.speaker && !hasLineBreak ? styles.upText : "",  // 화자 O, 줄바꿈 X
-                    current.speaker && hasLineBreak ? styles.upTextMulti : "" // 화자 O, 줄바꿈 O
-                  ].join(" ").trim()}
-                >
-                  {current.speaker && (
-                    <div className={styles.speaker}>{current.speaker}</div>
-                  )}
-                  <div className={styles.content}>{displayedText}</div>
-                </div>
-              );
-            })()}
-          </div>
-        )}
+          {(() => {
+            const hasLineBreak = current.text.includes("\n"); // 텍스트 줄바꿈 유무
 
-
-
-        {current.choice && ( // 선택지창
-          <div className={`${styles.choiceWrap} ${Array.isArray(current.choice.text)
-            ? styles.choiceWrap  // 선택지가 여러 개인 경우 (위치 조절)
-            : styles.choiceWrapSingle // 하나인 경우
-            }`}>
-            {Array.isArray(current.choice.text) ? ( // 선택지가 여러 개인 경우
-              <div className={styles.choiceList}>
-                {current.choice.text.map((label, i) => (
-                  <div
-                    key={i}
-                    className={styles.choiceItem}
-                    onClick={() => handleNext(i)}
-                  >
-                    <img
-                      src={current.choice.src}
-                      alt={`선택지박스 ${i + 1}`}
-                      className={styles.choiceImage}
-                    />
-                    <div className={styles.choiceText}>{label}</div>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div // 하나인 경우
-                className={styles.choiceItem}
-                onClick={() => handleNext(0)}
+            return (
+              <div
+                className={[
+                  styles.textboxContent,
+                  !current.speaker ? styles.centerText : "",           // 화자 없으면 가운데정렬
+                  current.speaker && !hasLineBreak ? styles.upText : "",  // 화자 O, 줄바꿈 X
+                  current.speaker && hasLineBreak ? styles.upTextMulti : "" // 화자 O, 줄바꿈 O
+                ].join(" ").trim()}
               >
-                <img
-                  src={current.choice.src}
-                  alt="선택지박스"
-                  className={styles.choiceImage}
-                />
-                <div className={styles.choiceText}>{current.choice.text}</div>
+                {current.speaker && (
+                  <div className={styles.speaker}>{current.speaker}</div>
+                )}
+                <div className={styles.content}>{displayedText}</div>
               </div>
-            )}
-          </div>
-        )}
+            );
+          })()}
+        </div>
+      )}
 
-        {current.popup && (
-          <div className={styles.popupWrap}>
-            {current.popup.type === "state" && ( // 팝업이 상태창일 때
-              <>
-                <img
-                  src={current.popup.src}
-                  alt="상태창"
-                  className={styles.popupImage}
-                />
 
-                {current.popup.obj && (
+
+      {current.choice && ( // 선택지창
+        <div className={`${styles.choiceWrap} ${Array.isArray(current.choice.text)
+          ? styles.choiceWrap  // 선택지가 여러 개인 경우 (위치 조절)
+          : styles.choiceWrapSingle // 하나인 경우
+          }`}>
+          {Array.isArray(current.choice.text) ? ( // 선택지가 여러 개인 경우
+            <div className={styles.choiceList}>
+              {current.choice.text.map((label, i) => (
+                <div
+                  key={i}
+                  className={styles.choiceItem}
+                  onClick={() => handleNext(i)}
+                >
                   <img
-                    src={current.popup.obj}
-                    alt="상태창오브젝트"
-                    className={styles.popupObjImage}
+                    src={current.choice.src}
+                    alt={`선택지박스 ${i + 1}`}
+                    className={styles.choiceImage}
                   />
-                )}
+                  <div className={styles.choiceText}>{label}</div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div // 하나인 경우
+              className={styles.choiceItem}
+              onClick={() => handleNext(0)}
+            >
+              <img
+                src={current.choice.src}
+                alt="선택지박스"
+                className={styles.choiceImage}
+              />
+              <div className={styles.choiceText}>{current.choice.text}</div>
+            </div>
+          )}
+        </div>
+      )}
 
-                {current.popup.text && (
-                  <div className={styles.popupText}>
-                    {current.id === 5
-                      ? current.popup.text.split("\n").map((line, i) => (
-                        <div
-                          key={i}
-                          className={i === 1 ? styles.popupLineSmall : ""}
-                        >
-                          {line}
-                        </div>
-                      ))
-                      : current.popup.text}
-                  </div>
-                )}
-              </>
-            )}
+      {current.popup && (
+        <div className={styles.popupWrap}>
+          {current.popup.type === "state" && ( // 팝업이 상태창일 때
+            <>
+              <img
+                src={current.popup.src}
+                alt="상태창"
+                className={styles.popupImage}
+              />
 
-            {current.popup.type === "inter" && ( // 팝업이 인터랙션일 때
-              <div className={styles.popupWrap}>
-                <div className={styles.circle}></div>
+              {current.popup.obj && (
+                <img
+                  src={current.popup.obj}
+                  alt="상태창오브젝트"
+                  className={styles.popupObjImage}
+                />
+              )}
 
-                {current.popup && (
-                  <img src={current.popup.src} alt="인터랙션아이콘"
-                    className={styles.popupInterImage}
-                    onClick={handleNext}
-                  />
-                )}
-              </div>
-            )}
-          </div>
-        )}
-      </div>
+              {current.popup.text && (
+                <div className={styles.popupText}>
+                  {current.id === 11
+                    ? current.popup.text.split("\n").map((line, i) => (
+                      <div
+                        key={i}
+                        className={i === 1 ? styles.popupLineSmall : ""}
+                      >
+                        {line}
+                      </div>
+                    ))
+                    : current.popup.text}
+                </div>
+              )}
+            </>
+          )}
+
+          {current.popup.type === "inter" && ( // 팝업이 인터랙션일 때
+            <div className={styles.popupWrap}>
+              <div className={styles.circle}></div>
+
+              {current.popup && (
+                <img src={current.popup.src} alt="인터랙션아이콘"
+                  className={styles.popupInterImage}
+                  onClick={handleNext}
+                />
+              )}
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 }

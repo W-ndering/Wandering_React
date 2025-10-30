@@ -1,10 +1,11 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Onboarding from "./pages/Onboarding";
+import CabinIndoor from "./CabinIndoor"
+// import Onboarding from "./pages/Onboarding";
 
 const Router = () => (
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<Onboarding />} />
+      <Route path="/cabinindoor" element={<CabinIndoor />} />
     </Routes>
   </BrowserRouter>
 );
