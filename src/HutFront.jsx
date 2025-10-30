@@ -126,19 +126,34 @@ export default function HutFront() {
           alt="character"
           className={styles.character}
           style={{
+            position: "absolute",
             left: c.left,
-            top: c.top,
-            width: c.width,
-            height: c.height,
+            top: `${c.top}px`,
+            width: `${c.width}px`,
+            height: `${c.height}px`,
           }}
         />
       ));
     }
-    return <img src={char} alt="character" className={styles.character} />;
+    return (
+      <img
+        src={char.src}
+        alt="character"
+        className={styles.character}
+        style={{
+          position: "absolute",
+          left: char.left,
+          top: `${char.top}px`,
+          width: `${char.width}px`,
+          height: `${char.height}px`,
+        }}
+      />
+    );
   };
 
   const renderNpc = (npc) => {
     if (!npc) return null;
+    if (!Array.isArray(npc)) return null;
     return npc.map((n, i) => (
       <img
         key={i}
@@ -146,28 +161,11 @@ export default function HutFront() {
         alt="npc"
         className={styles.npc}
         style={{
-          left: n.left,
-          top: n.top,
-          width: n.width,
-          height: n.height,
-        }}
-      />
-    ));
-  };
-
-  const renderObjects = (objects) => {
-    if (!objects) return null;
-    return objects.map((obj, i) => (
-      <img
-        key={i}
-        src={obj.src}
-        alt="object"
-        className={styles.object}
-        style={{
-          left: obj.left,
-          top: obj.top,
-          width: obj.width,
-          height: obj.height,
+          position: "absolute",
+          left: typeof n.left === "string" ? n.left : `${n.left}px`,
+          top: `${n.top}px`,
+          width: `${n.width}px`,
+          height: `${n.height}px`,
         }}
       />
     ));
@@ -181,47 +179,23 @@ export default function HutFront() {
           {current.title && <div className={styles.title}>{current.title}</div>}
           {renderChar(current.char)}
           {renderNpc(current.npc)}
-          {renderObjects(current.objects)}
         </div>
 
-        {current.popup && (
-          <div className={styles.popupContainer}>
-            {current.popup.type === "text" && (
-              <div className={styles.textPopup}>
-                <img src={current.popup.src} alt="textbox" className={styles.textboxImage} />
-                <div
-                  className={styles.dialogueText}
-                  style={{
-                    position: "absolute",
-                    ...(current.textStyle || {})
-                  }}
-                >
-                  {displayedText}
-                </div>
+        {current.popup && current.popup.type === "text" && (
+          <>
+            <img src={current.popup.src} alt="textbox" className={styles.textbox} />
+
+            {current.speaker ? (
+              <div className={styles.dialogue} style={current.dialogueStyle || {}}>
+                <div className={styles.speaker}>{current.speaker}</div>
+                <div className={styles.text}>{displayedText}</div>
+              </div>
+            ) : (
+              <div className={styles.narration} style={current.textStyle || {}}>
+                {displayedText}
               </div>
             )}
-
-            {current.popup.type === "interact" && (
-              <div className={styles.popupInterContainer} onClick={handleNext}>
-                {current.popup.icon && (
-                  <img
-                    src={current.popup.icon}
-                    alt="interaction"
-                    className={styles.popupInterImage}
-                    onClick={handleNext}
-                  />
-                )}
-              </div>
-            )}
-
-            {current.popup.type === "single" && (
-              <img src={current.popup.src}
-                alt="단독아이템"
-                className={styles.popupSingleImage}
-                onClick={handleNext}
-              />
-            )}
-          </div>
+          </>
         )}
       </div>
     </div>
