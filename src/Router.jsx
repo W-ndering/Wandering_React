@@ -1,12 +1,13 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Onboarding from "./pages/Onboarding";
+import { HashRouter, Routes, Route } from "react-router-dom";
+import MarketChoice1 from "./MarketChoice1";
 
 const Router = () => (
-  <BrowserRouter>
+  <HashRouter>
     <Routes>
-      <Route path="/" element={<Onboarding />} />
+      <Route path="/" element={<MarketChoice1 />} />
+      <Route path="/market-choice-1" element={<MarketChoice1 />} />
     </Routes>
-  </BrowserRouter>
+  </HashRouter>
 );
 
 export default Router;
