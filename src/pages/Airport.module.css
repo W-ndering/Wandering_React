@@ -1,0 +1,111 @@
+/* src/pages/Airport.css */
+
+/* ======================================= */
+/* 1. 게임 영역 (Airport) 컨테이너 스타일 */
+/* ======================================= */
+.gamearea {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+  overflow: hidden;
+  outline: none;
+  
+  /* (수정) 기본 커서는 auto, 상호작용 가능한 요소에서 pointer로 변경 */
+  cursor: auto; 
+}
+
+/* ======================================= */
+/* 2. 플레이어 캐릭터 스타일 */
+/* ======================================= */
+.playercharacter {
+  position: absolute;
+  /* (수정) 너비와 높이는 JS에서 또는 여기서 고정값으로 설정 */
+  /* width: 100px; */ /* 예시 */
+  width: 200px; /* 예시 (캐릭터 애셋 비율에 맞게 조절) */
+  height: 200px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  
+  transition: left 100ms linear; /* left 이동만 transition */
+}
+
+/* (제거) NPC 관련 스타일 모두 삭제 */
+/* .npc-character, .npc-label, .npc-container, .exclamation-mark, .player-label 등 */
+
+
+/* ======================================= */
+/* 3. (NEW) 인트로 및 Dim 스타일 */
+/* ======================================= */
+
+/* Prologue.css와 유사한 Dim 오버레이 */
+.airportdimoverlay {
+  position: absolute;
+  inset: 0; /* top:0, left:0, right:0, bottom:0 */
+  background-color: rgba(0, 0, 0, 0.7); /* 70% 검은색 */
+  z-index: 5; /* 캐릭터(기본)와 대화상자(10) 사이 */
+  transition: opacity 0.5s ease;
+  pointer-events: none; /* 클릭 통과 */
+}
+
+/* 인트로 "공항" 텍스트 */
+.airportintrotext {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 4rem; /* 64px */
+  font-weight: bold;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+  z-index: 6; /* Dim 오버레이 위 */
+  pointer-events: none;
+}
+
+/* ======================================= */
+/* 4. (NEW) 선택지 스타일 */
+/* ======================================= */
+
+/* Prologue.css와 유사한 선택지 컨테이너 */
+.airportchoicescontainer {
+  position: absolute;
+  /* (수정) 텍스트박스 아래에 배치 (DialogueBox.css의 bottom: 40px 기준) */
+  bottom: 50px; /* 예시 위치 (대화상자 높이만큼 조절) */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 11; /* 대화 상자(10)보다 위 */
+  
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 75%;
+  max-width: 600px; /* 선택지 최대 너비 */
+  align-items: center;
+}
+
+.airportchoicebutton {
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 2px solid #333;
+  color: #222;
+  padding: 15px 25px;
+  border-radius: 8px;
+  font-size: 1.25rem;
+  font-family: monospace;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.airportchoicebutton:hover {
+  background-color: #fff;
+  color: #000;
+  transform: scale(1.02);
+  border-color: #000;
+}
