@@ -2,8 +2,9 @@ import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import bg1 from "./assets/bg/11-4_버스_출발.svg";
 import bg2 from "./assets/bg/12-5_버스_도착.svg";
-// TODO: Add character imports once provided
-// import char1 from "./assets/char/기본_주인공1.svg";
+import bg3 from "./assets/bg/9-2_버스정류장.svg";
+import char1 from "./assets/char/기본_주인공1.svg";
+import busDriver from "./assets/char/버스기사.svg";
 import textbox from "./assets/obj/text_box.svg";
 import choicebox from "./assets/obj/선택지.svg";
 import { postChoice } from "./lib/api";
@@ -14,33 +15,106 @@ export default function InBus() {
   const [idx, setIdx] = useState(0);
   const storyCuts = [
     {
-      id: 1,
+      id: 44,
       bg: bg1,
-      text: "버스가 도착했다."
+      dim: "rgba(0, 0, 0, 0.4)",
+      title: "버스 안"
     },
     {
-      id: 2,
-      text: "버스에 올라탄다.",
+      id: 45,
+      bg: bg1,
+      char: [
+        { src: char1, left: 2050, top: 965, width: 400, height: 400 },
+        { src: busDriver, left: "63.2%", top: 965, width: "15.63%", height: 400 }
+      ],
+      dim: "rgba(0, 0, 0, 0.4)",
+      text: "버스에 올라탔다. 무얼 할까?",
+      choice: {
+        src: choicebox,
+        text: "버스 요금함을 확인한다"
+      },
+      popup: { type: "text", src: textbox }
     },
     {
-      id: 3,
-      text: "창밖으로 풍경이 지나간다.",
+      id: 46,
+      bg: bg1,
+      char: [
+        { src: char1, left: 2050, top: 965, width: 400, height: 400 },
+        { src: busDriver, left: "63.2%", top: 965, width: "15.63%", height: 400 }
+      ],
+      speaker: "버스 기사",
+      text: "하차 하실 때 요금을 내세요",
+      popup: { type: "text", src: textbox }
     },
     {
-      id: 4,
+      id: 47,
+      bg: bg1,
+      char: [
+        { src: char1, left: 2050, top: 965, width: 400, height: 400 },
+        { src: busDriver, left: "63.2%", top: 965, width: "15.63%", height: 400 }
+      ],
+      text: "이 동네는 하차 할 때 돈을 내는 것 같다.",
+      popup: { type: "text", src: textbox }
+    },
+    {
+      id: 48,
+      bg: bg1,
+      char: [
+        { src: char1, left: 2050, top: 965, width: 400, height: 400 },
+        { src: busDriver, left: "63.2%", top: 965, width: "15.63%", height: 400 }
+      ],
+      text: "이 동네는 하차 할 때 돈을 내는 것 같다.",
+      popup: { type: "text", src: textbox }
+    },
+    {
+      id: 49,
+      bg: bg1,
+      char: char1,
+      text: "다시 지갑을 가방에 넣고 자리에 앉아 창 밖을 구경한다.",
+      popup: { type: "text", src: textbox }
+    },
+    {
+      id: 50,
+      bg: "#000000",
+      text: "잦은 이동에 피곤한 나머지 눈이 감긴다 . . .",
+      popup: { type: "text", src: textbox }
+    },
+    {
+      id: 51,
       bg: bg2,
-      text: "목적지에 다다른 것 같다.",
+      char: char1,
+      text: "\" 이번 정류장은 산 입구입니다. \"",
+      popup: { type: "text", src: textbox }
     },
     {
-      id: 5,
-      text: "어디로 갈까?",
+      id: 52,
+      bg: bg2,
+      char: char1,
+      text: "어...? 언제 잠들었지? 이제 내릴 때가 되었다.",
+      popup: { type: "text", src: textbox }
+    },
+    {
+      id: 53,
+      bg: bg2,
+      char: char1,
+      text: "가방에서 지갑을 꺼내려고 보니, 지갑을 넣어 둔 자리에는 아무 것도 없다.",
+      popup: { type: "text", src: textbox }
+    },
+    {
+      id: 54,
+      bg: bg2,
+      char: char1,
+      dim: "rgba(0, 0, 0, 0.4)",
+      text: "이제 내려야 하는데 어떡하지. 걱정에 휩싸인다.",
       choice: {
         src: choicebox,
         text: [
-          "산으로 간다",
-          "시장으로 간다"
+          "버스 기사에게 가서 사정을 이야기한다",
+          "다른 사람들에게 도움을 청하러 간다",
+          "버스에서 내리지 않고 그냥 버스를 타고 간다"
         ]
-      }
+      },
+      popup: { type: "text", src: textbox }
     },
   ];
   const [current, setCurrent] = useState(storyCuts[0]);
@@ -53,14 +127,7 @@ export default function InBus() {
   const [isTyping, setIsTyping] = useState(false);
   const typingTimerRef = useRef(null);
 
-  const [charX, setCharX] = useState(100);
   const navigatedRef = useRef(false);
-  const keysRef = useRef({ left: false, right: false });
-  const SPEED = 500;
-  const minX = 0;
-  const maxX = 2160;
-  const moveTimerRef = useRef(null);
-  const lastTimeRef = useRef(null);
 
   const SCENE_ID = 44;
 
@@ -112,17 +179,15 @@ export default function InBus() {
   }, [idx]);
 
   const handleNext = async (choiceIndex = null) => {
-    if (current.id === 5 && choiceIndex !== null) {
-      const optionKey = choiceIndex + 1;
-
-      await postChoice({ sceneId: SCENE_ID, optionKey });
-
-      if (choiceIndex === 0) {
-        navigate("/mountain");
-      } else {
-        navigate("/market");
+    if (current.choice && choiceIndex !== null) {
+      try {
+        await postChoice({
+          sceneId: SCENE_ID,
+          optionKey: choiceIndex + 1
+        });
+      } catch (error) {
+        console.error("Failed to post choice:", error);
       }
-      return;
     }
 
     if (idx >= storyCuts.length - 1) {
@@ -136,7 +201,6 @@ export default function InBus() {
   useEffect(() => {
     const onKey = (e) => {
       if (e.key !== "Enter") return;
-      if ([5].includes(current.id)) return;
 
       if (isTyping && current.text) {
         if (typingTimerRef.current) {
@@ -152,60 +216,6 @@ export default function InBus() {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [isTyping, current.id, current.text]);
-
-  useEffect(() => {
-    const down = (e) => {
-      if (e.key === "a" || e.key === "ArrowLeft") {
-        if (!keysRef.current.left) keysRef.current.left = true;
-      }
-      if (e.key === "d" || e.key === "ArrowRight") {
-        if (!keysRef.current.right) keysRef.current.right = true;
-      }
-    };
-    const up = (e) => {
-      if (e.key === "a" || e.key === "ArrowLeft") keysRef.current.left = false;
-      if (e.key === "d" || e.key === "ArrowRight") keysRef.current.right = false;
-    };
-    window.addEventListener("keydown", down);
-    window.addEventListener("keyup", up);
-    return () => {
-      window.removeEventListener("keydown", down);
-      window.removeEventListener("keyup", up);
-    };
-  }, []);
-
-  useEffect(() => {
-    lastTimeRef.current = null;
-    if (moveTimerRef.current) {
-      clearInterval(moveTimerRef.current);
-      moveTimerRef.current = null;
-    }
-
-    moveTimerRef.current = setInterval(() => {
-      if (!current.char) return;
-
-      const now = performance.now();
-      if (lastTimeRef.current == null) {
-        lastTimeRef.current = now;
-        return;
-      }
-      const dt = (now - lastTimeRef.current) / 1000;
-      lastTimeRef.current = now;
-
-      const { left, right } = keysRef.current;
-      const dir = (left ? -1 : 0) + (right ? 1 : 0);
-      if (dir !== 0) {
-        setCharX(x => Math.max(minX, Math.min(maxX, x + dir * SPEED * dt)));
-      }
-    }, 16);
-
-    return () => {
-      if (moveTimerRef.current) {
-        clearInterval(moveTimerRef.current);
-        moveTimerRef.current = null;
-      }
-    };
-  }, [current.char, SPEED, minX, maxX]);
 
   return (
     <div className={styles.viewport}>
@@ -227,31 +237,52 @@ export default function InBus() {
           <div className={styles.titleText}>{current.title}</div>
         )}
 
-        {current.char && (
+        {Array.isArray(current.char) ? (
+          current.char.map((ch, i) => (
+            <img
+              key={i}
+              src={ch.src}
+              alt={`캐릭터${i + 1}`}
+              className={styles.character}
+              style={{
+                position: "absolute",
+                width: typeof ch.width === 'string' ? ch.width : `${ch.width || 400}px`,
+                height: `${ch.height || 400}px`,
+                left: typeof ch.left === 'string' ? ch.left : `${ch.left}px`,
+                top: `${ch.top}px`,
+              }}
+            />
+          ))
+        ) : current.char ? (
           <img
             src={current.char}
             alt="캐릭터"
             className={styles.character}
             style={{
               position: "absolute",
-              bottom: 65,
-              left: `${charX}px`,
+              width: "400px",
+              height: "400px",
+              left: "635px",
+              top: "965px",
             }}
           />
-        )}
+        ) : null}
 
-        {current.npc?.src && (
+        {Array.isArray(current.npc) && current.npc.map((npc, i) => (
           <img
-            src={current.npc.src}
-            alt="npc"
+            key={i}
+            src={npc.src}
+            alt={`npc${i + 1}`}
             className={styles.charNPC}
             style={{
               position: "absolute",
-              bottom: 65,
-              left: `${current.npc.x ?? 1650}px`,
+              width: "400px",
+              height: "400px",
+              left: `${npc.left}px`,
+              top: `${npc.top}px`,
             }}
           />
-        )}
+        ))}
 
         {current.text && (
           <div className={styles.textboxWrap}>
