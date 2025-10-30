@@ -1,10 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import bg1 from "./assets/bg/18-8_오두막집.svg";
-// TODO: Add character imports once provided
-// import char1 from "./assets/char/기본_주인공1.svg";
+import bg from "./assets/bg/19-8_오두막집거실.svg";
+import char1 from "./assets/char/기본_주인공1.svg";
+import lady from "./assets/char/아줌마.svg";
 import textbox from "./assets/obj/text_box.svg";
-import choicebox from "./assets/obj/선택지.svg";
 import styles from "./Scene.module.css";
 
 export default function Hut() {
@@ -12,22 +11,64 @@ export default function Hut() {
   const [idx, setIdx] = useState(0);
   const storyCuts = [
     {
-      id: 1,
-      bg: bg1,
-      text: "오두막집에 도착했다."
+      id: 152,
+      bg: bg,
+      char: [
+        { src: lady, left: "26.05%", top: 978, width: 400, height: 400 },
+        { src: char1, left: "50.55%", top: 978, width: 400, height: 400 }
+      ],
+      text: "축제를 즐기고 다시 아주머니 댁으로\n돌아와 짐을 챙겼다.",
+      popup: { type: "text", src: textbox },
+      textStyle: { textAlign: "center", width: "827px", left: "calc(50% - 827px/2 + 0.5px)", top: "41.25%" }
     },
     {
-      id: 2,
-      text: "조용하고 평화로운 곳이다.",
+      id: 153,
+      bg: bg,
+      char: [
+        { src: lady, left: "26.05%", top: 978, width: 400, height: 400 },
+        { src: char1, left: "50.55%", top: 978, width: 400, height: 400 }
+      ],
+      speaker: "아주머니",
+      text: "벌써 가려구? 조금 더 쉬다 가지.",
+      popup: { type: "text", src: textbox },
+      dialogueStyle: { gap: "8px", top: "569px" }
     },
     {
-      id: 3,
-      text: "문 앞에 누군가 있는 것 같다.",
+      id: 154,
+      bg: bg,
+      char: [
+        { src: lady, left: "26.05%", top: 978, width: 400, height: 400 },
+        { src: char1, left: "50.55%", top: 978, width: 400, height: 400 }
+      ],
+      speaker: "아주머니",
+      text: "그래요. 잠깐이지만 만나서 반가웠어요.\n앞으로의 길에 행운이 있길 바랄게요.",
+      popup: { type: "text", src: textbox },
+      dialogueStyle: { gap: "8px", top: "569px" }
     },
     {
-      id: 4,
-      text: "이제 어디로 갈까?",
+      id: 155,
+      bg: bg,
+      char: [
+        { src: lady, left: "26.05%", top: 978, width: 400, height: 400 },
+        { src: char1, left: "50.55%", top: 978, width: 400, height: 400 }
+      ],
+      speaker: "player",
+      text: "감사해요 아주머니. 가보겠습니다!",
+      popup: { type: "text", src: textbox },
+      dialogueStyle: { gap: "8px", top: "569px" }
     },
+    {
+      id: 156,
+      bg: bg,
+      char: [
+        { src: lady, left: "26.05%", top: 978, width: 400, height: 400 },
+        { src: char1, left: "50.55%", top: 978, width: 400, height: 400 }
+      ],
+      speaker: "player",
+      text: "괜찮아요. 덕분에 축제도 즐기고\n재미있었어요.",
+      popup: { type: "text", src: textbox },
+      dialogueStyle: { gap: "8px", top: "569px" }
+    }
   ];
   const [current, setCurrent] = useState(storyCuts[0]);
   const [lastVisual, setLastVisual] = useState({
@@ -39,14 +80,7 @@ export default function Hut() {
   const [isTyping, setIsTyping] = useState(false);
   const typingTimerRef = useRef(null);
 
-  const [charX, setCharX] = useState(100);
   const navigatedRef = useRef(false);
-  const keysRef = useRef({ left: false, right: false });
-  const SPEED = 500;
-  const minX = 0;
-  const maxX = 2160;
-  const moveTimerRef = useRef(null);
-  const lastTimeRef = useRef(null);
 
   useEffect(() => {
     const text = current.text;
@@ -83,21 +117,16 @@ export default function Hut() {
     const merged = {
       ...cut,
       bg: cut.bg ?? lastVisual.bg,
-      char:
-        cut.char === "none"
-          ? null
-          : (cut.char ?? lastVisual.char),
-      npc: cut.npc === "none" ? null : (cut.npc ?? lastVisual.npc)
+      char: cut.char ?? lastVisual.char,
+      npc: cut.npc ?? lastVisual.npc,
     };
     setCurrent(merged);
     setLastVisual({ bg: merged.bg, char: merged.char, npc: merged.npc });
-
-    navigatedRef.current = false;
   }, [idx]);
 
-  const handleNext = async (choiceIndex = null) => {
+  const handleNext = async () => {
     if (idx >= storyCuts.length - 1) {
-      navigate("/sunset-porch");
+      navigate("/credits");
       return;
     }
 
@@ -108,217 +137,128 @@ export default function Hut() {
     const onKey = (e) => {
       if (e.key !== "Enter") return;
 
-      if (isTyping && current.text) {
-        if (typingTimerRef.current) {
-          clearInterval(typingTimerRef.current);
-          typingTimerRef.current = null;
-        }
+      if (isTyping) {
+        if (typingTimerRef.current) clearInterval(typingTimerRef.current);
         setDisplayedText(current.text);
         setIsTyping(false);
-        return;
+      } else {
+        handleNext();
       }
-      handleNext();
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [isTyping, current.id, current.text]);
+  }, [isTyping, current.text, idx]);
 
-  useEffect(() => {
-    const down = (e) => {
-      if (e.key === "a" || e.key === "ArrowLeft") {
-        if (!keysRef.current.left) keysRef.current.left = true;
-      }
-      if (e.key === "d" || e.key === "ArrowRight") {
-        if (!keysRef.current.right) keysRef.current.right = true;
-      }
-    };
-    const up = (e) => {
-      if (e.key === "a" || e.key === "ArrowLeft") keysRef.current.left = false;
-      if (e.key === "d" || e.key === "ArrowRight") keysRef.current.right = false;
-    };
-    window.addEventListener("keydown", down);
-    window.addEventListener("keyup", up);
-    return () => {
-      window.removeEventListener("keydown", down);
-      window.removeEventListener("keyup", up);
-    };
-  }, []);
+  const bgStyle = typeof current.bg === "string" && current.bg.startsWith("#")
+    ? { backgroundColor: current.bg }
+    : { backgroundImage: `url(${current.bg})` };
 
-  useEffect(() => {
-    lastTimeRef.current = null;
-    if (moveTimerRef.current) {
-      clearInterval(moveTimerRef.current);
-      moveTimerRef.current = null;
+  const renderChar = (char) => {
+    if (!char) return null;
+    if (Array.isArray(char)) {
+      return char.map((c, i) => (
+        <img
+          key={i}
+          src={c.src}
+          alt="character"
+          className={styles.character}
+          style={{
+            left: c.left,
+            top: c.top,
+            width: c.width,
+            height: c.height,
+          }}
+        />
+      ));
     }
+    return <img src={char} alt="character" className={styles.character} />;
+  };
 
-    moveTimerRef.current = setInterval(() => {
-      if (!current.char) return;
+  const renderNpc = (npc) => {
+    if (!npc) return null;
+    return npc.map((n, i) => (
+      <img
+        key={i}
+        src={n.src}
+        alt="npc"
+        className={styles.npc}
+        style={{
+          left: n.left,
+          top: n.top,
+          width: n.width,
+          height: n.height,
+        }}
+      />
+    ));
+  };
 
-      const now = performance.now();
-      if (lastTimeRef.current == null) {
-        lastTimeRef.current = now;
-        return;
-      }
-      const dt = (now - lastTimeRef.current) / 1000;
-      lastTimeRef.current = now;
-
-      const { left, right } = keysRef.current;
-      const dir = (left ? -1 : 0) + (right ? 1 : 0);
-      if (dir !== 0) {
-        setCharX(x => Math.max(minX, Math.min(maxX, x + dir * SPEED * dt)));
-      }
-    }, 16);
-
-    return () => {
-      if (moveTimerRef.current) {
-        clearInterval(moveTimerRef.current);
-        moveTimerRef.current = null;
-      }
-    };
-  }, [current.char, SPEED, minX, maxX]);
+  const renderObjects = (objects) => {
+    if (!objects) return null;
+    return objects.map((obj, i) => (
+      <img
+        key={i}
+        src={obj.src}
+        alt="object"
+        className={styles.object}
+        style={{
+          left: obj.left,
+          top: obj.top,
+          width: obj.width,
+          height: obj.height,
+        }}
+      />
+    ));
+  };
 
   return (
     <div className={styles.viewport}>
       <div className={styles.stage}>
-        {current.bg.startsWith("#")
-          ? <div className={styles.background} style={{ backgroundColor: current.bg }} />
-          : <img src={current.bg} alt="배경" className={styles.background} />
-        }
-
-        {current.dim && (
-          <div className={styles.bgDim} style={{ background: current.dim }} />
-        )}
-
-        {current.ddim && (
-          <div className={styles.ddim} style={{ background: current.ddim }} />
-        )}
-
-        {current.title && (
-          <div className={styles.titleText}>{current.title}</div>
-        )}
-
-        {current.char && (
-          <img
-            src={current.char}
-            alt="캐릭터"
-            className={styles.character}
-            style={{
-              position: "absolute",
-              bottom: 65,
-              left: `${charX}px`,
-            }}
-          />
-        )}
-
-        {current.npc?.src && (
-          <img
-            src={current.npc.src}
-            alt="npc"
-            className={styles.charNPC}
-            style={{
-              position: "absolute",
-              bottom: 65,
-              left: `${current.npc.x ?? 1650}px`,
-            }}
-          />
-        )}
-
-        {current.text && (
-          <div className={styles.textboxWrap}>
-            <img src={textbox} alt="텍스트박스" className={styles.textboxImage} />
-
-            {(() => {
-              const hasLineBreak = current.text.includes("\n");
-
-              return (
-                <div
-                  className={[
-                    styles.textboxContent,
-                    !current.speaker ? styles.centerText : "",
-                    current.speaker && !hasLineBreak ? styles.upText : "",
-                    current.speaker && hasLineBreak ? styles.upTextMulti : ""
-                  ].join(" ").trim()}
-                >
-                  {current.speaker && (
-                    <div className={styles.speaker}>{current.speaker}</div>
-                  )}
-                  <div className={styles.content}>{displayedText}</div>
-                </div>
-              );
-            })()}
-          </div>
-        )}
-
-        {current.choice && (
-          <div className={`${styles.choiceWrap} ${Array.isArray(current.choice.text)
-            ? styles.choiceWrap
-            : styles.choiceWrapSingle
-            }`}>
-            {Array.isArray(current.choice.text) ? (
-              <div className={styles.choiceList}>
-                {current.choice.text.map((label, i) => (
-                  <div
-                    key={i}
-                    className={styles.choiceItem}
-                    onClick={() => handleNext(i)}
-                  >
-                    <img
-                      src={current.choice.src}
-                      alt={`선택지박스 ${i + 1}`}
-                      className={styles.choiceImage}
-                    />
-                    <div className={styles.choiceText}>{label}</div>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div
-                className={styles.choiceItem}
-                onClick={() => handleNext(0)}
-              >
-                <img
-                  src={current.choice.src}
-                  alt="선택지박스"
-                  className={styles.choiceImage}
-                />
-                <div className={styles.choiceText}>{current.choice.text}</div>
-              </div>
-            )}
-          </div>
-        )}
+        <div className={styles.background} style={bgStyle}>
+          {current.dim && <div className={styles.dim} style={{ backgroundColor: current.dim }} />}
+          {current.title && <div className={styles.title}>{current.title}</div>}
+          {renderChar(current.char)}
+          {renderNpc(current.npc)}
+          {renderObjects(current.objects)}
+        </div>
 
         {current.popup && (
-          <div className={styles.popupWrap}>
-            {current.popup.type === "state" && (
-              <>
-                <img
-                  src={current.popup.src}
-                  alt="상태창"
-                  className={styles.popupImage}
-                />
-
-                {current.popup.obj && (
-                  <img
-                    src={current.popup.obj}
-                    alt="상태창오브젝트"
-                    className={styles.popupObjImage}
-                  />
-                )}
-
-                {current.popup.text && (
-                  <div className={styles.popupText}>
-                    {current.popup.text}
+          <div className={styles.popupContainer}>
+            {current.popup.type === "text" && (
+              <div className={styles.textPopup}>
+                <img src={current.popup.src} alt="textbox" className={styles.textboxImage} />
+                {current.speaker ? (
+                  <div
+                    className={styles.dialogueBox}
+                    style={current.dialogueStyle || {}}
+                  >
+                    <div className={styles.speaker}>
+                      {current.speaker}
+                    </div>
+                    <div className={styles.dialogueText}>
+                      {displayedText}
+                    </div>
+                  </div>
+                ) : (
+                  <div
+                    className={styles.dialogueText}
+                    style={{
+                      position: "absolute",
+                      whiteSpace: "pre-wrap",
+                      ...(current.textStyle || {})
+                    }}
+                  >
+                    {displayedText}
                   </div>
                 )}
-              </>
+              </div>
             )}
 
-            {current.popup.type === "inter" && (
-              <div className={styles.popupWrap}>
-                <div className={styles.circle}></div>
-
-                {current.popup && (
-                  <img src={current.popup.src} alt="인터랙션아이콘"
+            {current.popup.type === "interact" && (
+              <div className={styles.popupInterContainer} onClick={handleNext}>
+                {current.popup.icon && (
+                  <img
+                    src={current.popup.icon}
+                    alt="interaction"
                     className={styles.popupInterImage}
                     onClick={handleNext}
                   />
