@@ -14,12 +14,13 @@ export default function NightDayHotel() {
   const navigate = useNavigate();
   const NEXT_ROUTE = "/busstop"; // 다음 스토리 경로 설정 (임시)
   const [idx, setIdx] = useState(0);
+  const nickname = sessionStorage.getItem('NICKNAME') || '나';
   const storyCuts = [
     {
       id: 1,
       bg: bg1,
       char: char1,
-      speaker: "player",
+      speaker: nickname,
       text: "피곤하다. 내일을 위해서 일찍 자야지."
     },
     {
