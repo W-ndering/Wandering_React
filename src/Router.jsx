@@ -11,6 +11,7 @@ import NightDayHotel from "./pages/NightDayHotel";
 import Mountain from "./pages/Mountain";
 import Traveler from "./pages/Traveler";
 import ClimbDown from "./pages/ClimbDown";
+import CabinIndoor from "./pages/CabinIndoor";
 
 const Router = () => (
   <BrowserRouter>
@@ -28,6 +29,7 @@ const Router = () => (
       <Route path="/mountain" element={<Mountain />} />
       <Route path="/traveler" element={<Traveler />} />
       <Route path="/climbdown" element={<ClimbDown />} />
+      <Route path="/cabinindoor" element={<CabinIndoor />} />
     </Routes>
   </BrowserRouter>
 );

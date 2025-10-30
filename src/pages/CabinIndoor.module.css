@@ -1,0 +1,255 @@
+.viewport {
+    position: fixed;
+    inset: 0;
+    background: #0e0f12;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2560px;
+    height: 1440px;
+    object-fit: contain;
+    user-select: none;
+    z-index: 0;
+    pointer-events: none;
+        /* 브라우저 창(vw/vh)과 스테이지(2560/1440)의 비율을 계산합니다.
+      --scale-x: 가로 비율 (예: 1920 / 2560 = 0.75)
+      --scale-y: 세로 비율 (예: 1080 / 1440 = 0.75)
+    */
+    --scale-x: calc(100vw / 2560);
+    --scale-y: calc(100vh / 1440);
+
+    /* 가로/세로 비율 중 더 '작은' 값을 스케일로 사용합니다.
+      (min을 사용해야 레터박스/필러박스가 생기며 꽉 찹니다)
+    */
+    --scale: min(var(--scale-x), var(--scale-y));
+
+    /* 계산된 비율로 .stage 자체를 축소/확대합니다.
+      (transform-origin의 기본값은 center이므로 .viewport가 중앙 정렬해줍니다)
+    */
+    transform: scale(var(--scale));
+}
+
+.character {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    user-select: none;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.textboxWrap {
+    position: absolute;
+    left: 50%;
+    top: 28%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    z-index: 3;
+    text-align: center;
+    pointer-events: none;
+}
+
+.textboxImage {
+    display: block;
+    width: 1440px;
+    height: 1440px;
+    user-select: none;
+    z-index: 0;
+}
+
+.textboxContent {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 1;
+    width: 1170px;
+    text-align: left;
+}
+
+.centerText {
+    text-align: center;
+}
+
+.upText {
+    top: 46%;
+}
+
+.upTextMulti {
+    top: 49%;
+}
+
+
+.speaker {
+    font-family: 'RoundedFixedsys';
+    color: black;
+    white-space: pre-wrap;
+    word-break: keep-all;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 140%;
+    letter-spacing: 2%;
+    margin-bottom: 10px;
+}
+
+.content {
+    font-family: 'RoundedFixedsys';
+
+    color: black;
+    white-space: pre-wrap;
+    word-break: keep-all;
+    font-weight: 400;
+    font-size: 60px;
+    line-height: 140%;
+    letter-spacing: 2%;
+}
+
+.choiceWrap {
+    position: absolute;
+    top: 62%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 4;
+    text-align: center;
+}
+
+.choiceWrapSingle {
+    top: 53%
+}
+
+.choiceImage {
+    display: block;
+    height: auto;
+    cursor: pointer;
+}
+
+.choiceText {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: pre-wrap;
+    pointer-events: none;
+    font-family: 'RoundedFixedsys';
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 140%;
+    letter-spacing: 2%;
+    text-align: center;
+    color: white;
+}
+
+.choiceList {
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+    align-items: center;
+}
+
+.choiceItem {
+    position: relative;
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+.popupWrap {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    text-align: center;
+    width: 1440px;
+    height: 1440px;
+}
+
+.popupImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    user-select: none;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.popupText {
+    position: absolute;
+    top: 79%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: pre-wrap;
+    pointer-events: none;
+    font-family: 'RoundedFixedsys';
+    font-weight: 400;
+    font-size: 60px;
+    line-height: 140%;
+    letter-spacing: 2%;
+    color: black;
+    z-index: 2;
+}
+
+.popupText {
+    position: absolute;
+    top: 79%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: pre-wrap;
+    pointer-events: none;
+    font-family: 'RoundedFixedsys';
+    font-weight: 400;
+    font-size: 60px;
+    line-height: 140%;
+    letter-spacing: 2%;
+    color: black;
+    z-index: 2;
+}
+
+.popupLine {
+    display: block;
+    font-size: inherit;
+}
+
+.popupLineSmall {
+    font-size: 52px;
+}
+
+.popupObjImage {
+    width: 720px;
+    height: 720px;
+    position: absolute;
+    top: 38%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.bgDim {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2560px;
+    height: 1440px;
+    background: #00000066;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.charNPC {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    user-select: none;
+    z-index: 2;
+    pointer-events: none;
+}
