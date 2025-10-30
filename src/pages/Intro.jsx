@@ -105,7 +105,7 @@ function Intro() {
       <div className={styles.introcontent}>
         {/* 타이틀 이미지 (이 부분은 이전 코드에 없었으나, 구조 유지를 위해 남겨둡니다) */}
         {/* <img src={titleImage} alt="Title" className="intro-title" /> */}
-        <p style={{ fontSize: '80px' }}>W@ndering</p>
+        <p style={{ fontSize: '100px', color: 'white', textShadow : '8px 8px 0px #000000' }}>w@ndering</p>
 
         {/* 닉네임 입력창 (CSS 배경을 가진 래퍼) */}
         {/* style 속성 제거 */}
