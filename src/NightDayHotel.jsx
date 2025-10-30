@@ -163,10 +163,10 @@ export default function NightDayHotel() {
     )
   };
 
-  // Enter키로 다음 컷으로 이동
+  // Space바로 다음 컷으로 이동
   useEffect(() => {
     const onKey = (e) => {
-      if (e.key !== "Enter") return;
+      if (e.code !== "Space") return;
 
       // 타이핑 중이면 타이머를 멈추고 즉시 완성
       if (isTyping && current.text) {
@@ -188,16 +188,16 @@ export default function NightDayHotel() {
   // 키 입력 등록
   useEffect(() => {
     const down = (e) => {
-      if (e.key === "a" || e.key === "ArrowLeft") {
+      if (e.key === "ArrowLeft") {
         if (!keysRef.current.left) keysRef.current.left = true;
       }
-      if (e.key === "d" || e.key === "ArrowRight") {
+      if (e.key === "ArrowRight") {
         if (!keysRef.current.right) keysRef.current.right = true;
       }
     };
     const up = (e) => {
-      if (e.key === "a" || e.key === "ArrowLeft") keysRef.current.left = false;
-      if (e.key === "d" || e.key === "ArrowRight") keysRef.current.right = false;
+      if (e.key === "ArrowLeft") keysRef.current.left = false;
+      if (e.key === "ArrowRight") keysRef.current.right = false;
     };
     window.addEventListener("keydown", down);
     window.addEventListener("keyup", up);
