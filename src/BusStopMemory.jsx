@@ -2,12 +2,10 @@ import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import bg1 from "./assets/bg/9-2_버스정류장.svg";
 import bg2 from "./assets/bg/10-2_버스정류장_과거회상.svg";
-// TODO: Add character imports once provided
-// import char1 from "./assets/char/기본_주인공1.svg";
-// import oldPlayer from "./assets/char/옛날_주인공.svg";
-// import oldFather from "./assets/char/옛날_아버지.svg";
+import char1 from "./assets/char/기본_주인공1.svg";
+import oldPlayer from "./assets/char/옛날_주인공.svg";
+import oldFather from "./assets/char/옛날_아버지.svg";
 import textbox from "./assets/obj/text_box.svg";
-import choicebox from "./assets/obj/선택지.svg";
 import styles from "./Scene.module.css";
 
 export default function BusStopMemory() {
@@ -16,28 +14,42 @@ export default function BusStopMemory() {
   const storyCuts = [
     {
       id: 38,
-      bg: bg1, // 9-#2_버스정류장.svg
-      text: "지나다니는 행인들을 보니\n아버지와의 추억이 떠오른다."
+      bg: bg1,
+      text: "지나다니는 행인들을 보니\n아버지와의 추억이 떠오른다.",
+      popup: { type: "text", src: textbox }
     },
     {
       id: 39,
-      bg: bg2, // 10-#2_버스정류장_과거회상.svg
+      bg: bg2,
       speaker: "player",
       text: "아빠! 나 버스 타고 갈래!",
-      // TODO: 옛날_주인공, 옛날_아버지 캐릭터 추가 필요
-      // TODO: 텍스트 색상 흰색으로 변경 필요
+      char: [
+        { src: oldPlayer, left: 522, top: 1121, width: 240, height: 240 },
+        { src: oldFather, left: 692, top: 961, width: 400, height: 400 }
+      ],
+      textColor: "#FFFFFF",
+      popup: { type: "text", src: textbox }
     },
     {
       id: 40,
-      text: "아버지는 잘 계시려나."
+      bg: bg2,
+      char: char1,
+      text: "아버지는 잘 계시려나.",
+      popup: { type: "text", src: textbox }
     },
     {
       id: 41,
-      text: "출발 하기 전에 전화라도 드렸어야 했나."
+      bg: bg2,
+      char: char1,
+      text: "출발 하기 전에 전화라도 드렸어야 했나.",
+      popup: { type: "text", src: textbox }
     },
     {
       id: 42,
-      text: "지난 몇 년간 집에서 오는 전화가\n부담스러워 거절하거나 틱틱대곤 했다."
+      bg: bg2,
+      char: char1,
+      text: "지난 몇 년간 집에서 오는 전화가\n부담스러워 거절하거나 틱틱대곤 했다.",
+      popup: { type: "text", src: textbox }
     },
     {
       id: 43,
@@ -55,14 +67,7 @@ export default function BusStopMemory() {
   const [isTyping, setIsTyping] = useState(false);
   const typingTimerRef = useRef(null);
 
-  const [charX, setCharX] = useState(100);
   const navigatedRef = useRef(false);
-  const keysRef = useRef({ left: false, right: false });
-  const SPEED = 500;
-  const minX = 0;
-  const maxX = 2160;
-  const moveTimerRef = useRef(null);
-  const lastTimeRef = useRef(null);
 
   useEffect(() => {
     const text = current.text;
@@ -139,59 +144,6 @@ export default function BusStopMemory() {
     return () => window.removeEventListener("keydown", onKey);
   }, [isTyping, current.id, current.text]);
 
-  useEffect(() => {
-    const down = (e) => {
-      if (e.key === "a" || e.key === "ArrowLeft") {
-        if (!keysRef.current.left) keysRef.current.left = true;
-      }
-      if (e.key === "d" || e.key === "ArrowRight") {
-        if (!keysRef.current.right) keysRef.current.right = true;
-      }
-    };
-    const up = (e) => {
-      if (e.key === "a" || e.key === "ArrowLeft") keysRef.current.left = false;
-      if (e.key === "d" || e.key === "ArrowRight") keysRef.current.right = false;
-    };
-    window.addEventListener("keydown", down);
-    window.addEventListener("keyup", up);
-    return () => {
-      window.removeEventListener("keydown", down);
-      window.removeEventListener("keyup", up);
-    };
-  }, []);
-
-  useEffect(() => {
-    lastTimeRef.current = null;
-    if (moveTimerRef.current) {
-      clearInterval(moveTimerRef.current);
-      moveTimerRef.current = null;
-    }
-
-    moveTimerRef.current = setInterval(() => {
-      if (!current.char) return;
-
-      const now = performance.now();
-      if (lastTimeRef.current == null) {
-        lastTimeRef.current = now;
-        return;
-      }
-      const dt = (now - lastTimeRef.current) / 1000;
-      lastTimeRef.current = now;
-
-      const { left, right } = keysRef.current;
-      const dir = (left ? -1 : 0) + (right ? 1 : 0);
-      if (dir !== 0) {
-        setCharX(x => Math.max(minX, Math.min(maxX, x + dir * SPEED * dt)));
-      }
-    }, 16);
-
-    return () => {
-      if (moveTimerRef.current) {
-        clearInterval(moveTimerRef.current);
-        moveTimerRef.current = null;
-      }
-    };
-  }, [current.char, SPEED, minX, maxX]);
 
   return (
     <div className={styles.viewport}>
@@ -213,31 +165,52 @@ export default function BusStopMemory() {
           <div className={styles.titleText}>{current.title}</div>
         )}
 
-        {current.char && (
+        {Array.isArray(current.char) ? (
+          current.char.map((ch, i) => (
+            <img
+              key={i}
+              src={ch.src}
+              alt={`캐릭터${i + 1}`}
+              className={styles.character}
+              style={{
+                position: "absolute",
+                width: `${ch.width || 400}px`,
+                height: `${ch.height || 400}px`,
+                left: `${ch.left}px`,
+                top: `${ch.top}px`,
+              }}
+            />
+          ))
+        ) : current.char ? (
           <img
             src={current.char}
             alt="캐릭터"
             className={styles.character}
             style={{
               position: "absolute",
-              bottom: 65,
-              left: `${charX}px`,
+              width: "400px",
+              height: "400px",
+              left: "734px",
+              top: "960px",
             }}
           />
-        )}
+        ) : null}
 
-        {current.npc?.src && (
+        {Array.isArray(current.npc) && current.npc.map((npc, i) => (
           <img
-            src={current.npc.src}
-            alt="npc"
+            key={i}
+            src={npc.src}
+            alt={`npc${i + 1}`}
             className={styles.charNPC}
             style={{
               position: "absolute",
-              bottom: 65,
-              left: `${current.npc.x ?? 1650}px`,
+              width: "400px",
+              height: "400px",
+              left: `${npc.left}px`,
+              top: `${npc.top}px`,
             }}
           />
-        )}
+        ))}
 
         {current.text && (
           <div className={styles.textboxWrap}>
@@ -254,9 +227,10 @@ export default function BusStopMemory() {
                     current.speaker && !hasLineBreak ? styles.upText : "",
                     current.speaker && hasLineBreak ? styles.upTextMulti : ""
                   ].join(" ").trim()}
+                  style={{ color: current.textColor || "#000000" }}
                 >
                   {current.speaker && (
-                    <div className={styles.speaker}>{current.speaker}</div>
+                    <div className={styles.speaker} style={{ color: current.textColor || "#FFFFFF" }}>{current.speaker}</div>
                   )}
                   <div className={styles.content}>{displayedText}</div>
                 </div>
