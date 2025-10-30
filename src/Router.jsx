@@ -1,12 +1,13 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Onboarding from "./pages/Onboarding";
+import { HashRouter, Routes, Route } from "react-router-dom";
+import HutFront from "./HutFront";
 
 const Router = () => (
-  <BrowserRouter>
+  <HashRouter>
     <Routes>
-      <Route path="/" element={<Onboarding />} />
+      <Route path="/" element={<HutFront />} />
+      <Route path="/hut-front" element={<HutFront />} />
     </Routes>
-  </BrowserRouter>
+  </HashRouter>
 );
 
 export default Router;
