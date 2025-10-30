@@ -3,6 +3,10 @@ import { useNavigate } from "react-router-dom";
 import bg1 from "./assets/bg/9-2_버스정류장.svg";
 // TODO: Add character imports once provided
 // import char1 from "./assets/char/기본_주인공1.svg";
+// import npc1 from "./assets/char/Npc1.svg";
+// import npc2 from "./assets/char/Npc2.svg";
+// import npc4 from "./assets/char/Npc4.svg";
+// import busImg from "./assets/obj/버스.svg";
 import textbox from "./assets/obj/text_box.svg";
 import choicebox from "./assets/obj/선택지.svg";
 import styles from "./Scene.module.css";
@@ -12,17 +16,39 @@ export default function BusStop() {
   const [idx, setIdx] = useState(0);
   const storyCuts = [
     {
-      id: 1,
+      id: 32,
       bg: bg1,
-      text: "버스 정류장에 도착했다."
+      dim: "rgba(0, 0, 0, 0.4)",
+      title: "버스 정류장"
     },
     {
-      id: 2,
-      text: "한적한 시골 마을의 정류장이다.",
+      id: 33,
+      text: "\" 0000번 버스\n8분 뒤 도착 \""
     },
     {
-      id: 3,
-      text: "버스를 기다리며\n주변을 둘러본다.",
+      id: 34,
+      text: "기다리기에 나쁘지 않은 시간이다.",
+      popup: {
+        type: "inter",
+        src: textbox // TODO: interaction icon 추가 필요
+      }
+    },
+    {
+      id: 35,
+      text: "버스가 도착했다.",
+      choice: {
+        src: choicebox,
+        text: "버스에 탑승한다"
+      }
+    },
+    {
+      id: 36,
+      text: "지나다니는 사람들을 보며\n이 동네는 어떤 곳일까 생각에 잠긴다."
+    },
+    {
+      id: 37,
+      bg: "#000000",
+      text: "지나다니는 사람들을 보며\n이 동네는 어떤 곳일까 생각에 잠긴다."
     },
   ];
   const [current, setCurrent] = useState(storyCuts[0]);
