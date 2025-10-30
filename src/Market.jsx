@@ -4,7 +4,6 @@ import bg from "./assets/bg/21-9_시장입구.svg";
 import char1 from "./assets/char/기본_주인공1.svg";
 import oldMan from "./assets/char/아저씨.svg";
 import textbox from "./assets/obj/text_box.svg";
-import choicebox from "./assets/obj/선택지.svg";
 import { postChoice } from "./lib/api";
 import styles from "./Scene.module.css";
 
