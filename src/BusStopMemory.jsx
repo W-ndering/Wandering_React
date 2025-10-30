@@ -12,23 +12,33 @@ export default function BusStopMemory() {
   const [idx, setIdx] = useState(0);
   const storyCuts = [
     {
-      id: 1,
+      id: 38,
       bg: bg1,
-      text: "문득 과거의 기억이 떠올랐다."
+      text: "지나다니는 행인들을 보니\n아버지와의 추억이 떠오른다."
     },
     {
-      id: 2,
-      text: "이곳에 왔던 적이 있었나?",
+      id: 39,
+      speaker: "player",
+      text: "아빠! 나 버스 타고 갈래!",
+      // TODO: 옛날_주인공, 옛날_아버지 캐릭터 추가 필요
+      // TODO: 텍스트 색상 흰색으로 변경 필요
     },
     {
-      id: 3,
-      text: "희미한 기억 속\n누군가의 목소리가 들린다.",
-      dim: "#00000033"
+      id: 40,
+      text: "아버지는 잘 계시려나."
     },
     {
-      id: 4,
-      text: "...",
-      dim: "#00000066"
+      id: 41,
+      text: "출발 하기 전에 전화라도 드렸어야 했나."
+    },
+    {
+      id: 42,
+      text: "지난 몇 년간 집에서 오는 전화가\n부담스러워 거절하거나 틱틱대곤 했다."
+    },
+    {
+      id: 43,
+      bg: "#000000",
+      text: ""
     },
   ];
   const [current, setCurrent] = useState(storyCuts[0]);
