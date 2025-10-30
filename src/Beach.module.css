@@ -2,6 +2,8 @@
     position: fixed;
     inset: 0;
     background: #0e0f12;
+    width: 2560px;
+    height: 1440px;
     display: flex;
     justify-content: center;
     align-items: center;

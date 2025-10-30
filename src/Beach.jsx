@@ -182,26 +182,9 @@ export default function Beach() {
         setLastVisual({ bg: merged.bg, char: merged.char, npc: merged.npc });
 
         navigatedRef.current = false;
-
-        // if (cut.id === 10) {
-        //   setCharX(1300);
-        // }
     }, [idx]);
 
     const handleNext = async (choiceIndex = null) => {
-        // if (current.id === 8 && choiceIndex !== null) {
-        //   const optionKey = choiceIndex + 1;
-
-        //   postChoice({ sceneId: SCENE_ID, optionKey });
-
-        //   // if (choiceIndex === 0) {
-        //   //   navigate("/climbdown");
-        //   // } else {
-        //   //   navigate("/traveler");
-        //   // }
-        //   // return;
-        // }
-
         if (idx >= storyCuts.length - 1) {
             navigate("/result");
             return;
@@ -210,11 +193,10 @@ export default function Beach() {
         setIdx(idx + 1);
     };
 
-    // Enter키로 다음 컷으로 이동
+    // Space바로 다음 컷으로 이동
     useEffect(() => {
         const onKey = (e) => {
-            if (e.key !== "Enter") return;
-            //   if ([3, 8, 11].includes(current.id)) return;
+            if (e.code !== "Space") return;
 
             // 타이핑 중이면 타이머를 멈추고 즉시 완성
             if (isTyping && current.text) {
@@ -236,16 +218,16 @@ export default function Beach() {
     // 키 입력 등록
     useEffect(() => {
         const down = (e) => {
-            if (e.key === "a" || e.key === "ArrowLeft") {
+            if (e.key === "ArrowLeft") {
                 if (!keysRef.current.left) keysRef.current.left = true;
             }
-            if (e.key === "d" || e.key === "ArrowRight") {
+            if (e.key === "ArrowRight") {
                 if (!keysRef.current.right) keysRef.current.right = true;
             }
         };
         const up = (e) => {
-            if (e.key === "a" || e.key === "ArrowLeft") keysRef.current.left = false;
-            if (e.key === "d" || e.key === "ArrowRight") keysRef.current.right = false;
+            if (e.key === "ArrowLeft") keysRef.current.left = false;
+            if (e.key === "ArrowRight") keysRef.current.right = false;
         };
         window.addEventListener("keydown", down);
         window.addEventListener("keyup", up);
