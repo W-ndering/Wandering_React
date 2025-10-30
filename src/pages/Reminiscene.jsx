@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import DialogueBox from '../components/DialogueBox';
-import './Reminiscene.css'; // 공통 씬 CSS
+import styles from'./Reminiscene.module.css'; // 공통 씬 CSS
 
 // --- 대사 설정 ---
 // (수정) 중간에 null을 넣어 텍스트박스가 없는 씬을 구현합니다.
@@ -122,7 +122,7 @@ function Reminiscene() {
     <div
       ref={gameAreaRef}
       tabIndex="0"
-      className="scene-container"
+      className={styles.scenecontainer}
       // (수정) backgroundImage를 설정하지 않아 Scene.css의 기본 #000 배경색이 나옴
       onClick={handleInteraction}
     >

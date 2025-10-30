@@ -3,7 +3,7 @@
 /* ======================================= */
 /* 1. 게임 영역 (Airport) 컨테이너 스타일 */
 /* ======================================= */
-.game-area {
+.gamearea {
   position: relative;
   width: 100vw;
   height: 100vh;
@@ -22,12 +22,12 @@
 /* ======================================= */
 /* 2. 플레이어 캐릭터 스타일 */
 /* ======================================= */
-.player-character {
+.playercharacter {
   position: absolute;
   /* (수정) 너비와 높이는 JS에서 또는 여기서 고정값으로 설정 */
   /* width: 100px; */ /* 예시 */
   width: 200px; /* 예시 (캐릭터 애셋 비율에 맞게 조절) */
-  
+  height: 200px;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: bottom center;
@@ -44,7 +44,7 @@
 /* ======================================= */
 
 /* Prologue.css와 유사한 Dim 오버레이 */
-.airport-dim-overlay {
+.airportdimoverlay {
   position: absolute;
   inset: 0; /* top:0, left:0, right:0, bottom:0 */
   background-color: rgba(0, 0, 0, 0.7); /* 70% 검은색 */
@@ -54,7 +54,7 @@
 }
 
 /* 인트로 "공항" 텍스트 */
-.airport-intro-text {
+.airportintrotext {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -72,7 +72,7 @@
 /* ======================================= */
 
 /* Prologue.css와 유사한 선택지 컨테이너 */
-.airport-choices-container {
+.airportchoicescontainer {
   position: absolute;
   /* (수정) 텍스트박스 아래에 배치 (DialogueBox.css의 bottom: 40px 기준) */
   bottom: 50px; /* 예시 위치 (대화상자 높이만큼 조절) */
@@ -88,7 +88,7 @@
   align-items: center;
 }
 
-.airport-choice-button {
+.airportchoicebutton {
   background-color: rgba(255, 255, 255, 0.9);
   border: 2px solid #333;
   color: #222;
@@ -103,7 +103,7 @@
   transition: background-color 0.3s, transform 0.2s;
 }
 
-.airport-choice-button:hover {
+.airportchoicebutton:hover {
   background-color: #fff;
   color: #000;
   transform: scale(1.02);

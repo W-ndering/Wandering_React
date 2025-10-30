@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import DialogueBox from '../components/DialogueBox';
-import './Prologue.css'; // 프롤로그 전용 CSS
+import styles from './Prologue.module.css'; // 프롤로그 전용 CSS
 
 // --- 애셋 임포트 (Airport.jsx와 동일한 배경 사용 가정) ---
 import homebg from '../assets/bg/1_프롤로그_집.svg';
@@ -27,7 +27,7 @@ const PROLOGUE_DIALOGUES = [
   },
   // 2: ???? (작게, 회색) - 요청하신 사항
   {
-    speaker: '목소리',
+    speaker: null,
     dialogue: [{ type: 'small-color', content: "찾아..." }]
   },
   // 3: ???? (크게) - (수정) speaker를 '????'로 변경
@@ -156,7 +156,7 @@ function Prologue() {
   // --- 이동 감지: 우측 끝 도달 ---
   useEffect(() => {
     // ⭐ 오른쪽 끝 도달 조건: threshold (gameAreaWidth / 2 - 100)
-    const threshold = (gameAreaWidth - 100) - (gameAreaWidth * 0.1);
+    const threshold = (gameAreaWidth - 100) - (gameAreaWidth * 0.1)-200;
 
     if (canMove && gameAreaWidth > 0 && playerX >= threshold) {
       navigate('/airport');
@@ -172,13 +172,13 @@ function Prologue() {
     <div
       ref={gameAreaRef}
       tabIndex="0"
-      className="prologue-container"
+      className={styles.prologuecontainer}
       data-sequence={sequenceStep}
       onClick={!canMove ? handleInteraction : undefined}
     >
       {/* 배경 */}
       <div
-        className="prologue-game-area"
+        className={styles.prologuegamearea}
         style={{
           backgroundImage: `url(${homebg})`,
           opacity: sequenceStep >= 1 ? 1 : 0,
@@ -188,7 +188,7 @@ function Prologue() {
 
       {/* 검은 오버레이 */}
       <div
-        className="prologue-black-overlay"
+        className={styles.prologueblackoverlay}
         style={{
           opacity: sequenceStep === 0 ? 1 : 0,
           transition: 'opacity 1s ease'
@@ -198,7 +198,7 @@ function Prologue() {
       {/* 캐릭터 */}
       {sequenceStep >= 1 && (
         <div
-          className="prologue-player-character"
+          className={styles.prologueplayercharacter}
           style={{
             backgroundImage: `url(${sequenceStep >= 2 ? playerSprite2 : playerSprite})`,
             bottom: '10px',
@@ -223,22 +223,22 @@ function Prologue() {
 
       {/* 오브젝트 + 상태창 */}
       {sequenceStep === 3 && objectStep > 0 && (
-        <div className="prologue-object-scene">
-          <div className="prologue-status-ui">
-            <img src={statusUI} alt="status-ui" className="status-ui" />
+        <div className={styles.prologueobjectscene}>
+          <div className={styles.prologuestatusui}>
+            <img src={statusUI} alt="status-ui" className={styles.statusui} />
             {/* (수정) 래퍼 div 추가: 오브젝트와 텍스트를 감싸서 absolute 위치 지정 */}
             <div>
               <img
                 key={objectStep}
                 src={objectStep === 1 ? book : ticket}
                 alt="object"
-                className="prologue-object"
+                className={styles.prologueobject}
               />
               {/* (추가) 오브젝트 이름 텍스트 */}
-              <div className="status-object-name">
+              <div className={styles.statusobjectname}>
                 {objectStep === 1 ? '낯선 책' : '비행기 티켓'}
               </div>
-              <div className="status-text">
+              <div className={styles.statustext}>
                 {objectStep === 1
                   ? '책에 무언가가 끼워져있다.'
                   : '책에 끼워져 있었다.'}

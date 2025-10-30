@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import DialogueBox from '../components/DialogueBox';
-import './Airport.css'; // Airport.css 임포트
+import styles from './Airport.module.css'; // Airport.css 임포트
 import airportbg from '../assets/bg/2_1_공항.svg';
 import airportRoadbg from '../assets/bg/3_1_공항앞길거리.svg';
 import mainChar from '../assets/char/캐리어_주인공1.svg';
@@ -219,7 +219,7 @@ function Airport() {
     <div
       ref={gameAreaRef}
       tabIndex="0"
-      className="game-area"
+      className={styles.gamearea}
       // 배경은 시퀀스 0일 때 intro_bg, 그 외에는 airport_bg
       style={{
         backgroundImage: `url(${sequenceStep === 0 ? ASSET_PATHS.intro_bg : ASSET_PATHS.airport_bg})`,
@@ -228,7 +228,7 @@ function Airport() {
     >
       {/* Dim 오버레이 (인트로 또는 선택지 표시 시) */}
       <div 
-        className="airport-dim-overlay"
+        className={styles.airportdimoverlay}
         style={{
           opacity: (sequenceStep === 0 || showChoices) ? 1 : 0
         }}
@@ -236,7 +236,7 @@ function Airport() {
 
       {/* 인트로 텍스트 (시퀀스 0) */}
       {sequenceStep === 0 && (
-        <div className="airport-intro-text">
+        <div className={styles.airportintrotext}>
           공항
         </div>
       )}
@@ -244,7 +244,7 @@ function Airport() {
       {/* 캐릭터 렌더링 (시퀀스 1부터) */}
       {sequenceStep >= 1 && (
         <div
-          className="player-character"
+          className={styles.playercharacter}
           style={{
             left: `${charX}px`,
             bottom: `${GROUND_Y}px`,
@@ -268,11 +268,11 @@ function Airport() {
 
       {/* 선택지 (시퀀스 4) */}
       {showChoices && (
-        <div className="airport-choices-container">
+        <div className={styles.airportchoicescontainer}>
           {AIRPORT_CHOICES.map((choice) => (
             <button
               key={choice.id}
-              className="airport-choice-button"
+              className={styles.airportchoicebutton}
               onClick={() => handleChoiceClick(choice.id)}
             >
               {choice.text}

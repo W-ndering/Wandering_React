@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Intro.css'; // 인트로 전용 CSS
+import styles from './Intro.module.css'; // 인트로 전용 CSS
 
 // --- 애셋 임포트 ---
 
@@ -78,17 +78,17 @@ function Intro() {
     sessionStorage.setItem(NICKNAME_STORAGE_KEY, nickname);
     console.log('게임 시작! 닉네임:', nickname);
     // Airport.jsx (Stage1) 페이지로 이동 (경로는 Router.jsx 설정에 맞게)
-    navigate('/prologue');
+    navigate('/guide');
   };
 
   return (
-    <div className="intro-container">
+    <div className={styles.introcontainer}>
       {/* 1. 순환하는 배경 이미지 래퍼 */}
-      <div className="intro-background-wrapper">
+      <div className={styles.introbackgroundwrapper}>
         {backgroundImages.map((imgSrc, index) => (
           <div
             key={index}
-            className="intro-background-image"
+            className={styles.introbackgroundimage}
             style={{
               backgroundImage: `url(${imgSrc})`,
               // 현재 인덱스에 해당하는 이미지만 불투명하게
@@ -99,10 +99,10 @@ function Intro() {
       </div>
 
       {/* 2. Dim 처리 오버레이 */}
-      <div className="intro-dim-overlay"></div>
+      <div className={styles.introdimoverlay}></div>
 
       {/* 3. 중앙 컨텐츠 (타이틀, 입력창, 버튼) */}
-      <div className="intro-content">
+      <div className={styles.introcontent}>
         {/* 타이틀 이미지 (이 부분은 이전 코드에 없었으나, 구조 유지를 위해 남겨둡니다) */}
         {/* <img src={titleImage} alt="Title" className="intro-title" /> */}
         <p style={{ fontSize: '80px' }}>W@ndering</p>
@@ -110,7 +110,7 @@ function Intro() {
         {/* 닉네임 입력창 (CSS 배경을 가진 래퍼) */}
         {/* style 속성 제거 */}
         <div
-          className="intro-input-wrapper"
+          className={styles.introinputwrapper}
           // style={{ backgroundImage: `url(${nicknameInputBg})` }} <- 이 부분이 제거됨
         >
           <input
@@ -118,7 +118,7 @@ function Intro() {
             value={nickname}
             onChange={handleNicknameChange}
             placeholder="닉네임을 입력하세요"
-            className="intro-nickname-input"
+            className={styles.intronicknameinput}
           />
         </div>
 
@@ -126,7 +126,7 @@ function Intro() {
         <img
           src={startButtonImage}
           alt="Start Game"
-          className="intro-start-button"
+          className={styles.introstartbutton}
           onClick={handleStartGame}
           role="button"
         />

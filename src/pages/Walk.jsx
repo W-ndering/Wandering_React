@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import DialogueBox from '../components/DialogueBox';
-import './Walk.css'; // 공통 씬 CSS
+import styles from'./Walk.module.css'; // 공통 씬 CSS
 
 // (애셋 임포트)
 import restBg from '../assets/bg/6_1_3번선택지_길거리.svg'; // 예시 경로
@@ -91,12 +91,12 @@ function Walk() {
     <div
       ref={gameAreaRef}
       tabIndex="0"
-      className="scene-container"
+      className={styles.scenecontainer}
       style={{ backgroundImage: `url(${restBg})` }}
       onClick={handleInteraction}
     >
       <div
-        className="player-character" // (공통 CSS 필요)
+        className={styles.playercharacter} // (공통 CSS 필요)
         style={{
           left: `${charX}px`,
           bottom: `${GROUND_Y}px`,

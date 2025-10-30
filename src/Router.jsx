@@ -6,6 +6,7 @@ import View from "./pages/View";
 import Rest from "./pages/Rest";
 import Walk from "./pages/Walk";
 import Reminiscene from "./pages/Reminiscene";
+import Guide from "./pages/Guide";
 
 const Router = () => (
   <BrowserRouter>
@@ -13,10 +14,11 @@ const Router = () => (
       <Route path="/" element={<Intro/>} />
       <Route path="/prologue" element={<Prologue/>} />
       <Route path="/airport" element={<Airport/>} />
-      <Route path="/Walk" element={<Walk/>} />
-      <Route path="/View" element={<View/>} />
-      <Route path="/Rest" element={<Rest/>} />
-      <Route path="/Reminiscene" element={<Reminiscene/>} />
+      <Route path="/walk" element={<Walk/>} />
+      <Route path="/view" element={<View/>} />
+      <Route path="/rest" element={<Rest/>} />
+      <Route path="/reminiscene" element={<Reminiscene/>} />
+      <Route path="/guide" element={<Guide/>} />
     </Routes>
   </BrowserRouter>
 );

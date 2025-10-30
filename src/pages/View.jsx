@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import DialogueBox from '../components/DialogueBox';
-import './View.css'; // 공통 씬 CSS (신규)
+import styles from './View.module.css'; // 공통 씬 CSS (신규)
 
 // (애셋 임포트)
 import infoBg from '../assets/bg/4_1_1번선택지_유명관광지.svg'; // 예시 경로
@@ -58,7 +58,7 @@ function View() {
     <div
       ref={gameAreaRef}
       tabIndex="0"
-      className="scene-container" // 공통 CSS 사용
+      className={styles.scenecontainer} // 공통 CSS 사용
       style={{ backgroundImage: `url(${infoBg})` }}
       onClick={handleInteraction}
     >
