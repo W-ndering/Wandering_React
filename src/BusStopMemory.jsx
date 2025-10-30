@@ -1,8 +1,11 @@
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import bg1 from "./assets/bg/10-2_버스정류장_과거회상.svg";
+import bg1 from "./assets/bg/9-#2_버스정류장.svg";
+import bg2 from "./assets/bg/10-#2_버스정류장_과거회상.svg";
 // TODO: Add character imports once provided
 // import char1 from "./assets/char/기본_주인공1.svg";
+// import oldPlayer from "./assets/char/옛날_주인공.svg";
+// import oldFather from "./assets/char/옛날_아버지.svg";
 import textbox from "./assets/obj/text_box.svg";
 import choicebox from "./assets/obj/선택지.svg";
 import styles from "./Scene.module.css";
@@ -13,11 +16,12 @@ export default function BusStopMemory() {
   const storyCuts = [
     {
       id: 38,
-      bg: bg1,
+      bg: bg1, // 9-#2_버스정류장.svg
       text: "지나다니는 행인들을 보니\n아버지와의 추억이 떠오른다."
     },
     {
       id: 39,
+      bg: bg2, // 10-#2_버스정류장_과거회상.svg
       speaker: "player",
       text: "아빠! 나 버스 타고 갈래!",
       // TODO: 옛날_주인공, 옛날_아버지 캐릭터 추가 필요
