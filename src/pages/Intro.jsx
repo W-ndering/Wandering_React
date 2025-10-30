@@ -5,7 +5,7 @@ import styles from './Intro.module.css'; // 인트로 전용 CSS
 // --- 애셋 임포트 ---
 
 // 1. 순환할 배경 이미지 3개
-import introBg1 from '../assets/bg/14_5_산중턱.svg';
+import introBg1 from '../assets/bg/14-5_산중턱.svg';
 import introBg2 from '../assets/bg/3_1_공항앞길거리.svg';
 import introBg3 from '../assets/bg/4_1_1번선택지_유명관광지.svg';
 
