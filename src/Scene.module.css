@@ -334,3 +334,132 @@
     letter-spacing: 0.02em;
     color: #FFFFFF;
 }
+
+/* Market Choices */
+.choicesContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2560px;
+    height: 1440px;
+    z-index: 20;
+    pointer-events: auto;
+}
+
+.choiceButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 72px 106px;
+    gap: 10px;
+    isolation: isolate;
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+.choiceButton:hover {
+    opacity: 0.9;
+}
+
+.choiceboxImage {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.choiceText {
+    font-family: 'DungGeunMo';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 140%;
+    text-align: center;
+    letter-spacing: 0.02em;
+    color: #FFFFFF;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Fade transitions */
+.fadeOut {
+    animation: fadeOut 1s ease-out forwards;
+}
+
+.fadeIn {
+    animation: fadeIn 1s ease-in forwards;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.fadeOverlay {
+    position: fixed;
+    inset: 0;
+    background: #000000;
+    z-index: 100;
+    pointer-events: none;
+}
+
+/* Text box for dialogue/narration */
+.textbox {
+    position: absolute;
+    width: 1440px;
+    height: 1440px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    pointer-events: none;
+}
+
+/* Dialogue container (with speaker) */
+.dialogue {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    left: 130px;
+    top: 569px;
+    z-index: 11;
+    pointer-events: none;
+}
+
+/* Narration text (center-aligned, no speaker) */
+.narration {
+    position: absolute;
+    z-index: 11;
+    pointer-events: none;
+}
+
+/* Text content inside dialogue */
+.text {
+    font-family: 'DungGeunMo';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 60px;
+    line-height: 140%;
+    letter-spacing: 0.02em;
+    color: #000000;
+    white-space: pre-wrap;
+}
