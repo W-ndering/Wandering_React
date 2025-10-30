@@ -1,4 +1,37 @@
+
+/* src/index.css (전역 CSS 파일) */
+
+/* -------------------------------------------
+   전역 폰트 정의 (@font-face)
+   ------------------------------------------- */
 @font-face {
-    font-family: 'DungGeunMo';
-    src: url('./assets/fonts/DungGeunMo.woff2') format("font-woff2");
+    font-family: 'RoundedFixedsys';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/DungGeunMo.woff') format('woff');
+    font-weight: normal;
+    font-display: swap;
+}
+
+/* -------------------------------------------
+   전체 적용 (body, html, #root) - 기존 코드와 통합
+   ------------------------------------------- */
+body, html, #root {
+    /* 기존 코드의 설정 유지 */
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden; /* 게임 화면에서 스크롤바 방지 */
+    background-color: #000;
+}
+
+/* body에 정의된 'CustomFont'를 프로젝트 전체에 상속 */
+body {
+    /* 기존 코드의 폰트 대신 CustomFont 적용 */
+    font-family: 'RoundedFixedsys', sans-serif;
+    line-height: 1.5; /* 가독성을 위한 기본 설정 */
+}
+
+/* 모든 요소에 box-sizing 적용 (기존 코드 유지) */
+* {
+    box-sizing: border-box;
 }
