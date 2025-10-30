@@ -8,6 +8,9 @@ import Walk from "./pages/Walk";
 import Reminiscene from "./pages/Reminiscene";
 import Guide from "./pages/Guide";
 import NightDayHotel from "./pages/NightDayHotel";
+import Mountain from "./pages/Mountain";
+import Traveler from "./pages/Traveler";
+import ClimbDown from "./pages/ClimbDown";
 
 const Router = () => (
   <BrowserRouter>
@@ -20,7 +23,11 @@ const Router = () => (
       <Route path="/rest" element={<Rest/>} />
       <Route path="/reminiscene" element={<Reminiscene/>} />
       <Route path="/guide" element={<Guide/>} />
+
       <Route path="/nightdayhotel" element={<NightDayHotel />} />
+      <Route path="/mountain" element={<Mountain />} />
+      <Route path="/traveler" element={<Traveler />} />
+      <Route path="/climbdown" element={<ClimbDown />} />
     </Routes>
   </BrowserRouter>
 );
