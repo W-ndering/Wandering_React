@@ -35,7 +35,7 @@ function Rest() {
       setActiveDialogue(DIALOGUES[nextIndex]);
     } else {
       // 대사가 끝나면 다음 씬으로 이동
-      navigate('/next'); // 예시: 다음 스테이지
+      navigate('/nightdayhotel'); // 예시: 다음 스테이지
     }
   }, [dialogueIndex, isTyping, navigate]);
 

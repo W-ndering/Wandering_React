@@ -1,13 +1,13 @@
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import bg1 from "./assets/bg/7-1_밤의호텔.svg";
-import bg2 from "./assets/bg/8-2_아침호텔.svg";
-import char1 from "./assets/char/잠옷_주인공1.svg";
-import char2 from "./assets/char/기본_주인공1.svg";
-import textbox from "./assets/obj/text_box.svg";
-import choicebox from "./assets/obj/선택지.svg";
-import statebox from "./assets/obj/상태창.svg"
-import phone from "./assets/obj/핸드폰_검색.svg"
+import bg1 from "../assets/bg/7-1_밤의호텔.svg";
+import bg2 from "../assets/bg/8-2_아침호텔.svg";
+import char1 from "../assets/char/잠옷_주인공1.svg";
+import char2 from "../assets/char/기본_주인공1.svg";
+import textbox from "../assets/obj/text_box.svg";
+import choicebox from "../assets/obj/선택지.svg";
+import statebox from "../assets/obj/상태창.svg"
+import phone from "../assets/obj/핸드폰_검색.svg"
 import styles from "./NightDayHotel.module.css";
 
 export default function NightDayHotel() {

@@ -67,7 +67,7 @@ function Walk() {
       setSequenceStep(2); // 대화 2단계로
     } else {
       // 대사 끝나면
-      navigate('/next'); // 다음 스테이지
+      navigate('/nightdayhotel'); // 다음 스테이지
     }
   }, [dialogueIndex, isTyping, navigate, sequenceStep]);
 

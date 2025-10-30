@@ -7,7 +7,7 @@ import Rest from "./pages/Rest";
 import Walk from "./pages/Walk";
 import Reminiscene from "./pages/Reminiscene";
 import Guide from "./pages/Guide";
-import NightDayHotel from "./NightDayHotel";
+import NightDayHotel from "./pages/NightDayHotel";
 
 const Router = () => (
   <BrowserRouter>
