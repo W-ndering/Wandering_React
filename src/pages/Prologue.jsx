@@ -14,7 +14,11 @@ import ticket from '../assets/obj/티켓.svg';
 
 
 
-const PROLOGUE_DIALOGUES = [
+// --- 상수 ---
+
+function Prologue() {
+  const nickname = sessionStorage.getItem("NICKNAME") || "player";
+  const PROLOGUE_DIALOGUES = [
   // 0: 독백
   {
     speaker: null, // speaker가 null이거나 없으면 화자 이름이 표시되지 않습니다.
@@ -46,11 +50,6 @@ const PROLOGUE_DIALOGUES = [
     dialogue: [{ type: 'normal', content: "누구지?" }]
   }
 ];
-
-// --- 상수 ---
-
-function Prologue() {
-  const nickname = sessionStorage.getItem("NICKNAME") || "player";
   const [sequenceStep, setSequenceStep] = useState(0);
   const [dialogueIndex, setDialogueIndex] = useState(0);
   const [activeDialogue, setActiveDialogue] = useState(PROLOGUE_DIALOGUES[0]);
