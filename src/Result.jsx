@@ -89,7 +89,7 @@ export default function Result() {
 
     (async () => {
       try {
-        const res = await fetch("https://leekhoon.store/player/7/end", {
+        const res = await fetch(`https://leekhoon.store/player/${playerId}/end`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
         });
@@ -146,7 +146,7 @@ export default function Result() {
         typingTimerRef.current = null;
         setIsTyping(false);
       }
-    }, 50);
+    }, 75);
 
     return () => {
       if (typingTimerRef.current) {
