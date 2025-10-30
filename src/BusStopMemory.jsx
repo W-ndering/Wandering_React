@@ -14,7 +14,7 @@ export default function BusStopMemory() {
   const storyCuts = [
     {
       id: 38,
-      bg: bg1,
+      bg: bg2,
       text: "지나다니는 행인들을 보니\n아버지와의 추억이 떠오른다.",
       popup: { type: "text", src: textbox }
     },
@@ -28,6 +28,7 @@ export default function BusStopMemory() {
         { src: oldFather, left: 692, top: 961, width: 400, height: 400 }
       ],
       textColor: "#FFFFFF",
+      fadeIn: true,
       popup: { type: "text", src: textbox }
     },
     {
@@ -171,7 +172,7 @@ export default function BusStopMemory() {
               key={i}
               src={ch.src}
               alt={`캐릭터${i + 1}`}
-              className={styles.character}
+              className={`${styles.character} ${current.fadeIn ? styles.fadeIn : ''}`}
               style={{
                 position: "absolute",
                 width: `${ch.width || 400}px`,
@@ -185,7 +186,7 @@ export default function BusStopMemory() {
           <img
             src={current.char}
             alt="캐릭터"
-            className={styles.character}
+            className={`${styles.character} ${current.fadeIn ? styles.fadeIn : ''}`}
             style={{
               position: "absolute",
               width: "400px",

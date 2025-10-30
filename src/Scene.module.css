@@ -334,3 +334,17 @@
     letter-spacing: 0.02em;
     color: #FFFFFF;
 }
+
+/* Fade in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.fadeIn {
+    animation: fadeIn 1s ease-in;
+}
