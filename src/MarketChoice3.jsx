@@ -12,6 +12,7 @@ import styles from "./Scene.module.css";
 export default function MarketChoice3() {
   const navigate = useNavigate();
   const [idx, setIdx] = useState(0);
+  const [isFading, setIsFading] = useState(false);
   const storyCuts = [
     {
       id: 146,
@@ -153,7 +154,11 @@ export default function MarketChoice3() {
 
   const handleNext = async () => {
     if (idx >= storyCuts.length - 1) {
-      navigate("/hut");
+      // 마지막 씬에서 fade out & in 처리
+      setIsFading(true);
+      setTimeout(() => {
+        navigate("/hut");
+      }, 1000); // 1초 후 페이지 이동
       return;
     }
 
@@ -235,6 +240,7 @@ export default function MarketChoice3() {
 
   return (
     <div className={styles.viewport}>
+      {isFading && <div className={`${styles.fadeOverlay} ${styles.fadeOut}`} />}
       <div className={styles.stage}>
         <div className={styles.background} style={bgStyle}>
           {current.dim && <div className={styles.dim} style={{ backgroundColor: current.dim }} />}
