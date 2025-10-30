@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import bg1 from "./assets/bg/9-#2_버스정류장.svg?url";
-import bg2 from "./assets/bg/10-#2_버스정류장_과거회상.svg?url";
+import bg1 from "./assets/bg/9-2_버스정류장.svg";
+import bg2 from "./assets/bg/10-2_버스정류장_과거회상.svg";
 // TODO: Add character imports once provided
 // import char1 from "./assets/char/기본_주인공1.svg";
 // import oldPlayer from "./assets/char/옛날_주인공.svg";
