@@ -1,17 +1,11 @@
 .viewport {
     position: fixed;
     inset: 0;
-    background: #0e0f12;
+    width: 2560px;
+    height: 1440px;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
-}
-
-.stage {
-    position: relative;
-    width: 2560px;
-    height: 1440px;
     overflow: hidden;
     pointer-events: none;
 }
@@ -25,24 +19,6 @@
     object-fit: contain;
     user-select: none;
     z-index: 0;
-    pointer-events: none;
-}
-
-.character {
-    position: absolute;
-    width: 400px;
-    height: 400px;
-    user-select: none;
-    z-index: 3;
-    pointer-events: none;
-}
-
-.charNPC {
-    position: absolute;
-    width: 400px;
-    height: 400px;
-    user-select: none;
-    z-index: 2;
     pointer-events: none;
 }
 
@@ -110,115 +86,12 @@
     letter-spacing: 2%;
 }
 
-.choiceWrap {
-    position: absolute;
-    top: 70%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 4;
-    text-align: center;
-}
-
-.choiceWrapSingle {
-    top: 53%
-}
-
-.choiceImage {
-    display: block;
-    height: auto;
-    cursor: pointer;
-}
-
-.choiceText {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    white-space: pre-wrap;
-    pointer-events: none;
-    font-family: "DungGeunMo";
-    font-weight: 400;
-    font-size: 48px;
-    line-height: 140%;
-    letter-spacing: 2%;
-    text-align: center;
-    color: white;
-    width: 1225px;
-}
-
-.choiceList {
-    display: flex;
-    flex-direction: column;
-    gap: 26px;
-    align-items: center;
-}
-
-.choiceItem {
-    position: relative;
-    pointer-events: auto;
-    cursor: pointer;
-}
-
 .popupWrap {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 5;
-    text-align: center;
-    width: 1440px;
-    height: 1440px;
-}
-
-.bgDim {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 2560px;
-    height: 1440px;
-    background: #00000066;
-    z-index: 4;
-    pointer-events: none;
-}
-
-.titleText {
-    font-family: 'DungGeunMo';
-    font-weight: 400;
-    font-size: 120px;
-    line-height: 140%;
-    letter-spacing: 2%;
-
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 2;
-    color: white;
-}
-
-.circle {
-    position: absolute;
-    top: 60%;
-    left: 105%;
-    width: 192px;
-    height: 192px;
-    transform: translate(-50%, -50%);
-    background: white;
-    border-radius: 50%;
-    box-shadow: -11px -5px 9.4px -1px #00000033 inset;
-    z-index: 10;
-}
-
-.popupInterImage {
-    position: absolute;
-    top: 60%;
-    left: 105%;
-    width: 120px;
-    height: 120px;
-    transform: translate(-50%, -50%);
-    z-index: 10;
-    cursor: pointer;
-    pointer-events: auto;
 }
 
 .popupObjImage {
@@ -232,27 +105,202 @@
     z-index: 2;
 }
 
-.popupLine {
-    display: block;
-    font-size: inherit;
-}
-
-.popupLineSmall {
-    font-size: 52px;
-}
-
-.popupText {
+.popupCenterWrap {
     position: absolute;
-    top: 79%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    white-space: pre-wrap;
-    pointer-events: none;
+}
+
+.popupDownWrap {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+
+.objWrap {
+    position: absolute;
+    top: 45%;
+    left: 18%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+
+.popupCookieImage {
+    width: 2560px;
+    height: 1440px;
+    user-select: none;
+}
+
+.popupEndImage {
+    width: 720px;
+    height: 720px;
+    user-select: none;
+}
+
+.popupResultScroll {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.popupResultWrap {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: auto;
+    width: 1440px;
+    height: 2196px;
+}
+
+.popupResultImage {
+    width: 1440px;
+    height: 2196px;
+    z-index: 50;
+}
+
+.cardText {
+    position: absolute;
+    top: 32%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
     font-family: "DungGeunMo";
     font-weight: 400;
-    font-size: 60px;
+    font-size: 24px;
     line-height: 140%;
-    letter-spacing: 2%;
+    letter-spacing: -4%;
+    text-align: center;
+    color: #878787;
+}
+
+.typeNameText {
+    position: absolute;
+    top: 38%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    font-family: "DungGeunMo";
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 140%;
+    letter-spacing: -4%;
+    text-align: center;
+}
+
+.feedbackBox {
+    position: absolute;
+    top: 56%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 569px;
+    height: 692px;
+    border-radius: 12px;
+    padding: 0px 10px;
+    background-color: #F0EFF2;
+}
+
+.feedbackText {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    padding: 0 30px;
+    box-sizing: border-box;
+
+    font-family: "DungGeunMo";
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 140%;
+    letter-spacing: -4%;
+    white-space: pre-wrap;
+    color: #4F4F4F;
+}
+
+.btn1 {
+    position: absolute;
+    top: 77%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 569px;
+    height: 78px;
+    border-radius: 12px;
+    background-color: #F0EFF2;
+
     color: black;
-    z-index: 2;
+    font-family: "DungGeunMo";
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 140%;
+    letter-spacing: -1%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn2 {
+    position: absolute;
+    top: 81%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 569px;
+    height: 78px;
+    border-radius: 12px;
+    background-color: #2F2F2F;
+
+    color: white;
+    font-family: "DungGeunMo";
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 140%;
+    letter-spacing: -1%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn3 {
+    position: absolute;
+    top: 93%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 569px;
+    height: 78px;
+    border-radius: 12px;
+    border: 2px solid black;
+
+    color: black;
+    font-family: "DungGeunMo";
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 140%;
+    letter-spacing: -1%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+}
+
+.cookieIcon {
+    width: 28px;
+    height: 28px;
 }
