@@ -91,7 +91,7 @@
 }
 
 .speaker {
-    font-family: 'DungGeunMo';
+    font-family: 'RoundedFixedsys';
     color: black;
     white-space: pre-wrap;
     word-break: keep-all;
@@ -103,7 +103,7 @@
 }
 
 .content {
-    font-family: 'DungGeunMo';
+    font-family: 'RoundedFixedsys';
     color: black;
     white-space: pre-wrap;
     word-break: keep-all;
@@ -139,7 +139,7 @@
     transform: translate(-50%, -50%);
     white-space: pre-wrap;
     pointer-events: none;
-    font-family: "DungGeunMo";
+    font-family: 'RoundedFixedsys';
     font-weight: 400;
     font-size: 48px;
     line-height: 140%;
@@ -184,7 +184,7 @@
 }
 
 .titleText {
-    font-family: 'DungGeunMo';
+    font-family: 'RoundedFixedsys';
     font-weight: 400;
     font-size: 120px;
     line-height: 140%;
