@@ -1,14 +1,14 @@
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import bg1 from "./assets/bg/9-2_버스정류장.svg";
-// TODO: Add character imports once provided
-// import char1 from "./assets/char/기본_주인공1.svg";
-// import npc1 from "./assets/char/Npc1.svg";
-// import npc2 from "./assets/char/Npc2.svg";
-// import npc4 from "./assets/char/Npc4.svg";
-// import busImg from "./assets/obj/버스.svg";
+import char1 from "./assets/char/기본_주인공1.svg";
+import npc1 from "./assets/char/Npc1.svg";
+import npc2 from "./assets/char/Npc2.svg";
+import npc4 from "./assets/char/Npc4.svg";
+import busImg from "./assets/obj/버스.svg";
 import textbox from "./assets/obj/text_box.svg";
 import choicebox from "./assets/obj/선택지.svg";
+import interactionIcon from "./assets/obj/interaction.svg";
 import styles from "./Scene.module.css";
 
 export default function BusStop() {
@@ -23,18 +23,33 @@ export default function BusStop() {
     },
     {
       id: 33,
-      text: "\" 0000번 버스\n8분 뒤 도착 \""
+      bg: bg1,
+      char: char1,
+      npc: [
+        { src: npc1, left: 2302, top: 960 },
+        { src: npc2, left: 1628, top: 960 },
+        { src: npc4, left: 1974, top: 960 }
+      ],
+      text: "\" 0000번 버스\n8분 뒤 도착 \"",
+      popup: { type: "text", src: textbox }
     },
     {
       id: 34,
+      bg: bg1,
+      char: char1,
+      npc: [
+        { src: npc1, left: 2302, top: 960 },
+        { src: npc2, left: 1628, top: 960 },
+        { src: npc4, left: 1974, top: 960 }
+      ],
       text: "기다리기에 나쁘지 않은 시간이다.",
-      popup: {
-        type: "inter",
-        src: textbox // TODO: interaction icon 추가 필요
-      }
+      popup: { type: "inter", src: interactionIcon }
     },
     {
       id: 35,
+      bg: bg1,
+      char: char1,
+      obj: [{ src: busImg, left: 30, top: 812, width: 720, height: 720 }],
       text: "버스가 도착했다.",
       choice: {
         src: choicebox,
@@ -43,12 +58,22 @@ export default function BusStop() {
     },
     {
       id: 36,
-      text: "지나다니는 사람들을 보며\n이 동네는 어떤 곳일까 생각에 잠긴다."
+      bg: bg1,
+      char: char1,
+      npc: [
+        { src: npc1, left: 2302, top: 960 },
+        { src: npc2, left: 1628, top: 960 },
+        { src: npc4, left: 1974, top: 960 }
+      ],
+      dim: "rgba(0, 0, 0, 0.4)",
+      text: "지나다니는 사람들을 보며\n이 동네는 어떤 곳일까 생각에 잠긴다.",
+      popup: { type: "text", src: textbox }
     },
     {
       id: 37,
       bg: "#000000",
-      text: "지나다니는 사람들을 보며\n이 동네는 어떤 곳일까 생각에 잠긴다."
+      text: "지나다니는 사람들을 보며\n이 동네는 어떤 곳일까 생각에 잠긴다.",
+      popup: { type: "text", src: textbox }
     },
   ];
   const [current, setCurrent] = useState(storyCuts[0]);
@@ -56,19 +81,13 @@ export default function BusStop() {
     bg: storyCuts[0].bg,
     char: storyCuts[0].char,
     npc: storyCuts[0].npc ?? null,
+    obj: storyCuts[0].obj ?? null,
   });
   const [displayedText, setDisplayedText] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const typingTimerRef = useRef(null);
 
-  const [charX, setCharX] = useState(100);
   const navigatedRef = useRef(false);
-  const keysRef = useRef({ left: false, right: false });
-  const SPEED = 500;
-  const minX = 0;
-  const maxX = 2160;
-  const moveTimerRef = useRef(null);
-  const lastTimeRef = useRef(null);
 
   useEffect(() => {
     const text = current.text;
@@ -109,10 +128,11 @@ export default function BusStop() {
         cut.char === "none"
           ? null
           : (cut.char ?? lastVisual.char),
-      npc: cut.npc === "none" ? null : (cut.npc ?? lastVisual.npc)
+      npc: cut.npc === "none" ? null : (cut.npc ?? lastVisual.npc),
+      obj: cut.obj === "none" ? null : (cut.obj ?? lastVisual.obj)
     };
     setCurrent(merged);
-    setLastVisual({ bg: merged.bg, char: merged.char, npc: merged.npc });
+    setLastVisual({ bg: merged.bg, char: merged.char, npc: merged.npc, obj: merged.obj });
 
     navigatedRef.current = false;
   }, [idx]);
@@ -145,59 +165,6 @@ export default function BusStop() {
     return () => window.removeEventListener("keydown", onKey);
   }, [isTyping, current.id, current.text]);
 
-  useEffect(() => {
-    const down = (e) => {
-      if (e.key === "a" || e.key === "ArrowLeft") {
-        if (!keysRef.current.left) keysRef.current.left = true;
-      }
-      if (e.key === "d" || e.key === "ArrowRight") {
-        if (!keysRef.current.right) keysRef.current.right = true;
-      }
-    };
-    const up = (e) => {
-      if (e.key === "a" || e.key === "ArrowLeft") keysRef.current.left = false;
-      if (e.key === "d" || e.key === "ArrowRight") keysRef.current.right = false;
-    };
-    window.addEventListener("keydown", down);
-    window.addEventListener("keyup", up);
-    return () => {
-      window.removeEventListener("keydown", down);
-      window.removeEventListener("keyup", up);
-    };
-  }, []);
-
-  useEffect(() => {
-    lastTimeRef.current = null;
-    if (moveTimerRef.current) {
-      clearInterval(moveTimerRef.current);
-      moveTimerRef.current = null;
-    }
-
-    moveTimerRef.current = setInterval(() => {
-      if (!current.char) return;
-
-      const now = performance.now();
-      if (lastTimeRef.current == null) {
-        lastTimeRef.current = now;
-        return;
-      }
-      const dt = (now - lastTimeRef.current) / 1000;
-      lastTimeRef.current = now;
-
-      const { left, right } = keysRef.current;
-      const dir = (left ? -1 : 0) + (right ? 1 : 0);
-      if (dir !== 0) {
-        setCharX(x => Math.max(minX, Math.min(maxX, x + dir * SPEED * dt)));
-      }
-    }, 16);
-
-    return () => {
-      if (moveTimerRef.current) {
-        clearInterval(moveTimerRef.current);
-        moveTimerRef.current = null;
-      }
-    };
-  }, [current.char, SPEED, minX, maxX]);
 
   return (
     <div className={styles.viewport}>
@@ -226,24 +193,44 @@ export default function BusStop() {
             className={styles.character}
             style={{
               position: "absolute",
-              bottom: 65,
-              left: `${charX}px`,
+              width: "400px",
+              height: "400px",
+              left: "734px",
+              top: "960px",
             }}
           />
         )}
 
-        {current.npc?.src && (
+        {Array.isArray(current.npc) && current.npc.map((npc, i) => (
           <img
-            src={current.npc.src}
-            alt="npc"
+            key={i}
+            src={npc.src}
+            alt={`npc${i + 1}`}
             className={styles.charNPC}
             style={{
               position: "absolute",
-              bottom: 65,
-              left: `${current.npc.x ?? 1650}px`,
+              width: "400px",
+              height: "400px",
+              left: `${npc.left}px`,
+              top: `${npc.top}px`,
             }}
           />
-        )}
+        ))}
+
+        {Array.isArray(current.obj) && current.obj.map((obj, i) => (
+          <img
+            key={i}
+            src={obj.src}
+            alt={`obj${i + 1}`}
+            style={{
+              position: "absolute",
+              width: `${obj.width || 400}px`,
+              height: `${obj.height || 400}px`,
+              left: `${obj.left}px`,
+              top: `${obj.top}px`,
+            }}
+          />
+        ))}
 
         {current.text && (
           <div className={styles.textboxWrap}>

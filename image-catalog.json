@@ -1,0 +1,4601 @@
+{
+  "metadata": {
+    "totalImages": 84,
+    "generated": "2025-10-30T02:13:03.373Z"
+  },
+  "images": [
+    {
+      "index": 1,
+      "imageRef": "600bbb6e11db51abf965096f24445397ce2d36a6",
+      "usedInScenes": [
+        {
+          "sceneName": "9-#2_버스정류장 2",
+          "variation": 1,
+          "variationId": "19:766"
+        },
+        {
+          "sceneName": "9-#2_버스정류장 2",
+          "variation": 2,
+          "variationId": "30:386"
+        },
+        {
+          "sceneName": "9-#2_버스정류장 2",
+          "variation": 3,
+          "variationId": "30:417"
+        },
+        {
+          "sceneName": "9-#2_버스정류장 2",
+          "variation": 4,
+          "variationId": "31:1907"
+        },
+        {
+          "sceneName": "9-#2_버스정류장 2",
+          "variation": 5,
+          "variationId": "31:579"
+        },
+        {
+          "sceneName": "9-#2_버스정류장 2",
+          "variation": 6,
+          "variationId": "30:427"
+        },
+        {
+          "sceneName": "9-#2_버스정류장 2",
+          "variation": 7,
+          "variationId": "30:437"
+        },
+        {
+          "sceneName": "9-#2_버스정류장 2",
+          "variation": 8,
+          "variationId": "31:814"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/600b/600bbb6e11db51abf965096f24445397ce2d36a6"
+    },
+    {
+      "index": 2,
+      "imageRef": "26a5bf35fa825521b70b746a035218c413548bbb",
+      "usedInScenes": [
+        {
+          "sceneName": "9-#2_버스정류장 2",
+          "variation": 2,
+          "variationId": "30:386"
+        },
+        {
+          "sceneName": "9-#2_버스정류장 2",
+          "variation": 3,
+          "variationId": "30:417"
+        },
+        {
+          "sceneName": "9-#2_버스정류장 2",
+          "variation": 4,
+          "variationId": "31:1907"
+        },
+        {
+          "sceneName": "9-#2_버스정류장 2",
+          "variation": 6,
+          "variationId": "30:427"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/26a5/26a5bf35fa825521b70b746a035218c413548bbb"
+    },
+    {
+      "index": 3,
+      "imageRef": "f3bf188e747aa2a3dc3dc2d28d1d45b03c92dac6",
+      "usedInScenes": [
+        {
+          "sceneName": "9-#2_버스정류장 2",
+          "variation": 2,
+          "variationId": "30:386"
+        },
+        {
+          "sceneName": "9-#2_버스정류장 2",
+          "variation": 3,
+          "variationId": "30:417"
+        },
+        {
+          "sceneName": "9-#2_버스정류장 2",
+          "variation": 4,
+          "variationId": "31:1907"
+        },
+        {
+          "sceneName": "9-#2_버스정류장 2",
+          "variation": 6,
+          "variationId": "30:427"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/f3bf/f3bf188e747aa2a3dc3dc2d28d1d45b03c92dac6"
+    },
+    {
+      "index": 4,
+      "imageRef": "c72cd3d02ebad9433393017f017c72fbedd116b3",
+      "usedInScenes": [
+        {
+          "sceneName": "9-#2_버스정류장 2",
+          "variation": 2,
+          "variationId": "30:386"
+        },
+        {
+          "sceneName": "9-#2_버스정류장 2",
+          "variation": 3,
+          "variationId": "30:417"
+        },
+        {
+          "sceneName": "9-#2_버스정류장 2",
+          "variation": 4,
+          "variationId": "31:1907"
+        },
+        {
+          "sceneName": "9-#2_버스정류장 2",
+          "variation": 6,
+          "variationId": "30:427"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/c72c/c72cd3d02ebad9433393017f017c72fbedd116b3"
+    },
+    {
+      "index": 5,
+      "imageRef": "38e0bfcd08f5312cd75fa159050da86773954212",
+      "usedInScenes": [
+        {
+          "sceneName": "9-#2_버스정류장 2",
+          "variation": 2,
+          "variationId": "30:386"
+        },
+        {
+          "sceneName": "9-#2_버스정류장 2",
+          "variation": 3,
+          "variationId": "30:417"
+        },
+        {
+          "sceneName": "9-#2_버스정류장 2",
+          "variation": 5,
+          "variationId": "31:579"
+        },
+        {
+          "sceneName": "9-#2_버스정류장 2",
+          "variation": 6,
+          "variationId": "30:427"
+        },
+        {
+          "sceneName": "9-#2_버스정류장 2",
+          "variation": 7,
+          "variationId": "30:437"
+        },
+        {
+          "sceneName": "9-#2_버스정류장 2",
+          "variation": 8,
+          "variationId": "31:814"
+        },
+        {
+          "sceneName": "10-#2_버스정류장_과거회상 2",
+          "variation": 1,
+          "variationId": "31:454"
+        },
+        {
+          "sceneName": "10-#2_버스정류장_과거회상 2",
+          "variation": 2,
+          "variationId": "31:498"
+        },
+        {
+          "sceneName": "10-#2_버스정류장_과거회상 2",
+          "variation": 3,
+          "variationId": "31:512"
+        },
+        {
+          "sceneName": "10-#2_버스정류장_과거회상 2",
+          "variation": 4,
+          "variationId": "31:541"
+        },
+        {
+          "sceneName": "10-#2_버스정류장_과거회상 2",
+          "variation": 5,
+          "variationId": "31:549"
+        },
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 2,
+          "variationId": "31:665"
+        },
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 3,
+          "variationId": "31:693"
+        },
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 4,
+          "variationId": "31:748"
+        },
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 5,
+          "variationId": "31:774"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 1,
+          "variationId": "19:791"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 2,
+          "variationId": "31:1323"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 3,
+          "variationId": "31:1346"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 4,
+          "variationId": "31:1369"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 5,
+          "variationId": "31:1839"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 7,
+          "variationId": "37:2003"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 8,
+          "variationId": "53:2336"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 9,
+          "variationId": "37:2021"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 10,
+          "variationId": "53:2354"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 11,
+          "variationId": "37:2138"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 12,
+          "variationId": "37:2218"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 13,
+          "variationId": "37:2156"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 14,
+          "variationId": "37:2039"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 15,
+          "variationId": "53:2372"
+        },
+        {
+          "sceneName": "선택지",
+          "variation": 1,
+          "variationId": "31:1655"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 1,
+          "variationId": "37:2500"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 2,
+          "variationId": "37:2507"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 3,
+          "variationId": "37:2514"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 4,
+          "variationId": "37:2521"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 5,
+          "variationId": "37:2528"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 6,
+          "variationId": "37:2543"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 7,
+          "variationId": "37:2552"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 9,
+          "variationId": "37:2565"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 10,
+          "variationId": "37:2572"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 11,
+          "variationId": "37:2579"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 13,
+          "variationId": "37:2637"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 15,
+          "variationId": "37:2688"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 16,
+          "variationId": "37:2689"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 17,
+          "variationId": "37:2832"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 18,
+          "variationId": "37:2833"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 19,
+          "variationId": "37:2859"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 20,
+          "variationId": "37:2860"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 21,
+          "variationId": "37:2913"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 22,
+          "variationId": "37:2914"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 23,
+          "variationId": "37:2886"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 24,
+          "variationId": "37:2887"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 25,
+          "variationId": "37:2940"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 26,
+          "variationId": "37:2941"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 27,
+          "variationId": "19:1110"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 28,
+          "variationId": "37:4051"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 29,
+          "variationId": "37:4123"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 30,
+          "variationId": "37:4154"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 31,
+          "variationId": "37:4086"
+        },
+        {
+          "sceneName": "시장 입구",
+          "variation": 1,
+          "variationId": "19:995"
+        },
+        {
+          "sceneName": "시장 입구",
+          "variation": 2,
+          "variationId": "37:3370"
+        },
+        {
+          "sceneName": "시장 입구",
+          "variation": 3,
+          "variationId": "37:3393"
+        },
+        {
+          "sceneName": "시장 입구",
+          "variation": 4,
+          "variationId": "37:3410"
+        },
+        {
+          "sceneName": "시장 입구",
+          "variation": 5,
+          "variationId": "37:3427"
+        },
+        {
+          "sceneName": "시장 입구",
+          "variation": 6,
+          "variationId": "37:3450"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/38e0/38e0bfcd08f5312cd75fa159050da86773954212"
+    },
+    {
+      "index": 6,
+      "imageRef": "29292910b5fe862723b383ad4dc8d383d9c568cd",
+      "usedInScenes": [
+        {
+          "sceneName": "9-#2_버스정류장 2",
+          "variation": 3,
+          "variationId": "30:417"
+        },
+        {
+          "sceneName": "9-#2_버스정류장 2",
+          "variation": 4,
+          "variationId": "31:1907"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 5,
+          "variationId": "31:1839"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 6,
+          "variationId": "31:1876"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/2929/29292910b5fe862723b383ad4dc8d383d9c568cd"
+    },
+    {
+      "index": 7,
+      "imageRef": "6059dababc68172a2321ee9d4f5f4aa06720bd58",
+      "usedInScenes": [
+        {
+          "sceneName": "9-#2_버스정류장 2",
+          "variation": 5,
+          "variationId": "31:579"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/6059/6059dababc68172a2321ee9d4f5f4aa06720bd58"
+    },
+    {
+      "index": 8,
+      "imageRef": "4d6369c711925158b48e5070c6ad597f56238c8f",
+      "usedInScenes": [
+        {
+          "sceneName": "9-#2_버스정류장 2",
+          "variation": 5,
+          "variationId": "31:579"
+        },
+        {
+          "sceneName": "9-#2_버스정류장 2",
+          "variation": 6,
+          "variationId": "30:427"
+        },
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 2,
+          "variationId": "31:665"
+        },
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 3,
+          "variationId": "31:693"
+        },
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 4,
+          "variationId": "31:748"
+        },
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 5,
+          "variationId": "31:774"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 1,
+          "variationId": "19:791"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 2,
+          "variationId": "31:1323"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 3,
+          "variationId": "31:1346"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 4,
+          "variationId": "31:1369"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 5,
+          "variationId": "31:1839"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 6,
+          "variationId": "31:1876"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 7,
+          "variationId": "37:2003"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 8,
+          "variationId": "53:2336"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 9,
+          "variationId": "37:2021"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 10,
+          "variationId": "53:2354"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 11,
+          "variationId": "37:2138"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 12,
+          "variationId": "37:2218"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 13,
+          "variationId": "37:2156"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 14,
+          "variationId": "37:2039"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 15,
+          "variationId": "53:2372"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 27,
+          "variationId": "19:1110"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 28,
+          "variationId": "37:4051"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 29,
+          "variationId": "37:4123"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 30,
+          "variationId": "37:4154"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 31,
+          "variationId": "37:4086"
+        },
+        {
+          "sceneName": "시장 입구",
+          "variation": 1,
+          "variationId": "19:995"
+        },
+        {
+          "sceneName": "시장 입구",
+          "variation": 2,
+          "variationId": "37:3370"
+        },
+        {
+          "sceneName": "시장 입구",
+          "variation": 3,
+          "variationId": "37:3393"
+        },
+        {
+          "sceneName": "시장 입구",
+          "variation": 4,
+          "variationId": "37:3410"
+        },
+        {
+          "sceneName": "시장 입구",
+          "variation": 5,
+          "variationId": "37:3427"
+        },
+        {
+          "sceneName": "시장 입구",
+          "variation": 6,
+          "variationId": "37:3450"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/4d63/4d6369c711925158b48e5070c6ad597f56238c8f"
+    },
+    {
+      "index": 9,
+      "imageRef": "ccc4d39c934abee1315cc896dd5aa50543b9ee51",
+      "usedInScenes": [
+        {
+          "sceneName": "10-#2_버스정류장_과거회상 2",
+          "variation": 1,
+          "variationId": "31:454"
+        },
+        {
+          "sceneName": "10-#2_버스정류장_과거회상 2",
+          "variation": 2,
+          "variationId": "31:498"
+        },
+        {
+          "sceneName": "10-#2_버스정류장_과거회상 2",
+          "variation": 3,
+          "variationId": "31:512"
+        },
+        {
+          "sceneName": "10-#2_버스정류장_과거회상 2",
+          "variation": 4,
+          "variationId": "31:541"
+        },
+        {
+          "sceneName": "10-#2_버스정류장_과거회상 2",
+          "variation": 5,
+          "variationId": "31:549"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/ccc4/ccc4d39c934abee1315cc896dd5aa50543b9ee51"
+    },
+    {
+      "index": 10,
+      "imageRef": "cd0e84162e601391c79786735eec6f58a0c3c155",
+      "usedInScenes": [
+        {
+          "sceneName": "10-#2_버스정류장_과거회상 2",
+          "variation": 1,
+          "variationId": "31:454"
+        },
+        {
+          "sceneName": "10-#2_버스정류장_과거회상 2",
+          "variation": 2,
+          "variationId": "31:498"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/cd0e/cd0e84162e601391c79786735eec6f58a0c3c155"
+    },
+    {
+      "index": 11,
+      "imageRef": "f86e509d60ecea4071227f013cc683667dc897bd",
+      "usedInScenes": [
+        {
+          "sceneName": "10-#2_버스정류장_과거회상 2",
+          "variation": 1,
+          "variationId": "31:454"
+        },
+        {
+          "sceneName": "10-#2_버스정류장_과거회상 2",
+          "variation": 2,
+          "variationId": "31:498"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/f86e/f86e509d60ecea4071227f013cc683667dc897bd"
+    },
+    {
+      "index": 12,
+      "imageRef": "5bced6c22c51ec44167c5bc779a0da5a9c6ce66b",
+      "usedInScenes": [
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 1,
+          "variationId": "19:778"
+        },
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 2,
+          "variationId": "31:665"
+        },
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 3,
+          "variationId": "31:693"
+        },
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 4,
+          "variationId": "31:748"
+        },
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 5,
+          "variationId": "31:774"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 1,
+          "variationId": "19:791"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 2,
+          "variationId": "31:1323"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 3,
+          "variationId": "31:1346"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 4,
+          "variationId": "31:1369"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 5,
+          "variationId": "31:1839"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 6,
+          "variationId": "31:1876"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 7,
+          "variationId": "37:2003"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 8,
+          "variationId": "53:2336"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 9,
+          "variationId": "37:2021"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 10,
+          "variationId": "53:2354"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 11,
+          "variationId": "37:2138"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 12,
+          "variationId": "37:2218"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 13,
+          "variationId": "37:2156"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 14,
+          "variationId": "37:2039"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 15,
+          "variationId": "53:2372"
+        },
+        {
+          "sceneName": "선택지",
+          "variation": 1,
+          "variationId": "31:1655"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 11,
+          "variationId": "37:2579"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 12,
+          "variationId": "37:2586"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 13,
+          "variationId": "37:2637"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 14,
+          "variationId": "37:2638"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 15,
+          "variationId": "37:2688"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 16,
+          "variationId": "37:2689"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 17,
+          "variationId": "37:2832"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 18,
+          "variationId": "37:2833"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 19,
+          "variationId": "37:2859"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 20,
+          "variationId": "37:2860"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 21,
+          "variationId": "37:2913"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 22,
+          "variationId": "37:2914"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 23,
+          "variationId": "37:2886"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 24,
+          "variationId": "37:2887"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 25,
+          "variationId": "37:2940"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 26,
+          "variationId": "37:2941"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 27,
+          "variationId": "19:1110"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 28,
+          "variationId": "37:4051"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 29,
+          "variationId": "37:4123"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 30,
+          "variationId": "37:4154"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 31,
+          "variationId": "37:4086"
+        },
+        {
+          "sceneName": "시장 입구",
+          "variation": 1,
+          "variationId": "19:995"
+        },
+        {
+          "sceneName": "시장 입구",
+          "variation": 2,
+          "variationId": "37:3370"
+        },
+        {
+          "sceneName": "시장 입구",
+          "variation": 3,
+          "variationId": "37:3393"
+        },
+        {
+          "sceneName": "시장 입구",
+          "variation": 4,
+          "variationId": "37:3410"
+        },
+        {
+          "sceneName": "시장 입구",
+          "variation": 5,
+          "variationId": "37:3427"
+        },
+        {
+          "sceneName": "시장 입구",
+          "variation": 6,
+          "variationId": "37:3450"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/5bce/5bced6c22c51ec44167c5bc779a0da5a9c6ce66b"
+    },
+    {
+      "index": 13,
+      "imageRef": "4b48ddbba3142cdfd77f979c85fd80d68a0ae86d",
+      "usedInScenes": [
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 1,
+          "variationId": "19:778"
+        },
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 2,
+          "variationId": "31:665"
+        },
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 3,
+          "variationId": "31:693"
+        },
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 4,
+          "variationId": "31:748"
+        },
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 5,
+          "variationId": "31:774"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 1,
+          "variationId": "19:791"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 2,
+          "variationId": "31:1323"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 3,
+          "variationId": "31:1346"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 4,
+          "variationId": "31:1369"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/4b48/4b48ddbba3142cdfd77f979c85fd80d68a0ae86d"
+    },
+    {
+      "index": 14,
+      "imageRef": "7d9cd11b907f15ebbd09cf4f98dcbaf906afbb39",
+      "usedInScenes": [
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 1,
+          "variationId": "19:778"
+        },
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 2,
+          "variationId": "31:665"
+        },
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 3,
+          "variationId": "31:693"
+        },
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 4,
+          "variationId": "31:748"
+        },
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 5,
+          "variationId": "31:774"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 1,
+          "variationId": "19:791"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 2,
+          "variationId": "31:1323"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 3,
+          "variationId": "31:1346"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 4,
+          "variationId": "31:1369"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/7d9c/7d9cd11b907f15ebbd09cf4f98dcbaf906afbb39"
+    },
+    {
+      "index": 15,
+      "imageRef": "43fe0f02d2cd7741dada6bf20de97d0def720ca0",
+      "usedInScenes": [
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 1,
+          "variationId": "19:778"
+        },
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 2,
+          "variationId": "31:665"
+        },
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 3,
+          "variationId": "31:693"
+        },
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 4,
+          "variationId": "31:748"
+        },
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 5,
+          "variationId": "31:774"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 1,
+          "variationId": "19:791"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 2,
+          "variationId": "31:1323"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 3,
+          "variationId": "31:1346"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 4,
+          "variationId": "31:1369"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/43fe/43fe0f02d2cd7741dada6bf20de97d0def720ca0"
+    },
+    {
+      "index": 16,
+      "imageRef": "d0942ec38b8478a1e8db29e2575e1c972d336006",
+      "usedInScenes": [
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 1,
+          "variationId": "19:778"
+        },
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 2,
+          "variationId": "31:665"
+        },
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 3,
+          "variationId": "31:693"
+        },
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 4,
+          "variationId": "31:748"
+        },
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 5,
+          "variationId": "31:774"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 1,
+          "variationId": "19:791"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 2,
+          "variationId": "31:1323"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 3,
+          "variationId": "31:1346"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 4,
+          "variationId": "31:1369"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/d094/d0942ec38b8478a1e8db29e2575e1c972d336006"
+    },
+    {
+      "index": 17,
+      "imageRef": "b998e9efd1d3c292f1a2e9f4ba17057bf6fc7474",
+      "usedInScenes": [
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 1,
+          "variationId": "19:778"
+        },
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 2,
+          "variationId": "31:665"
+        },
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 3,
+          "variationId": "31:693"
+        },
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 4,
+          "variationId": "31:748"
+        },
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 5,
+          "variationId": "31:774"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 1,
+          "variationId": "19:791"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 2,
+          "variationId": "31:1323"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 3,
+          "variationId": "31:1346"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 4,
+          "variationId": "31:1369"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/b998/b998e9efd1d3c292f1a2e9f4ba17057bf6fc7474"
+    },
+    {
+      "index": 18,
+      "imageRef": "178c6c5890c844cb6d81c4f84b7dd6922f5960ee",
+      "usedInScenes": [
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 1,
+          "variationId": "19:778"
+        },
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 2,
+          "variationId": "31:665"
+        },
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 3,
+          "variationId": "31:693"
+        },
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 4,
+          "variationId": "31:748"
+        },
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 5,
+          "variationId": "31:774"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 1,
+          "variationId": "19:791"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 2,
+          "variationId": "31:1323"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 3,
+          "variationId": "31:1346"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 4,
+          "variationId": "31:1369"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/178c/178c6c5890c844cb6d81c4f84b7dd6922f5960ee"
+    },
+    {
+      "index": 19,
+      "imageRef": "01d2ca60cce42b24972b390365f9e095160fbccb",
+      "usedInScenes": [
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 1,
+          "variationId": "19:778"
+        },
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 2,
+          "variationId": "31:665"
+        },
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 3,
+          "variationId": "31:693"
+        },
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 4,
+          "variationId": "31:748"
+        },
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 5,
+          "variationId": "31:774"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 1,
+          "variationId": "19:791"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 2,
+          "variationId": "31:1323"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 3,
+          "variationId": "31:1346"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 4,
+          "variationId": "31:1369"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/01d2/01d2ca60cce42b24972b390365f9e095160fbccb"
+    },
+    {
+      "index": 20,
+      "imageRef": "2af2d3ae9c5daed078a2bc1b0ef6b03ed5133c67",
+      "usedInScenes": [
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 1,
+          "variationId": "19:778"
+        },
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 2,
+          "variationId": "31:665"
+        },
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 3,
+          "variationId": "31:693"
+        },
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 4,
+          "variationId": "31:748"
+        },
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 5,
+          "variationId": "31:774"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 1,
+          "variationId": "19:791"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 2,
+          "variationId": "31:1323"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 3,
+          "variationId": "31:1346"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 4,
+          "variationId": "31:1369"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/2af2/2af2d3ae9c5daed078a2bc1b0ef6b03ed5133c67"
+    },
+    {
+      "index": 21,
+      "imageRef": "ad4e80f555bed7d160521a4e5e24b7f56ff1ff6a",
+      "usedInScenes": [
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 1,
+          "variationId": "19:778"
+        },
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 2,
+          "variationId": "31:665"
+        },
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 3,
+          "variationId": "31:693"
+        },
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 4,
+          "variationId": "31:748"
+        },
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 5,
+          "variationId": "31:774"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 1,
+          "variationId": "19:791"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 2,
+          "variationId": "31:1323"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 3,
+          "variationId": "31:1346"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 4,
+          "variationId": "31:1369"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 11,
+          "variationId": "37:2579"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 11,
+          "variationId": "37:2579"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 12,
+          "variationId": "37:2586"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 12,
+          "variationId": "37:2586"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 13,
+          "variationId": "37:2637"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 13,
+          "variationId": "37:2637"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 14,
+          "variationId": "37:2638"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 14,
+          "variationId": "37:2638"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 15,
+          "variationId": "37:2688"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 15,
+          "variationId": "37:2688"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 16,
+          "variationId": "37:2689"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 16,
+          "variationId": "37:2689"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 17,
+          "variationId": "37:2832"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 17,
+          "variationId": "37:2832"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 18,
+          "variationId": "37:2833"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 18,
+          "variationId": "37:2833"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 19,
+          "variationId": "37:2859"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 19,
+          "variationId": "37:2859"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 20,
+          "variationId": "37:2860"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 20,
+          "variationId": "37:2860"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 21,
+          "variationId": "37:2913"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 21,
+          "variationId": "37:2913"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 22,
+          "variationId": "37:2914"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 22,
+          "variationId": "37:2914"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 23,
+          "variationId": "37:2886"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 23,
+          "variationId": "37:2886"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 24,
+          "variationId": "37:2887"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 24,
+          "variationId": "37:2887"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 25,
+          "variationId": "37:2940"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 25,
+          "variationId": "37:2940"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 26,
+          "variationId": "37:2941"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 26,
+          "variationId": "37:2941"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 27,
+          "variationId": "19:1110"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 28,
+          "variationId": "37:4051"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 29,
+          "variationId": "37:4123"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 30,
+          "variationId": "37:4154"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 31,
+          "variationId": "37:4086"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/ad4e/ad4e80f555bed7d160521a4e5e24b7f56ff1ff6a"
+    },
+    {
+      "index": 22,
+      "imageRef": "2fdf2b0e81e751334c175bee2f0238120bc1a238",
+      "usedInScenes": [
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 1,
+          "variationId": "19:778"
+        },
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 2,
+          "variationId": "31:665"
+        },
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 3,
+          "variationId": "31:693"
+        },
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 4,
+          "variationId": "31:748"
+        },
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 5,
+          "variationId": "31:774"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 1,
+          "variationId": "19:791"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 2,
+          "variationId": "31:1323"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 3,
+          "variationId": "31:1346"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 4,
+          "variationId": "31:1369"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/2fdf/2fdf2b0e81e751334c175bee2f0238120bc1a238"
+    },
+    {
+      "index": 23,
+      "imageRef": "db9361a0bd34c5cad35a43360cda837c260e330f",
+      "usedInScenes": [
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 2,
+          "variationId": "31:665"
+        },
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 3,
+          "variationId": "31:693"
+        },
+        {
+          "sceneName": "11-#4_버스_출발 2",
+          "variation": 4,
+          "variationId": "31:748"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 1,
+          "variationId": "19:791"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 2,
+          "variationId": "31:1323"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 3,
+          "variationId": "31:1346"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 4,
+          "variationId": "31:1369"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/db93/db9361a0bd34c5cad35a43360cda837c260e330f"
+    },
+    {
+      "index": 24,
+      "imageRef": "25680dda528c053bb0d02d54ad7efd82159e2fa7",
+      "usedInScenes": [
+        {
+          "sceneName": "선택지1",
+          "variation": 1,
+          "variationId": "19:791"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 2,
+          "variationId": "31:1323"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 3,
+          "variationId": "31:1346"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 4,
+          "variationId": "31:1369"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/2568/25680dda528c053bb0d02d54ad7efd82159e2fa7"
+    },
+    {
+      "index": 25,
+      "imageRef": "fcd63be5727ec5d3f0ce6716bf3608566bd74e14",
+      "usedInScenes": [
+        {
+          "sceneName": "선택지",
+          "variation": 1,
+          "variationId": "31:1655"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/fcd6/fcd63be5727ec5d3f0ce6716bf3608566bd74e14"
+    },
+    {
+      "index": 26,
+      "imageRef": "db7969a7fd4b1889e92b84a2f5c14cce06968282",
+      "usedInScenes": [
+        {
+          "sceneName": "선택지",
+          "variation": 1,
+          "variationId": "31:1655"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/db79/db7969a7fd4b1889e92b84a2f5c14cce06968282"
+    },
+    {
+      "index": 27,
+      "imageRef": "f0e8c1d2e9f8966556d96873c03c7273ea6c7c49",
+      "usedInScenes": [
+        {
+          "sceneName": "선택지",
+          "variation": 1,
+          "variationId": "31:1655"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/f0e8/f0e8c1d2e9f8966556d96873c03c7273ea6c7c49"
+    },
+    {
+      "index": 28,
+      "imageRef": "3bc8d48ffdadbcd65a8fe9795b18fe71b881a1ef",
+      "usedInScenes": [
+        {
+          "sceneName": "선택지",
+          "variation": 1,
+          "variationId": "31:1655"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/3bc8/3bc8d48ffdadbcd65a8fe9795b18fe71b881a1ef"
+    },
+    {
+      "index": 29,
+      "imageRef": "85b36a7d16dc4c790fa7cf2d4441abe7900975b3",
+      "usedInScenes": [
+        {
+          "sceneName": "선택지",
+          "variation": 1,
+          "variationId": "31:1655"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/85b3/85b36a7d16dc4c790fa7cf2d4441abe7900975b3"
+    },
+    {
+      "index": 30,
+      "imageRef": "ba1d1fd3165bee03d1628ef0dff1bd7bbaa0d10b",
+      "usedInScenes": [
+        {
+          "sceneName": "선택지",
+          "variation": 1,
+          "variationId": "31:1655"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/ba1d/ba1d1fd3165bee03d1628ef0dff1bd7bbaa0d10b"
+    },
+    {
+      "index": 31,
+      "imageRef": "855026fa4f632a97fdecc98ad31b7e2255c305e6",
+      "usedInScenes": [
+        {
+          "sceneName": "선택지",
+          "variation": 1,
+          "variationId": "31:1655"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/8550/855026fa4f632a97fdecc98ad31b7e2255c305e6"
+    },
+    {
+      "index": 32,
+      "imageRef": "182e4a95ace658a7668d47212bc9a4950d2ca110",
+      "usedInScenes": [
+        {
+          "sceneName": "선택지",
+          "variation": 1,
+          "variationId": "31:1655"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/182e/182e4a95ace658a7668d47212bc9a4950d2ca110"
+    },
+    {
+      "index": 33,
+      "imageRef": "8d0d656cd7ab760bb9467f193967b33d19def763",
+      "usedInScenes": [
+        {
+          "sceneName": "선택지1",
+          "variation": 5,
+          "variationId": "31:1839"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 6,
+          "variationId": "31:1876"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 7,
+          "variationId": "37:2003"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 8,
+          "variationId": "53:2336"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 9,
+          "variationId": "37:2021"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 10,
+          "variationId": "53:2354"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 11,
+          "variationId": "37:2138"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 12,
+          "variationId": "37:2218"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 13,
+          "variationId": "37:2156"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 14,
+          "variationId": "37:2039"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 15,
+          "variationId": "53:2372"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/8d0d/8d0d656cd7ab760bb9467f193967b33d19def763"
+    },
+    {
+      "index": 34,
+      "imageRef": "317c00cbda2c69944f4a5c1064c3781abfec7288",
+      "usedInScenes": [
+        {
+          "sceneName": "선택지1",
+          "variation": 5,
+          "variationId": "31:1839"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 6,
+          "variationId": "31:1876"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 7,
+          "variationId": "37:2003"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 8,
+          "variationId": "53:2336"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 9,
+          "variationId": "37:2021"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 10,
+          "variationId": "53:2354"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 11,
+          "variationId": "37:2138"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 12,
+          "variationId": "37:2218"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 13,
+          "variationId": "37:2156"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 14,
+          "variationId": "37:2039"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 15,
+          "variationId": "53:2372"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/317c/317c00cbda2c69944f4a5c1064c3781abfec7288"
+    },
+    {
+      "index": 35,
+      "imageRef": "c2b95f4f5951bdf5d2eb79f5d3af8cccd031230e",
+      "usedInScenes": [
+        {
+          "sceneName": "선택지1",
+          "variation": 5,
+          "variationId": "31:1839"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 6,
+          "variationId": "31:1876"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 7,
+          "variationId": "37:2003"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 8,
+          "variationId": "53:2336"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 9,
+          "variationId": "37:2021"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 10,
+          "variationId": "53:2354"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 11,
+          "variationId": "37:2138"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 12,
+          "variationId": "37:2218"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 13,
+          "variationId": "37:2156"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 14,
+          "variationId": "37:2039"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 15,
+          "variationId": "53:2372"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/c2b9/c2b95f4f5951bdf5d2eb79f5d3af8cccd031230e"
+    },
+    {
+      "index": 36,
+      "imageRef": "5cfbcf344d6499628a4d10aa0bfed8105f3efaa4",
+      "usedInScenes": [
+        {
+          "sceneName": "선택지1",
+          "variation": 5,
+          "variationId": "31:1839"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 6,
+          "variationId": "31:1876"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 7,
+          "variationId": "37:2003"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 8,
+          "variationId": "53:2336"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 9,
+          "variationId": "37:2021"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 10,
+          "variationId": "53:2354"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 11,
+          "variationId": "37:2138"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 12,
+          "variationId": "37:2218"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 13,
+          "variationId": "37:2156"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 14,
+          "variationId": "37:2039"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 15,
+          "variationId": "53:2372"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/5cfb/5cfbcf344d6499628a4d10aa0bfed8105f3efaa4"
+    },
+    {
+      "index": 37,
+      "imageRef": "6862c72918d9d40389ba44bfe629a3e7829f5a03",
+      "usedInScenes": [
+        {
+          "sceneName": "선택지1",
+          "variation": 5,
+          "variationId": "31:1839"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 6,
+          "variationId": "31:1876"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 7,
+          "variationId": "37:2003"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 8,
+          "variationId": "53:2336"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 9,
+          "variationId": "37:2021"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 10,
+          "variationId": "53:2354"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 11,
+          "variationId": "37:2138"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 12,
+          "variationId": "37:2218"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 13,
+          "variationId": "37:2156"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 14,
+          "variationId": "37:2039"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 15,
+          "variationId": "53:2372"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/6862/6862c72918d9d40389ba44bfe629a3e7829f5a03"
+    },
+    {
+      "index": 38,
+      "imageRef": "c0a8d80da3d73c5fd658df3c4eb666bd9ef0e4a9",
+      "usedInScenes": [
+        {
+          "sceneName": "선택지1",
+          "variation": 5,
+          "variationId": "31:1839"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 6,
+          "variationId": "31:1876"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 7,
+          "variationId": "37:2003"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 8,
+          "variationId": "53:2336"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 9,
+          "variationId": "37:2021"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 10,
+          "variationId": "53:2354"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 11,
+          "variationId": "37:2138"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 12,
+          "variationId": "37:2218"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 13,
+          "variationId": "37:2156"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 14,
+          "variationId": "37:2039"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 15,
+          "variationId": "53:2372"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/c0a8/c0a8d80da3d73c5fd658df3c4eb666bd9ef0e4a9"
+    },
+    {
+      "index": 39,
+      "imageRef": "66c8b9f8dffa51ecc0bc100ca4255540dd3653f0",
+      "usedInScenes": [
+        {
+          "sceneName": "선택지1",
+          "variation": 5,
+          "variationId": "31:1839"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 6,
+          "variationId": "31:1876"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 7,
+          "variationId": "37:2003"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 8,
+          "variationId": "53:2336"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 9,
+          "variationId": "37:2021"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 10,
+          "variationId": "53:2354"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 11,
+          "variationId": "37:2138"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 12,
+          "variationId": "37:2218"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 13,
+          "variationId": "37:2156"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 14,
+          "variationId": "37:2039"
+        },
+        {
+          "sceneName": "선택지1",
+          "variation": 15,
+          "variationId": "53:2372"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/66c8/66c8b9f8dffa51ecc0bc100ca4255540dd3653f0"
+    },
+    {
+      "index": 40,
+      "imageRef": "058ddd06df52170e34bd8d1215b741cda56e7bb5",
+      "usedInScenes": [
+        {
+          "sceneName": "오두막집",
+          "variation": 1,
+          "variationId": "37:2500"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 2,
+          "variationId": "37:2507"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 3,
+          "variationId": "37:2514"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 4,
+          "variationId": "37:2521"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 5,
+          "variationId": "37:2528"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 6,
+          "variationId": "37:2543"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 7,
+          "variationId": "37:2552"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 8,
+          "variationId": "37:2998"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 9,
+          "variationId": "37:2565"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 10,
+          "variationId": "37:2572"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/058d/058ddd06df52170e34bd8d1215b741cda56e7bb5"
+    },
+    {
+      "index": 41,
+      "imageRef": "714f6e8f028da2bac33373c21a4fb32a96bc7003",
+      "usedInScenes": [
+        {
+          "sceneName": "오두막집",
+          "variation": 11,
+          "variationId": "37:2579"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 12,
+          "variationId": "37:2586"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 13,
+          "variationId": "37:2637"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 14,
+          "variationId": "37:2638"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 15,
+          "variationId": "37:2688"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 16,
+          "variationId": "37:2689"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 17,
+          "variationId": "37:2832"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 18,
+          "variationId": "37:2833"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 19,
+          "variationId": "37:2859"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 20,
+          "variationId": "37:2860"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 21,
+          "variationId": "37:2913"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 22,
+          "variationId": "37:2914"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 23,
+          "variationId": "37:2886"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 24,
+          "variationId": "37:2887"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 25,
+          "variationId": "37:2940"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 26,
+          "variationId": "37:2941"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/714f/714f6e8f028da2bac33373c21a4fb32a96bc7003"
+    },
+    {
+      "index": 42,
+      "imageRef": "6caa12d2c2a76dac331ab78938b450ff47b18ba7",
+      "usedInScenes": [
+        {
+          "sceneName": "오두막집",
+          "variation": 11,
+          "variationId": "37:2579"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 12,
+          "variationId": "37:2586"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 13,
+          "variationId": "37:2637"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 14,
+          "variationId": "37:2638"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 15,
+          "variationId": "37:2688"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 16,
+          "variationId": "37:2689"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 17,
+          "variationId": "37:2832"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 18,
+          "variationId": "37:2833"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 19,
+          "variationId": "37:2859"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 20,
+          "variationId": "37:2860"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 21,
+          "variationId": "37:2913"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 22,
+          "variationId": "37:2914"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 23,
+          "variationId": "37:2886"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 24,
+          "variationId": "37:2887"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 25,
+          "variationId": "37:2940"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 26,
+          "variationId": "37:2941"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/6caa/6caa12d2c2a76dac331ab78938b450ff47b18ba7"
+    },
+    {
+      "index": 43,
+      "imageRef": "ffa6b5d807efc6379be61c40d18bc18d42b21507",
+      "usedInScenes": [
+        {
+          "sceneName": "오두막집",
+          "variation": 11,
+          "variationId": "37:2579"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 12,
+          "variationId": "37:2586"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 13,
+          "variationId": "37:2637"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 14,
+          "variationId": "37:2638"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 15,
+          "variationId": "37:2688"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 16,
+          "variationId": "37:2689"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 17,
+          "variationId": "37:2832"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 18,
+          "variationId": "37:2833"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 19,
+          "variationId": "37:2859"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 20,
+          "variationId": "37:2860"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 21,
+          "variationId": "37:2913"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 22,
+          "variationId": "37:2914"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 23,
+          "variationId": "37:2886"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 24,
+          "variationId": "37:2887"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 25,
+          "variationId": "37:2940"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 26,
+          "variationId": "37:2941"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/ffa6/ffa6b5d807efc6379be61c40d18bc18d42b21507"
+    },
+    {
+      "index": 44,
+      "imageRef": "2c7176e3ce4fec83f68e483b85e274b3da310265",
+      "usedInScenes": [
+        {
+          "sceneName": "오두막집",
+          "variation": 11,
+          "variationId": "37:2579"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 12,
+          "variationId": "37:2586"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 13,
+          "variationId": "37:2637"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 14,
+          "variationId": "37:2638"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 15,
+          "variationId": "37:2688"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 16,
+          "variationId": "37:2689"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 17,
+          "variationId": "37:2832"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 18,
+          "variationId": "37:2833"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 19,
+          "variationId": "37:2859"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 20,
+          "variationId": "37:2860"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 21,
+          "variationId": "37:2913"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 22,
+          "variationId": "37:2914"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 23,
+          "variationId": "37:2886"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 24,
+          "variationId": "37:2887"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 25,
+          "variationId": "37:2940"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 26,
+          "variationId": "37:2941"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/2c71/2c7176e3ce4fec83f68e483b85e274b3da310265"
+    },
+    {
+      "index": 45,
+      "imageRef": "bdf11ba8dc34598fedc93383b34addc3aa0f4233",
+      "usedInScenes": [
+        {
+          "sceneName": "오두막집",
+          "variation": 11,
+          "variationId": "37:2579"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 12,
+          "variationId": "37:2586"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 13,
+          "variationId": "37:2637"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 14,
+          "variationId": "37:2638"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 15,
+          "variationId": "37:2688"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 16,
+          "variationId": "37:2689"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 17,
+          "variationId": "37:2832"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 18,
+          "variationId": "37:2833"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 19,
+          "variationId": "37:2859"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 20,
+          "variationId": "37:2860"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 21,
+          "variationId": "37:2913"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 22,
+          "variationId": "37:2914"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 23,
+          "variationId": "37:2886"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 24,
+          "variationId": "37:2887"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 25,
+          "variationId": "37:2940"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 26,
+          "variationId": "37:2941"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/bdf1/bdf11ba8dc34598fedc93383b34addc3aa0f4233"
+    },
+    {
+      "index": 46,
+      "imageRef": "c8015f059c5ca0f1ecc9803f3cb752d8ef015a94",
+      "usedInScenes": [
+        {
+          "sceneName": "오두막집",
+          "variation": 11,
+          "variationId": "37:2579"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 12,
+          "variationId": "37:2586"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 13,
+          "variationId": "37:2637"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 14,
+          "variationId": "37:2638"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 15,
+          "variationId": "37:2688"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 16,
+          "variationId": "37:2689"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 17,
+          "variationId": "37:2832"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 18,
+          "variationId": "37:2833"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 19,
+          "variationId": "37:2859"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 20,
+          "variationId": "37:2860"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 21,
+          "variationId": "37:2913"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 22,
+          "variationId": "37:2914"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 23,
+          "variationId": "37:2886"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 24,
+          "variationId": "37:2887"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 25,
+          "variationId": "37:2940"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 26,
+          "variationId": "37:2941"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/c801/c8015f059c5ca0f1ecc9803f3cb752d8ef015a94"
+    },
+    {
+      "index": 47,
+      "imageRef": "b721430149b77e17697dbd4d9128b10f31dae7e3",
+      "usedInScenes": [
+        {
+          "sceneName": "오두막집",
+          "variation": 11,
+          "variationId": "37:2579"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 12,
+          "variationId": "37:2586"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 13,
+          "variationId": "37:2637"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 14,
+          "variationId": "37:2638"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 15,
+          "variationId": "37:2688"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 16,
+          "variationId": "37:2689"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 17,
+          "variationId": "37:2832"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 18,
+          "variationId": "37:2833"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 19,
+          "variationId": "37:2859"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 20,
+          "variationId": "37:2860"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 21,
+          "variationId": "37:2913"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 22,
+          "variationId": "37:2914"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 23,
+          "variationId": "37:2886"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 24,
+          "variationId": "37:2887"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 25,
+          "variationId": "37:2940"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 26,
+          "variationId": "37:2941"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/b721/b721430149b77e17697dbd4d9128b10f31dae7e3"
+    },
+    {
+      "index": 48,
+      "imageRef": "b2bb7ec131b09fc6689763b456de767135103757",
+      "usedInScenes": [
+        {
+          "sceneName": "오두막집",
+          "variation": 11,
+          "variationId": "37:2579"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 12,
+          "variationId": "37:2586"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 13,
+          "variationId": "37:2637"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 14,
+          "variationId": "37:2638"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 15,
+          "variationId": "37:2688"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 16,
+          "variationId": "37:2689"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 17,
+          "variationId": "37:2832"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 18,
+          "variationId": "37:2833"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 19,
+          "variationId": "37:2859"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 20,
+          "variationId": "37:2860"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 21,
+          "variationId": "37:2913"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 22,
+          "variationId": "37:2914"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 23,
+          "variationId": "37:2886"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 24,
+          "variationId": "37:2887"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 25,
+          "variationId": "37:2940"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 26,
+          "variationId": "37:2941"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/b2bb/b2bb7ec131b09fc6689763b456de767135103757"
+    },
+    {
+      "index": 49,
+      "imageRef": "274eca7a0fc8e9e788e3c0234d26d5571d63a8e5",
+      "usedInScenes": [
+        {
+          "sceneName": "오두막집",
+          "variation": 11,
+          "variationId": "37:2579"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 12,
+          "variationId": "37:2586"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 13,
+          "variationId": "37:2637"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 14,
+          "variationId": "37:2638"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 15,
+          "variationId": "37:2688"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 16,
+          "variationId": "37:2689"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 17,
+          "variationId": "37:2832"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 18,
+          "variationId": "37:2833"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 19,
+          "variationId": "37:2859"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 20,
+          "variationId": "37:2860"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 21,
+          "variationId": "37:2913"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 22,
+          "variationId": "37:2914"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 23,
+          "variationId": "37:2886"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 24,
+          "variationId": "37:2887"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 25,
+          "variationId": "37:2940"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 26,
+          "variationId": "37:2941"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/274e/274eca7a0fc8e9e788e3c0234d26d5571d63a8e5"
+    },
+    {
+      "index": 50,
+      "imageRef": "053c98fd543cc08e154b50966c73bd2148e5dc33",
+      "usedInScenes": [
+        {
+          "sceneName": "오두막집",
+          "variation": 11,
+          "variationId": "37:2579"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 12,
+          "variationId": "37:2586"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 13,
+          "variationId": "37:2637"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 14,
+          "variationId": "37:2638"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 15,
+          "variationId": "37:2688"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 16,
+          "variationId": "37:2689"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 17,
+          "variationId": "37:2832"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 18,
+          "variationId": "37:2833"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 19,
+          "variationId": "37:2859"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 20,
+          "variationId": "37:2860"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 21,
+          "variationId": "37:2913"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 22,
+          "variationId": "37:2914"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 23,
+          "variationId": "37:2886"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 24,
+          "variationId": "37:2887"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 25,
+          "variationId": "37:2940"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 26,
+          "variationId": "37:2941"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 27,
+          "variationId": "19:1110"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 28,
+          "variationId": "37:4051"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 29,
+          "variationId": "37:4123"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 30,
+          "variationId": "37:4154"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 31,
+          "variationId": "37:4086"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/053c/053c98fd543cc08e154b50966c73bd2148e5dc33"
+    },
+    {
+      "index": 51,
+      "imageRef": "62b9ace84d4e05bbd783adaf78bb75bac9266539",
+      "usedInScenes": [
+        {
+          "sceneName": "오두막집",
+          "variation": 11,
+          "variationId": "37:2579"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 12,
+          "variationId": "37:2586"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 13,
+          "variationId": "37:2637"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 14,
+          "variationId": "37:2638"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 15,
+          "variationId": "37:2688"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 16,
+          "variationId": "37:2689"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 17,
+          "variationId": "37:2832"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 18,
+          "variationId": "37:2833"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 19,
+          "variationId": "37:2859"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 20,
+          "variationId": "37:2860"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 21,
+          "variationId": "37:2913"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 22,
+          "variationId": "37:2914"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 23,
+          "variationId": "37:2886"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 24,
+          "variationId": "37:2887"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 25,
+          "variationId": "37:2940"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 26,
+          "variationId": "37:2941"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 27,
+          "variationId": "19:1110"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 28,
+          "variationId": "37:4051"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 29,
+          "variationId": "37:4123"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 30,
+          "variationId": "37:4154"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 31,
+          "variationId": "37:4086"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/62b9/62b9ace84d4e05bbd783adaf78bb75bac9266539"
+    },
+    {
+      "index": 52,
+      "imageRef": "c0da555baaffca382a81d0921969eb1b78eb621b",
+      "usedInScenes": [
+        {
+          "sceneName": "오두막집",
+          "variation": 11,
+          "variationId": "37:2579"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 12,
+          "variationId": "37:2586"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 13,
+          "variationId": "37:2637"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 14,
+          "variationId": "37:2638"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 15,
+          "variationId": "37:2688"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 16,
+          "variationId": "37:2689"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 17,
+          "variationId": "37:2832"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 18,
+          "variationId": "37:2833"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 19,
+          "variationId": "37:2859"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 20,
+          "variationId": "37:2860"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 21,
+          "variationId": "37:2913"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 22,
+          "variationId": "37:2914"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 23,
+          "variationId": "37:2886"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 24,
+          "variationId": "37:2887"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 25,
+          "variationId": "37:2940"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 26,
+          "variationId": "37:2941"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 27,
+          "variationId": "19:1110"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 28,
+          "variationId": "37:4051"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 29,
+          "variationId": "37:4123"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 30,
+          "variationId": "37:4154"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 31,
+          "variationId": "37:4086"
+        },
+        {
+          "sceneName": "시장 입구",
+          "variation": 1,
+          "variationId": "19:995"
+        },
+        {
+          "sceneName": "시장 입구",
+          "variation": 2,
+          "variationId": "37:3370"
+        },
+        {
+          "sceneName": "시장 입구",
+          "variation": 3,
+          "variationId": "37:3393"
+        },
+        {
+          "sceneName": "시장 입구",
+          "variation": 4,
+          "variationId": "37:3410"
+        },
+        {
+          "sceneName": "시장 입구",
+          "variation": 5,
+          "variationId": "37:3427"
+        },
+        {
+          "sceneName": "시장 입구",
+          "variation": 6,
+          "variationId": "37:3450"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/c0da/c0da555baaffca382a81d0921969eb1b78eb621b"
+    },
+    {
+      "index": 53,
+      "imageRef": "3d80a1174ea40790da444c8bc2dac25d9f3b16a1",
+      "usedInScenes": [
+        {
+          "sceneName": "오두막집",
+          "variation": 13,
+          "variationId": "37:2637"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 14,
+          "variationId": "37:2638"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/3d80/3d80a1174ea40790da444c8bc2dac25d9f3b16a1"
+    },
+    {
+      "index": 54,
+      "imageRef": "223fe284804300147f55e06acda3df8d37b692dd",
+      "usedInScenes": [
+        {
+          "sceneName": "오두막집",
+          "variation": 15,
+          "variationId": "37:2688"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 16,
+          "variationId": "37:2689"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 17,
+          "variationId": "37:2832"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 18,
+          "variationId": "37:2833"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 19,
+          "variationId": "37:2859"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 20,
+          "variationId": "37:2860"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 21,
+          "variationId": "37:2913"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 22,
+          "variationId": "37:2914"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 23,
+          "variationId": "37:2886"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 24,
+          "variationId": "37:2887"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 25,
+          "variationId": "37:2940"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 26,
+          "variationId": "37:2941"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/223f/223fe284804300147f55e06acda3df8d37b692dd"
+    },
+    {
+      "index": 55,
+      "imageRef": "5c3ddc1276e6c1f5811b9f392f00d78a3c67b0df",
+      "usedInScenes": [
+        {
+          "sceneName": "오두막집",
+          "variation": 15,
+          "variationId": "37:2688"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 16,
+          "variationId": "37:2689"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 17,
+          "variationId": "37:2832"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 18,
+          "variationId": "37:2833"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 19,
+          "variationId": "37:2859"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 20,
+          "variationId": "37:2860"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 21,
+          "variationId": "37:2913"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 22,
+          "variationId": "37:2914"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 23,
+          "variationId": "37:2886"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 24,
+          "variationId": "37:2887"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 25,
+          "variationId": "37:2940"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 26,
+          "variationId": "37:2941"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 27,
+          "variationId": "19:1110"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 28,
+          "variationId": "37:4051"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 29,
+          "variationId": "37:4123"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 30,
+          "variationId": "37:4154"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 31,
+          "variationId": "37:4086"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/5c3d/5c3ddc1276e6c1f5811b9f392f00d78a3c67b0df"
+    },
+    {
+      "index": 56,
+      "imageRef": "44cbb11e2e650e3d87c86ba35dd993e80457e626",
+      "usedInScenes": [
+        {
+          "sceneName": "시장 입구",
+          "variation": 1,
+          "variationId": "19:995"
+        },
+        {
+          "sceneName": "시장 입구",
+          "variation": 2,
+          "variationId": "37:3370"
+        },
+        {
+          "sceneName": "시장 입구",
+          "variation": 3,
+          "variationId": "37:3393"
+        },
+        {
+          "sceneName": "시장 입구",
+          "variation": 4,
+          "variationId": "37:3410"
+        },
+        {
+          "sceneName": "시장 입구",
+          "variation": 5,
+          "variationId": "37:3427"
+        },
+        {
+          "sceneName": "시장 입구",
+          "variation": 6,
+          "variationId": "37:3450"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/44cb/44cbb11e2e650e3d87c86ba35dd993e80457e626"
+    },
+    {
+      "index": 57,
+      "imageRef": "83b7779fdf16b03dd8607723e2d2303fa4559321",
+      "usedInScenes": [
+        {
+          "sceneName": "시장 입구",
+          "variation": 1,
+          "variationId": "19:995"
+        },
+        {
+          "sceneName": "시장 입구",
+          "variation": 2,
+          "variationId": "37:3370"
+        },
+        {
+          "sceneName": "시장 입구",
+          "variation": 3,
+          "variationId": "37:3393"
+        },
+        {
+          "sceneName": "시장 입구",
+          "variation": 4,
+          "variationId": "37:3410"
+        },
+        {
+          "sceneName": "시장 입구",
+          "variation": 5,
+          "variationId": "37:3427"
+        },
+        {
+          "sceneName": "시장 입구",
+          "variation": 6,
+          "variationId": "37:3450"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/83b7/83b7779fdf16b03dd8607723e2d2303fa4559321"
+    },
+    {
+      "index": 58,
+      "imageRef": "beacddae92444b260042310e0e3402e6563afb67",
+      "usedInScenes": [
+        {
+          "sceneName": "시장 입구",
+          "variation": 1,
+          "variationId": "19:995"
+        },
+        {
+          "sceneName": "시장 입구",
+          "variation": 2,
+          "variationId": "37:3370"
+        },
+        {
+          "sceneName": "시장 입구",
+          "variation": 3,
+          "variationId": "37:3393"
+        },
+        {
+          "sceneName": "시장 입구",
+          "variation": 4,
+          "variationId": "37:3410"
+        },
+        {
+          "sceneName": "시장 입구",
+          "variation": 5,
+          "variationId": "37:3427"
+        },
+        {
+          "sceneName": "시장 입구",
+          "variation": 6,
+          "variationId": "37:3450"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/beac/beacddae92444b260042310e0e3402e6563afb67"
+    },
+    {
+      "index": 59,
+      "imageRef": "987ad53ce8cb146be6de4ca30cc633a2bf897efa",
+      "usedInScenes": [
+        {
+          "sceneName": "시장 입구",
+          "variation": 1,
+          "variationId": "19:995"
+        },
+        {
+          "sceneName": "시장 입구",
+          "variation": 2,
+          "variationId": "37:3370"
+        },
+        {
+          "sceneName": "시장 입구",
+          "variation": 3,
+          "variationId": "37:3393"
+        },
+        {
+          "sceneName": "시장 입구",
+          "variation": 4,
+          "variationId": "37:3410"
+        },
+        {
+          "sceneName": "시장 입구",
+          "variation": 5,
+          "variationId": "37:3427"
+        },
+        {
+          "sceneName": "시장 입구",
+          "variation": 6,
+          "variationId": "37:3450"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/987a/987ad53ce8cb146be6de4ca30cc633a2bf897efa"
+    },
+    {
+      "index": 60,
+      "imageRef": "a04d4ad18c6d090207cc71c41760277ae7dab4fe",
+      "usedInScenes": [
+        {
+          "sceneName": "시장 입구",
+          "variation": 1,
+          "variationId": "19:995"
+        },
+        {
+          "sceneName": "시장 입구",
+          "variation": 2,
+          "variationId": "37:3370"
+        },
+        {
+          "sceneName": "시장 입구",
+          "variation": 3,
+          "variationId": "37:3393"
+        },
+        {
+          "sceneName": "시장 입구",
+          "variation": 4,
+          "variationId": "37:3410"
+        },
+        {
+          "sceneName": "시장 입구",
+          "variation": 5,
+          "variationId": "37:3427"
+        },
+        {
+          "sceneName": "시장 입구",
+          "variation": 6,
+          "variationId": "37:3450"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/a04d/a04d4ad18c6d090207cc71c41760277ae7dab4fe"
+    },
+    {
+      "index": 61,
+      "imageRef": "53e282bd568998c6d909b43a3368bc1ee5a4311f",
+      "usedInScenes": [
+        {
+          "sceneName": "시장 입구",
+          "variation": 1,
+          "variationId": "19:995"
+        },
+        {
+          "sceneName": "시장 입구",
+          "variation": 2,
+          "variationId": "37:3370"
+        },
+        {
+          "sceneName": "시장 입구",
+          "variation": 3,
+          "variationId": "37:3393"
+        },
+        {
+          "sceneName": "시장 입구",
+          "variation": 4,
+          "variationId": "37:3410"
+        },
+        {
+          "sceneName": "시장 입구",
+          "variation": 5,
+          "variationId": "37:3427"
+        },
+        {
+          "sceneName": "시장 입구",
+          "variation": 6,
+          "variationId": "37:3450"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/53e2/53e282bd568998c6d909b43a3368bc1ee5a4311f"
+    },
+    {
+      "index": 62,
+      "imageRef": "8777394c164d8a9ef5fe6af915dc8f78d0c04ce3",
+      "usedInScenes": [
+        {
+          "sceneName": "시장 입구",
+          "variation": 1,
+          "variationId": "19:995"
+        },
+        {
+          "sceneName": "시장 입구",
+          "variation": 2,
+          "variationId": "37:3370"
+        },
+        {
+          "sceneName": "시장 입구",
+          "variation": 3,
+          "variationId": "37:3393"
+        },
+        {
+          "sceneName": "시장 입구",
+          "variation": 4,
+          "variationId": "37:3410"
+        },
+        {
+          "sceneName": "시장 입구",
+          "variation": 5,
+          "variationId": "37:3427"
+        },
+        {
+          "sceneName": "시장 입구",
+          "variation": 6,
+          "variationId": "37:3450"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/8777/8777394c164d8a9ef5fe6af915dc8f78d0c04ce3"
+    },
+    {
+      "index": 63,
+      "imageRef": "65cfb2a0528aa37a597ad7b91922f3d210eacf8e",
+      "usedInScenes": [
+        {
+          "sceneName": "오두막집",
+          "variation": 27,
+          "variationId": "19:1110"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 28,
+          "variationId": "37:4051"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 29,
+          "variationId": "37:4123"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 30,
+          "variationId": "37:4154"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 31,
+          "variationId": "37:4086"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/65cf/65cfb2a0528aa37a597ad7b91922f3d210eacf8e"
+    },
+    {
+      "index": 64,
+      "imageRef": "44c8e65213e492059045aa2bb26b67b9638adae4",
+      "usedInScenes": [
+        {
+          "sceneName": "오두막집",
+          "variation": 27,
+          "variationId": "19:1110"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 28,
+          "variationId": "37:4051"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 29,
+          "variationId": "37:4123"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 30,
+          "variationId": "37:4154"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 31,
+          "variationId": "37:4086"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/44c8/44c8e65213e492059045aa2bb26b67b9638adae4"
+    },
+    {
+      "index": 65,
+      "imageRef": "298dbb14749745e4f652ac0c0c30ce1c21e2597a",
+      "usedInScenes": [
+        {
+          "sceneName": "오두막집",
+          "variation": 27,
+          "variationId": "19:1110"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 28,
+          "variationId": "37:4051"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 29,
+          "variationId": "37:4123"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 30,
+          "variationId": "37:4154"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 31,
+          "variationId": "37:4086"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/298d/298dbb14749745e4f652ac0c0c30ce1c21e2597a"
+    },
+    {
+      "index": 66,
+      "imageRef": "c6b1b1d670d1737d229e4e9a5a77365e44d19e88",
+      "usedInScenes": [
+        {
+          "sceneName": "오두막집",
+          "variation": 27,
+          "variationId": "19:1110"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 28,
+          "variationId": "37:4051"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 29,
+          "variationId": "37:4123"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 30,
+          "variationId": "37:4154"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 31,
+          "variationId": "37:4086"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/c6b1/c6b1b1d670d1737d229e4e9a5a77365e44d19e88"
+    },
+    {
+      "index": 67,
+      "imageRef": "f0ef6882abac181021cbed5709b4744e0d74dcc7",
+      "usedInScenes": [
+        {
+          "sceneName": "오두막집",
+          "variation": 27,
+          "variationId": "19:1110"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 28,
+          "variationId": "37:4051"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 29,
+          "variationId": "37:4123"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 30,
+          "variationId": "37:4154"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 31,
+          "variationId": "37:4086"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/f0ef/f0ef6882abac181021cbed5709b4744e0d74dcc7"
+    },
+    {
+      "index": 68,
+      "imageRef": "7a82c16cb54944b8c2ea2aa3c714995c2644ab33",
+      "usedInScenes": [
+        {
+          "sceneName": "오두막집",
+          "variation": 27,
+          "variationId": "19:1110"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 28,
+          "variationId": "37:4051"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 29,
+          "variationId": "37:4123"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 30,
+          "variationId": "37:4154"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 31,
+          "variationId": "37:4086"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/7a82/7a82c16cb54944b8c2ea2aa3c714995c2644ab33"
+    },
+    {
+      "index": 69,
+      "imageRef": "4b2c1df68ae2b2fce41478f79bd809fb017aaa65",
+      "usedInScenes": [
+        {
+          "sceneName": "오두막집",
+          "variation": 27,
+          "variationId": "19:1110"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 28,
+          "variationId": "37:4051"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 29,
+          "variationId": "37:4123"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 30,
+          "variationId": "37:4154"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 31,
+          "variationId": "37:4086"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/4b2c/4b2c1df68ae2b2fce41478f79bd809fb017aaa65"
+    },
+    {
+      "index": 70,
+      "imageRef": "24eced2f54a1053a4570fc1ba17f7f26a9526835",
+      "usedInScenes": [
+        {
+          "sceneName": "오두막집",
+          "variation": 27,
+          "variationId": "19:1110"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 28,
+          "variationId": "37:4051"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 29,
+          "variationId": "37:4123"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 30,
+          "variationId": "37:4154"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 31,
+          "variationId": "37:4086"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/24ec/24eced2f54a1053a4570fc1ba17f7f26a9526835"
+    },
+    {
+      "index": 71,
+      "imageRef": "adf9b0a45e933abc1547dd14148572c731f516c4",
+      "usedInScenes": [
+        {
+          "sceneName": "오두막집",
+          "variation": 27,
+          "variationId": "19:1110"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 28,
+          "variationId": "37:4051"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 29,
+          "variationId": "37:4123"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 30,
+          "variationId": "37:4154"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 31,
+          "variationId": "37:4086"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/adf9/adf9b0a45e933abc1547dd14148572c731f516c4"
+    },
+    {
+      "index": 72,
+      "imageRef": "775d243a7df1bc993c5855da392d7000dfd6ac73",
+      "usedInScenes": [
+        {
+          "sceneName": "오두막집",
+          "variation": 27,
+          "variationId": "19:1110"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 28,
+          "variationId": "37:4051"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 29,
+          "variationId": "37:4123"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 30,
+          "variationId": "37:4154"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 31,
+          "variationId": "37:4086"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/775d/775d243a7df1bc993c5855da392d7000dfd6ac73"
+    },
+    {
+      "index": 73,
+      "imageRef": "b8090b677c1a3fa0298487560b8ac3bc32bf0dea",
+      "usedInScenes": [
+        {
+          "sceneName": "오두막집",
+          "variation": 27,
+          "variationId": "19:1110"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 28,
+          "variationId": "37:4051"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 29,
+          "variationId": "37:4123"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 30,
+          "variationId": "37:4154"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 31,
+          "variationId": "37:4086"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/b809/b8090b677c1a3fa0298487560b8ac3bc32bf0dea"
+    },
+    {
+      "index": 74,
+      "imageRef": "f49641a30f6c061b736c4493a27e4d765fd69eee",
+      "usedInScenes": [
+        {
+          "sceneName": "오두막집",
+          "variation": 27,
+          "variationId": "19:1110"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 28,
+          "variationId": "37:4051"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 29,
+          "variationId": "37:4123"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 30,
+          "variationId": "37:4154"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 31,
+          "variationId": "37:4086"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/f496/f49641a30f6c061b736c4493a27e4d765fd69eee"
+    },
+    {
+      "index": 75,
+      "imageRef": "b6427be829e2abf58581a41fdff34ecf87e2bb60",
+      "usedInScenes": [
+        {
+          "sceneName": "오두막집",
+          "variation": 27,
+          "variationId": "19:1110"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 28,
+          "variationId": "37:4051"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 29,
+          "variationId": "37:4123"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 30,
+          "variationId": "37:4154"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 31,
+          "variationId": "37:4086"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/b642/b6427be829e2abf58581a41fdff34ecf87e2bb60"
+    },
+    {
+      "index": 76,
+      "imageRef": "262dc02294b35b61589d1eea7502296bbf31f271",
+      "usedInScenes": [
+        {
+          "sceneName": "오두막집",
+          "variation": 27,
+          "variationId": "19:1110"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 28,
+          "variationId": "37:4051"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 29,
+          "variationId": "37:4123"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 30,
+          "variationId": "37:4154"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 31,
+          "variationId": "37:4086"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/262d/262dc02294b35b61589d1eea7502296bbf31f271"
+    },
+    {
+      "index": 77,
+      "imageRef": "c334e0ce2d98cdb0f0a5cd56833bed951e61363c",
+      "usedInScenes": [
+        {
+          "sceneName": "오두막집",
+          "variation": 27,
+          "variationId": "19:1110"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 28,
+          "variationId": "37:4051"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 29,
+          "variationId": "37:4123"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 30,
+          "variationId": "37:4154"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 31,
+          "variationId": "37:4086"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/c334/c334e0ce2d98cdb0f0a5cd56833bed951e61363c"
+    },
+    {
+      "index": 78,
+      "imageRef": "8460d5177eb84fa00e33e5c8da240fbf5a451341",
+      "usedInScenes": [
+        {
+          "sceneName": "오두막집",
+          "variation": 27,
+          "variationId": "19:1110"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 28,
+          "variationId": "37:4051"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 29,
+          "variationId": "37:4123"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 30,
+          "variationId": "37:4154"
+        },
+        {
+          "sceneName": "오두막집",
+          "variation": 31,
+          "variationId": "37:4086"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/8460/8460d5177eb84fa00e33e5c8da240fbf5a451341"
+    },
+    {
+      "index": 79,
+      "imageRef": "126fbb028929d145cea100259ac44cbe2f682df4",
+      "usedInScenes": [
+        {
+          "sceneName": "end",
+          "variation": 1,
+          "variationId": "39:905"
+        },
+        {
+          "sceneName": "end",
+          "variation": 2,
+          "variationId": "39:938"
+        },
+        {
+          "sceneName": "end",
+          "variation": 3,
+          "variationId": "39:959"
+        },
+        {
+          "sceneName": "end",
+          "variation": 4,
+          "variationId": "39:980"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/126f/126fbb028929d145cea100259ac44cbe2f682df4"
+    },
+    {
+      "index": 80,
+      "imageRef": "81923ff67ec2068d782ecd596638470b059eee32",
+      "usedInScenes": [
+        {
+          "sceneName": "end",
+          "variation": 1,
+          "variationId": "39:905"
+        },
+        {
+          "sceneName": "end",
+          "variation": 2,
+          "variationId": "39:938"
+        },
+        {
+          "sceneName": "end",
+          "variation": 3,
+          "variationId": "39:959"
+        },
+        {
+          "sceneName": "end",
+          "variation": 4,
+          "variationId": "39:980"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/8192/81923ff67ec2068d782ecd596638470b059eee32"
+    },
+    {
+      "index": 81,
+      "imageRef": "c30b60ee69ded040891ee30e039aadc3e11f2c21",
+      "usedInScenes": [
+        {
+          "sceneName": "end",
+          "variation": 1,
+          "variationId": "39:905"
+        },
+        {
+          "sceneName": "end",
+          "variation": 2,
+          "variationId": "39:938"
+        },
+        {
+          "sceneName": "end",
+          "variation": 3,
+          "variationId": "39:959"
+        },
+        {
+          "sceneName": "end",
+          "variation": 4,
+          "variationId": "39:980"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/c30b/c30b60ee69ded040891ee30e039aadc3e11f2c21"
+    },
+    {
+      "index": 82,
+      "imageRef": "e32ee09fc3c1d526cedbfaddcac33bbc98ea2293",
+      "usedInScenes": [
+        {
+          "sceneName": "end",
+          "variation": 1,
+          "variationId": "39:905"
+        },
+        {
+          "sceneName": "end",
+          "variation": 2,
+          "variationId": "39:938"
+        },
+        {
+          "sceneName": "end",
+          "variation": 3,
+          "variationId": "39:959"
+        },
+        {
+          "sceneName": "end",
+          "variation": 4,
+          "variationId": "39:980"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/e32e/e32ee09fc3c1d526cedbfaddcac33bbc98ea2293"
+    },
+    {
+      "index": 83,
+      "imageRef": "b35d69bc44ff3c589b9f2b443afc47f005e27554",
+      "usedInScenes": [
+        {
+          "sceneName": "end",
+          "variation": 1,
+          "variationId": "39:905"
+        },
+        {
+          "sceneName": "end",
+          "variation": 2,
+          "variationId": "39:938"
+        },
+        {
+          "sceneName": "end",
+          "variation": 3,
+          "variationId": "39:959"
+        },
+        {
+          "sceneName": "end",
+          "variation": 4,
+          "variationId": "39:980"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/b35d/b35d69bc44ff3c589b9f2b443afc47f005e27554"
+    },
+    {
+      "index": 84,
+      "imageRef": "4f8b6949c5d9bb0b2de6f4424643448fad85c237",
+      "usedInScenes": [
+        {
+          "sceneName": "end",
+          "variation": 1,
+          "variationId": "39:905"
+        },
+        {
+          "sceneName": "end",
+          "variation": 2,
+          "variationId": "39:938"
+        },
+        {
+          "sceneName": "end",
+          "variation": 3,
+          "variationId": "39:959"
+        },
+        {
+          "sceneName": "end",
+          "variation": 4,
+          "variationId": "39:980"
+        }
+      ],
+      "figmaUrl": "https://s3-alpha.figma.com/img/4f8b/4f8b6949c5d9bb0b2de6f4424643448fad85c237"
+    }
+  ]
+}

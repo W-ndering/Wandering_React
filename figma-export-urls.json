@@ -1,0 +1,693 @@
+{
+  "9-#2_버스정류장 2": [
+    {
+      "variation": 1,
+      "id": "19:766",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 2,
+      "id": "30:386",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 3,
+      "id": "30:417",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 4,
+      "id": "31:1907",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 5,
+      "id": "31:579",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 6,
+      "id": "30:427",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 7,
+      "id": "30:437",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 8,
+      "id": "31:814",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    }
+  ],
+  "10-#2_버스정류장_과거회상 2": [
+    {
+      "variation": 1,
+      "id": "31:454",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 2,
+      "id": "31:498",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 3,
+      "id": "31:512",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 4,
+      "id": "31:541",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 5,
+      "id": "31:549",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    }
+  ],
+  "11-#4_버스_출발 2": [
+    {
+      "variation": 1,
+      "id": "19:778",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 2,
+      "id": "31:665",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 3,
+      "id": "31:693",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 4,
+      "id": "31:748",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 5,
+      "id": "31:774",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    }
+  ],
+  "선택지1": [
+    {
+      "variation": 1,
+      "id": "19:791",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 2,
+      "id": "31:1323",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 3,
+      "id": "31:1346",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 4,
+      "id": "31:1369",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 5,
+      "id": "31:1839",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 6,
+      "id": "31:1876",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 7,
+      "id": "37:2003",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 8,
+      "id": "53:2336",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 9,
+      "id": "37:2021",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 10,
+      "id": "53:2354",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 11,
+      "id": "37:2138",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 12,
+      "id": "37:2218",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 13,
+      "id": "37:2156",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 14,
+      "id": "37:2039",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 15,
+      "id": "53:2372",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    }
+  ],
+  "선택지": [
+    {
+      "variation": 1,
+      "id": "31:1655",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    }
+  ],
+  "오두막집": [
+    {
+      "variation": 1,
+      "id": "37:2500",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 2,
+      "id": "37:2507",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 3,
+      "id": "37:2514",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 4,
+      "id": "37:2521",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 5,
+      "id": "37:2528",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 6,
+      "id": "37:2543",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 7,
+      "id": "37:2552",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 8,
+      "id": "37:2998",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 9,
+      "id": "37:2565",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 10,
+      "id": "37:2572",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 11,
+      "id": "37:2579",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 12,
+      "id": "37:2586",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 13,
+      "id": "37:2637",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 14,
+      "id": "37:2638",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 15,
+      "id": "37:2688",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 16,
+      "id": "37:2689",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 17,
+      "id": "37:2832",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 18,
+      "id": "37:2833",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 19,
+      "id": "37:2859",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 20,
+      "id": "37:2860",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 21,
+      "id": "37:2913",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 22,
+      "id": "37:2914",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 23,
+      "id": "37:2886",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 24,
+      "id": "37:2887",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 25,
+      "id": "37:2940",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 26,
+      "id": "37:2941",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 27,
+      "id": "19:1110",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 28,
+      "id": "37:4051",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 29,
+      "id": "37:4123",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 30,
+      "id": "37:4154",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 31,
+      "id": "37:4086",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    }
+  ],
+  "시장 입구": [
+    {
+      "variation": 1,
+      "id": "19:995",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 2,
+      "id": "37:3370",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 3,
+      "id": "37:3393",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 4,
+      "id": "37:3410",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 5,
+      "id": "37:3427",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 6,
+      "id": "37:3450",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    }
+  ],
+  "end": [
+    {
+      "variation": 1,
+      "id": "39:905",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 2,
+      "id": "39:938",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 3,
+      "id": "39:959",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    },
+    {
+      "variation": 4,
+      "id": "39:980",
+      "url": null,
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      }
+    }
+  ]
+}

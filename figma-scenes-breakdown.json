@@ -1,0 +1,721 @@
+{
+  "9-#2_버스정류장 2": {
+    "dimensions": {
+      "width": 2560,
+      "height": 1440
+    },
+    "backgroundColor": {
+      "r": 0,
+      "g": 0,
+      "b": 0,
+      "a": 0
+    },
+    "variationCount": 8,
+    "commonElements": {
+      "backgrounds": [],
+      "characters": [],
+      "texts": [
+        {
+          "name": "버스 정류장",
+          "content": "버스 정류장",
+          "fontSize": 120,
+          "fontFamily": "DungGeunMo",
+          "fontWeight": 400,
+          "position": {
+            "x": 944,
+            "y": 10496,
+            "width": 672,
+            "height": 168
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 1
+              },
+              "hex": "#ffffff"
+            }
+          ]
+        }
+      ],
+      "uiElements": []
+    },
+    "exportUrls": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ]
+  },
+  "10-#2_버스정류장_과거회상 2": {
+    "dimensions": {
+      "width": 2560,
+      "height": 1440
+    },
+    "backgroundColor": {
+      "r": 0,
+      "g": 0,
+      "b": 0,
+      "a": 0
+    },
+    "variationCount": 5,
+    "commonElements": {
+      "backgrounds": [],
+      "characters": [],
+      "texts": [
+        {
+          "name": "player",
+          "content": "player",
+          "fontSize": 50,
+          "fontFamily": "DungGeunMo",
+          "fontWeight": 400,
+          "position": {
+            "x": 17144,
+            "y": 10120,
+            "width": 155,
+            "height": 70
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 1
+              },
+              "hex": "#ffffff"
+            }
+          ]
+        },
+        {
+          "name": "아빠! 나 버스 타고 갈래!",
+          "content": "아빠! 나 버스 타고 갈래!",
+          "fontSize": 60,
+          "fontFamily": "DungGeunMo",
+          "fontWeight": 400,
+          "position": {
+            "x": 17144,
+            "y": 10198,
+            "width": 737,
+            "height": 84
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 1
+              },
+              "hex": "#ffffff"
+            }
+          ]
+        }
+      ],
+      "uiElements": []
+    },
+    "exportUrls": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ]
+  },
+  "11-#4_버스_출발 2": {
+    "dimensions": {
+      "width": 2560,
+      "height": 1440
+    },
+    "backgroundColor": {
+      "r": 0,
+      "g": 0,
+      "b": 0,
+      "a": 0
+    },
+    "variationCount": 5,
+    "commonElements": {
+      "backgrounds": [
+        {
+          "name": "배경",
+          "position": {
+            "x": 0,
+            "y": 11469,
+            "width": 2560,
+            "height": 1440
+          },
+          "fills": [
+            {
+              "type": "IMAGE",
+              "imageRef": "5bced6c22c51ec44167c5bc779a0da5a9c6ce66b",
+              "scaleMode": "STRETCH"
+            }
+          ]
+        }
+      ],
+      "characters": [],
+      "texts": [
+        {
+          "name": "버스 안",
+          "content": "버스 안",
+          "fontSize": 120,
+          "fontFamily": "DungGeunMo",
+          "fontWeight": 400,
+          "position": {
+            "x": 1066,
+            "y": 12105,
+            "width": 428,
+            "height": 168
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 1
+              },
+              "hex": "#ffffff"
+            }
+          ]
+        }
+      ],
+      "uiElements": []
+    },
+    "exportUrls": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ]
+  },
+  "선택지1": {
+    "dimensions": {
+      "width": 2560,
+      "height": 1440
+    },
+    "backgroundColor": {
+      "r": 1,
+      "g": 1,
+      "b": 1,
+      "a": 1
+    },
+    "variationCount": 15,
+    "commonElements": {
+      "backgrounds": [
+        {
+          "name": "배경",
+          "position": {
+            "x": 0,
+            "y": 13158,
+            "width": 2560,
+            "height": 1440
+          },
+          "fills": [
+            {
+              "type": "IMAGE",
+              "imageRef": "5bced6c22c51ec44167c5bc779a0da5a9c6ce66b",
+              "scaleMode": "STRETCH"
+            }
+          ]
+        }
+      ],
+      "characters": [],
+      "texts": [
+        {
+          "name": "player",
+          "content": "player",
+          "fontSize": 50,
+          "fontFamily": "DungGeunMo",
+          "fontWeight": 400,
+          "position": {
+            "x": 690,
+            "y": 13409,
+            "width": 155,
+            "height": 70
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 1
+              },
+              "hex": "#000000"
+            }
+          ]
+        },
+        {
+          "name": "정말 죄송한데 잠든 사이 누군가 지갑을 훔쳐 간 것 같아요...",
+          "content": "정말 죄송한데 잠든 사이 \n누군가 지갑을 훔쳐 간 것 같아요...",
+          "fontSize": 60,
+          "fontFamily": "DungGeunMo",
+          "fontWeight": 400,
+          "position": {
+            "x": 690,
+            "y": 13499,
+            "width": 1044,
+            "height": 168
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 1
+              },
+              "hex": "#000000"
+            }
+          ]
+        }
+      ],
+      "uiElements": []
+    },
+    "exportUrls": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ]
+  },
+  "선택지": {
+    "dimensions": {
+      "width": 2560,
+      "height": 1440
+    },
+    "backgroundColor": {
+      "r": 1,
+      "g": 1,
+      "b": 1,
+      "a": 1
+    },
+    "variationCount": 1,
+    "commonElements": {
+      "backgrounds": [
+        {
+          "name": "배경",
+          "position": {
+            "x": 2629,
+            "y": 19500,
+            "width": 2560,
+            "height": 1440
+          },
+          "fills": [
+            {
+              "type": "IMAGE",
+              "imageRef": "5bced6c22c51ec44167c5bc779a0da5a9c6ce66b",
+              "scaleMode": "STRETCH"
+            }
+          ]
+        }
+      ],
+      "characters": [],
+      "texts": [
+        {
+          "name": "계단은 점점 흙길로 이어지고, 오를수록 길은 험난해진다.",
+          "content": "계단은 점점 흙길로 이어지고, \n오를수록 길은 험난해진다.",
+          "fontSize": 60,
+          "fontFamily": "DungGeunMo",
+          "fontWeight": 400,
+          "position": {
+            "x": 3464,
+            "y": 19818,
+            "width": 890,
+            "height": 168
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 1
+              },
+              "hex": "#000000"
+            }
+          ]
+        },
+        {
+          "name": "TEXT",
+          "content": "힘드니 내려간다.",
+          "fontSize": 48,
+          "fontFamily": "DungGeunMo",
+          "fontWeight": 400,
+          "position": {
+            "x": 3713.5,
+            "y": 20227.5,
+            "width": 392,
+            "height": 67
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 1
+              },
+              "hex": "#ffffff"
+            }
+          ]
+        },
+        {
+          "name": "TEXT",
+          "content": "계속 올라간다.",
+          "fontSize": 48,
+          "fontFamily": "DungGeunMo",
+          "fontWeight": 400,
+          "position": {
+            "x": 3738,
+            "y": 20475.5,
+            "width": 343,
+            "height": 67
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 1
+              },
+              "hex": "#ffffff"
+            }
+          ]
+        }
+      ],
+      "uiElements": []
+    },
+    "exportUrls": [
+      null
+    ]
+  },
+  "오두막집": {
+    "dimensions": {
+      "width": 2560,
+      "height": 1440
+    },
+    "backgroundColor": {
+      "r": 1,
+      "g": 1,
+      "b": 1,
+      "a": 1
+    },
+    "variationCount": 31,
+    "commonElements": {
+      "backgrounds": [],
+      "characters": [],
+      "texts": [
+        {
+          "name": "으음.. 맛있는 냄새 ...",
+          "content": "으음.. 맛있는 냄새 ...",
+          "fontSize": 60,
+          "fontFamily": "DungGeunMo",
+          "fontWeight": 400,
+          "position": {
+            "x": 942,
+            "y": 26799,
+            "width": 677,
+            "height": 84
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 1
+              },
+              "hex": "#000000"
+            }
+          ]
+        }
+      ],
+      "uiElements": []
+    },
+    "exportUrls": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ]
+  },
+  "시장 입구": {
+    "dimensions": {
+      "width": 2560,
+      "height": 1440
+    },
+    "backgroundColor": {
+      "r": 1,
+      "g": 1,
+      "b": 1,
+      "a": 1
+    },
+    "variationCount": 6,
+    "commonElements": {
+      "backgrounds": [
+        {
+          "name": "배경",
+          "position": {
+            "x": 5258,
+            "y": 33637,
+            "width": 2560,
+            "height": 1440
+          },
+          "fills": [
+            {
+              "type": "IMAGE",
+              "imageRef": "5bced6c22c51ec44167c5bc779a0da5a9c6ce66b",
+              "scaleMode": "STRETCH"
+            }
+          ]
+        }
+      ],
+      "characters": [],
+      "texts": [
+        {
+          "name": "아저씨",
+          "content": "아저씨",
+          "fontSize": 50,
+          "fontFamily": "DungGeunMo",
+          "fontWeight": 400,
+          "position": {
+            "x": 5948,
+            "y": 33888,
+            "width": 152,
+            "height": 70
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 1
+              },
+              "hex": "#000000"
+            }
+          ]
+        },
+        {
+          "name": "우리 마을 축제가 있어서 데리고 나왔네. 온 김에 좀 즐기다 가게나.",
+          "content": "우리 마을 축제가 있어서 데리고 나왔네.\n온 김에 좀 즐기다 가게나.",
+          "fontSize": 60,
+          "fontFamily": "DungGeunMo",
+          "fontWeight": 400,
+          "position": {
+            "x": 5948,
+            "y": 33966,
+            "width": 1166,
+            "height": 168
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 1
+              },
+              "hex": "#000000"
+            }
+          ]
+        }
+      ],
+      "uiElements": []
+    },
+    "exportUrls": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ]
+  },
+  "end": {
+    "dimensions": {
+      "width": 2560,
+      "height": 1440
+    },
+    "backgroundColor": {
+      "r": 0,
+      "g": 0,
+      "b": 0,
+      "a": 1
+    },
+    "variationCount": 4,
+    "commonElements": {
+      "backgrounds": [],
+      "characters": [],
+      "texts": [
+        {
+          "name": "DESIGNER",
+          "content": "DESIGNER",
+          "fontSize": 48,
+          "fontFamily": "DungGeunMo",
+          "fontWeight": 400,
+          "position": {
+            "x": 27995,
+            "y": 46242,
+            "width": 539,
+            "height": 67
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 1
+              },
+              "hex": "#ffffff"
+            }
+          ]
+        },
+        {
+          "name": "JI YEON JEON",
+          "content": "JI YEON JEON",
+          "fontSize": 48,
+          "fontFamily": "DungGeunMo",
+          "fontWeight": 400,
+          "position": {
+            "x": 27995,
+            "y": 46391,
+            "width": 299,
+            "height": 67
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 1
+              },
+              "hex": "#ffffff"
+            }
+          ]
+        },
+        {
+          "name": "영문 이름 입력해주세요",
+          "content": "영문 이름 입력해주세요",
+          "fontSize": 48,
+          "fontFamily": "DungGeunMo",
+          "fontWeight": 400,
+          "position": {
+            "x": 27995,
+            "y": 46482,
+            "width": 539,
+            "height": 67
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 1
+              },
+              "hex": "#ffffff"
+            }
+          ]
+        },
+        {
+          "name": "영문 이름 입력해주세요",
+          "content": "영문 이름 입력해주세요",
+          "fontSize": 48,
+          "fontFamily": "DungGeunMo",
+          "fontWeight": 400,
+          "position": {
+            "x": 27995,
+            "y": 46573,
+            "width": 539,
+            "height": 67
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 1
+              },
+              "hex": "#ffffff"
+            }
+          ]
+        }
+      ],
+      "uiElements": []
+    },
+    "exportUrls": [
+      null,
+      null,
+      null,
+      null
+    ]
+  }
+}

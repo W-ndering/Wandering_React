@@ -1,0 +1,1410 @@
+{
+  "metadata": {
+    "generated": "2025-10-30T02:12:04.309Z",
+    "totalScenes": 8,
+    "totalVariations": 75,
+    "canvasSize": {
+      "width": 2560,
+      "height": 1440
+    }
+  },
+  "scenes": {
+    "9-#2_버스정류장 2": {
+      "slug": "bus-stop",
+      "sceneRange": "32-37",
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      },
+      "variationCount": 8,
+      "variations": [
+        {
+          "index": 1,
+          "id": "19:766",
+          "elementCounts": {
+            "totalElements": 2,
+            "backgrounds": 0,
+            "characters": 0,
+            "texts": 1,
+            "uiElements": 0,
+            "images": 1
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "버스 정류장"
+          ]
+        },
+        {
+          "index": 2,
+          "id": "30:386",
+          "elementCounts": {
+            "totalElements": 9,
+            "backgrounds": 0,
+            "characters": 0,
+            "texts": 3,
+            "uiElements": 0,
+            "images": 5
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "0000번 버스\n8분 뒤 도착",
+            "”"
+          ]
+        },
+        {
+          "index": 3,
+          "id": "30:417",
+          "elementCounts": {
+            "totalElements": 8,
+            "backgrounds": 0,
+            "characters": 0,
+            "texts": 1,
+            "uiElements": 0,
+            "images": 6
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "기다리기에 나쁘지 않은 시간이다."
+          ]
+        },
+        {
+          "index": 4,
+          "id": "31:1907",
+          "elementCounts": {
+            "totalElements": 5,
+            "backgrounds": 0,
+            "characters": 0,
+            "texts": 0,
+            "uiElements": 0,
+            "images": 5
+          },
+          "hasText": false,
+          "hasImages": true,
+          "textPreview": []
+        },
+        {
+          "index": 5,
+          "id": "31:579",
+          "elementCounts": {
+            "totalElements": 6,
+            "backgrounds": 0,
+            "characters": 0,
+            "texts": 1,
+            "uiElements": 0,
+            "images": 4
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "버스가 도착했다."
+          ]
+        },
+        {
+          "index": 6,
+          "id": "30:427",
+          "elementCounts": {
+            "totalElements": 8,
+            "backgrounds": 0,
+            "characters": 0,
+            "texts": 1,
+            "uiElements": 0,
+            "images": 6
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "지나다니는 사람들을 보며\n이 동네는 어떤 곳일까 생각에 잠긴다."
+          ]
+        },
+        {
+          "index": 7,
+          "id": "30:437",
+          "elementCounts": {
+            "totalElements": 4,
+            "backgrounds": 0,
+            "characters": 0,
+            "texts": 1,
+            "uiElements": 0,
+            "images": 2
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "지나다니는 사람들을 보며\n이 동네는 어떤 곳일까 생각에 잠긴다."
+          ]
+        },
+        {
+          "index": 8,
+          "id": "31:814",
+          "elementCounts": {
+            "totalElements": 4,
+            "backgrounds": 0,
+            "characters": 0,
+            "texts": 1,
+            "uiElements": 0,
+            "images": 2
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "잦은 이동에 피곤한 나머지\n눈이 감긴다 . . ."
+          ]
+        }
+      ]
+    },
+    "10-#2_버스정류장_과거회상 2": {
+      "slug": "bus-stop-memory",
+      "sceneRange": "38-43",
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      },
+      "variationCount": 5,
+      "variations": [
+        {
+          "index": 1,
+          "id": "31:454",
+          "elementCounts": {
+            "totalElements": 7,
+            "backgrounds": 0,
+            "characters": 0,
+            "texts": 2,
+            "uiElements": 0,
+            "images": 4
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "player",
+            "아빠! 나 버스 타고 갈래!"
+          ]
+        },
+        {
+          "index": 2,
+          "id": "31:498",
+          "elementCounts": {
+            "totalElements": 6,
+            "backgrounds": 0,
+            "characters": 0,
+            "texts": 1,
+            "uiElements": 0,
+            "images": 4
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "지나다니는 행인들을 보니 \n아버지와의 추억이 떠오른다."
+          ]
+        },
+        {
+          "index": 3,
+          "id": "31:512",
+          "elementCounts": {
+            "totalElements": 4,
+            "backgrounds": 0,
+            "characters": 0,
+            "texts": 1,
+            "uiElements": 0,
+            "images": 2
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "아버지는 잘 계시려나."
+          ]
+        },
+        {
+          "index": 4,
+          "id": "31:541",
+          "elementCounts": {
+            "totalElements": 4,
+            "backgrounds": 0,
+            "characters": 0,
+            "texts": 1,
+            "uiElements": 0,
+            "images": 2
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "출발 하기 전에 전화라도 드렸어야 했나."
+          ]
+        },
+        {
+          "index": 5,
+          "id": "31:549",
+          "elementCounts": {
+            "totalElements": 4,
+            "backgrounds": 0,
+            "characters": 0,
+            "texts": 1,
+            "uiElements": 0,
+            "images": 2
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "지난 몇 년간 \n집에서 오는 전화가 부담스러워\n거절하거나 틱틱대곤 했다."
+          ]
+        }
+      ]
+    },
+    "11-#4_버스_출발 2": {
+      "slug": "in-bus",
+      "sceneRange": "44-54",
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      },
+      "variationCount": 5,
+      "variations": [
+        {
+          "index": 1,
+          "id": "19:778",
+          "elementCounts": {
+            "totalElements": 12,
+            "backgrounds": 1,
+            "characters": 0,
+            "texts": 1,
+            "uiElements": 0,
+            "images": 11
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "버스 안"
+          ]
+        },
+        {
+          "index": 2,
+          "id": "31:665",
+          "elementCounts": {
+            "totalElements": 17,
+            "backgrounds": 1,
+            "characters": 0,
+            "texts": 2,
+            "uiElements": 0,
+            "images": 14
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "버스에 올라탔다. 무얼 할까?",
+            "요금을 낸다"
+          ]
+        },
+        {
+          "index": 3,
+          "id": "31:693",
+          "elementCounts": {
+            "totalElements": 17,
+            "backgrounds": 1,
+            "characters": 0,
+            "texts": 2,
+            "uiElements": 0,
+            "images": 14
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "버스 기사",
+            "하차 하실 때 요금을 내세요"
+          ]
+        },
+        {
+          "index": 4,
+          "id": "31:748",
+          "elementCounts": {
+            "totalElements": 16,
+            "backgrounds": 1,
+            "characters": 0,
+            "texts": 1,
+            "uiElements": 0,
+            "images": 14
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "이 동네는 \n하차 할 때 돈을 내는 것 같다."
+          ]
+        },
+        {
+          "index": 5,
+          "id": "31:774",
+          "elementCounts": {
+            "totalElements": 15,
+            "backgrounds": 1,
+            "characters": 0,
+            "texts": 1,
+            "uiElements": 0,
+            "images": 13
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "다시 지갑을 가방에 넣고 \n자리에 앉아 창 밖을 구경한다."
+          ]
+        }
+      ]
+    },
+    "선택지1": {
+      "slug": "bus-choices",
+      "sceneRange": "55-64",
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      },
+      "variationCount": 15,
+      "variations": [
+        {
+          "index": 1,
+          "id": "19:791",
+          "elementCounts": {
+            "totalElements": 18,
+            "backgrounds": 1,
+            "characters": 0,
+            "texts": 2,
+            "uiElements": 0,
+            "images": 15
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "player",
+            "정말 죄송한데 잠든 사이 \n누군가 지갑을 훔쳐 간 것 같아요..."
+          ]
+        },
+        {
+          "index": 2,
+          "id": "31:1323",
+          "elementCounts": {
+            "totalElements": 18,
+            "backgrounds": 1,
+            "characters": 0,
+            "texts": 2,
+            "uiElements": 0,
+            "images": 15
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "버스 기사",
+            "이 동네는 소매치기가 많이 일어나요. \n앞으로는 조심하도록 해요."
+          ]
+        },
+        {
+          "index": 3,
+          "id": "31:1346",
+          "elementCounts": {
+            "totalElements": 18,
+            "backgrounds": 1,
+            "characters": 0,
+            "texts": 2,
+            "uiElements": 0,
+            "images": 15
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "버스 기사",
+            "이번엔 그냥 내리세요."
+          ]
+        },
+        {
+          "index": 4,
+          "id": "31:1369",
+          "elementCounts": {
+            "totalElements": 18,
+            "backgrounds": 1,
+            "characters": 0,
+            "texts": 2,
+            "uiElements": 0,
+            "images": 15
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "player",
+            "정말 감사합니다 기사님..."
+          ]
+        },
+        {
+          "index": 5,
+          "id": "31:1839",
+          "elementCounts": {
+            "totalElements": 13,
+            "backgrounds": 1,
+            "characters": 0,
+            "texts": 1,
+            "uiElements": 0,
+            "images": 11
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "날씨는 점점 거칠어지고, \n숨 막히는 등반 끝에\n마침내 정상에 다다른다."
+          ]
+        },
+        {
+          "index": 6,
+          "id": "31:1876",
+          "elementCounts": {
+            "totalElements": 10,
+            "backgrounds": 1,
+            "characters": 0,
+            "texts": 0,
+            "uiElements": 0,
+            "images": 10
+          },
+          "hasText": false,
+          "hasImages": true,
+          "textPreview": []
+        },
+        {
+          "index": 7,
+          "id": "37:2003",
+          "elementCounts": {
+            "totalElements": 13,
+            "backgrounds": 1,
+            "characters": 0,
+            "texts": 2,
+            "uiElements": 0,
+            "images": 10
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "player",
+            "네. 이런 곳이 있는 줄 몰랐어요."
+          ]
+        },
+        {
+          "index": 8,
+          "id": "53:2336",
+          "elementCounts": {
+            "totalElements": 13,
+            "backgrounds": 1,
+            "characters": 0,
+            "texts": 2,
+            "uiElements": 0,
+            "images": 10
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "player",
+            "네. 이런 곳이 있는 줄 몰랐어요."
+          ]
+        },
+        {
+          "index": 9,
+          "id": "37:2021",
+          "elementCounts": {
+            "totalElements": 13,
+            "backgrounds": 1,
+            "characters": 0,
+            "texts": 2,
+            "uiElements": 0,
+            "images": 10
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "여행자",
+            "그런데, \n당신은 왜 이 길을 오르셨습니까?"
+          ]
+        },
+        {
+          "index": 10,
+          "id": "53:2354",
+          "elementCounts": {
+            "totalElements": 13,
+            "backgrounds": 1,
+            "characters": 0,
+            "texts": 2,
+            "uiElements": 0,
+            "images": 10
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "여행자",
+            "그런데, \n당신은 왜 이 길을 오르셨습니까?"
+          ]
+        },
+        {
+          "index": 11,
+          "id": "37:2138",
+          "elementCounts": {
+            "totalElements": 13,
+            "backgrounds": 1,
+            "characters": 0,
+            "texts": 2,
+            "uiElements": 0,
+            "images": 10
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "여행자",
+            "그렇군요. 잠시 앉으시겠습니까?"
+          ]
+        },
+        {
+          "index": 12,
+          "id": "37:2218",
+          "elementCounts": {
+            "totalElements": 13,
+            "backgrounds": 1,
+            "characters": 0,
+            "texts": 2,
+            "uiElements": 0,
+            "images": 10
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "여행자",
+            "벌써 가시는군요.\n부디 즐거운 여정이 되시길 바랍니다."
+          ]
+        },
+        {
+          "index": 13,
+          "id": "37:2156",
+          "elementCounts": {
+            "totalElements": 13,
+            "backgrounds": 1,
+            "characters": 0,
+            "texts": 2,
+            "uiElements": 0,
+            "images": 10
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "당신은 여행자와 앉아 풍경을 바라본다.",
+            "일어난다"
+          ]
+        },
+        {
+          "index": 14,
+          "id": "37:2039",
+          "elementCounts": {
+            "totalElements": 16,
+            "backgrounds": 1,
+            "characters": 0,
+            "texts": 5,
+            "uiElements": 0,
+            "images": 10
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "여행자",
+            "그런데, \n당신은 왜 이 길을 오르셨습니까?"
+          ]
+        },
+        {
+          "index": 15,
+          "id": "53:2372",
+          "elementCounts": {
+            "totalElements": 16,
+            "backgrounds": 1,
+            "characters": 0,
+            "texts": 5,
+            "uiElements": 0,
+            "images": 10
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "여행자",
+            "그런데, \n당신은 왜 이 길을 오르셨습니까?"
+          ]
+        }
+      ]
+    },
+    "선택지": {
+      "slug": "market-choices",
+      "sceneRange": "140-151",
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      },
+      "variationCount": 1,
+      "variations": [
+        {
+          "index": 1,
+          "id": "31:1655",
+          "elementCounts": {
+            "totalElements": 14,
+            "backgrounds": 1,
+            "characters": 0,
+            "texts": 3,
+            "uiElements": 0,
+            "images": 10
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "계단은 점점 흙길로 이어지고, \n오를수록 길은 험난해진다.",
+            "힘드니 내려간다."
+          ]
+        }
+      ]
+    },
+    "오두막집": {
+      "slug": "hut",
+      "sceneRange": "152-156",
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      },
+      "variationCount": 31,
+      "variations": [
+        {
+          "index": 1,
+          "id": "37:2500",
+          "elementCounts": {
+            "totalElements": 4,
+            "backgrounds": 0,
+            "characters": 0,
+            "texts": 1,
+            "uiElements": 0,
+            "images": 2
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "으음.. 맛있는 냄새 ..."
+          ]
+        },
+        {
+          "index": 2,
+          "id": "37:2507",
+          "elementCounts": {
+            "totalElements": 4,
+            "backgrounds": 0,
+            "characters": 0,
+            "texts": 1,
+            "uiElements": 0,
+            "images": 2
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "맛있는 냄새?"
+          ]
+        },
+        {
+          "index": 3,
+          "id": "37:2514",
+          "elementCounts": {
+            "totalElements": 4,
+            "backgrounds": 0,
+            "characters": 0,
+            "texts": 1,
+            "uiElements": 0,
+            "images": 2
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "난 방금 전까지 산에 조난되어 \n곧 죽을 위기에 처해 있지 않았나?"
+          ]
+        },
+        {
+          "index": 4,
+          "id": "37:2521",
+          "elementCounts": {
+            "totalElements": 4,
+            "backgrounds": 0,
+            "characters": 0,
+            "texts": 1,
+            "uiElements": 0,
+            "images": 2
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "내가 천국에 온 건가?"
+          ]
+        },
+        {
+          "index": 5,
+          "id": "37:2528",
+          "elementCounts": {
+            "totalElements": 5,
+            "backgrounds": 0,
+            "characters": 0,
+            "texts": 2,
+            "uiElements": 0,
+            "images": 2
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "어머니",
+            "아들! 얼른 일어나서 밥 먹어.\n학교 가야지!"
+          ]
+        },
+        {
+          "index": 6,
+          "id": "37:2543",
+          "elementCounts": {
+            "totalElements": 5,
+            "backgrounds": 0,
+            "characters": 0,
+            "texts": 2,
+            "uiElements": 0,
+            "images": 2
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "어머니",
+            "아 안 먹는다고 했잖아!!"
+          ]
+        },
+        {
+          "index": 7,
+          "id": "37:2552",
+          "elementCounts": {
+            "totalElements": 4,
+            "backgrounds": 0,
+            "characters": 0,
+            "texts": 1,
+            "uiElements": 0,
+            "images": 2
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "혼자 밥을 먹으며 외로이 보냈던 터라, \n어머니가 해 주는 밥이 \n무의식중에 그리웠던 것 같다."
+          ]
+        },
+        {
+          "index": 8,
+          "id": "37:2998",
+          "elementCounts": {
+            "totalElements": 1,
+            "backgrounds": 0,
+            "characters": 0,
+            "texts": 0,
+            "uiElements": 0,
+            "images": 1
+          },
+          "hasText": false,
+          "hasImages": true,
+          "textPreview": []
+        },
+        {
+          "index": 9,
+          "id": "37:2565",
+          "elementCounts": {
+            "totalElements": 4,
+            "backgrounds": 0,
+            "characters": 0,
+            "texts": 1,
+            "uiElements": 0,
+            "images": 2
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "어머니...\n며칠 전에 다리가 아프다고 하셨었는데. \n 괜찮으시려나?"
+          ]
+        },
+        {
+          "index": 10,
+          "id": "37:2572",
+          "elementCounts": {
+            "totalElements": 4,
+            "backgrounds": 0,
+            "characters": 0,
+            "texts": 1,
+            "uiElements": 0,
+            "images": 2
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "돌아가면 찾아 뵈어야 겠다는 생각이 든다."
+          ]
+        },
+        {
+          "index": 11,
+          "id": "37:2579",
+          "elementCounts": {
+            "totalElements": 19,
+            "backgrounds": 1,
+            "characters": 0,
+            "texts": 2,
+            "uiElements": 0,
+            "images": 16
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "그나저나. 여긴 어디지?",
+            "주위를 둘러본다"
+          ]
+        },
+        {
+          "index": 12,
+          "id": "37:2586",
+          "elementCounts": {
+            "totalElements": 15,
+            "backgrounds": 1,
+            "characters": 0,
+            "texts": 0,
+            "uiElements": 0,
+            "images": 15
+          },
+          "hasText": false,
+          "hasImages": true,
+          "textPreview": []
+        },
+        {
+          "index": 13,
+          "id": "37:2637",
+          "elementCounts": {
+            "totalElements": 19,
+            "backgrounds": 1,
+            "characters": 0,
+            "texts": 1,
+            "uiElements": 0,
+            "images": 17
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "누가 날 구해준건가?"
+          ]
+        },
+        {
+          "index": 14,
+          "id": "37:2638",
+          "elementCounts": {
+            "totalElements": 16,
+            "backgrounds": 1,
+            "characters": 0,
+            "texts": 0,
+            "uiElements": 0,
+            "images": 16
+          },
+          "hasText": false,
+          "hasImages": true,
+          "textPreview": []
+        },
+        {
+          "index": 15,
+          "id": "37:2688",
+          "elementCounts": {
+            "totalElements": 21,
+            "backgrounds": 1,
+            "characters": 0,
+            "texts": 2,
+            "uiElements": 0,
+            "images": 18
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "player",
+            "누구...세요?"
+          ]
+        },
+        {
+          "index": 16,
+          "id": "37:2689",
+          "elementCounts": {
+            "totalElements": 21,
+            "backgrounds": 1,
+            "characters": 0,
+            "texts": 2,
+            "uiElements": 0,
+            "images": 18
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "player",
+            "누구...세요?"
+          ]
+        },
+        {
+          "index": 17,
+          "id": "37:2832",
+          "elementCounts": {
+            "totalElements": 21,
+            "backgrounds": 1,
+            "characters": 0,
+            "texts": 2,
+            "uiElements": 0,
+            "images": 18
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "아주머니",
+            "우리 집사람이 산에 뭐 좀 캐러 갔다가. \n학생이 쓰러져 있는 걸 집에 데려온 거야."
+          ]
+        },
+        {
+          "index": 18,
+          "id": "37:2833",
+          "elementCounts": {
+            "totalElements": 21,
+            "backgrounds": 1,
+            "characters": 0,
+            "texts": 2,
+            "uiElements": 0,
+            "images": 18
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "아주머니",
+            "우리 집사람이 산에 뭐 좀 캐러 갔다가. \n학생이 쓰러져 있는 걸 집에 데려온 거야."
+          ]
+        },
+        {
+          "index": 19,
+          "id": "37:2859",
+          "elementCounts": {
+            "totalElements": 21,
+            "backgrounds": 1,
+            "characters": 0,
+            "texts": 2,
+            "uiElements": 0,
+            "images": 18
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "아주머니",
+            "그나저나 학생은 \n왜 거기 쓰러져 있었던 거야?"
+          ]
+        },
+        {
+          "index": 20,
+          "id": "37:2860",
+          "elementCounts": {
+            "totalElements": 21,
+            "backgrounds": 1,
+            "characters": 0,
+            "texts": 2,
+            "uiElements": 0,
+            "images": 18
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "아주머니",
+            "그나저나 학생은 \n왜 거기 쓰러져 있었던 거야?"
+          ]
+        },
+        {
+          "index": 21,
+          "id": "37:2913",
+          "elementCounts": {
+            "totalElements": 21,
+            "backgrounds": 1,
+            "characters": 0,
+            "texts": 2,
+            "uiElements": 0,
+            "images": 18
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "아주머니",
+            "거기 위험한 산인데 어쩌다 올라갔담. \n얼른 나와서 밥 먹어요. 먹어야 낫지."
+          ]
+        },
+        {
+          "index": 22,
+          "id": "37:2914",
+          "elementCounts": {
+            "totalElements": 21,
+            "backgrounds": 1,
+            "characters": 0,
+            "texts": 2,
+            "uiElements": 0,
+            "images": 18
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "아주머니",
+            "거기 위험한 산인데 어쩌다 올라갔담. \n얼른 나와서 밥 먹어요. 먹어야 낫지."
+          ]
+        },
+        {
+          "index": 23,
+          "id": "37:2886",
+          "elementCounts": {
+            "totalElements": 21,
+            "backgrounds": 1,
+            "characters": 0,
+            "texts": 2,
+            "uiElements": 0,
+            "images": 18
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "player",
+            "그게...\n산에서 내려오는 길에 발을 헛디뎌서..."
+          ]
+        },
+        {
+          "index": 24,
+          "id": "37:2887",
+          "elementCounts": {
+            "totalElements": 21,
+            "backgrounds": 1,
+            "characters": 0,
+            "texts": 2,
+            "uiElements": 0,
+            "images": 18
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "player",
+            "그게...\n산에서 내려오는 길에 발을 헛디뎌서..."
+          ]
+        },
+        {
+          "index": 25,
+          "id": "37:2940",
+          "elementCounts": {
+            "totalElements": 21,
+            "backgrounds": 1,
+            "characters": 0,
+            "texts": 2,
+            "uiElements": 0,
+            "images": 18
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "player",
+            "감사합니다.."
+          ]
+        },
+        {
+          "index": 26,
+          "id": "37:2941",
+          "elementCounts": {
+            "totalElements": 21,
+            "backgrounds": 1,
+            "characters": 0,
+            "texts": 2,
+            "uiElements": 0,
+            "images": 18
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "player",
+            "감사합니다.."
+          ]
+        },
+        {
+          "index": 27,
+          "id": "19:1110",
+          "elementCounts": {
+            "totalElements": 26,
+            "backgrounds": 1,
+            "characters": 0,
+            "texts": 1,
+            "uiElements": 0,
+            "images": 24
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "축제를 즐기고 \n다시 아주머니 댁으로 돌아와\n짐을 챙겼다."
+          ]
+        },
+        {
+          "index": 28,
+          "id": "37:4051",
+          "elementCounts": {
+            "totalElements": 27,
+            "backgrounds": 1,
+            "characters": 0,
+            "texts": 2,
+            "uiElements": 0,
+            "images": 24
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "아주머니",
+            "벌써 가려구? 조금 더 쉬다 가지."
+          ]
+        },
+        {
+          "index": 29,
+          "id": "37:4123",
+          "elementCounts": {
+            "totalElements": 27,
+            "backgrounds": 1,
+            "characters": 0,
+            "texts": 2,
+            "uiElements": 0,
+            "images": 24
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "아주머니",
+            "그래요. 잠깐이지만 만나서 반가웠어요.\n앞으로의 길에 행운이 있길 바랄게요."
+          ]
+        },
+        {
+          "index": 30,
+          "id": "37:4154",
+          "elementCounts": {
+            "totalElements": 27,
+            "backgrounds": 1,
+            "characters": 0,
+            "texts": 2,
+            "uiElements": 0,
+            "images": 24
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "player",
+            "감사해요 아주머니. 가보겠습니다!"
+          ]
+        },
+        {
+          "index": 31,
+          "id": "37:4086",
+          "elementCounts": {
+            "totalElements": 27,
+            "backgrounds": 1,
+            "characters": 0,
+            "texts": 2,
+            "uiElements": 0,
+            "images": 24
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "player",
+            "괜찮아요. \n덕분에 축제도 즐기고 재미있었어요."
+          ]
+        }
+      ]
+    },
+    "시장 입구": {
+      "slug": "market",
+      "sceneRange": "132-139",
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      },
+      "variationCount": 6,
+      "variations": [
+        {
+          "index": 1,
+          "id": "19:995",
+          "elementCounts": {
+            "totalElements": 14,
+            "backgrounds": 1,
+            "characters": 0,
+            "texts": 2,
+            "uiElements": 0,
+            "images": 11
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "아저씨",
+            "우리 마을 축제가 있어서 데리고 나왔네.\n온 김에 좀 즐기다 가게나."
+          ]
+        },
+        {
+          "index": 2,
+          "id": "37:3370",
+          "elementCounts": {
+            "totalElements": 13,
+            "backgrounds": 1,
+            "characters": 0,
+            "texts": 1,
+            "uiElements": 0,
+            "images": 11
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "해안 주변 마을."
+          ]
+        },
+        {
+          "index": 3,
+          "id": "37:3393",
+          "elementCounts": {
+            "totalElements": 13,
+            "backgrounds": 1,
+            "characters": 0,
+            "texts": 1,
+            "uiElements": 0,
+            "images": 11
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "등불이 켜지고 \n사람들은 음악과 춤으로 가득한 \n축제를 즐기고 있다."
+          ]
+        },
+        {
+          "index": 4,
+          "id": "37:3410",
+          "elementCounts": {
+            "totalElements": 13,
+            "backgrounds": 1,
+            "characters": 0,
+            "texts": 1,
+            "uiElements": 0,
+            "images": 11
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "바닷 바람에 \n생선과 향신료 냄새가 섞여 퍼진다."
+          ]
+        },
+        {
+          "index": 5,
+          "id": "37:3427",
+          "elementCounts": {
+            "totalElements": 14,
+            "backgrounds": 1,
+            "characters": 0,
+            "texts": 2,
+            "uiElements": 0,
+            "images": 11
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "아저씨",
+            "나는 저기 생선 좀 사러 갈 테니, \n축제 좀 즐기고 있게나"
+          ]
+        },
+        {
+          "index": 6,
+          "id": "37:3450",
+          "elementCounts": {
+            "totalElements": 16,
+            "backgrounds": 1,
+            "characters": 0,
+            "texts": 4,
+            "uiElements": 0,
+            "images": 11
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "뭘 할까?",
+            "마을 사람들과 어울려 춤추고 대화한다."
+          ]
+        }
+      ]
+    },
+    "end": {
+      "slug": "credits",
+      "sceneRange": "184-187",
+      "dimensions": {
+        "width": 2560,
+        "height": 1440
+      },
+      "variationCount": 4,
+      "variations": [
+        {
+          "index": 1,
+          "id": "39:905",
+          "elementCounts": {
+            "totalElements": 10,
+            "backgrounds": 0,
+            "characters": 0,
+            "texts": 4,
+            "uiElements": 0,
+            "images": 6
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "DESIGNER",
+            "JI YEON JEON"
+          ]
+        },
+        {
+          "index": 2,
+          "id": "39:938",
+          "elementCounts": {
+            "totalElements": 10,
+            "backgrounds": 0,
+            "characters": 0,
+            "texts": 4,
+            "uiElements": 0,
+            "images": 6
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "FRONTEND DEVELOPER",
+            "영문 이름 입력해주세요"
+          ]
+        },
+        {
+          "index": 3,
+          "id": "39:959",
+          "elementCounts": {
+            "totalElements": 8,
+            "backgrounds": 0,
+            "characters": 0,
+            "texts": 2,
+            "uiElements": 0,
+            "images": 6
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "BACKEND DEVELOPER",
+            "영문 이름 입력해주세요"
+          ]
+        },
+        {
+          "index": 4,
+          "id": "39:980",
+          "elementCounts": {
+            "totalElements": 8,
+            "backgrounds": 0,
+            "characters": 0,
+            "texts": 2,
+            "uiElements": 0,
+            "images": 6
+          },
+          "hasText": true,
+          "hasImages": true,
+          "textPreview": [
+            "SPECIAL THANKS TO",
+            "YOU"
+          ]
+        }
+      ]
+    }
+  }
+}
