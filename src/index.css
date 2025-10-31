@@ -11,6 +11,15 @@
     font-display: swap;
 }
 
+:root{
+  --design-width: 2560px;
+  --design-height: 1440px;
+  /* 뷰포트 대비 스케일. 필요하면 여기서만 읽어도 됩니다 */
+  --scale-x: calc(100vw / var(--design-width));
+  --scale-y: calc(100vh / var(--design-height));
+  --scale: min(var(--scale-x), var(--scale-y));
+}
+
 /* -------------------------------------------
    전체 적용 (body, html, #root) - 기존 코드와 통합
    ------------------------------------------- */

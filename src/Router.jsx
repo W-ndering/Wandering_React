@@ -15,6 +15,7 @@ import CabinIndoor from "./pages/CabinIndoor";
 import CabinSunset from "./pages/CabinSunset";
 import Beach from "./pages/Beach";
 import Result from "./pages/Result";
+import BusStop from "./pages/BusStop";
 
 const Router = () => (
   <BrowserRouter>
@@ -27,7 +28,6 @@ const Router = () => (
       <Route path="/rest" element={<Rest/>} />
       <Route path="/reminiscene" element={<Reminiscene/>} />
       <Route path="/guide" element={<Guide/>} />
-
       <Route path="/nightdayhotel" element={<NightDayHotel />} />
       <Route path="/mountain" element={<Mountain />} />
       <Route path="/traveler" element={<Traveler />} />
@@ -35,7 +35,8 @@ const Router = () => (
       <Route path="/cabinindoor" element={<CabinIndoor />} />
       <Route path="/cabinsunset" element={<CabinSunset />} />
       <Route path="/beach" element={<Beach />} />
-       <Route path="/result" element={<Result />} />
+      <Route path="/result" element={<Result />} />
+      <Route path="/bus-stop" element={<BusStop />} />
     </Routes>
   </BrowserRouter>
 );
