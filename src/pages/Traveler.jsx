@@ -113,7 +113,7 @@ export default function Traveler() {
   const moveTimerRef = useRef(null);
   const lastTimeRef = useRef(null);
 
-  const SCENE_ID = 5;
+  const SCENE_ID = 4;
 
   // 선택 결과 서버에 전송
   async function postChoice({ sceneId, optionKey }) {

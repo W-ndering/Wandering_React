@@ -16,7 +16,7 @@ import styles from "./CabinIndoor.module.css"
 export default function CabinIndoor() {
     const nickname = sessionStorage.getItem('NICKNAME') || '나';
   const navigate = useNavigate();
-  const NEXT_ROUTE = "/hut-front"; // 다음 스토리 (오두막집앞)
+  const NEXT_ROUTE = "/market"; // 다음 스토리 (오두막집앞)
   const [idx, setIdx] = useState(0);
   const storyCuts = [
     {
@@ -328,7 +328,7 @@ export default function CabinIndoor() {
           className={styles.character}
           style={{
             position: "absolute",
-            bottom: 60,
+            bottom: -270,
             left: `${charX}px`,
           }}
         />
@@ -342,7 +342,7 @@ export default function CabinIndoor() {
           className={styles.charNPC}
           style={{
             position: "absolute",
-            bottom: 65,
+            bottom: -270,
             left: `${current.npc1.x}px`,
           }}
         />

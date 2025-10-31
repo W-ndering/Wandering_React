@@ -179,7 +179,7 @@ export default function Result() {
 
   const handleNext = async () => {
     if (idx >= storyCuts.length - 1) {
-      navigate("/ending"); //엔딩 크레딧으로 이동
+      navigate("/credits"); //엔딩 크레딧으로 이동
       return;
     }
 

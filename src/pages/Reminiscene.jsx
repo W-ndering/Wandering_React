@@ -98,7 +98,7 @@ function Reminiscene() {
       setActiveDialogue(nextDialogue);
     } else {
       // (수정) 모든 대사가 끝나면 내비게이팅
-      navigate('/stage2'); // 예시: 다음 스테이지로
+      navigate('/cabininddor'); // 예시: 다음 스테이지로
     }
   }, [dialogueIndex, isTyping, navigate]);
 

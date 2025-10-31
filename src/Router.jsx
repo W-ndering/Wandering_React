@@ -18,6 +18,13 @@ import Result from "./pages/Result";
 import BusStop from "./pages/BusStop";
 import BusStopMemory from "./pages/BusStopMemory";
 import InBus from "./pages/InBus";
+import Market from "./pages/Market";
+import MarketChoice1 from "./pages/MarketChoice1";
+import MarketChoice2 from "./pages/MarketChoice2";
+import MarketChoice3 from "./pages/MarketChoice3";
+import Hut from "./pages/Hut";
+import Credits from "./pages/Credits";
+
 const Router = () => (
   <BrowserRouter>
     <Routes>
@@ -40,6 +47,12 @@ const Router = () => (
       <Route path="/bus-stop" element={<BusStop />} />
       <Route path="/bus-stop-memory" element={<BusStopMemory />} />
       <Route path="/in-bus" element={<InBus />} />
+      <Route path="/market" element={<Market />} />
+      <Route path="/market-choice-1" element={<MarketChoice1 />} />
+      <Route path="/market-choice-2" element={<MarketChoice2 />} />
+      <Route path="/market-choice-3" element={<MarketChoice3 />} />
+      <Route path="/hut" element={<Hut />} />
+      <Route path="/credits" element={<Credits />} />
     </Routes>
   </BrowserRouter>
 );
