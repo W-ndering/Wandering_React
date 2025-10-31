@@ -1,0 +1,30 @@
+
+.fullscreencontainer {
+  /* 뷰포트 전체 너비와 높이 사용 */
+  width: 100vw;
+  height: 100vh; 
+  
+  /* 배경 이미지 설정 */
+  /* import 한 PNG 파일 경로를 사용하며, 'cover'로 꽉 채우고 중앙에 위치시킵니다. */
+  background-size: cover; /* 이미지가 잘릴지라도, 화면을 꽉 채우도록 설정 */
+  background-position: center; /* 이미지를 중앙에 위치 */
+  background-repeat: no-repeat; /* 이미지 반복 방지 */
+  
+  
+}
+
+/* 4. 내비게이션 버튼 스타일 */
+.navbutton {
+  position: relative;
+  top: 5%;
+  left: 90%;
+  width: 200px;
+  height: 200px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background-color: transparent; /* 버튼 색상 */
+  color: none;
+}
