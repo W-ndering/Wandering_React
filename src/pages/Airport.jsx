@@ -5,6 +5,7 @@ import styles from './Airport.module.css'; // Airport.css 임포트
 import airportbg from '../assets/bg/2_1_공항.svg';
 import airportRoadbg from '../assets/bg/3_1_공항앞길거리.svg';
 import mainChar from '../assets/char/캐리어_주인공1.svg';
+import choicebox from "../assets/obj/선택지.svg";
 
 // --- 상수 정의 ---
 const MOVE_SPEED = 15;
@@ -35,9 +36,9 @@ const AIRPORT_DIALOGUES = [
 ];
 
 const AIRPORT_CHOICES = [
-  { id: 'view', text: "유명 관광지로 향해 사진을 남긴다." },
-  { id: 'rest', text: "숙소로 가서 짐부터 둔다." },
-  { id: 'walk', text: "길을 걸으며 이 도시를 느낀다." },
+  { id: 'view', text: "유명 관광지로 향해 사진을 남긴다.",imagePath: choicebox },
+  { id: 'rest', text: "숙소로 가서 짐부터 둔다.", imagePath: choicebox },
+  { id: 'walk', text: "길을 걸으며 이 도시를 느낀다.", imagePath: choicebox },
 ];
 
 function Airport() {
@@ -267,16 +268,23 @@ function Airport() {
       )}
 
       {/* 선택지 (시퀀스 4) */}
-      {showChoices && (
-        <div className={styles.airportchoicescontainer}>
-          {AIRPORT_CHOICES.map((choice) => (
-            <button
-              key={choice.id}
-              className={styles.airportchoicebutton}
-              onClick={() => handleChoiceClick(choice.id)}
-            >
-              {choice.text}
-            </button>
+{showChoices && (
+  <div className={styles.airportchoicescontainer}>
+    {AIRPORT_CHOICES.map((choice) => (
+      <button
+        key={choice.id}
+        className={styles.airportchoicebutton}
+        onClick={() => handleChoiceClick(choice.id)}
+      >
+        <img
+          src={choice.imagePath} // import한 선택지.svg 이미지 경로 사용
+          alt={choice.text}     // 접근성을 위해 텍스트를 alt 속성으로 사용
+          className={styles.choiceBackgroundImage} // 이미지 스타일을 위한 새로운 클래스
+        />
+        <span className={styles.choiceTextOverlay}>
+          {choice.text}
+        </span>
+      </button>
           ))}
         </div>
       )}
