@@ -16,7 +16,8 @@ import CabinSunset from "./pages/CabinSunset";
 import Beach from "./pages/Beach";
 import Result from "./pages/Result";
 import BusStop from "./pages/BusStop";
-
+import BusStopMemory from "./pages/BusStopMemory";
+import InBus from "./pages/InBus";
 const Router = () => (
   <BrowserRouter>
     <Routes>
@@ -37,6 +38,8 @@ const Router = () => (
       <Route path="/beach" element={<Beach />} />
       <Route path="/result" element={<Result />} />
       <Route path="/bus-stop" element={<BusStop />} />
+      <Route path="/bus-stop-memory" element={<BusStopMemory />} />
+      <Route path="/in-bus" element={<InBus />} />
     </Routes>
   </BrowserRouter>
 );
