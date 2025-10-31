@@ -355,7 +355,7 @@ export default function CabinIndoor() {
           className={styles.charNPC}
           style={{
             position: "absolute",
-            bottom: 65,
+            bottom: -270,
             left: `${current.npc2.x}px`,
           }}
         />
