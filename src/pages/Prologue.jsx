@@ -19,40 +19,48 @@ import ticket from '../assets/obj/티켓.svg';
 function Prologue() {
   const nickname = sessionStorage.getItem("NICKNAME") || "player";
   const PROLOGUE_DIALOGUES = [
-  // 0: 독백
+  // 0
   {
-    speaker: null, // speaker가 null이거나 없으면 화자 이름이 표시되지 않습니다.
+    speaker: null,
+    overlay: true,
     dialogue: [{ type: 'normal', content: `할 짓 없이 보내고 있는 ${nickname}.\n오늘도 할 짓 없이 잠에서 깬다. ` }]
   },
-  // 1: 독백
+  // 1
   {
     speaker: null,
+    overlay: true,
     dialogue: [{ type: 'normal', content: "잠에서 깨자 머리가 깨질 듯이 아프며\n하나의 목소리가 들린다." }]
   },
-  // 2: ???? (작게, 회색) - 요청하신 사항
+  // 2
   {
     speaker: null,
+    overlay: true,
     dialogue: [{ type: 'small-color', content: "찾아..." }]
   },
-  // 3: ???? (크게) - (수정) speaker를 '????'로 변경
-  {
-    speaker: '목소리',
-    dialogue: [{ type: 'large', content: "찾아!!!!" }]
-  },
-  // 4: 독백
+  // 3 (잘못~~) — 밝게 (오버레이 해제)
   {
     speaker: null,
+    overlay: false,   // <-- 여기: 밝게
     dialogue: [{ type: 'normal', content: "잘못 들었다고 생각하며\n대수롭지 않게 여기며\n다시 잠에 들려고 한다." }]
   },
-  // 5: 독백
+  // 4 (목소리: 찾아!!!!) — 어둡게
+  {
+    speaker: '목소리',
+    overlay: true,    // <-- 여기: 어둡게
+    dialogue: [{ type: 'large', content: "찾아!!!!" }]
+  },
+  // 5 (누구지?) — 밝게
   {
     speaker: null,
+    overlay: false,   // <-- 여기: 밝게
     dialogue: [{ type: 'normal', content: "누구지?" }]
   }
 ];
+
   const [sequenceStep, setSequenceStep] = useState(0);
   const [dialogueIndex, setDialogueIndex] = useState(0);
-  const [activeDialogue, setActiveDialogue] = useState(PROLOGUE_DIALOGUES[0]);
+  //const [activeDialogue, setActiveDialogue] = useState(PROLOGUE_DIALOGUES[0]);
+  const currentDialogue = PROLOGUE_DIALOGUES[dialogueIndex];
   const [isTyping, setIsTyping] = useState(false);
 
   const [objectStep, setObjectStep] = useState(0); // 0: 없음, 1: 책, 2: 티켓
@@ -79,25 +87,31 @@ function Prologue() {
   }, [objectStep, canMove]);
 
   // --- 대사 진행 (대화 단계에서만 사용) ---
-  const handleDialogueAdvance = useCallback(() => {
-    if (isTyping) {
-      setIsTyping(false);
-      return;
-    }
+const handleDialogueAdvance = useCallback(() => {
+  if (isTyping) {
+    setIsTyping(false);
+    return;
+  }
 
-    const nextIndex = dialogueIndex + 1;
-    if (nextIndex < PROLOGUE_DIALOGUES.length) {
-      setDialogueIndex(nextIndex);
-      setActiveDialogue(PROLOGUE_DIALOGUES[nextIndex]);
+  const nextIndex = dialogueIndex + 1;
+  if (nextIndex < PROLOGUE_DIALOGUES.length) {
+    setDialogueIndex(nextIndex);
 
-      if (nextIndex === 4) setSequenceStep(1);
-      if (nextIndex === 5) setSequenceStep(2);
-    } else {
-      // 마지막 대사 후
-      setSequenceStep(3); // 오브젝트 단계로 전환 (대화 상자 숨김)
-      setObjectStep(1); // 책 등장
-    }
-  }, [dialogueIndex, isTyping]);
+    // ⭐ [수정] 배경(sequenceStep: 1)을 대화 시작(index 1)과 함께 켠다.
+    //    오버레이가 걷힐 때(index 3) 배경이 보이도록.
+    if (nextIndex === 1) setSequenceStep(1); 
+    
+    // ⭐ [수정] 캐릭터 교체(sequenceStep: 2)는 index 5에서 수행
+    if (nextIndex === 5) setSequenceStep(2);
+
+    // [제거] 아래 두 줄은 위 로직으로 대체되었으므로 제거합니다.
+    // if (nextIndex === 4) setSequenceStep(1);
+    // if (nextIndex === 5) setSequenceStep(2);
+  } else {
+    setSequenceStep(3);
+    setObjectStep(1);
+  }
+}, [dialogueIndex, isTyping]);
 
   // --- 메인 상호작용 핸들러 (클릭, 스페이스바) ---
   const handleInteraction = useCallback(() => {
@@ -186,14 +200,15 @@ function Prologue() {
         }}
       />
 
-      {/* 검은 오버레이 */}
-      <div
-        className={styles.prologueblackoverlay}
-        style={{
-          opacity: sequenceStep === 0 ? 1 : 0,
-          transition: 'opacity 1s ease'
-        }}
-      />
+<div
+  className={styles.prologueblackoverlay}
+  style={{
+    // ⭐ [수정] 복잡한 삼항 연산자 대신, 
+    // PROLOGUE_DIALOGUES에 정의된 overlay 값을 직접 사용합니다.
+    opacity: currentDialogue.overlay ? 1 : 0,
+    transition: 'none',
+  }}
+/>
 
       {/* 캐릭터 */}
       {sequenceStep >= 1 && (
@@ -208,18 +223,17 @@ function Prologue() {
         />
       )}
 
-      {/* 대화 상자 */}
-      {sequenceStep < 3 && activeDialogue && (
-        <DialogueBox
-          key={dialogueIndex}
-          // (수정) text prop 대신 dialogue와 speaker prop으로 분리하여 전달
-          dialogue={activeDialogue.dialogue}
-          speaker={activeDialogue.speaker}
-          isTyping={isTyping}
-          onTypingStart={() => setIsTyping(true)}
-          onTypingComplete={() => setIsTyping(false)}
-        />
-      )}
+{/* 대화 상자 */}
+{sequenceStep < 3 && currentDialogue && (
+  <DialogueBox
+    key={dialogueIndex}
+    dialogue={currentDialogue.dialogue}
+    speaker={currentDialogue.speaker}
+    isTyping={isTyping}
+    onTypingStart={() => setIsTyping(true)}
+    onTypingComplete={() => setIsTyping(false)}
+  />
+)}
 
       {/* 오브젝트 + 상태창 */}
       {sequenceStep === 3 && objectStep > 0 && (
