@@ -88,6 +88,7 @@ export default function NightDayHotel() {
     {
       id: 12,
       char: char2,
+      text: "(오른쪽으로 이동하자.)"
     }/*,
     {
       id: 13,

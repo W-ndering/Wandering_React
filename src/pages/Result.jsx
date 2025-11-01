@@ -48,23 +48,13 @@ export default function Result() {
     {
       id: 4,
       speaker: "부모님",
-      text: "어서오렴, 배고프지?",
+      text: "어서오렴, 배고프지?\n손 씻고 와서 밥먹자.",
       popup: {
         type: "cookie2",
         src: cookie,
       }
     },
-    {
-      id: 5
-    },
-    {
-      id: 6,
-      text: "잘 지냈어?"
-    },
-    {
-      id: 7,
-      text: "우리... 만날까?"
-    },
+ 
     {
       id: 8,
       popup: {

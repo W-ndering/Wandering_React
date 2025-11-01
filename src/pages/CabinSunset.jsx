@@ -39,7 +39,7 @@ export default function CabinSunset() {
       id: 5,
       char: char2,
       speaker: nickname,
-      text: "감사해요, 아저씨. 안녕히 계세요!", // 주인공이 우측에 다다르면 다음컷으로 이동
+      text: "감사해요, 아저씨. 안녕히 계세요!\n(오른쪽으로 이동하자.)", // 주인공이 우측에 다다르면 다음컷으로 이동
     },
   ];
   const [current, setCurrent] = useState(storyCuts[0]); // 현재 보여지는 컷
