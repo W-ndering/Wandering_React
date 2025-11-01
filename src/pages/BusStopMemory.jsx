@@ -14,12 +14,6 @@ export default function BusStopMemory() {
   const nickname = sessionStorage.getItem('NICKNAME') || '나';
   const storyCuts = [
     {
-      id: 38,
-      bg: bg2,
-      text: "지나다니는 행인들을 보니\n아버지와의 추억이 떠오른다.",
-      popup: { type: "text", src: textbox }
-    },
-    {
       id: 39,
       bg: bg2,
       speaker: nickname,
@@ -55,9 +49,22 @@ export default function BusStopMemory() {
     },
     {
       id: 43,
-      bg: "#000000",
-      text: ""
+      bg: bg2,
+      char: char1,
+      text: "...",
+      popup: { type: "text", src: textbox }
     },
+    {
+      id: 44,
+      bg: bg1,
+      char: char1,
+      obj: [{ src: busImg, left: 30, top: 812, width: 720, height: 720 }],
+      text: "버스가 도착했다.",
+      choice: {
+        src: choicebox,
+        text: "버스에 탑승한다"
+      }
+    }
   ];
   const [current, setCurrent] = useState(storyCuts[0]);
   const [lastVisual, setLastVisual] = useState({

@@ -6,7 +6,7 @@ import styles from'./Reminiscene.module.css'; // 공통 씬 CSS
 // --- 대사 설정 ---
 // (수정) 중간에 null을 넣어 텍스트박스가 없는 씬을 구현합니다.
 const DIALOGUES = [
-    {
+    /*{
     speaker: '???',
     dialogue: [{ type: 'normal', content: "자기는\n나랑 산에서 조난되면 어떨 것 같아?" }]
   },
@@ -37,7 +37,16 @@ const DIALOGUES = [
   },  {
     speaker: null,
     dialogue: [{ type: 'normal', content: "보고싶어" }]
-  },  {
+  },*/
+  {
+    speaker: null,
+    dialogue: [{ type: 'normal', content: "스르륵 눈이 감긴다." }]
+  },
+    {
+    speaker: null,
+    dialogue: [{ type: 'normal', content: "..." }]
+  },  
+  {
     speaker: null,
     dialogue: [{ type: 'normal', content: "으음.. 맛있는 냄새 ..." }]
   }, {

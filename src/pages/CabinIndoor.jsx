@@ -64,20 +64,11 @@ export default function CabinIndoor() {
     {
       id: 8,
       speaker: nickname,
-      text: "감사합니다..", // 문에 가면 다음 컷
-    },
-    {
-      id: 9,
-      char: "none",
-      npc1: "none",
-      bg: "#282828"
-    },
-    {
-      id: 10,
-      bg: bg2
+      text: "감사합니다..\n(문을 통해 나가자.)", // 문에 가면 다음 컷
     },
     {
       id: 11,
+      bg: bg2,
       popup: {
         type: "state",
         src: statebox,

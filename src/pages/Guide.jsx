@@ -15,7 +15,7 @@ return (
       className={styles.fullscreencontainer} 
       style={{ backgroundImage: `url(${BackgroundImage})` }}
     >
-        <button onClick={handleNavigate} className={styles.navbutton}>
+        <button onClick={handleNavigate} className={styles.navbutton}>PLAY
         </button>
     </div>
   );

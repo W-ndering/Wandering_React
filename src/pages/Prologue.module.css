@@ -41,18 +41,17 @@
   position: absolute;
   inset: 0;
   background-color: #000;
-  z-index: 2; /* 배경 위, 캐릭터 아래 */
+  z-index: 6; /* 배경 위, 캐릭터 아래 */
   opacity: 1; /* 기본(시퀀스 0)은 어두움 */
-  transition: opacity 1.5s ease-out;
   pointer-events: none; /* 클릭 통과 */
 }
 
 /* (수정) 시퀀스 1~3 (서서히 사라짐 및 숨김 유지) */
-.prologuecontainer[data-sequence="1"] .prologueblackoverlay,
+/*.prologuecontainer[data-sequence="1"] .prologueblackoverlay,
 .prologuecontainer[data-sequence="2"] .prologueblackoverlay,
 .prologuecontainer[data-sequence="3"] .prologueblackoverlay {
   opacity: 0;
-}
+}*/
 
 /* ================================
    Player Character Layer

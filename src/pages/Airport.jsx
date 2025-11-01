@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import DialogueBox from '../components/DialogueBox';
-import styles from './Airport.module.css'; // Airport.css 임포트
+import styles from './Airport.module.css';
 import airportbg from '../assets/bg/2_1_공항.svg';
 import airportRoadbg from '../assets/bg/3_1_공항앞길거리.svg';
 import mainChar from '../assets/char/캐리어_주인공1.svg';
@@ -9,17 +9,16 @@ import choicebox from "../assets/obj/선택지.svg";
 
 // --- 상수 정의 ---
 const MOVE_SPEED = 15;
-const GROUND_Y = 10; // 바닥 Y좌표 (px)
-const CHARACTER_WIDTH = 100; // 캐릭터 너비 (실제 애셋 크기에 맞게 조절)
+const GROUND_Y = 10;
+const CHARACTER_WIDTH = 100;
 
 // --- 애셋 경로 ---
 const ASSET_PATHS = {
-  intro_bg: airportbg,     // 1. 인트로 배경
-  airport_bg: airportRoadbg, // 2. 메인 배경
+  intro_bg: airportbg,
+  airport_bg: airportRoadbg,
   character: mainChar,
 };
 
-// (수정) DialogueBox prop 구조에 맞게 배열 변경
 const AIRPORT_DIALOGUES = [
   {
     speaker: null,
@@ -45,12 +44,12 @@ function Airport() {
   const BACKEND_KEY = import.meta.env.VITE_BACKEND_DOMAIN_KEY;
   const playerid = sessionStorage.getItem("playerId") || "0";
   // --- 상태 관리 ---
-  const [sequenceStep, setSequenceStep] = useState(0); // 0: 인트로, 1: 메인(이동), 2: 대사1, 3: 대사2, 4: 선택지
+  const [sequenceStep, setSequenceStep] = useState(0); // 0: 인트로, 1: 메인(이동), 2: 다이얼로그 시작, 3: 다이얼로그 2, 4: 선택지
   const [charX, setCharX] = useState(0); // 캐릭터 위치
   
   // 대화 상태
   const [dialogueIndex, setDialogueIndex] = useState(0);
-  const [activeDialogue, setActiveDialogue] = useState(null); // (수정) 초기값 null
+  const [activeDialogue, setActiveDialogue] = useState(null);
   const [isTyping, setIsTyping] = useState(false);
   const [showChoices, setShowChoices] = useState(false);
 
@@ -58,13 +57,20 @@ function Airport() {
   const gameAreaRef = useRef(null);
   const navigate = useNavigate();
 
-  // --- 1. 인트로 (2초 후 자동 전환) ---
+  // --- 1. 인트로 (2초 후 자동 전환) 및 자동 다이얼로그 시작 ---
   useEffect(() => {
     if (sequenceStep === 0) {
       const introTimer = setTimeout(() => {
         setSequenceStep(1); // 2초 뒤 메인 씬(이동 가능)으로 전환
       }, 2000);
       return () => clearTimeout(introTimer);
+    } else if (sequenceStep === 1) {
+      // 💡 추가된 로직: 시퀀스 1(메인 배경)이 로드되면 잠시 후 다이얼로그 자동 시작 (시퀀스 2로 전환)
+      const autoDialogueStartTimer = setTimeout(() => {
+        setSequenceStep(2); 
+        setActiveDialogue(AIRPORT_DIALOGUES[0]);
+      }, 100); // 100ms 지연 후 다이얼로그 자동 시작
+      return () => clearTimeout(autoDialogueStartTimer);
     }
   }, [sequenceStep]);
 
@@ -76,15 +82,16 @@ function Airport() {
       return;
     }
     
-    // 선택지가 떴거나 인트로 중이면 상호작용 무시
-    if (showChoices || sequenceStep === 0) return;
+    // 선택지가 떴거나 인트로(0), 메인씬(1, 이동만 가능) 중이면 상호작용 무시
+    // sequenceStep이 1일 때는 이동만 가능하므로 클릭/스페이스바는 무시됩니다.
+    if (showChoices || sequenceStep <= 1) return;
 
+    // sequenceStep이 2 이상일 때 (다이얼로그 진행 중)
     const nextStep = sequenceStep + 1;
     setSequenceStep(nextStep);
 
-    if (nextStep === 2) { // 대사 1
-      setActiveDialogue(AIRPORT_DIALOGUES[0]);
-    } else if (nextStep === 3) { // 대사 2
+    // 💡 nextStep === 2 부분은 자동 시작 로직으로 이동했으므로 삭제/변경합니다.
+    if (nextStep === 3) { // 대사 2
       setDialogueIndex(1);
       setActiveDialogue(AIRPORT_DIALOGUES[1]);
     } else if (nextStep === 4) { // 대사 3 + 선택지
@@ -119,7 +126,7 @@ function Airport() {
         }
       }
 
-      // 스페이스바로 상호작용
+      // 스페이스바로 상호작용 (다이얼로그 진행)
       if (e.key === ' ') {
         e.preventDefault();
         handleInteraction();
@@ -134,86 +141,44 @@ function Airport() {
   const handleChoiceClick = async (choiceId) => {
     console.log("선택:", choiceId);
     
-    // TODO: 여기에 내비게이팅 및 POST 로직을 구현합니다.
+    // 선택지에 따른 optionKey 설정
+    let optionKey;
+    let navigatePath;
     if (choiceId === 'view') {
-      try {
-        const response = await fetch(`${BACKEND_KEY}/player/${playerid}/choice`, {
-          method: 'POST', // 💡 요청 메서드
-          headers: {
-            // Content-Type 헤더는 서버가 요구할 때만 추가합니다.
-            // 빈 바디 요청이므로 생략해도 되지만, 서버 사양에 따라 포함할 수도 있습니다.
-            'Content-Type': 'application/json', 
-          },
-          body: JSON.stringify({
-            "sceneId" : 1,
-            "optionKey" : 1,
-          }),
-        });
-
-    if (!response.ok) {
-      // 서버에서 200번대가 아닌 응답이 오면 오류 처리
-      console.error('❌ 선택지 정보 전달 실패:', response.status);
-    } else {
-      console.log('✅ 1번선택지 정보 전달 성공');
-    }
-  } catch (error) {
-    console.error('❌ 네트워크 오류 발생:', error);
-  }
-      navigate('/view');
-      console.log("관광지");
+      optionKey = 1;
+      navigatePath = '/view';
     } else if (choiceId === 'rest') {
-      try {
-        const response = await fetch(`${BACKEND_KEY}/player/${playerid}/choice`, {
-          method: 'POST', // 💡 요청 메서드
-          headers: {
-            // Content-Type 헤더는 서버가 요구할 때만 추가합니다.
-            // 빈 바디 요청이므로 생략해도 되지만, 서버 사양에 따라 포함할 수도 있습니다.
-            'Content-Type': 'application/json', 
-          },
-          body: JSON.stringify({
-            "sceneId" : 1,
-            "optionKey" : 2,
-          }),
-        });
-
-    if (!response.ok) {
-      // 서버에서 200번대가 아닌 응답이 오면 오류 처리
-      console.error('❌ 선택지 정보 전달 실패:', response.status);
-    } else {
-      console.log('✅ 2번선택지 정보 전달 성공');
-    }
-  } catch (error) {
-    console.error('❌ 네트워크 오류 발생:', error);
-  }
-      navigate('/rest');
-      console.log("호텔");
+      optionKey = 2;
+      navigatePath = '/rest';
     } else if (choiceId === 'walk') {
-            try {
-        const response = await fetch(`${BACKEND_KEY}/player/${playerid}/choice`, {
-          method: 'POST', // 💡 요청 메서드
-          headers: {
-            // Content-Type 헤더는 서버가 요구할 때만 추가합니다.
-            // 빈 바디 요청이므로 생략해도 되지만, 서버 사양에 따라 포함할 수도 있습니다.
-            'Content-Type': 'application/json', 
-          },
-          body: JSON.stringify({
-            "sceneId" : 1,
-            "optionKey" : 3,
-          }),
-        });
+      optionKey = 3;
+      navigatePath = '/walk';
+    }
 
-    if (!response.ok) {
-      // 서버에서 200번대가 아닌 응답이 오면 오류 처리
-      console.error('❌ 선택지 정보 전달 실패:', response.status);
-    } else {
-      console.log('✅ 3번 선택지 정보 전달 성공');
+    // POST 로직
+    try {
+      const response = await fetch(`${BACKEND_KEY}/player/${playerid}/choice`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json', 
+        },
+        body: JSON.stringify({
+          "sceneId" : 1,
+          "optionKey" : optionKey,
+        }),
+      });
+
+      if (!response.ok) {
+        console.error(`❌ 선택지 정보 전달 실패 (${optionKey}번):`, response.status);
+      } else {
+        console.log(`✅ ${optionKey}번 선택지 정보 전달 성공`);
+      }
+    } catch (error) {
+      console.error('❌ 네트워크 오류 발생:', error);
     }
-  } catch (error) {
-    console.error('❌ 네트워크 오류 발생:', error);
-  }
-      navigate('/walk');
-      console.log("걷기");
-    }
+    
+    navigate(navigatePath);
+    console.log(navigatePath);
   };
 
   return (
@@ -249,7 +214,7 @@ function Airport() {
           style={{
             left: `${charX}px`,
             bottom: `${GROUND_Y}px`,
-            backgroundImage: `url(${ASSET_PATHS.character})` // 실제 이미지
+            backgroundImage: `url(${ASSET_PATHS.character})`
           }}
         />
       )}
@@ -258,7 +223,6 @@ function Airport() {
       {activeDialogue && (
         <DialogueBox
           key={dialogueIndex} // index 변경 시 리셋
-          // (수정) text prop 대신 dialogue와 speaker prop 전달
           dialogue={activeDialogue.dialogue}
           speaker={activeDialogue.speaker}
           isTyping={isTyping}
@@ -268,23 +232,23 @@ function Airport() {
       )}
 
       {/* 선택지 (시퀀스 4) */}
-{showChoices && (
-  <div className={styles.airportchoicescontainer}>
-    {AIRPORT_CHOICES.map((choice) => (
-      <button
-        key={choice.id}
-        className={styles.airportchoicebutton}
-        onClick={() => handleChoiceClick(choice.id)}
-      >
-        <img
-          src={choice.imagePath} // import한 선택지.svg 이미지 경로 사용
-          alt={choice.text}     // 접근성을 위해 텍스트를 alt 속성으로 사용
-          className={styles.choiceBackgroundImage} // 이미지 스타일을 위한 새로운 클래스
-        />
-        <span className={styles.choiceTextOverlay}>
-          {choice.text}
-        </span>
-      </button>
+      {showChoices && (
+        <div className={styles.airportchoicescontainer}>
+          {AIRPORT_CHOICES.map((choice) => (
+            <button
+              key={choice.id}
+              className={styles.airportchoicebutton}
+              onClick={() => handleChoiceClick(choice.id)}
+            >
+              <img
+                src={choice.imagePath}
+                alt={choice.text}
+                className={styles.choiceBackgroundImage}
+              />
+              <span className={styles.choiceTextOverlay}>
+                {choice.text}
+              </span>
+            </button>
           ))}
         </div>
       )}
@@ -293,4 +257,3 @@ function Airport() {
 }
 
 export default Airport;
-
