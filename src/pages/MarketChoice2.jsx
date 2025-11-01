@@ -50,7 +50,7 @@ export default function MarketChoice2() {
       id: 145,
       bg: bg,
       char: { src: char3, left: 599, top: 978, width: 400, height: 400 },
-      text: "더할 나위 없이 덩달아 흥겨워지는 풍경이다.",
+      text: "더할 나위 없이 덩달아 흥겨워지는 풍경이다.\n(오른쪽으로 이동하자)",
       popup: { type: "text", src: textbox },
       textStyle: { textAlign: "center", width: "827px"},
       movable: true
