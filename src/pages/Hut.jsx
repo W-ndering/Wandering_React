@@ -81,7 +81,7 @@ export default function Hut() {
         { src: char1, left: 1294, top: 978, width: 400, height: 400 }
       ],
       speaker: "player", // ❗️ 'player' 문자열은 아래 렌더링 로직에서 'nickname'으로 치환됩니다.
-      text: "감사해요 아주머니. 가보겠습니다!\n(문을 통해 나가자.)",
+      text: "감사해요 아주머니. 가보겠습니다!\n(오른쪽으로 이동하자.)",
       popup: { type: "text", src: textbox },
       dialogueStyle: { gap: "8px"},
       movable: true // 마지막 씬에서 이동 가능

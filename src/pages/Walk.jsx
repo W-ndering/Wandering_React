@@ -18,8 +18,8 @@ const DIALOGUES = [
     dialogue: [{ type: 'normal', content: "최근에 이렇게\n마음이 편했던 적이 있었나?" }]
   }
 ];
-const GROUND_Y = 80;
-const CHARACTER_WIDTH = 100;
+const GROUND_Y = 50;
+const CHARACTER_WIDTH = 400;
 
 function Walk() {
   const [charX, setCharX] = useState(0);
