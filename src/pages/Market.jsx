@@ -12,6 +12,7 @@ import styles from "./Scene.module.css";
 export default function Market() {
   const navigate = useNavigate();
   const [idx, setIdx] = useState(0);
+  const nickname = sessionStorage.getItem('NICKNAME') || '나';
   const storyCuts = [
     {
       id: 132,
@@ -73,20 +74,11 @@ export default function Market() {
     {
       id: 137,
       bg: bg,
+      speaker: nickname,
+      text: "네! 다녀오세요.",
       char: [
         { src: char1, left: "28.32%", top: 978, width: 400, height: 400 }
       ]
-    },
-    {
-      id: 138,
-      bg: bg,
-      char: [
-        { src: char1, left: "28.32%", top: 978, width: 400, height: 400 }
-      ],
-      dim: "rgba(0, 0, 0, 0.4)",
-      text: "뭘 할까?",
-      popup: { type: "text", src: textbox },
-      textStyle: { textAlign: "center", width: "245px", left: "calc(50% - 245px/2 + 0.5px)"}
     },
     {
       id: 139,
