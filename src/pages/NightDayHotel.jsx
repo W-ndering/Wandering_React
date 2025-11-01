@@ -88,12 +88,12 @@ export default function NightDayHotel() {
     {
       id: 12,
       char: char2,
-    },
+    }/*,
     {
       id: 13,
       bg: "#282828",
       char: "none"
-    }
+    }*/
   ];
   const [current, setCurrent] = useState(storyCuts[0]); // 현재 보여지는 컷
   const [lastVisual, setLastVisual] = useState({ // 이전 컷의 배경/캐릭터 (유지를 위해서)
