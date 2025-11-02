@@ -262,8 +262,8 @@ export default function Result() {
                   </div>
                 </div>
 
-                <div className={styles.btn1}>결과 공유하기</div>
-                <div className={styles.btn2}>다시 여행하기</div>
+                <div className={styles.btn1}>즐거우셨나요?</div>
+                <div className={styles.btn2} onClick={() => window.open("https://forms.gle/8515AfHWvjFNZSEH6")}>    ☕기프티콘과 런칭 소식 받기 👆</div>
                 <div className={styles.btn3} onClick={handleNext}>
                   Want some Cookie?
                   <img
