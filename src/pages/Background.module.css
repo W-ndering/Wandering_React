@@ -1,0 +1,18 @@
+.viewport {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 2560px;
+  height: 1440px;
+
+  transform: scale(var(--scale)) translate(-50%, -50%) ;
+  transform-origin: top left;
+
+  overflow: hidden;
+}
+
+.background {
+  user-select: none;
+  pointer-events: none;
+  z-index: 0;
+}
