@@ -1,0 +1,81 @@
+.textboxWrap {
+  position: absolute;
+  top: 28%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  user-select: none;
+}
+
+.textboxImage {
+  display: block;
+  width: 1440px;
+  height: 1440px;
+  pointer-events: none;
+}
+
+.textboxContent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  width: 1150px;
+}
+
+.centerText {
+  text-align: center; 
+}
+
+.noLineBreak {
+  top: 46%;
+}
+
+.yesLineBreak {
+  top: 49%;
+}
+
+.speaker {
+  font-family: 'RoundedFixedsys';
+  color: black;
+  white-space: pre-wrap;
+  word-break: keep-all;
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 140%;
+  letter-spacing: 2%;
+  margin-bottom: 10px;
+}
+
+.speakerCustom {
+  color: #C8C8C8;
+}
+
+.content {
+  font-family: 'RoundedFixedsys';
+  color: black;
+  white-space: pre-wrap;
+  word-break: keep-all;
+  font-weight: 400;
+  font-size: 60px;
+  line-height: 140%;
+  letter-spacing: 2%;
+}
+
+.contentCustom1 {
+  color: #C8C8C8;
+}
+
+.contentCustom2 {
+  color: #000000;
+  font-size: 128px;
+}
+
+.bgDim {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2560px;
+    height: 1440px;
+    background: #00000066;
+    pointer-events: none;
+}
