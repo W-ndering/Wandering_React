@@ -1,0 +1,61 @@
+.choiceWrapSingle {
+  position: absolute;
+  top: 53%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.choiceWrapDouble {
+  position: absolute;
+  top: 62%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  text-align: center;
+}
+
+.choiceWrapTriple {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  text-align: center;
+}
+
+.choiceImage {
+  display: block;
+  height: auto;
+  cursor: pointer;
+}
+
+.choiceText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  white-space: pre-wrap;
+  pointer-events: none;
+  font-family: 'RoundedFixedsys';
+  font-weight: 400;
+  font-size: 48px;
+  line-height: 140%;
+  letter-spacing: 2%;
+  text-align: center;
+  color: white;
+  width: 1225px;
+}
+
+.choiceList {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  align-items: center;
+}
+
+.choiceItem {
+  position: relative;
+  pointer-events: auto;
+  cursor: pointer;
+}
