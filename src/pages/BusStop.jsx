@@ -68,67 +68,6 @@ export default function BusStop() {
       textColor: "#FFFFFF",
       dialogueStyle: { gap: "8px", left: "calc(50% - 737px/2 - 221.5px)", top: "40.14%" },
       fadeIn: true
-    },
-    {
-      id: 36,
-      bg: bg1,
-      char: char1,
-      npc: [
-        { src: npc1, left: 2302, top: 960 },
-        { src: npc2, left: 1628, top: 960 },
-        { src: npc4, left: 1974, top: 960 }
-      ],
-      dim: "rgba(0, 0, 0, 0.4)",
-      text: "지나다니는 사람들을 보며\n이 동네는 어떤 곳일까 생각에 잠긴다.",
-      popup: { type: "text", src: textbox }
-    },
-        {
-          id: 37,
-          bg: bg1,
-          char: char1,
-                npc: [
-        { src: npc1, left: 2302, top: 960 },
-        { src: npc2, left: 1628, top: 960 },
-        { src: npc4, left: 1974, top: 960 }
-      ],
-      dim: "rgba(0, 0, 0, 0.4)",
-          text: "아버지는 잘 계시려나.",
-          popup: { type: "text", src: textbox }
-        },
-            {
-              id: 38,
-              bg: bg1,
-              char: char1,
-                    npc: [
-        { src: npc1, left: 2302, top: 960 },
-        { src: npc2, left: 1628, top: 960 },
-        { src: npc4, left: 1974, top: 960 }
-      ],
-      dim: "rgba(0, 0, 0, 0.4)",
-              text: "...",
-              popup: { type: "text", src: textbox }
-            },
-    {
-      id: 39,
-      bg: bg1,
-      char: char1,
-            npc: [
-        { src: npc1, left: 2302, top: 960 },
-        { src: npc2, left: 1628, top: 960 },
-        { src: npc4, left: 1974, top: 960 }
-      ],
-      text: "버스가 도착했다.",
-      obj: [{
-        src: busimg, 
-        width: 1000, 
-        height: 1000,
-        left: 100,  // (원하는 위치로 값을 조정하세요)
-        top: 600     // (원하는 위치로 값을 조정하세요)
-      }],
-      choice: {
-        src: choicebox,
-        text: "버스에 탑승한다"
-      }
     }
   ];
   const [current, setCurrent] = useState(storyCuts[0]);
