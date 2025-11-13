@@ -48,7 +48,31 @@ export default function BusStop() {
       popup: { type: "text", src: textbox }
     },
     {
+      id: 341,
+      bg: bg1,
+      char: char1,
+      npc: [
+        { src: npc1, left: 2302, top: 960 },
+        { src: npc2, left: 1628, top: 960 },
+        { src: npc4, left: 1974, top: 960 }
+      ]
+    },
+    {
       id: 35,
+      bg: bg1,
+      char: char1,
+      npc: [
+        { src: npc1, left: 2302, top: 960 },
+        { src: npc2, left: 1628, top: 960 },
+        { src: npc4, left: 1974, top: 960 }
+      ],
+      dim: "rgba(0, 0, 0, 0.4)",
+      text: "지나다니는 사람들을 보며\n이 동네는 어떤 곳일까 생각에 잠긴다.",
+      popup: { type: "text", src: textbox },
+      textStyle: { textAlign: "center", width: "1104px", left: "calc(50% - 1104px/2)", top: "44.17%", fontSize: "60px", letterSpacing: "0.02em" }
+    },
+    {
+      id: 351,
       bg: bg1,
       dim: "#000000",
       text: "지나다니는 사람들을 보며\n이 동네는 어떤 곳일까 생각에 잠긴다.",

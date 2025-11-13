@@ -27,19 +27,6 @@ export default function BusStopMemory() {
       textStyle: { textAlign: "center", width: "827px", left: "calc(50% - 827px/2 + 0.5px)", top: "44.17%", fontSize: "60px", letterSpacing: "0.02em" }
     },
     {
-      id: 39,
-      bg: bg2,
-      speaker: nickname,
-      text: "아빠! 나 버스 타고 갈래!",
-      char: [
-        { src: oldPlayer, left: 522, top: 1121, width: 240, height: 240 },
-        { src: oldFather, left: 692, top: 961, width: 400, height: 400 }
-      ],
-      textColor: "#FFFFFF",
-      dialogueStyle: { gap: "8px", left: "calc(50% - 737px/2 - 221.5px)", top: "40.14%" },
-      popup: { type: "text", src: textbox }
-    },
-    {
       id: 40,
       bg: bg2,
       char: char1,
