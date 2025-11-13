@@ -14,6 +14,13 @@ export default function BusStopMemory() {
   const nickname = sessionStorage.getItem('NICKNAME') || '나';
   const storyCuts = [
     {
+      id: 38,
+      bg: bg2,
+      text: "지나다니는 행인들을 보니\n아버지와의 추억이 떠오른다.",
+      popup: { type: "text", src: textbox },
+      textStyle: { textAlign: "center", width: "827px", left: "calc(50% - 827px/2 + 0.5px)", top: "44.17%", fontSize: "60px", letterSpacing: "0.02em" }
+    },
+    {
       id: 39,
       bg: bg2,
       speaker: nickname,

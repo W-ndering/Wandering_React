@@ -1,7 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import bg1 from "../assets/bg/9-2_버스정류장.svg";
+import bg2 from "../assets/bg/10-2_버스정류장_과거회상.svg";
 import char1 from "../assets/char/기본_주인공1.svg";
+import oldPlayer from "../assets/char/옛날_주인공.svg";
+import oldFather from "../assets/char/옛날_아버지.svg";
 import npc1 from "../assets/char/Npc1.svg";
 import npc2 from "../assets/char/Npc2.svg";
 import npc4 from "../assets/char/Npc4.svg";
@@ -42,9 +45,31 @@ export default function BusStop() {
         { src: npc4, left: 1974, top: 960 }
       ],
       text: "기다리기에 나쁘지 않은 시간이다.",
-
+      popup: { type: "text", src: textbox }
     },
-        {
+    {
+      id: 35,
+      bg: bg1,
+      dim: "#000000",
+      text: "지나다니는 사람들을 보며\n이 동네는 어떤 곳일까 생각에 잠긴다.",
+      popup: { type: "text", src: textbox },
+      textStyle: { textAlign: "center", width: "1104px", left: "calc(50% - 1104px/2)", top: "44.17%", fontSize: "60px", letterSpacing: "0.02em" }
+    },
+    {
+      id: 352,
+      bg: bg2,
+      char: [
+        { src: oldPlayer, left: 522, top: 1121, width: 240, height: 240 },
+        { src: oldFather, left: 692, top: 961, width: 400, height: 400 }
+      ],
+      speaker: "player",
+      text: "아빠! 나 버스 타고 갈래!",
+      popup: { type: "text", src: textbox },
+      textColor: "#FFFFFF",
+      dialogueStyle: { gap: "8px", left: "calc(50% - 737px/2 - 221.5px)", top: "40.14%" },
+      fadeIn: true
+    },
+    {
       id: 36,
       bg: bg1,
       char: char1,
@@ -168,6 +193,12 @@ export default function BusStop() {
   }, [idx]);
 
   const handleNext = async (choiceIndex = null) => {
+    // Cut 352 (회상 시작) 이후 BusStopMemory로 이동
+    if (current.id === 352) {
+      navigate("/bus-stop-memory");
+      return;
+    }
+
     if (idx >= storyCuts.length - 1) {
       navigate("/in-bus");
       return;
