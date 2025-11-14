@@ -1,0 +1,7 @@
+.character {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  user-select: none;
+  pointer-events: none;
+}
