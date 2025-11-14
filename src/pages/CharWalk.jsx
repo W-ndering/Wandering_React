@@ -29,7 +29,7 @@ export default function CharWalk() {
 
     walkAnimTimerRef.current = setInterval(() => {
       setWalkFrame(prev => (prev === 0 ? 1 : 0)); // 현재 0이면 1로, 1이면 0으로 변경
-    }, 200);
+    }, 150);
 
     return () => {
       if (walkAnimTimerRef.current) {
