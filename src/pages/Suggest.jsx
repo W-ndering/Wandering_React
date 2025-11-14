@@ -9,14 +9,21 @@ import musicIcon from '../assets/obj/음악.svg';
 import bookIcon from '../assets/obj/도서.svg';
 import hobbyIcon from '../assets/obj/취미.svg';
 import ottIcon from '../assets/obj/OTT.svg';
+import tripBackground from '../assets/bg/여행지_배경.svg';   // 예시: 여행지 배경
+import musicBackground from '../assets/bg/음악_배경.svg'; // 예시: 음악 배경
+import bookBackground from '../assets/bg/책_배경.svg';   // 예시: 도서 배경
+import hobbyBackground from '../assets/bg/취미_배경.svg'; // 예시: 취미 배경
+import ottBackground from '../assets/bg/OTT_배경.svg';     // 예시: OTT 배경
 
+// --- 카테고리별 배경 이미지 매핑 객체 수정 ---
+// '여행지' 카테고리를 선택하면 tripBackground 경로가 전달됩니다.
 const CategoryBackgrounds = {
-  '여행지' : '../assets/bg/여행지_배경.svg',
-  '음악' : '../assets/bg/음악_배경.svg',
-  '도서' : '../assets/bg/도서_배경.svg',
-  '취미' : '../assets/bg/취미_배경.svg',
-  'OTT' : '../assets/bg/OTT_배경.svg',
-}
+  '여행지' : tripBackground,
+  '음악' : musicBackground,
+  '도서' : bookBackground,
+  '취미' : hobbyBackground,
+  'OTT' : ottBackground,
+};
 
 const Buttons = [
   { name: '여행지', value: '여행지', icon: tripIcon },
@@ -33,6 +40,8 @@ export default function Suggest() {
 
   const handleButtonClick = async (buttonValue) => {
     const backgroundImageUrl = CategoryBackgrounds[buttonValue] || ''; 
+    const selectedButton = Buttons.find(b => b.value === buttonValue);
+    const categoryIconUrl = selectedButton ? selectedButton.icon : '';
     const requestBody = {
       message: buttonValue,
     };
@@ -56,11 +65,12 @@ export default function Suggest() {
       console.log('API 응답 수신:', data);
 
       // 다음 페이지로 응답 데이터를 state로 전달
-      navigate('suggestCustom', { 
+      navigate('/suggestCustom', { 
         state: { 
           apiResponse: data, 
           category: buttonValue,
-          backgroundImageUrl: backgroundImageUrl 
+          backgroundImageUrl: backgroundImageUrl, // 전체 배경 이미지
+          categoryIconUrl: categoryIconUrl
         } 
       });
       

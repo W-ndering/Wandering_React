@@ -25,6 +25,7 @@ import MarketChoice3 from "./pages/MarketChoice3";
 import Hut from "./pages/Hut";
 import Credits from "./pages/Credits";
 import Suggest from "./pages/Suggest";
+import SuggestCustom from "./pages/SuggestCustom";
 
 const Router = () => (
   <BrowserRouter>
@@ -55,6 +56,7 @@ const Router = () => (
       <Route path="/hut" element={<Hut />} />
       <Route path="/credits" element={<Credits />} />
       <Route path="/suggest" element={<Suggest />} />
+      <Route path="/suggestCustom" element={<SuggestCustom/>}/>
     </Routes>
   </BrowserRouter>
 );
