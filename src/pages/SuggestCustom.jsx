@@ -31,7 +31,7 @@ export default function SuggestCustom() {
   const navigate = useNavigate();
   
   const { apiResponse, category, backgroundImageUrl,categoryIconUrl } = location.state || {};
-  const playerid = sessionStorage.getItem("playerId") || "0";
+  const playerid = sessionStorage.getItem("playerId") || "7";
   // 임시 사용자 이름 설정
   const username = sessionStorage.getItem("USERNAME") || "USER NAME"; 
   
@@ -40,7 +40,7 @@ export default function SuggestCustom() {
   
   const handleRecommendationClick = async (recommendationValue) => {
     const BACKEND_KEY = import.meta.env.VITE_BACKEND_DOMAIN_KEY;
-    const DETAIL_NEXT_PAGE_PATH = '/detail-info'; 
+    const DETAIL_NEXT_PAGE_PATH = '/suggestDetail'; 
     
     const requestBody = {
       message: recommendationValue,
@@ -64,7 +64,9 @@ export default function SuggestCustom() {
         state: { 
           detail: detailData, 
           title: recommendationValue,
-          backgroundImageUrl: backgroundImageUrl
+          backgroundImageUrl: backgroundImageUrl,
+          categoryIconUrl: categoryIconUrl,
+          category: category
         } 
       });
 

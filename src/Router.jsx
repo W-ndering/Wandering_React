@@ -26,6 +26,7 @@ import Hut from "./pages/Hut";
 import Credits from "./pages/Credits";
 import Suggest from "./pages/Suggest";
 import SuggestCustom from "./pages/SuggestCustom";
+import SuggestDetail from "./pages/SuggestDetail";
 
 const Router = () => (
   <BrowserRouter>
@@ -57,6 +58,7 @@ const Router = () => (
       <Route path="/credits" element={<Credits />} />
       <Route path="/suggest" element={<Suggest />} />
       <Route path="/suggestCustom" element={<SuggestCustom/>}/>
+      <Route path="/suggestDetail" element={<SuggestDetail/>}/>
     </Routes>
   </BrowserRouter>
 );
