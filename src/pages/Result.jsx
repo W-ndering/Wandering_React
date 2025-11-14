@@ -78,6 +78,10 @@ export default function Result() {
     "[스스로를 믿으세요.]": result3,
   };
 
+  const onClickSuggest = () =>{
+    navigate(`/suggest`);
+  };
+
   useEffect(() => { // 결과 api 연결
     let mounted = true;
 
@@ -262,7 +266,7 @@ export default function Result() {
                   </div>
                 </div>
 
-                <div className={styles.btn1}>즐거우셨나요?</div>
+                <div className={styles.btn1} onClick={onClickSuggest}>!내 성향에 맞는 콘텐츠 추천받기!</div>
                 <div className={styles.btn2} onClick={() => window.open("https://forms.gle/8515AfHWvjFNZSEH6")}>    ☕기프티콘과 런칭 소식 받기 👆</div>
                 <div className={styles.btn3} onClick={handleNext}>
                   Want some Cookie?
