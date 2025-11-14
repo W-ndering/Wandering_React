@@ -1,0 +1,46 @@
+.bgDim {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2560px;
+  height: 1440px;
+  background: #00000066;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.titleText {
+  font-family: 'RoundedFixedsys';
+  font-weight: 400;
+  font-size: 120px;
+  line-height: 140%;
+  letter-spacing: 2%;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  color: white;
+}
+
+.fadeOverlay {
+  position: absolute;
+  inset: 0;
+  background-color: black;
+  animation: fadeOverlay 1s ease-in-out;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+@keyframes fadeOverlay {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0;
+  }
+}
