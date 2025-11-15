@@ -17,40 +17,55 @@ export default function BusStopMemory() {
   const storyCuts = [
     {
       id: 38,
-      bg: bg2,
+      bg: bg1,
+      bgOverlay: bg2,
+      bgOverlayOpacity: 0.8,
       char: [
         { src: oldPlayer, left: 522, top: 1121, width: 240, height: 240 },
         { src: oldFather, left: 692, top: 961, width: 400, height: 400 }
       ],
+      obj: [],
       text: "지나다니는 행인들을 보니\n아버지와의 추억이 떠오른다.",
       popup: { type: "text", src: textbox },
       textStyle: { textAlign: "center", width: "827px", left: "calc(50% - 827px/2 + 0.5px)", top: "44.17%", fontSize: "60px", letterSpacing: "0.02em" }
     },
     {
       id: 40,
-      bg: bg2,
+      bg: bg1,
+      bgOverlay: bg2,
+      bgOverlayOpacity: 0.8,
       char: char1,
+      obj: [],
       text: "아버지는 잘 계시려나.",
       popup: { type: "text", src: textbox }
     },
     {
       id: 41,
-      bg: bg2,
+      bg: bg1,
+      bgOverlay: bg2,
+      bgOverlayOpacity: 0.8,
       char: char1,
+      obj: [],
       text: "출발 하기 전에 전화라도 드렸어야 했나.",
       popup: { type: "text", src: textbox }
     },
     {
       id: 42,
-      bg: bg2,
+      bg: bg1,
+      bgOverlay: bg2,
+      bgOverlayOpacity: 0.8,
       char: char1,
-      text: "지난 몇 년간 집에서 오는 전화가\n부담스러워 거절하거나 틱틱대곤 했다.",
+      obj: [],
+      text: "지난 몇 년간\n집에서 오는 전화가 부담스러워\n거절하거나 틱틱대곤 했다.",
       popup: { type: "text", src: textbox }
     },
     {
       id: 43,
-      bg: bg2,
+      bg: bg1,
+      bgOverlay: bg2,
+      bgOverlayOpacity: 0.8,
       char: char1,
+      obj: [],
       text: "...",
       popup: { type: "text", src: textbox }
     },
@@ -71,6 +86,7 @@ export default function BusStopMemory() {
     bg: storyCuts[0].bg,
     char: storyCuts[0].char,
     npc: storyCuts[0].npc ?? null,
+    obj: storyCuts[0].obj ?? null,
   });
   const [displayedText, setDisplayedText] = useState("");
   const [isTyping, setIsTyping] = useState(false);
@@ -117,10 +133,11 @@ export default function BusStopMemory() {
         cut.char === "none"
           ? null
           : (cut.char ?? lastVisual.char),
-      npc: cut.npc === "none" ? null : (cut.npc ?? lastVisual.npc)
+      npc: cut.npc === "none" ? null : (cut.npc ?? lastVisual.npc),
+      obj: cut.obj === "none" ? null : (cut.obj ?? lastVisual.obj)
     };
     setCurrent(merged);
-    setLastVisual({ bg: merged.bg, char: merged.char, npc: merged.npc });
+    setLastVisual({ bg: merged.bg, char: merged.char, npc: merged.npc, obj: merged.obj });
 
     navigatedRef.current = false;
   }, [idx]);
@@ -162,6 +179,18 @@ export default function BusStopMemory() {
           ? <div className={styles.background} style={{ backgroundColor: current.bg }} />
           : <img src={current.bg} alt="배경" className={styles.background} />
         }
+
+        {current.bgOverlay && (
+          <img
+            src={current.bgOverlay}
+            alt="오버레이 배경"
+            className={styles.background}
+            style={{
+              opacity: current.bgOverlayOpacity || 0.8,
+              zIndex: 1
+            }}
+          />
+        )}
 
         {current.dim && (
           <div className={styles.bgDim} style={{ background: current.dim }} />
@@ -214,6 +243,21 @@ export default function BusStopMemory() {
               position: "absolute",
               left: `${npc.left}px`,
               top: `${npc.top}px`,
+            }}
+          />
+        ))}
+
+        {Array.isArray(current.obj) && current.obj.map((obj, i) => (
+          <img
+            key={i}
+            src={obj.src}
+            alt={`obj${i + 1}`}
+            style={{
+              position: "absolute",
+              left: `${obj.left}px`,
+              top: `${obj.top}px`,
+              width: `${obj.width}px`,
+              height: `${obj.height}px`
             }}
           />
         ))}

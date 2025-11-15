@@ -10,6 +10,7 @@ import npc2 from "../assets/char/Npc2.svg";
 import npc4 from "../assets/char/Npc4.svg";
 import busimg from "../assets/obj/버스.svg";
 import textbox from "../assets/obj/text_box.svg";
+import textboxMemory from "../assets/obj/text_x5F_box_xA0_이미지.png";
 import choicebox from "../assets/obj/선택지.svg";
 import styles from "./Scene.module.css";
 
@@ -48,16 +49,6 @@ export default function BusStop() {
       popup: { type: "text", src: textbox }
     },
     {
-      id: 341,
-      bg: bg1,
-      char: char1,
-      npc: [
-        { src: npc1, left: 2302, top: 960 },
-        { src: npc2, left: 1628, top: 960 },
-        { src: npc4, left: 1974, top: 960 }
-      ]
-    },
-    {
       id: 35,
       bg: bg1,
       char: char1,
@@ -66,6 +57,7 @@ export default function BusStop() {
         { src: npc2, left: 1628, top: 960 },
         { src: npc4, left: 1974, top: 960 }
       ],
+      obj: [],
       dim: "rgba(0, 0, 0, 0.4)",
       text: "지나다니는 사람들을 보며\n이 동네는 어떤 곳일까 생각에 잠긴다.",
       popup: { type: "text", src: textbox },
@@ -74,6 +66,7 @@ export default function BusStop() {
     {
       id: 351,
       bg: bg1,
+      obj: [],
       dim: "#000000",
       text: "지나다니는 사람들을 보며\n이 동네는 어떤 곳일까 생각에 잠긴다.",
       popup: { type: "text", src: textbox },
@@ -86,9 +79,11 @@ export default function BusStop() {
         { src: oldPlayer, left: 522, top: 1121, width: 240, height: 240 },
         { src: oldFather, left: 692, top: 961, width: 400, height: 400 }
       ],
+      npc: [],
+      obj: [],
       speaker: "player",
       text: "아빠! 나 버스 타고 갈래!",
-      popup: { type: "text", src: textbox },
+      popup: { type: "text", src: textboxMemory },
       textColor: "#FFFFFF",
       dialogueStyle: { gap: "8px", left: "calc(50% - 737px/2 - 221.5px)", top: "40.14%" },
       fadeIn: true
@@ -212,16 +207,34 @@ export default function BusStop() {
         )}
 
         {current.char && (
-          <img
-            src={current.char}
-            alt="캐릭터"
-            className={styles.character}
-            style={{
-              position: "absolute",
-              left: "734px",
-              top: "960px",
-            }}
-          />
+          Array.isArray(current.char) ? (
+            current.char.map((char, i) => (
+              <img
+                key={i}
+                src={char.src}
+                alt={`캐릭터${i + 1}`}
+                className={styles.character}
+                style={{
+                  position: "absolute",
+                  left: `${char.left}px`,
+                  top: `${char.top}px`,
+                  width: `${char.width}px`,
+                  height: `${char.height}px`,
+                }}
+              />
+            ))
+          ) : (
+            <img
+              src={current.char}
+              alt="캐릭터"
+              className={styles.character}
+              style={{
+                position: "absolute",
+                left: "734px",
+                top: "960px",
+              }}
+            />
+          )
         )}
 
         {Array.isArray(current.npc) && current.npc.map((npc, i) => (
