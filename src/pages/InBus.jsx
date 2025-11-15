@@ -2,8 +2,8 @@ import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import bg1 from "../assets/bg/11-4_버스_출발.svg";
 import bg2 from "../assets/bg/12-5_버스_도착.svg";
-// TODO: Add character imports once provided
-// import char1 from "./assets/char/기본_주인공1.svg";
+import char1 from "../assets/char/기본_주인공1.svg";
+import busDriver from "../assets/char/버스기사.svg";
 import textbox from "../assets/obj/text_box.svg";
 import choicebox from "../assets/obj/선택지.svg";
 import { postChoice } from "../lib/api";
@@ -14,47 +14,72 @@ export default function InBus() {
   const [idx, setIdx] = useState(0);
   const storyCuts = [
     {
+      id: 0,
+      bg:bg1,
+      dim: "rgba(0, 0, 0, 0.4)",
+      title: "버스 안"
+    },
+    {
       id: 1,
       bg:bg1,
-      text: "버스에 올라탔다. 요금을 내자.",
+      char: char1,
+      text: "버스에 올라탔다. 무얼 할까?",
+      choice: {
+        src: choicebox,
+        text: "요금을 낸다"
+      }
     },
     {
       id: 2,
+      bg:bg1,
+      char: char1,
+      npc: { src: busDriver, x: 1650 },
       speaker: "버스기사",
       text: "하차 하실 때 요금을 내세요.",
     },
     {
       id: 3,
-      text: "이 동네는 하차할 때 요금을 내는 것 같다.",
+      char: char1,
+      npc: { src: busDriver, x: 1650 },
+      text: "이 동네는\n하차할 때 요금을 내는 것 같다.",
     },
     {
       id: 4,
+      char: char1,
+      npc: "none",
       text: "다시 지갑을 가방에 넣고\n창 밖을 구경한다.",
     },
         {
       id: 5,
       bg:"#000000",
-      text: "잦은 이동에 피곤한 나머지 눈이 감긴다.",
+      char: "none",
+      text: "잦은 이동에 피곤한 나머지\n눈이 감긴다.",
     },
         {
       id: 6,
       bg:bg2,
+      char: char1,
       text: "\" 이번 정류장은\n산 입구입니다. \"",
     },
         {
       id: 7,
+      char: char1,
       text: "어...? 언제 잠들었지?\n이제 내릴 때가 되었다.",
     },
         {
       id: 8,
+      char: char1,
       text: "가방에서 지갑을 꺼내려고 보니,\n지갑을 넣어 둔 자리에는 아무 것도 없다.",
     },
         {
       id: 9,
+      char: char1,
       text: "이제 내려야 하는데 어떡하지.\n걱정에 휩싸인다.",
     },
         {
       id: 10,
+      char: char1,
+      dim: "#00000066",
       text: "이제 내려야 하는데 어떡하지.\n걱정에 휩싸인다.",
             choice: {
         src: choicebox,
@@ -135,18 +160,24 @@ export default function InBus() {
   }, [idx]);
 
   const handleNext = async (choiceIndex = null) => {
-    if (current.id === 11 && choiceIndex !== null) {
+    if (current.id === 10 && choiceIndex !== null) {
       const optionKey = choiceIndex + 1;
 
-      await postChoice({ sceneId: SCENE_ID, optionKey });
+      try {
+        await postChoice({ sceneId: SCENE_ID, optionKey });
+      } catch (error) {
+        console.error("Failed to post choice:", error);
+      }
 
       if (choiceIndex === 0) {
-        navigate("/mountain");
+        navigate("/bus-choice-1");
       } else if (choiceIndex === 1) {
-        navigate("/mountain");
-      } else {("/mountain");
+        navigate("/bus-choice-2");
+      } else {
+        navigate("/bus-choice-3");
       }
-    };
+      return;
+    }
 
     if (idx >= storyCuts.length - 1) {
       navigate("/mountain");
@@ -160,7 +191,7 @@ export default function InBus() {
     const onKey = (e) => {
     if (e.key !== " ") return;
       e.preventDefault();
-      if ([11].includes(current.id)) return;
+      if ([10].includes(current.id)) return;
 
       if (isTyping && current.text) {
         if (typingTimerRef.current) {

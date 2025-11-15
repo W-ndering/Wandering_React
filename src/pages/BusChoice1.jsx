@@ -14,49 +14,49 @@ export default function BusChoice1() {
       id: 55,
       bg: bg,
       char: [
-        { src: char1, left: "80.08%", top: 965, width: 400, height: 400 },
-        { src: busDriver, left: "63.2%", top: 965, width: 400, height: 400 }
+        { src: char1, left: 1730, top: 965, width: 400, height: 400 },
+        { src: busDriver, left: 1366, top: 965, width: 400, height: 400 }
       ],
       speaker: "player",
       text: "정말 죄송한데 잠든 사이\n누군가 지갑을 훔쳐 간 것 같아요...",
       popup: { type: "text", src: textbox },
-      dialogueStyle: { gap: "20px", top: "569px" }
+      dialogueStyle: { gap: "20px" }
     },
     {
       id: 56,
       bg: bg,
       char: [
-        { src: char1, left: "80.08%", top: 965, width: 400, height: 400 },
-        { src: busDriver, left: "63.2%", top: 965, width: 400, height: 400 }
+        { src: char1, left: 1730, top: 965, width: 400, height: 400 },
+        { src: busDriver, left: 1366, top: 965, width: 400, height: 400 }
       ],
       speaker: "버스 기사",
       text: "이 동네는 소매치기가 많이 일어나요.\n앞으로는 조심하도록 해요.",
       popup: { type: "text", src: textbox },
-      dialogueStyle: { gap: "8px", top: "39.51%" }
+      dialogueStyle: { gap: "8px" }
     },
     {
       id: 57,
       bg: bg,
       char: [
-        { src: char1, left: "80.08%", top: 965, width: 400, height: 400 },
-        { src: busDriver, left: "63.2%", top: 965, width: 400, height: 400 }
+        { src: char1, left: 1730, top: 965, width: 400, height: 400 },
+        { src: busDriver, left: 1366, top: 965, width: 400, height: 400 }
       ],
       speaker: "버스 기사",
       text: "이번엔 그냥 내리세요.",
       popup: { type: "text", src: textbox },
-      dialogueStyle: { gap: "8px", top: "578px" }
+      dialogueStyle: { gap: "8px" }
     },
     {
       id: 58,
       bg: bg,
       char: [
-        { src: char1, left: "80.08%", top: 965, width: 400, height: 400 },
-        { src: busDriver, left: "63.2%", top: 965, width: 400, height: 400 }
+        { src: char1, left: 1730, top: 965, width: 400, height: 400 },
+        { src: busDriver, left: 1366, top: 965, width: 400, height: 400 }
       ],
       speaker: "player",
       text: "정말 감사합니다 기사님...",
       popup: { type: "text", src: textbox },
-      dialogueStyle: { gap: "8px", top: "578px" }
+      dialogueStyle: { gap: "8px" }
     },
   ];
   const [current, setCurrent] = useState(storyCuts[0]);
@@ -124,7 +124,8 @@ export default function BusChoice1() {
 
   useEffect(() => {
     const onKey = (e) => {
-      if (e.key !== "Enter") return;
+      if (e.key !== " ") return;
+      e.preventDefault();
       if (isTyping) {
         if (typingTimerRef.current) clearInterval(typingTimerRef.current);
         setDisplayedText(current.text);
@@ -151,10 +152,11 @@ export default function BusChoice1() {
           alt="character"
           className={styles.character}
           style={{
-            left: c.left,
-            top: c.top,
-            width: c.width,
-            height: c.height,
+            position: "absolute",
+            left: `${c.left}px`,
+            top: `${c.top}px`,
+            width: `${c.width}px`,
+            height: `${c.height}px`,
           }}
         />
       ));
@@ -171,28 +173,11 @@ export default function BusChoice1() {
         alt="npc"
         className={styles.npc}
         style={{
-          left: n.left,
-          top: n.top,
-          width: n.width,
-          height: n.height,
-        }}
-      />
-    ));
-  };
-
-  const renderObjects = (objects) => {
-    if (!objects) return null;
-    return objects.map((obj, i) => (
-      <img
-        key={i}
-        src={obj.src}
-        alt="object"
-        className={styles.object}
-        style={{
-          left: obj.left,
-          top: obj.top,
-          width: obj.width,
-          height: obj.height,
+          position: "absolute",
+          left: `${n.left}px`,
+          top: `${n.top}px`,
+          width: `${n.width}px`,
+          height: `${n.height}px`,
         }}
       />
     ));
@@ -202,60 +187,32 @@ export default function BusChoice1() {
     <div className={styles.viewport}>
       <div className={styles.stage}>
         <div className={styles.background} style={bgStyle}>
-          {current.dim && <div className={styles.dim} style={{ backgroundColor: current.dim }} />}
-          {current.title && <div className={styles.title}>{current.title}</div>}
+          {current.dim && <div className={styles.bgDim} style={{ background: current.dim }} />}
+          {current.title && <div className={styles.titleText}>{current.title}</div>}
           {renderChar(current.char)}
           {renderNpc(current.npc)}
-          {renderObjects(current.objects)}
         </div>
 
-        {current.popup && (
-          <div className={styles.popupContainer}>
-            {current.popup.type === "text" && (
-              <div className={styles.textPopup}>
-                <img src={current.popup.src} alt="textbox" className={styles.textboxImage} />
-                <div
-                  className={styles.dialogueBox}
-                  style={current.dialogueStyle || {}}
-                >
-                  {current.speaker && (
-                    <div
-                      className={styles.speaker}
-                      style={current.textColor ? { color: current.textColor } : {}}
-                    >
-                      {current.speaker}
-                    </div>
-                  )}
-                  <div
-                    className={styles.dialogueText}
-                    style={current.textColor ? { color: current.textColor } : {}}
-                  >
-                    {displayedText}
-                  </div>
+        {current.popup && current.popup.type === "text" && (
+          <div className={styles.textboxWrap}>
+            <img src={current.popup.src} alt="텍스트박스" className={styles.textboxImage} />
+            <div
+              className={[
+                styles.textboxContent,
+                !current.speaker ? styles.centerText : "",
+                current.speaker ? styles.upText : ""
+              ].join(" ").trim()}
+              style={current.dialogueStyle || {}}
+            >
+              {current.speaker && (
+                <div className={styles.speaker} style={current.textColor ? { color: current.textColor } : {}}>
+                  {current.speaker}
                 </div>
+              )}
+              <div className={styles.content} style={current.textColor ? { color: current.textColor } : {}}>
+                {displayedText}
               </div>
-            )}
-
-            {current.popup.type === "interact" && (
-              <div className={styles.popupInterContainer} onClick={handleNext}>
-                {current.popup.icon && (
-                  <img
-                    src={current.popup.icon}
-                    alt="interaction"
-                    className={styles.popupInterImage}
-                    onClick={handleNext}
-                  />
-                )}
-              </div>
-            )}
-
-            {current.popup.type === "single" && (
-              <img src={current.popup.src}
-                alt="단독아이템"
-                className={styles.popupSingleImage}
-                onClick={handleNext}
-              />
-            )}
+            </div>
           </div>
         )}
       </div>
