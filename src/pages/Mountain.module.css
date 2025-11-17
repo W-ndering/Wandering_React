@@ -1,43 +1,38 @@
 .viewport {
     position: fixed;
-    inset: 0;
-    background: #0e0f12;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-}
-
-.stage {
-    position: relative;
+    top: 50%;
+    left: 50%;
     width: 2560px;
     height: 1440px;
-    overflow: hidden;
-    pointer-events: none;
 
-    /* ✅ 비율 유지 스케일 적용 */
     transform: scale(var(--scale)) translate(-50%, -50%);
     transform-origin: top left;
 
-    /* ✅ 화면 중앙 정렬 */
-    position: absolute;
-    top: 50%;
-    left: 50%;
-
-    /* ✅ GPU 최적화 */
-    will-change: transform;
+    overflow: hidden;
 }
 
 .background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 2560px;
-    height: 1440px;
-    object-fit: contain;
     user-select: none;
-    z-index: 0;
     pointer-events: none;
+    z-index: 0;
+}
+
+.fadeFromDark {
+    position: absolute;
+    inset: 0;
+    background-color: black;
+    animation: fadeFromDark 1.2s ease-out forwards;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+@keyframes fadeFromDark {
+    0% {
+        opacity: 0.4;
+    }
+    100% {
+        opacity: 0;
+    }
 }
 
 .character {
@@ -51,39 +46,39 @@
 
 .textboxWrap {
     position: absolute;
-    left: 50%;
     top: 28%;
+    left: 50%;
     transform: translate(-50%, -50%);
-    cursor: pointer;
+    user-select: none;
     z-index: 3;
-    text-align: center;
 }
 
 .textboxImage {
     display: block;
     width: 1440px;
     height: 1440px;
-    user-select: none;
-    z-index: 0;
+    pointer-events: none;
 }
 
 .textboxContent {
     position: absolute;
-    left: 50%;
     top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
     pointer-events: none;
-    z-index: 1;
     width: 1150px;
-    text-align: left;
 }
 
 .centerText {
     text-align: center;
 }
 
-.upText {
+.noLineBreak {
     top: 46%;
+}
+
+.yesLineBreak {
+    top: 49%;
 }
 
 .speaker {
@@ -109,17 +104,30 @@
     letter-spacing: 2%;
 }
 
-.choiceWrap {
+.choiceWrapSingle {
+    position: absolute;
+    top: 53%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+}
+
+.choiceWrapDouble {
     position: absolute;
     top: 62%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 4;
+    z-index: 3;
     text-align: center;
 }
 
-.choiceWrapSingle {
-    top: 53%
+.choiceWrapTriple {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    text-align: center;
 }
 
 .choiceImage {
@@ -142,6 +150,7 @@
     letter-spacing: 2%;
     text-align: center;
     color: white;
+    width: 1225px;
 }
 
 .choiceList {
@@ -175,8 +184,8 @@
     width: 2560px;
     height: 1440px;
     background: #00000066;
-    z-index: 3;
     pointer-events: none;
+    z-index: 3;
 }
 
 .titleText {
@@ -192,6 +201,7 @@
     transform: translate(-50%, -50%);
     z-index: 10;
     color: white;
+    user-select: none;
 }
 
 .circle {
