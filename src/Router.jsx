@@ -27,18 +27,21 @@ import Credits from "./pages/Credits";
 import BusChoice1 from "./pages/BusChoice1";
 import BusChoice2 from "./pages/BusChoice2";
 import BusChoice3 from "./pages/BusChoice3";
+import Suggest from "./pages/Suggest";
+import SuggestCustom from "./pages/SuggestCustom";
+import SuggestDetail from "./pages/SuggestDetail";
 
 const Router = () => (
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<Intro/>} />
-      <Route path="/prologue" element={<Prologue/>} />
-      <Route path="/airport" element={<Airport/>} />
-      <Route path="/walk" element={<Walk/>} />
-      <Route path="/view" element={<View/>} />
-      <Route path="/rest" element={<Rest/>} />
-      <Route path="/reminiscene" element={<Reminiscene/>} />
-      <Route path="/guide" element={<Guide/>} />
+      <Route path="/" element={<Intro />} />
+      <Route path="/prologue" element={<Prologue />} />
+      <Route path="/airport" element={<Airport />} />
+      <Route path="/walk" element={<Walk />} />
+      <Route path="/view" element={<View />} />
+      <Route path="/rest" element={<Rest />} />
+      <Route path="/reminiscene" element={<Reminiscene />} />
+      <Route path="/guide" element={<Guide />} />
       <Route path="/nightdayhotel" element={<NightDayHotel />} />
       <Route path="/mountain" element={<Mountain />} />
       <Route path="/traveler" element={<Traveler />} />
@@ -59,6 +62,9 @@ const Router = () => (
       <Route path="/market-choice-3" element={<MarketChoice3 />} />
       <Route path="/hut" element={<Hut />} />
       <Route path="/credits" element={<Credits />} />
+      <Route path="/suggest" element={<Suggest />} />
+      <Route path="/suggestCustom" element={<SuggestCustom/>}/>
+      <Route path="/suggestDetail" element={<SuggestDetail/>}/>
     </Routes>
   </BrowserRouter>
 );

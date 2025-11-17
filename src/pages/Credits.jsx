@@ -11,7 +11,7 @@ export default function Credits() {
     {
       id: 184,
       title: "DESIGNER",
-      names: ["JI YEON JEON", "YOUNG WON KIM", "JU TOUNG KIM"]
+      names: ["JI YEON JEON", "YOUNG WON KIM", "JU YOUNG KIM"]
     },
     {
       id: 185,
