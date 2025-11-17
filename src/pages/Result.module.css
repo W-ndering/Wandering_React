@@ -1,85 +1,83 @@
 .viewport {
     position: fixed;
-    inset: 0;
-    background: #0e0f12;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    top: 50%;
+    left: 50%;
+    width: 2560px;
+    height: 1440px;
+
+    transform: scale(var(--scale)) translate(-50%, -50%);
+    transform-origin: top left;
+
     overflow: hidden;
 }
 
 .background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 2560px;
-    height: 1440px;
-    object-fit: contain;
     user-select: none;
-    z-index: 0;
     pointer-events: none;
-        /* 브라우저 창(vw/vh)과 스테이지(2560/1440)의 비율을 계산합니다.
-      --scale-x: 가로 비율 (예: 1920 / 2560 = 0.75)
-      --scale-y: 세로 비율 (예: 1080 / 1440 = 0.75)
-    */
-    --scale-x: calc(100vw / 2560);
-    --scale-y: calc(100vh / 1440);
+    z-index: 0;
+}
 
-    /* 가로/세로 비율 중 더 '작은' 값을 스케일로 사용합니다.
-      (min을 사용해야 레터박스/필러박스가 생기며 꽉 찹니다)
-    */
-    --scale: min(var(--scale-x), var(--scale-y));
+.fadeOverlay {
+    position: absolute;
+    inset: 0;
+    background-color: black;
+    animation: fadeOverlay 3.6s ease-in-out forwards;
+    z-index: 9999;
+    pointer-events: none;
+}
 
-    /* 계산된 비율로 .stage 자체를 축소/확대합니다.
-      (transform-origin의 기본값은 center이므로 .viewport가 중앙 정렬해줍니다)
-    */
-    transform: scale(var(--scale));
+@keyframes fadeOverlay {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
 }
 
 .textboxWrap {
     position: absolute;
-    left: 50%;
     top: 28%;
+    left: 50%;
     transform: translate(-50%, -50%);
-    cursor: pointer;
-    z-index: 5;
-    text-align: center;
-    
+    user-select: none;
 }
 
 .textboxImage {
     display: block;
     width: 1440px;
     height: 1440px;
-    user-select: none;
-    z-index: 0;
+    pointer-events: none;
 }
 
 .textboxContent {
     position: absolute;
-    left: 50%;
     top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
     pointer-events: none;
-    z-index: 1;
     width: 1150px;
-    text-align: left;
 }
 
 .centerText {
     text-align: center;
 }
 
-.upText {
+.noLineBreak {
     top: 46%;
 }
 
-.upTextMulti {
+.yesLineBreak {
     top: 49%;
 }
 
 .speaker {
-    font-family: 'RoundedFixedsys';
+    font-family: 'DungGeunMo';
     color: black;
     white-space: pre-wrap;
     word-break: keep-all;
@@ -91,7 +89,7 @@
 }
 
 .content {
-    font-family: 'RoundedFixedsys';
+    font-family: 'DungGeunMo';
     color: black;
     white-space: pre-wrap;
     word-break: keep-all;
@@ -99,25 +97,6 @@
     font-size: 60px;
     line-height: 140%;
     letter-spacing: 2%;
-}
-
-.popupWrap {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 5;
-}
-
-.popupObjImage {
-    width: 720px;
-    height: 720px;
-    position: absolute;
-    top: 34%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-    z-index: 2;
 }
 
 .popupCenterWrap {
@@ -131,14 +110,6 @@
     position: absolute;
     top: 70%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 10;
-}
-
-.objWrap {
-    position: absolute;
-    top: 45%;
-    left: 18%;
     transform: translate(-50%, -50%);
     z-index: 10;
 }
@@ -166,6 +137,7 @@
     align-items: center;
     overflow-y: scroll;
     overflow-x: hidden;
+    scrollbar-width: none;
 }
 
 .popupResultWrap {
@@ -181,7 +153,7 @@
 .popupResultImage {
     width: 1440px;
     height: 2196px;
-    z-index: 50;
+    user-select: none;
 }
 
 .cardText {
@@ -190,13 +162,13 @@
     left: 50%;
     transform: translate(-50%, -50%);
 
-    font-family: 'RoundedFixedsys';
+    font-family: "DungGeunMo";
     font-weight: 400;
-    font-size: 24px;
+    font-size: 32px;
     line-height: 140%;
     letter-spacing: -4%;
     text-align: center;
-    color: #878787;
+    color: #121212;
 }
 
 .typeNameText {
@@ -205,12 +177,13 @@
     left: 50%;
     transform: translate(-50%, -50%);
 
-    font-family: 'RoundedFixedsys';
+    font-family: "DungGeunMo";
     font-weight: 400;
     font-size: 36px;
     line-height: 140%;
     letter-spacing: -4%;
     text-align: center;
+    color: #6F6F6F;
 }
 
 .feedbackBox {
@@ -235,7 +208,7 @@
     padding: 0 30px;
     box-sizing: border-box;
 
-    font-family: 'RoundedFixedsys';
+    font-family: "DungGeunMo";
     font-weight: 400;
     font-size: 28px;
     line-height: 140%;
@@ -244,9 +217,71 @@
     color: #4F4F4F;
 }
 
+.saveBtn {
+    position: absolute;
+    top: 73.4%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 130px;
+    height: 28px;
+
+    color: #5C5C5C;
+    font-family: 'RoundedFixedsys';
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 140%;
+    letter-spacing: -1%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.saveBtnLine {
+    position: absolute;
+    top: 73.9%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 130px;
+    height: 0;
+    color: #5C5C5C;
+    border: 1px solid #000000;
+    user-select: none;
+}
+
+.recommendBtn {
+    position: absolute;
+    top: 76.5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 569px;
+    height: 78px;
+    border-radius: 12px;
+    border: 2px solid #000000;
+    background-color: #9F6D53;
+
+    color: #FFFFFF;
+    font-family: 'RoundedFixedsys';
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 140%;
+    letter-spacing: -1%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+}
+
 .btn1 {
     position: absolute;
-    top: 77%;
+    top: 83%;
     left: 50%;
     transform: translate(-50%, -50%);
 
@@ -256,7 +291,7 @@
     background-color: #F0EFF2;
 
     color: black;
-    font-family: 'RoundedFixedsys';
+    font-family: "DungGeunMo";
     font-weight: 400;
     font-size: 28px;
     line-height: 140%;
@@ -265,11 +300,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
+    user-select: none;
 }
 
 .btn2 {
     position: absolute;
-    top: 81%;
+    top: 87.3%;
     left: 50%;
     transform: translate(-50%, -50%);
 
@@ -279,7 +316,7 @@
     background-color: #2F2F2F;
 
     color: white;
-    font-family: 'RoundedFixedsys';
+    font-family: "DungGeunMo";
     font-weight: 400;
     font-size: 28px;
     line-height: 140%;
@@ -288,11 +325,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
+    user-select: none;
 }
 
 .btn3 {
     position: absolute;
-    top: 93%;
+    top: 93.5%;
     left: 50%;
     transform: translate(-50%, -50%);
 
@@ -302,7 +341,7 @@
     border: 2px solid black;
 
     color: black;
-    font-family: 'RoundedFixedsys';
+    font-family: "DungGeunMo";
     font-weight: 400;
     font-size: 28px;
     line-height: 140%;
@@ -313,6 +352,7 @@
     align-items: center;
     gap: 12px;
     cursor: pointer;
+    user-select: none;
 }
 
 .cookieIcon {
