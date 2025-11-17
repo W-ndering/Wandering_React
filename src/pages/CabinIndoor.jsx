@@ -4,6 +4,8 @@ import bg1 from "../assets/bg/18-8_오두막집.svg";
 import bg2 from "../assets/bg/19-8_오두막집거실.svg";
 import char1 from "../assets/char/산데굴_주인공1.svg";
 import char2 from "../assets/char/산데굴_주인공2.svg";
+import char2_walk1 from "../assets/char/산데굴_주인공2.svg"; // 걷기 애니메이션
+import char2_walk2 from "../assets/char/산데굴_주인공3.svg"; // 걷기 애니메이션
 import char3 from "../assets/char/기본_주인공1.svg";
 import char4 from "../assets/char/아줌마.svg";
 import char5 from "../assets/char/아저씨.svg";
@@ -11,13 +13,32 @@ import textbox from "../assets/obj/text_box.svg";
 import choicebox from "../assets/obj/선택지.svg";
 import statebox from "../assets/obj/상태창.svg";
 import food from "../assets/obj/음식.svg";
+import { useCharacterControl } from "../hooks/useCharacterControl";
 import styles from "./CabinIndoor.module.css"
 
 export default function CabinIndoor() {
-    const nickname = sessionStorage.getItem('NICKNAME') || '나';
+  const nickname = sessionStorage.getItem('NICKNAME') || '나';
   const navigate = useNavigate();
   const NEXT_ROUTE = "/market"; // 다음 스토리 (오두막집앞)
   const [idx, setIdx] = useState(0);
+
+  // 통합 조작 시스템 (이동, 점프, 상호작용 모두 사용)
+  const {
+    keysRef,
+    getVelocity,
+    charY,
+    jump,
+    isInteractionKey
+  } = useCharacterControl({
+    enableMovement: true,
+    enableJump: true,
+    speed: 500,
+    minX: 0,
+    maxX: 2160,
+    gravity: 1500,
+    jumpVelocity: 600,
+    groundLevel: 0,
+  });
   const storyCuts = [
     {
       id: 1,
@@ -136,12 +157,11 @@ export default function CabinIndoor() {
 
   const [charX, setCharX] = useState(100); // 시작 x좌표(px) — 필요에 따라 조정
   const navigatedRef = useRef(false);
-  const keysRef = useRef({ left: false, right: false });
-  const SPEED = 500;
-  const minX = 0;
-  const maxX = 2160;
-  const moveTimerRef = useRef(null);
-  const lastTimeRef = useRef(null);
+
+  // 걷기 애니메이션 상태
+  const [walkFrame, setWalkFrame] = useState(0);
+  const [isMoving, setIsMoving] = useState(false);
+  const walkAnimTimerRef = useRef(null);
 
   useEffect(() => { // 텍스트 타이핑 효과
     const text = current.text;
@@ -209,7 +229,8 @@ export default function CabinIndoor() {
   // Space바로 다음 컷으로 이동
   useEffect(() => {
     const onKey = (e) => {
-      if (e.code !== "Space") return;
+      if (!isInteractionKey(e)) return;
+      e.preventDefault();
       if ([8].includes(current.id)) return;
 
       // 타이핑 중이면 타이머를 멈추고 즉시 완성
@@ -229,19 +250,26 @@ export default function CabinIndoor() {
     return () => window.removeEventListener("keydown", onKey);
   }, [isTyping, current.id, current.text]);
 
-  // 키 입력 등록
+  // 키 입력 등록 (useCharacterControl의 keysRef 사용)
   useEffect(() => {
     const down = (e) => {
-      if (e.key === "ArrowLeft") {
-        if (!keysRef.current.left) keysRef.current.left = true;
+      if (e.key === "ArrowLeft" || e.key === "a" || e.key === "A") {
+        keysRef.current.left = true;
       }
-      if (e.key === "ArrowRight") {
-        if (!keysRef.current.right) keysRef.current.right = true;
+      if (e.key === "ArrowRight" || e.key === "d" || e.key === "D") {
+        keysRef.current.right = true;
+      }
+      if (e.key === "ArrowUp" || e.key === "w" || e.key === "W") {
+        jump();
       }
     };
     const up = (e) => {
-      if (e.key === "ArrowLeft") keysRef.current.left = false;
-      if (e.key === "ArrowRight") keysRef.current.right = false;
+      if (e.key === "ArrowLeft" || e.key === "a" || e.key === "A") {
+        keysRef.current.left = false;
+      }
+      if (e.key === "ArrowRight" || e.key === "d" || e.key === "D") {
+        keysRef.current.right = false;
+      }
     };
     window.addEventListener("keydown", down);
     window.addEventListener("keyup", up);
@@ -249,52 +277,70 @@ export default function CabinIndoor() {
       window.removeEventListener("keydown", down);
       window.removeEventListener("keyup", up);
     };
-  }, []);
+  }, [keysRef, jump]);
 
-  // 이동 루프
+  // 걷기 애니메이션 프레임 전환
   useEffect(() => {
-    // 루프 시작 시 초기화
-    lastTimeRef.current = null;
-    if (moveTimerRef.current) {
-      clearInterval(moveTimerRef.current);
-      moveTimerRef.current = null;
+    if (!isMoving) {
+      if (walkAnimTimerRef.current) {
+        clearInterval(walkAnimTimerRef.current);
+        walkAnimTimerRef.current = null;
+      }
+      setWalkFrame(0);
+      return;
     }
 
-    moveTimerRef.current = setInterval(() => {
-      if (!current.char) return;
-
-      const now = performance.now();
-      if (lastTimeRef.current == null) {
-        lastTimeRef.current = now; // 첫 틱은 이동하지 않음 (초반 튐 방지)
-        return;
-      }
-      const dt = (now - lastTimeRef.current) / 1000;
-      lastTimeRef.current = now;
-
-      const { left, right } = keysRef.current;
-      const dir = (left ? -1 : 0) + (right ? 1 : 0);
-      if (dir !== 0) {
-        setCharX(x => Math.max(minX, Math.min(maxX, x + dir * SPEED * dt)));
-      }
-    }, 16);
+    walkAnimTimerRef.current = setInterval(() => {
+      setWalkFrame(prev => (prev === 0 ? 1 : 0));
+    }, 150);
 
     return () => {
-      if (moveTimerRef.current) {
-        clearInterval(moveTimerRef.current);
-        moveTimerRef.current = null;
+      if (walkAnimTimerRef.current) {
+        clearInterval(walkAnimTimerRef.current);
+        walkAnimTimerRef.current = null;
       }
     };
-  }, [current.char, SPEED, minX, maxX]);
+  }, [isMoving]);
+
+  // 이동 루프 (useCharacterControl의 getVelocity 사용)
+  useEffect(() => {
+    if (!current.char) return;
+
+    const lastTimeRef = { current: performance.now() };
+    let animationId;
+
+    const animate = () => {
+      const now = performance.now();
+      const deltaTime = (now - lastTimeRef.current) / 1000;
+      lastTimeRef.current = now;
+
+      const velocity = getVelocity(deltaTime);
+      if (velocity !== 0) {
+        setIsMoving(true);
+        setCharX(x => Math.max(0, Math.min(2160, x + velocity)));
+      } else {
+        setIsMoving(false);
+      }
+
+      animationId = requestAnimationFrame(animate);
+    };
+
+    animationId = requestAnimationFrame(animate);
+
+    return () => {
+      if (animationId) cancelAnimationFrame(animationId);
+    };
+  }, [current.char, getVelocity]);
 
   // 특정 컷에서 문에 도달 시 다음 페이지로 이동
   useEffect(() => {
     if (current.id !== 8) return;
-    const EDGE = maxX - 550;
+    const EDGE = 2160 - 550;
     if (!navigatedRef.current && charX >= EDGE) {
       navigatedRef.current = true;
       handleNext();
     }
-  }, [current.id, charX, maxX, navigate]);
+  }, [current.id, charX, navigate]);
 
   return (
     <div className={styles.viewport}>
@@ -314,12 +360,16 @@ export default function CabinIndoor() {
       {/* 캐릭터 */}
       {current.char && (
         <img
-          src={current.char}
+          src={
+            isMoving
+              ? (walkFrame === 0 ? char2_walk1 : char2_walk2)
+              : current.char
+          }
           alt="캐릭터"
           className={styles.character}
           style={{
             position: "absolute",
-            bottom: -270,
+            bottom: `${-270 - charY}px`,
             left: `${charX}px`,
           }}
         />

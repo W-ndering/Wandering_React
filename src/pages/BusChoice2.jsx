@@ -4,11 +4,18 @@ import bg from "../assets/bg/12-5_버스_도착.svg";
 import char1 from "../assets/char/기본_주인공1.svg";
 import busLady from "../assets/char/버스아줌마.svg";
 import textbox from "../assets/obj/text_box.svg";
+import { useCharacterControl } from "../hooks/useCharacterControl";
 import styles from "./Scene.module.css";
 
 export default function BusChoice2() {
   const navigate = useNavigate();
   const [idx, setIdx] = useState(0);
+
+  // 통합 조작 시스템 (상호작용 키만 사용)
+  const { isInteractionKey } = useCharacterControl({
+    enableMovement: false,
+    enableJump: false,
+  });
   const storyCuts = [
     {
       id: 59,
@@ -113,7 +120,7 @@ export default function BusChoice2() {
 
   useEffect(() => {
     const onKey = (e) => {
-      if (e.key !== " ") return;
+      if (!isInteractionKey(e)) return;
       e.preventDefault();
       if (isTyping) {
         if (typingTimerRef.current) clearInterval(typingTimerRef.current);
@@ -125,7 +132,7 @@ export default function BusChoice2() {
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [isTyping, current.text, idx]);
+  }, [isTyping, current.text, idx, isInteractionKey]);
 
   const bgStyle = typeof current.bg === "string" && current.bg.startsWith("#")
     ? { backgroundColor: current.bg }

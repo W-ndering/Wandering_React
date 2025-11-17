@@ -4,15 +4,21 @@ import bg from "../assets/bg/21-9_시장입구.svg";
 import char1 from "../assets/char/기본_주인공1.svg";
 import oldMan from "../assets/char/아저씨.svg";
 import textbox from "../assets/obj/text_box.svg";
-// ❗️ 수정 1: 'choicebox' 이미지를 import 해야 합니다.
-import choicebox from "../assets/obj/선택지.svg"; 
+import choicebox from "../assets/obj/선택지.svg";
 import { postChoice } from "../lib/api";
+import { useCharacterControl } from "../hooks/useCharacterControl";
 import styles from "./Scene.module.css";
 
 export default function Market() {
   const navigate = useNavigate();
   const [idx, setIdx] = useState(0);
   const nickname = sessionStorage.getItem('NICKNAME') || '나';
+
+  // 통합 조작 시스템 (상호작용 키만 사용)
+  const { isInteractionKey } = useCharacterControl({
+    enableMovement: false,
+    enableJump: false,
+  });
   const storyCuts = [
     {
       id: 132,
@@ -178,7 +184,7 @@ export default function Market() {
 
   useEffect(() => {
     const onKey = (e) => {
-      if (e.key !== " ") return;
+      if (!isInteractionKey(e)) return;
       e.preventDefault();
       if (current.choices) return; // Don't proceed if choices are shown
 
@@ -192,7 +198,7 @@ export default function Market() {
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [isTyping, current.text, current.choices, idx]);
+  }, [isTyping, current.text, current.choices, idx, isInteractionKey]);
 
   const renderChar = (char) => {
     if (!char) return null;

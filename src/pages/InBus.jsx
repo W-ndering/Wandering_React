@@ -3,15 +3,36 @@ import { useNavigate } from "react-router-dom";
 import bg1 from "../assets/bg/11-4_버스_출발.svg";
 import bg2 from "../assets/bg/12-5_버스_도착.svg";
 import char1 from "../assets/char/기본_주인공1.svg";
+import char1_walk1 from "../assets/char/기본_주인공2.svg"; // 걷기 애니메이션
+import char1_walk2 from "../assets/char/기본_주인공3.svg"; // 걷기 애니메이션
 import busDriver from "../assets/char/버스기사.svg";
 import textbox from "../assets/obj/text_box.svg";
 import choicebox from "../assets/obj/선택지.svg";
 import { postChoice } from "../lib/api";
+import { useCharacterControl } from "../hooks/useCharacterControl";
 import styles from "./Scene.module.css";
 
 export default function InBus() {
   const navigate = useNavigate();
   const [idx, setIdx] = useState(0);
+
+  // 통합 조작 시스템 (이동, 점프, 상호작용 모두 사용)
+  const {
+    keysRef,
+    getVelocity,
+    charY,
+    jump,
+    isInteractionKey
+  } = useCharacterControl({
+    enableMovement: true,
+    enableJump: true,
+    speed: 500,
+    minX: 0,
+    maxX: 2160,
+    gravity: 1500,
+    jumpVelocity: 600,
+    groundLevel: 0,
+  });
   const storyCuts = [
     {
       id: 0,
@@ -103,12 +124,11 @@ export default function InBus() {
 
   const [charX, setCharX] = useState(100);
   const navigatedRef = useRef(false);
-  const keysRef = useRef({ left: false, right: false });
-  const SPEED = 500;
-  const minX = 0;
-  const maxX = 2160;
-  const moveTimerRef = useRef(null);
-  const lastTimeRef = useRef(null);
+
+  // 걷기 애니메이션 상태
+  const [walkFrame, setWalkFrame] = useState(0);
+  const [isMoving, setIsMoving] = useState(false);
+  const walkAnimTimerRef = useRef(null);
 
   const SCENE_ID = 2;
 
@@ -163,11 +183,8 @@ export default function InBus() {
     if (current.id === 10 && choiceIndex !== null) {
       const optionKey = choiceIndex + 1;
 
-      try {
-        await postChoice({ sceneId: SCENE_ID, optionKey });
-      } catch (error) {
-        console.error("Failed to post choice:", error);
-      }
+      // postChoice helper already handles errors internally
+      await postChoice({ sceneId: SCENE_ID, optionKey });
 
       if (choiceIndex === 0) {
         navigate("/bus-choice-1");
@@ -189,7 +206,7 @@ export default function InBus() {
 
   useEffect(() => {
     const onKey = (e) => {
-    if (e.key !== " ") return;
+      if (!isInteractionKey(e)) return;
       e.preventDefault();
       if ([10].includes(current.id)) return;
 
@@ -206,20 +223,51 @@ export default function InBus() {
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [isTyping, current.id, current.text]);
+  }, [isTyping, current.id, current.text, isInteractionKey]);
 
+  // 걷기 애니메이션 프레임 전환
+  useEffect(() => {
+    if (!isMoving) {
+      if (walkAnimTimerRef.current) {
+        clearInterval(walkAnimTimerRef.current);
+        walkAnimTimerRef.current = null;
+      }
+      setWalkFrame(0);
+      return;
+    }
+
+    walkAnimTimerRef.current = setInterval(() => {
+      setWalkFrame(prev => (prev === 0 ? 1 : 0));
+    }, 150);
+
+    return () => {
+      if (walkAnimTimerRef.current) {
+        clearInterval(walkAnimTimerRef.current);
+        walkAnimTimerRef.current = null;
+      }
+    };
+  }, [isMoving]);
+
+  // 키 입력 등록 (useCharacterControl의 keysRef 사용)
   useEffect(() => {
     const down = (e) => {
-      if (e.key === "a" || e.key === "ArrowLeft") {
-        if (!keysRef.current.left) keysRef.current.left = true;
+      if (e.key === "ArrowLeft" || e.key === "a" || e.key === "A") {
+        keysRef.current.left = true;
       }
-      if (e.key === "d" || e.key === "ArrowRight") {
-        if (!keysRef.current.right) keysRef.current.right = true;
+      if (e.key === "ArrowRight" || e.key === "d" || e.key === "D") {
+        keysRef.current.right = true;
+      }
+      if (e.key === "ArrowUp" || e.key === "w" || e.key === "W") {
+        jump();
       }
     };
     const up = (e) => {
-      if (e.key === "a" || e.key === "ArrowLeft") keysRef.current.left = false;
-      if (e.key === "d" || e.key === "ArrowRight") keysRef.current.right = false;
+      if (e.key === "ArrowLeft" || e.key === "a" || e.key === "A") {
+        keysRef.current.left = false;
+      }
+      if (e.key === "ArrowRight" || e.key === "d" || e.key === "D") {
+        keysRef.current.right = false;
+      }
     };
     window.addEventListener("keydown", down);
     window.addEventListener("keyup", up);
@@ -227,40 +275,37 @@ export default function InBus() {
       window.removeEventListener("keydown", down);
       window.removeEventListener("keyup", up);
     };
-  }, []);
+  }, [keysRef, jump]);
 
+  // 이동 루프 (useCharacterControl의 getVelocity 사용)
   useEffect(() => {
-    lastTimeRef.current = null;
-    if (moveTimerRef.current) {
-      clearInterval(moveTimerRef.current);
-      moveTimerRef.current = null;
-    }
+    if (!current.char) return;
 
-    moveTimerRef.current = setInterval(() => {
-      if (!current.char) return;
+    const lastTimeRef = { current: performance.now() };
+    let animationId;
 
+    const animate = () => {
       const now = performance.now();
-      if (lastTimeRef.current == null) {
-        lastTimeRef.current = now;
-        return;
-      }
-      const dt = (now - lastTimeRef.current) / 1000;
+      const deltaTime = (now - lastTimeRef.current) / 1000;
       lastTimeRef.current = now;
 
-      const { left, right } = keysRef.current;
-      const dir = (left ? -1 : 0) + (right ? 1 : 0);
-      if (dir !== 0) {
-        setCharX(x => Math.max(minX, Math.min(maxX, x + dir * SPEED * dt)));
+      const velocity = getVelocity(deltaTime);
+      if (velocity !== 0) {
+        setIsMoving(true);
+        setCharX(x => Math.max(0, Math.min(2160, x + velocity)));
+      } else {
+        setIsMoving(false);
       }
-    }, 16);
+
+      animationId = requestAnimationFrame(animate);
+    };
+
+    animationId = requestAnimationFrame(animate);
 
     return () => {
-      if (moveTimerRef.current) {
-        clearInterval(moveTimerRef.current);
-        moveTimerRef.current = null;
-      }
+      if (animationId) cancelAnimationFrame(animationId);
     };
-  }, [current.char, SPEED, minX, maxX]);
+  }, [current.char, getVelocity]);
 
   return (
     <div className={styles.viewport}>
@@ -284,12 +329,16 @@ export default function InBus() {
 
         {current.char && (
           <img
-            src={current.char}
+            src={
+              isMoving
+                ? (walkFrame === 0 ? char1_walk1 : char1_walk2)
+                : current.char
+            }
             alt="캐릭터"
             className={styles.character}
             style={{
               position: "absolute",
-              bottom: 65,
+              bottom: `${65 - charY}px`,
               left: `${charX}px`,
             }}
           />
