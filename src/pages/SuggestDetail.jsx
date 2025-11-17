@@ -108,7 +108,7 @@ export default function SuggestDetail() {
 
                     {/* 3-3. 예시 버튼 (피그마 이미지 기반) */}
                     <div className={styles.exampleButtons}>
-                        <button className={styles.exampleButton} onClick={() => window.open(`https://search.naver.com/search.naver?query=${title}`)}>#{title}이 더 궁금하다면?</button>
+                        <button className={styles.exampleButton} onClick={() => window.open(`https://search.naver.com/search.naver?query=${title}`)}>#{title} 더 알아보기</button>
                     </div>
                 </div>
             </div>
