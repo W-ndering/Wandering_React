@@ -24,22 +24,20 @@
   color: white;
 }
 
-.fadeOverlay {
+.fadeFromDark {
   position: absolute;
   inset: 0;
   background-color: black;
-  animation: fadeOverlay 1s ease-in-out;
+  animation: fadeFromDark 1.2s ease-out forwards;
   z-index: 9999;
   pointer-events: none;
 }
 
-@keyframes fadeOverlay {
+@keyframes fadeFromDark {
   0% {
-    opacity: 0;
+    opacity: 0.4;
   }
-  50% {
-    opacity: 0.3;
-  }
+
   100% {
     opacity: 0;
   }

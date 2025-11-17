@@ -16,13 +16,6 @@ export default function EnterField() {
       bg: storyCuts[idx].bg ?? lastVisual.bg,
     };
 
-    // 전환 중이 아닐 때만 상태 업데이트
-    if (!isTransitioning) {
-      setCurrent(merged);
-      setLastVisual({ bg: merged.bg });
-    }
-
-    // id=1 컷에서 2.5초 후 자동 전환
     if (current.id === 1) {
       if (autoTransitionRef.current) {
         clearTimeout(autoTransitionRef.current);
@@ -33,11 +26,11 @@ export default function EnterField() {
           setIdx(1);
           setCurrent({ ...storyCuts[1], bg: storyCuts[1].bg ?? lastVisual.bg });
           setLastVisual({ bg: storyCuts[1].bg ?? lastVisual.bg });
-        }, 500);
+        }, 800);
         setTimeout(() => {
           setIsTransitioning(false);
-        }, 800);
-      }, 2500);
+        }, 2000);
+      }, 2200);
     }
 
     return () => {
@@ -50,8 +43,9 @@ export default function EnterField() {
   return (
     <div className={styles.viewport}>
 
-      {/* 필드 입장 후 페이드 전환 오버레이 */}
-      {isTransitioning && <div className={styles.fadeOverlay} />}
+      {isTransitioning && current.id === 2 && (
+        <div className={styles.fadeFromDark} />
+      )}
 
       {current.bg.startsWith("#") // 배경
         ? <div className={`${styles.background} ${isTransitioning ? `${styles.bgTransition} ${styles.fadeOut}` : ''}`}
