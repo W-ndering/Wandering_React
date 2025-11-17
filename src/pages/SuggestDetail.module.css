@@ -57,7 +57,7 @@
     top: 20%; /* 헤더 아래에서 시작 */
     left: 10%;
     width: 80%;
-    height: 70%;
+    height: 82%;
     z-index: 30; /* 중앙 박스 위에 배치 */
     padding: 20px;
     display: flex;
@@ -111,20 +111,18 @@
     display: flex;
     justify-content: center;
     gap: 10px;
-    margin-top: 20px;
+    top: -500px;
     padding-bottom: 10px;
 }
 
 .exampleButton {
-    background-color: #F0F0F0;
-    border: 1px solid #CCC;
+    background-color: #FBFBFB;
+    border: 3px solid #E2E2E2;
     border-radius: 20px;
     padding: 8px 15px;
-    font-size: 14px;
+    font-size: 1.5rem;
+    color: #6B6B6B;
+    font-family: 'RoundedFixedsys';
     cursor: pointer;
     white-space: nowrap;
-}
-
-.exampleButton:hover {
-    background-color: #E0E0E0;
 }
