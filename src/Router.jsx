@@ -28,14 +28,14 @@ import Credits from "./pages/Credits";
 const Router = () => (
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<Intro/>} />
-      <Route path="/prologue" element={<Prologue/>} />
-      <Route path="/airport" element={<Airport/>} />
-      <Route path="/walk" element={<Walk/>} />
-      <Route path="/view" element={<View/>} />
-      <Route path="/rest" element={<Rest/>} />
-      <Route path="/reminiscene" element={<Reminiscene/>} />
-      <Route path="/guide" element={<Guide/>} />
+      <Route path="/" element={<Intro />} />
+      <Route path="/prologue" element={<Prologue />} />
+      <Route path="/airport" element={<Airport />} />
+      <Route path="/walk" element={<Walk />} />
+      <Route path="/view" element={<View />} />
+      <Route path="/rest" element={<Rest />} />
+      <Route path="/reminiscene" element={<Reminiscene />} />
+      <Route path="/guide" element={<Guide />} />
       <Route path="/nightdayhotel" element={<NightDayHotel />} />
       <Route path="/mountain" element={<Mountain />} />
       <Route path="/traveler" element={<Traveler />} />
