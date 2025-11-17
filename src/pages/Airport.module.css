@@ -1,0 +1,142 @@
+/* src/pages/Airport.css */
+
+/* ======================================= */
+/* 1. 게임 영역 (Airport) 컨테이너 스타일 */
+/* ======================================= */
+.gamearea {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+  overflow: hidden;
+  outline: none;
+  
+  /* (수정) 기본 커서는 auto, 상호작용 가능한 요소에서 pointer로 변경 */
+  cursor: auto; 
+}
+
+/* ======================================= */
+/* 2. 플레이어 캐릭터 스타일 */
+/* ======================================= */
+.playercharacter {
+  position: absolute;
+  /* (수정) 너비와 높이는 JS에서 또는 여기서 고정값으로 설정 */
+  /* width: 100px; */ /* 예시 */
+  width: 200px; /* 예시 (캐릭터 애셋 비율에 맞게 조절) */
+  height: 200px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  
+  transition: left 100ms linear; /* left 이동만 transition */
+}
+
+/* (제거) NPC 관련 스타일 모두 삭제 */
+/* .npc-character, .npc-label, .npc-container, .exclamation-mark, .player-label 등 */
+
+
+/* ======================================= */
+/* 3. (NEW) 인트로 및 Dim 스타일 */
+/* ======================================= */
+
+/* Prologue.css와 유사한 Dim 오버레이 */
+.airportdimoverlay {
+  position: absolute;
+  inset: 0; /* top:0, left:0, right:0, bottom:0 */
+  background-color: rgba(0, 0, 0, 0.7); /* 70% 검은색 */
+  z-index: 5; /* 캐릭터(기본)와 대화상자(10) 사이 */
+  transition: opacity 0.5s ease;
+  pointer-events: none; /* 클릭 통과 */
+}
+
+/* 인트로 "공항" 텍스트 */
+.airportintrotext {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 4rem; /* 64px */
+  font-weight: bold;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+  z-index: 6; /* Dim 오버레이 위 */
+  pointer-events: none;
+}
+
+/* ======================================= */
+/* 4. (NEW) 선택지 스타일 */
+/* ======================================= */
+
+/* Prologue.css와 유사한 선택지 컨테이너 */
+.airportchoicescontainer {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 11;
+  
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 75%;
+  max-width: 1000px;
+  align-items: center;
+}
+
+.airportchoicebutton {
+  /* 배경색, 테두리 등 기존 스타일 제거 또는 조정 */
+  background-color: transparent; /* 이미지가 배경이 되므로 투명하게 */
+  border: none; /* 이미지가 테두리를 포함하면 제거 */
+  color: #222; /* 텍스트 색상 (이미지 위에서 잘 보이도록 조정 필요) */
+  padding: 0; /* 이미지 자체가 패딩을 포함할 수 있으므로 제거 */
+  border-radius: 0; /* 이미지 자체가 둥근 모서리를 포함하면 제거 */
+  font-size: 1.25rem;
+  font-family: monospace;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  /* text-align: center; */ /* 텍스트는 이제 별도 span으로 관리 */
+  transition: transform 0.2s; /* 이미지와 텍스트가 동시에 확대되도록 */
+
+  position: relative; /* 자식 요소 (이미지, 텍스트)를 absolute로 배치하기 위함 */
+  display: flex; /* 텍스트 중앙 정렬을 위해 flexbox 사용 */
+  justify-content: center;
+  align-items: center; /* 텍스트를 이미지 중앙에 배치 */
+  height: 120px; /* 선택지.svg 이미지의 실제 높이에 맞춰 조절 */
+  max-height: 150px; /* 최대 높이 설정 */
+}
+
+/* 버튼 hover 효과 (이미지 자체가 반응하도록 조정) */
+.airportchoicebutton:hover {
+  background-color: transparent; /* 배경색 변화 제거 */
+  transform: scale(1.03); /* 전체 버튼(이미지+텍스트) 확대 */
+  /* border-color: transparent; */ /* 테두리 변화 제거 */
+}
+
+/* 버튼 내부 이미지 스타일 */
+.choiceBackgroundImage {
+  width: 100%; /* 버튼 너비에 꽉 차게 */
+  height: 100%; /* 버튼 높이에 꽉 차게 */
+  object-fit: contain; /* 비율 유지하며 버튼 영역에 맞춤 */
+  /* object-fit: cover; */ /* 비율 유지하며 버튼 영역을 덮음 */
+  position: absolute; /* 버튼 안에 절대 위치 */
+  top: 0;
+  left: 0;
+  z-index: 1; /* 텍스트보다 아래에 위치 */
+}
+
+/* 이미지 위에 얹힐 텍스트 스타일 */
+.choiceTextOverlay {
+  position: relative; /* 이미지 위에 오도록 relative 또는 absolute */
+  z-index: 2; /* 이미지보다 위에 위치 */
+  color: #fff; /* 텍스트 색상 (선택지.svg 이미지에 맞춰 잘 보이게 조절) */
+  font-family: 'RoundedFixedsys';
+  font-size: 1.5rem; /* 기존 버튼 폰트 사이즈 유지 */
+  text-align: center;
+  /* (선택 사항) 필요하다면 텍스트의 패딩이나 라인 높이 조절 */
+  padding: 0 0px; 
+}
