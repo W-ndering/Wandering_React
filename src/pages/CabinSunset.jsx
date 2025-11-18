@@ -2,10 +2,12 @@ import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import bg1 from "../assets/bg/25-10_오두막집앞.svg";
 import char1 from "../assets/char/기본_주인공1.svg";
-import char2 from "../assets/char/기본_주인공3.svg";
+import char1_walk1 from "../assets/char/기본_주인공2.svg";
+import char1_walk2 from "../assets/char/기본_주인공3.svg";
 import char3 from "../assets/char/아저씨.svg";
 import textbox from "../assets/obj/text_box.svg";
 import styles from "./CabinSunset.module.css";
+import { useCharacterControl } from "../hooks/useCharacterControl";
 
 export default function CabinSunset() {
   const navigate = useNavigate();
@@ -37,11 +39,35 @@ export default function CabinSunset() {
     },
     {
       id: 5,
-      char: char2,
       speaker: nickname,
       text: "감사해요, 아저씨. 안녕히 계세요!\n(오른쪽으로 이동하자.)", // 주인공이 우측에 다다르면 다음컷으로 이동
     },
   ];
+
+  // 통합 조작 시스템
+  const {
+    keysRef,
+    getVelocity,
+    charY,
+    jump,
+    isInteractionKey
+  } = useCharacterControl({
+    enableMovement: true,
+    enableJump: true,
+    speed: 500,
+    minX: 0,
+    maxX: 2160,
+    gravity: 1500,
+    jumpVelocity: 600,
+    groundLevel: 0,
+  });
+
+  // 걷기 애니메이션 상태
+  const [walkFrame, setWalkFrame] = useState(0);
+  const [isMoving, setIsMoving] = useState(false);
+  const walkAnimTimerRef = useRef(null);
+  const [facingLeft, setFacingLeft] = useState(false);
+
   const [current, setCurrent] = useState(storyCuts[0]); // 현재 보여지는 컷
   const [lastVisual, setLastVisual] = useState({ // 이전 컷의 배경/캐릭터 (유지를 위해서)
     bg: storyCuts[0].bg,
@@ -54,7 +80,6 @@ export default function CabinSunset() {
 
   const [charX, setCharX] = useState(680); // 시작 x좌표(px) — 필요에 따라 조정
   const navigatedRef = useRef(false);
-  const keysRef = useRef({ left: false, right: false });
   const SPEED = 500;
   const minX = 0;
   const maxX = 2160;
@@ -112,14 +137,15 @@ export default function CabinSunset() {
     }
   }, [idx]);
 
-  const handleNext = async (choiceIndex = null) => {
+  const handleNext = async () => {
     setIdx(idx + 1);
   };
 
   // Space바로 다음 컷으로 이동
   useEffect(() => {
     const onKey = (e) => {
-      if (e.code !== "Space") return;
+      if (!isInteractionKey(e)) return;
+      e.preventDefault();
       if ([5].includes(current.id)) return;
 
       // 타이핑 중이면 타이머를 멈추고 즉시 완성
@@ -139,19 +165,26 @@ export default function CabinSunset() {
     return () => window.removeEventListener("keydown", onKey);
   }, [isTyping, current.id, current.text]);
 
-  // 키 입력 등록
+  // 키 입력 등록 (useCharacterControl의 keysRef 사용)
   useEffect(() => {
     const down = (e) => {
-      if (e.key === "ArrowLeft") {
-        if (!keysRef.current.left) keysRef.current.left = true;
+      if (e.key === "ArrowLeft" || e.key === "a" || e.key === "A") {
+        keysRef.current.left = true;
       }
-      if (e.key === "ArrowRight") {
-        if (!keysRef.current.right) keysRef.current.right = true;
+      if (e.key === "ArrowRight" || e.key === "d" || e.key === "D") {
+        keysRef.current.right = true;
+      }
+      if (e.key === "ArrowUp" || e.key === "w" || e.key === "W") {
+        jump();
       }
     };
     const up = (e) => {
-      if (e.key === "ArrowLeft") keysRef.current.left = false;
-      if (e.key === "ArrowRight") keysRef.current.right = false;
+      if (e.key === "ArrowLeft" || e.key === "a" || e.key === "A") {
+        keysRef.current.left = false;
+      }
+      if (e.key === "ArrowRight" || e.key === "d" || e.key === "D") {
+        keysRef.current.right = false;
+      }
     };
     window.addEventListener("keydown", down);
     window.addEventListener("keyup", up);
@@ -159,43 +192,59 @@ export default function CabinSunset() {
       window.removeEventListener("keydown", down);
       window.removeEventListener("keyup", up);
     };
-  }, []);
+  }, [keysRef, jump]);
 
-  // 이동 루프
+  // 이동 루프 (useCharacterControl의 getVelocity 사용)
   useEffect(() => {
-    // 루프 시작 시 초기화
-    lastTimeRef.current = null;
-    if (moveTimerRef.current) {
-      clearInterval(moveTimerRef.current);
-      moveTimerRef.current = null;
-    }
+    const lastTimeRef = { current: performance.now() };
+    let animationId;
 
-    moveTimerRef.current = setInterval(() => {
-      if (!current.char) return;
-
+    const animate = () => {
       const now = performance.now();
-      if (lastTimeRef.current == null) {
-        lastTimeRef.current = now; // 첫 틱은 이동하지 않음 (초반 튐 방지)
-        return;
-      }
-      const dt = (now - lastTimeRef.current) / 1000;
+      const deltaTime = (now - lastTimeRef.current) / 1000;
       lastTimeRef.current = now;
 
-      const { left, right } = keysRef.current;
-      const dir = (left ? -1 : 0) + (right ? 1 : 0);
-      if (dir !== 0) {
-        setCharX(x => Math.max(minX, Math.min(maxX, x + dir * SPEED * dt)));
+      const velocity = getVelocity(deltaTime);
+      if (velocity !== 0) {
+        setIsMoving(true);
+        setFacingLeft(velocity < 0); // 음수면 왼쪽으로 이동 중 => 좌우반전
+        setCharX(x => Math.max(0, Math.min(2160, x + velocity)));
+      } else {
+        setIsMoving(false);
       }
-    }, 16);
+
+      animationId = requestAnimationFrame(animate);
+    };
+
+    animationId = requestAnimationFrame(animate);
 
     return () => {
-      if (moveTimerRef.current) {
-        clearInterval(moveTimerRef.current);
-        moveTimerRef.current = null;
+      if (animationId) cancelAnimationFrame(animationId);
+    };
+  }, [current.char, getVelocity]);
+
+  // 걷기 애니메이션 프레임 전환
+  useEffect(() => {
+    if (!isMoving) {
+      if (walkAnimTimerRef.current) {
+        clearInterval(walkAnimTimerRef.current);
+        walkAnimTimerRef.current = null;
+      }
+      setWalkFrame(0);
+      return;
+    }
+
+    walkAnimTimerRef.current = setInterval(() => {
+      setWalkFrame(prev => (prev === 0 ? 1 : 0));
+    }, 150);
+
+    return () => {
+      if (walkAnimTimerRef.current) {
+        clearInterval(walkAnimTimerRef.current);
+        walkAnimTimerRef.current = null;
       }
     };
-  }, [current.char, SPEED, minX, maxX]);
-
+  }, [isMoving]);
 
   // 마지막 컷에서 우측 끝 도달 시 다음 페이지로 이동
   useEffect(() => {
@@ -210,163 +259,67 @@ export default function CabinSunset() {
   return (
     <div className={styles.viewport}>
 
-      <div className={styles.stage}>
-        {current.bg.startsWith("#") // 배경
-          ? <div className={styles.background} style={{ backgroundColor: current.bg }} />
-          : <img src={current.bg} alt="배경" className={styles.background} />
-        }
+      {current.bg.startsWith("#") // 배경
+        ? <div className={styles.background} style={{ backgroundColor: current.bg }} />
+        : <img src={current.bg} alt="배경" className={styles.background} />
+      }
 
-        {/* 특정 장면에서 배경 dim */}
-        {/* {[5, 8, 10].includes(current.id) && <div className={styles.bgDim} />} */}
+      {/* 캐릭터 */}
+      {current.char && (
+        <img
+          src={isMoving ? (walkFrame === 0 ? char1_walk1 : char1_walk2) : char1} // 이동 중일 때 0이면 char2이고 1이면 char3, 멈췄을 땐 char1(정면)
+          alt="캐릭터"
+          className={styles.character}
+          style={{
+            position: "absolute",
+            bottom: 65 + charY,
+            left: `${charX}px`,
+            transform: facingLeft && isMoving ? "scaleX(-1)" : "none" // 좌우반전 이미지 사용 대신, 왼쪽으로 이동할 때 scaleX(-1)로 반전시킴
+          }}
+        />
+      )}
 
-        {current.title && ( // 새로운 스토리 도입 시 제목
-          <div className={styles.titleText}>{current.title}</div>
-        )}
+      {/* NPC */}
+      {current.npc?.src && (
+        <img
+          src={current.npc.src}
+          alt="npc"
+          className={styles.charNPC}
+          style={{
+            position: "absolute",
+            bottom: 65,
+            left: `${current.npc.x ?? 1400}px`,
+          }}
+        />
+      )}
 
-        {/* 캐릭터 */}
-        {current.char && (
-          <img
-            src={current.char}
-            alt="캐릭터"
-            className={styles.character}
-            style={{
-              position: "absolute",
-              bottom: 65,
-              left: `${charX}px`,
-            }}
-          />
-        )}
+      {current.text && (
+        <div className={styles.textboxWrap}>
+          <img src={textbox} alt="텍스트박스" className={styles.textboxImage} />
 
-        {/* NPC */}
-        {current.npc?.src && (
-          <img
-            src={current.npc.src}
-            alt="npc"
-            className={styles.charNPC}
-            style={{
-              position: "absolute",
-              bottom: 65,
-              left: `${current.npc.x ?? 1400}px`,
-            }}
-          />
-        )}
+          {(() => {
+            const hasLineBreak = current.text.includes("\n"); // 대사 줄바꿈 유무
+            const isBigText = current.id === null;
 
-        {current.text && ( // 텍스트창
-          <div className={styles.textboxWrap}>
-            <img src={textbox} alt="텍스트박스" className={styles.textboxImage} />
-
-            {(() => {
-              const hasLineBreak = current.text.includes("\n"); // 텍스트 줄바꿈 유무
-
-              return (
-                <div
-                  className={[
-                    styles.textboxContent,
-                    !current.speaker ? styles.centerText : "",           // 화자 없으면 가운데정렬
-                    current.speaker && !hasLineBreak ? styles.upText : "",  // 화자 O, 줄바꿈 X
-                    current.speaker && hasLineBreak ? styles.upTextMulti : "" // 화자 O, 줄바꿈 O
-                  ].join(" ").trim()}
-                >
-                  {current.speaker && (
-                    <div className={styles.speaker}>{current.speaker}</div>
-                  )}
-                  <div className={styles.content}>{displayedText}</div>
-                </div>
-              );
-            })()}
-          </div>
-        )}
-
-
-
-        {current.choice && ( // 선택지창
-          <div className={`${styles.choiceWrap} ${Array.isArray(current.choice.text)
-            ? styles.choiceWrap  // 선택지가 여러 개인 경우 (위치 조절)
-            : styles.choiceWrapSingle // 하나인 경우
-            }`}>
-            {Array.isArray(current.choice.text) ? ( // 선택지가 여러 개인 경우
-              <div className={styles.choiceList}>
-                {current.choice.text.map((label, i) => (
-                  <div
-                    key={i}
-                    className={styles.choiceItem}
-                    onClick={() => handleNext(i)}
-                  >
-                    <img
-                      src={current.choice.src}
-                      alt={`선택지박스 ${i + 1}`}
-                      className={styles.choiceImage}
-                    />
-                    <div className={styles.choiceText}>{label}</div>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div // 하나인 경우
-                className={styles.choiceItem}
-                onClick={() => handleNext(0)}
+            return (
+              <div
+                className={[
+                  styles.textboxContent, // 텍스트 박스 안에 있는 텍스트 위치 분기
+                  !current.speaker ? styles.centerText : "",           // 기본 (화자 X)
+                  current.speaker && !hasLineBreak ? styles.noLineBreak : "",  // 화자 O, 대사 줄바꿈 X
+                  current.speaker && (hasLineBreak || isBigText) ? styles.yesLineBreak : "" // 화자 O, 대사 줄바꿈 O (줄바꿈은 없지만 대사 크기가 큰 경우도 포함)
+                ].join(" ").trim()}
               >
-                <img
-                  src={current.choice.src}
-                  alt="선택지박스"
-                  className={styles.choiceImage}
-                />
-                <div className={styles.choiceText}>{current.choice.text}</div>
+                {current.speaker && (
+                  <div className={styles.speaker}>{current.speaker}</div>
+                )}
+                <div className={styles.content}>{displayedText}</div>
               </div>
-            )}
-          </div>
-        )}
+            );
+          })()}
+        </div>
+      )}
 
-        {current.popup && (
-          <div className={styles.popupWrap}>
-            {current.popup.type === "state" && ( // 팝업이 상태창일 때
-              <>
-                <img
-                  src={current.popup.src}
-                  alt="상태창"
-                  className={styles.popupImage}
-                />
-
-                {current.popup.obj && (
-                  <img
-                    src={current.popup.obj}
-                    alt="상태창오브젝트"
-                    className={styles.popupObjImage}
-                  />
-                )}
-
-                {current.popup.text && (
-                  <div className={styles.popupText}>
-                    {current.id === 5
-                      ? current.popup.text.split("\n").map((line, i) => (
-                        <div
-                          key={i}
-                          className={i === 1 ? styles.popupLineSmall : ""}
-                        >
-                          {line}
-                        </div>
-                      ))
-                      : current.popup.text}
-                  </div>
-                )}
-              </>
-            )}
-
-            {current.popup.type === "inter" && ( // 팝업이 인터랙션일 때
-              <div className={styles.popupWrap}>
-                <div className={styles.circle}></div>
-
-                {current.popup && (
-                  <img src={current.popup.src} alt="인터랙션아이콘"
-                    className={styles.popupInterImage}
-                    onClick={handleNext}
-                  />
-                )}
-              </div>
-            )}
-          </div>
-        )}
-      </div>
     </div>
   );
 }
