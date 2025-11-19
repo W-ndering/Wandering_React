@@ -7,6 +7,7 @@ import npc6 from "../assets/char/Npc6.svg";
 import npc7 from "../assets/char/Npc7_.svg";
 import npc8 from "../assets/char/npc8.svg";
 import textbox from "../assets/obj/text_box.svg";
+import { useCharacterControl } from "../hooks/useCharacterControl";
 import styles from "./Scene.module.css";
 
 export default function MarketChoice3() {
@@ -14,6 +15,12 @@ export default function MarketChoice3() {
   const [idx, setIdx] = useState(0);
   const [isFading, setIsFading] = useState(false);
   const nickname = sessionStorage.getItem('NICKNAME') || '나';
+
+  // 통합 조작 시스템 (상호작용 키만 사용)
+  const { isInteractionKey } = useCharacterControl({
+    enableMovement: false,
+    enableJump: false,
+  });
   const storyCuts = [
     {
       id: 146,
@@ -173,7 +180,7 @@ export default function MarketChoice3() {
 
   useEffect(() => {
     const onKey = (e) => {
-      if (e.key !== " ") return;
+      if (!isInteractionKey(e)) return;
       e.preventDefault();
 
       if (isTyping) {
@@ -186,7 +193,7 @@ export default function MarketChoice3() {
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [isTyping, current.text, idx]);
+  }, [isTyping, current.text, idx, isInteractionKey]);
 
   const renderChar = (char) => {
     if (!char) return null;
