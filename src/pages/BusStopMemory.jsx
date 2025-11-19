@@ -8,12 +8,19 @@ import oldFather from "../assets/char/옛날_아버지.svg";
 import busImg from "../assets/obj/버스.svg";
 import choicebox from "../assets/obj/선택지.svg";
 import textbox from "../assets/obj/text_box.svg";
+import { useCharacterControl } from "../hooks/useCharacterControl";
 import styles from "./Scene.module.css";
 
 export default function BusStopMemory() {
   const navigate = useNavigate();
   const [idx, setIdx] = useState(0);
   const nickname = sessionStorage.getItem('NICKNAME') || '나';
+
+  // 통합 조작 시스템 (상호작용 키만 사용)
+  const { isInteractionKey } = useCharacterControl({
+    enableMovement: false,
+    enableJump: false,
+  });
   const storyCuts = [
     {
       id: 38,
@@ -153,8 +160,8 @@ export default function BusStopMemory() {
 
   useEffect(() => {
     const onKey = (e) => {
-    if (e.key !== " ") return;
-    e.preventDefault();
+      if (!isInteractionKey(e)) return;
+      e.preventDefault();
 
       if (isTyping && current.text) {
         if (typingTimerRef.current) {
@@ -169,7 +176,7 @@ export default function BusStopMemory() {
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [isTyping, current.id, current.text]);
+  }, [isTyping, current.id, current.text, isInteractionKey]);
 
 
   return (
