@@ -1,259 +1,324 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
-import DialogueBox from '../components/DialogueBox';
-import styles from './Airport.module.css';
-import airportbg from '../assets/bg/2_1_공항.svg';
-import airportRoadbg from '../assets/bg/3_1_공항앞길거리.svg';
-import mainChar from '../assets/char/캐리어_주인공1.svg';
+import { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import bg1 from "../assets/bg/2_1_공항.svg";
+import bg2 from "../assets/bg/3_1_공항앞길거리.svg";
+import char1 from '../assets/char/캐리어_주인공1.svg';
+import textbox from "../assets/obj/text_box.svg";
 import choicebox from "../assets/obj/선택지.svg";
+import styles from './Airport.module.css';
 
-// --- 상수 정의 ---
-const MOVE_SPEED = 15;
-const GROUND_Y = 10;
-const CHARACTER_WIDTH = 100;
-
-// --- 애셋 경로 ---
-const ASSET_PATHS = {
-  intro_bg: airportbg,
-  airport_bg: airportRoadbg,
-  character: mainChar,
-};
-
-const AIRPORT_DIALOGUES = [
-  {
-    speaker: null,
-    dialogue: [{ type: 'normal', content: `맛집 간판, 관광 안내판, 번화가 거리.` }]
-  },
-  {
-    speaker: null,
-    dialogue: [{ type: 'normal', content: `장시간 비행과 이동으로 피곤하지만,\n여행 온 기분이 물씬 나는 거리이다.` }]
-  },
-  {
-    speaker: null,
-    dialogue: [{ type: 'normal', content: `무얼 먼저 할까?` }]
-  }
-];
-
-const AIRPORT_CHOICES = [
-  { id: 'view', text: "유명 관광지로 향해 사진을 남긴다.",imagePath: choicebox },
-  { id: 'rest', text: "숙소로 가서 짐부터 둔다.", imagePath: choicebox },
-  { id: 'walk', text: "길을 걸으며 이 도시를 느낀다.", imagePath: choicebox },
-];
-
-function Airport() {
+export default function Airport() {
   const BACKEND_KEY = import.meta.env.VITE_BACKEND_DOMAIN_KEY;
-  const playerid = sessionStorage.getItem("playerId") || "0";
-  // --- 상태 관리 ---
-  const [sequenceStep, setSequenceStep] = useState(0); // 0: 인트로, 1: 메인(이동), 2: 다이얼로그 시작, 3: 다이얼로그 2, 4: 선택지
-  const [charX, setCharX] = useState(0); // 캐릭터 위치
-  
-  // 대화 상태
-  const [dialogueIndex, setDialogueIndex] = useState(0);
-  const [activeDialogue, setActiveDialogue] = useState(null);
-  const [isTyping, setIsTyping] = useState(false);
-  const [showChoices, setShowChoices] = useState(false);
-
-  // --- 훅 설정 ---
-  const gameAreaRef = useRef(null);
   const navigate = useNavigate();
-
-  // --- 1. 인트로 (2초 후 자동 전환) 및 자동 다이얼로그 시작 ---
-  useEffect(() => {
-    if (sequenceStep === 0) {
-      const introTimer = setTimeout(() => {
-        setSequenceStep(1); // 2초 뒤 메인 씬(이동 가능)으로 전환
-      }, 2000);
-      return () => clearTimeout(introTimer);
-    } else if (sequenceStep === 1) {
-      // 💡 추가된 로직: 시퀀스 1(메인 배경)이 로드되면 잠시 후 다이얼로그 자동 시작 (시퀀스 2로 전환)
-      const autoDialogueStartTimer = setTimeout(() => {
-        setSequenceStep(2); 
-        setActiveDialogue(AIRPORT_DIALOGUES[0]);
-      }, 100); // 100ms 지연 후 다이얼로그 자동 시작
-      return () => clearTimeout(autoDialogueStartTimer);
-    }
-  }, [sequenceStep]);
-
-  // --- 2. 메인 상호작용 (스페이스바 / 클릭) ---
-  const handleInteraction = useCallback(() => {
-    // 타이핑 중이면 스킵
-    if (isTyping) {
-      setIsTyping(false);
-      return;
-    }
-    
-    // 선택지가 떴거나 인트로(0), 메인씬(1, 이동만 가능) 중이면 상호작용 무시
-    // sequenceStep이 1일 때는 이동만 가능하므로 클릭/스페이스바는 무시됩니다.
-    if (showChoices || sequenceStep <= 1) return;
-
-    // sequenceStep이 2 이상일 때 (다이얼로그 진행 중)
-    const nextStep = sequenceStep + 1;
-    setSequenceStep(nextStep);
-
-    // 💡 nextStep === 2 부분은 자동 시작 로직으로 이동했으므로 삭제/변경합니다.
-    if (nextStep === 3) { // 대사 2
-      setDialogueIndex(1);
-      setActiveDialogue(AIRPORT_DIALOGUES[1]);
-    } else if (nextStep === 4) { // 대사 3 + 선택지
-      setDialogueIndex(2);
-      setActiveDialogue(AIRPORT_DIALOGUES[2]);
-      setShowChoices(true); // dim 처리 및 선택지 표시
-    }
-  }, [isTyping, sequenceStep, showChoices]);
-
-  // --- 3. 키보드 입력 (이동 및 상호작용) ---
-  useEffect(() => {
-    const gameArea = gameAreaRef.current;
-    if (!gameArea) return;
-    gameArea.focus();
-
-    const handleKeyDown = (e) => {
-      // 대화/선택지 중이 아닐 때(시퀀스 1)만 이동
-      if (sequenceStep === 1) {
-        if (e.key === 'ArrowRight' || e.key.toLowerCase() === 'd') {
-          setCharX((prevX) => {
-            const newX = prevX + MOVE_SPEED;
-            const gameWidth = gameArea.offsetWidth || 0;
-            // 화면 우측 끝 도달 (캐릭터 너비만큼 빼줌)
-            if (newX >= gameWidth - CHARACTER_WIDTH) {
-              // navigate('/stage2'); // (주석 처리) 우측 끝 내비게이션 비활성화
-              return gameWidth - CHARACTER_WIDTH;
-            }
-            return newX;
-          });
-        } else if (e.key === 'ArrowLeft' || e.key.toLowerCase() === 'a') {
-          setCharX((prevX) => Math.max(0, prevX - MOVE_SPEED)); // 0 미만 방지
-        }
+  const [idx, setIdx] = useState(0);
+  const nickname = sessionStorage.getItem('NICKNAME') || 'player';
+  const playerid = sessionStorage.getItem("playerId") || "0";
+  const [isTransitioning, setIsTransitioning] = useState(false); // 페이드 전환 상태
+  const autoTransitionRef = useRef(null); // 자동 전환 타이머
+  const storyCuts = [
+    {
+      id: 1,
+      bg: bg1,
+      char: "none",
+      title: "공항"
+    },
+    {
+      id: 2,
+      bg: bg2,
+      char: char1,
+      speaker: nickname,
+      text: "맛집 간판, 관광 안내판, 번화가 거리."
+    },
+    {
+      id: 3,
+      text: "장시간 비행과 이동으로 피곤하지만,\n여행 온 기분이 물씬 나는 거리이다."
+    },
+    {
+      id: 4,
+      text: "무얼 먼저 할까?"
+    },
+    {
+      id: 5,
+      text: "무얼 먼저 할까?",
+      choice: {
+        src: choicebox,
+        text: ["유명 관광지로 향해 사진을 남긴다.", "숙소로 가서 짐부터 둔다.", "길을 걸으며 이 도시를 느낀다."]
       }
-
-      // 스페이스바로 상호작용 (다이얼로그 진행)
-      if (e.key === ' ') {
-        e.preventDefault();
-        handleInteraction();
-      }
-    };
-
-    gameArea.addEventListener('keydown', handleKeyDown);
-    return () => gameArea.removeEventListener('keydown', handleKeyDown);
-  }, [handleInteraction, sequenceStep]); // sequenceStep 의존성 추가
-
-  // --- 4. 선택지 클릭 핸들러 ---
-  const handleChoiceClick = async (choiceId) => {
-    console.log("선택:", choiceId);
-    
-    // 선택지에 따른 optionKey 설정
-    let optionKey;
-    let navigatePath;
-    if (choiceId === 'view') {
-      optionKey = 1;
-      navigatePath = '/view';
-    } else if (choiceId === 'rest') {
-      optionKey = 2;
-      navigatePath = '/rest';
-    } else if (choiceId === 'walk') {
-      optionKey = 3;
-      navigatePath = '/walk';
     }
+  ];
+  const [current, setCurrent] = useState(storyCuts[0]); // 현재 보여지는 컷
+  const [lastVisual, setLastVisual] = useState({ // 이전 컷의 배경/캐릭터 (유지를 위해서)
+    bg: storyCuts[0].bg,
+    char: storyCuts[0].char,
+  });
+  const [displayedText, setDisplayedText] = useState(""); // 현재 화면에 찍힌 텍스트
+  const [isTyping, setIsTyping] = useState(false); // 타이핑 진행 중 여부
+  const typingTimerRef = useRef(null); // 타이핑 interval 저장
 
-    // POST 로직
+  const [charX, setCharX] = useState(2040); // 시작 x좌표(px) — 필요에 따라 조정
+
+  const SCENE_ID = 1;
+
+  // 선택 결과 서버에 전송
+  async function postChoice({ sceneId, optionKey }) {
     try {
-      const response = await fetch(`${BACKEND_KEY}/player/${playerid}/choice`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json', 
-        },
-        body: JSON.stringify({
-          "sceneId" : 1,
-          "optionKey" : optionKey,
-        }),
+      const res = await fetch(`${BACKEND_KEY}/player/${playerid}/choice`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ sceneId, optionKey }),
       });
 
-      if (!response.ok) {
-        console.error(`❌ 선택지 정보 전달 실패 (${optionKey}번):`, response.status);
+      if (res.ok) {
+        console.log(`✅ 서버 전송 성공 : 선택한 선택지 번호: ${optionKey}`);
       } else {
-        console.log(`✅ ${optionKey}번 선택지 정보 전달 성공`);
+        console.warn(`⚠️ 서버 응답 오류 (${res.status})`);
       }
-    } catch (error) {
-      console.error('❌ 네트워크 오류 발생:', error);
+    } catch (err) {
+      console.error("❌ 서버 연결 실패:", err);
     }
-    
-    navigate(navigatePath);
-    console.log(navigatePath);
+  }
+
+  useEffect(() => { // 텍스트 타이핑 효과
+    const text = current.text;
+
+    if (typingTimerRef.current) {
+      clearInterval(typingTimerRef.current);
+      typingTimerRef.current = null;
+    }
+
+    if (!text) { setDisplayedText(""); setIsTyping(false); return; }
+    setDisplayedText(""); setIsTyping(true);
+
+    let i = 0;
+    typingTimerRef.current = setInterval(() => {
+      i++;
+      setDisplayedText(text.slice(0, i));
+      if (i >= text.length) {
+        clearInterval(typingTimerRef.current);
+        typingTimerRef.current = null;
+        setIsTyping(false);
+      }
+    }, 50);
+
+    return () => {
+      if (typingTimerRef.current) {
+        clearInterval(typingTimerRef.current);
+        typingTimerRef.current = null;
+      }
+    };
+  }, [current.text]);
+
+  useEffect(() => {
+    const merged = {
+      ...storyCuts[idx],
+      bg: storyCuts[idx].bg ?? lastVisual.bg, // bg 입력 없으면 이전 bg 유지
+      char:
+        storyCuts[idx].char === "none" // 캐릭터 사용 안 하는 경우
+          ? null
+          : storyCuts[idx].char ?? lastVisual.char, // char 입력 없으면 이전 char 유지
+    };
+    setCurrent(merged); // 현재 보여줄 컷으로 설정
+    setLastVisual({ bg: merged.bg, char: merged.char });
+
+    if (current.id === 1) {
+      if (autoTransitionRef.current) {
+        clearTimeout(autoTransitionRef.current);
+      }
+      autoTransitionRef.current = setTimeout(() => {
+        setIsTransitioning(true);
+        setTimeout(() => {
+          setIdx(1);
+          setCurrent({ ...storyCuts[1], bg: storyCuts[1].bg ?? lastVisual.bg });
+          setLastVisual({ bg: storyCuts[1].bg ?? lastVisual.bg });
+        }, 800);
+        setTimeout(() => {
+          setIsTransitioning(false);
+        }, 2000);
+      }, 2200);
+    }
+
+    if (storyCuts[idx].id === 2) {
+      setCharX(100);
+    }
+    if (storyCuts[idx].id === 7) {
+      setCharX(1000);
+    }
+
+    return () => {
+      if (autoTransitionRef.current) {
+        clearTimeout(autoTransitionRef.current);
+      }
+    };
+  }, [idx, isTransitioning]);
+
+  // 선택에 따른 네비게이팅 포함한 handleNext
+  const handleNext = async (choiceIndex = null) => {
+
+    if (typingTimerRef.current) {
+      clearInterval(typingTimerRef.current);
+      typingTimerRef.current = null;
+    }
+    setIsTyping(false);
+
+    if (choiceIndex !== null) {
+      const optionKey = choiceIndex + 1;
+
+      postChoice({ sceneId: SCENE_ID, optionKey });
+
+      // 선택지 2개일 때 네비게이팅
+      if (choiceIndex === 0) {
+        navigate("/view");
+      } else if(choiceIndex ===1) {
+        navigate("/rest");
+      } else {
+        navigate("/walk");
+      }
+      return;
+    }
+
+    setIdx(idx + 1); // 마지막 컷이 아니면 다음 컷으로 이동
   };
 
-  return (
-    <div
-      ref={gameAreaRef}
-      tabIndex="0"
-      className={styles.gamearea}
-      // 배경은 시퀀스 0일 때 intro_bg, 그 외에는 airport_bg
-      style={{
-        backgroundImage: `url(${sequenceStep === 0 ? ASSET_PATHS.intro_bg : ASSET_PATHS.airport_bg})`,
-      }}
-      onClick={handleInteraction}
-    >
-      {/* Dim 오버레이 (인트로 또는 선택지 표시 시) */}
-      <div 
-        className={styles.airportdimoverlay}
-        style={{
-          opacity: (sequenceStep === 0 || showChoices) ? 1 : 0
-        }}
-      />
+  // Space바로 다음 컷으로 이동
+  useEffect(() => {
+    const onKey = (e) => {
+      if (e.code !== "Space") return;
+      if ([1, 5].includes(current.id)) return;
 
-      {/* 인트로 텍스트 (시퀀스 0) */}
-      {sequenceStep === 0 && (
-        <div className={styles.airportintrotext}>
-          공항
-        </div>
+      // 타이핑 중이면 타이머를 멈추고 즉시 완성
+      if (isTyping && current.text) {
+        if (typingTimerRef.current) {
+          clearInterval(typingTimerRef.current);
+          typingTimerRef.current = null;
+        }
+        setDisplayedText(current.text);
+        setIsTyping(false);
+        return;
+      }
+      // 그 외엔 다음 컷
+      handleNext();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [isTyping, current.id, current.text]);
+
+  return (
+    <div className={styles.viewport}>
+
+      {isTransitioning && current.id === 2 && (
+        <div className={styles.fadeFromDark} />
       )}
 
-      {/* 캐릭터 렌더링 (시퀀스 1부터) */}
-      {sequenceStep >= 1 && (
-        <div
-          className={styles.playercharacter}
+      {current.bg.startsWith("#") // 배경
+        ? <div className={styles.background} style={{ backgroundColor: current.bg }} />
+        : <img src={current.bg} alt="배경" className={styles.background} />
+      }
+
+      {/* 특정 장면에서 배경 dim */}
+      {[1, 5, 7].includes(current.id) && <div className={styles.bgDim} />}
+
+      {current.title && ( // 새로운 스토리 도입 시 제목
+        <div className={styles.titleText}>{current.title}</div>
+      )}
+
+      {/* 캐릭터 */}
+      {current.char && (
+        <img
+          src={current.char}
+          alt="캐릭터"
+          className={styles.character}
           style={{
+            position: "absolute",
+            bottom: 65,
             left: `${charX}px`,
-            bottom: `${GROUND_Y}px`,
-            backgroundImage: `url(${ASSET_PATHS.character})`
           }}
         />
       )}
 
-      {/* 대화 상자 (시퀀스 2, 3, 4) */}
-      {activeDialogue && (
-        <DialogueBox
-          key={dialogueIndex} // index 변경 시 리셋
-          dialogue={activeDialogue.dialogue}
-          speaker={activeDialogue.speaker}
-          isTyping={isTyping}
-          onTypingStart={() => setIsTyping(true)}
-          onTypingComplete={() => setIsTyping(false)}
-        />
-      )}
+      {current.text && (
+        <div className={styles.textboxWrap}>
+          <img src={textbox} alt="텍스트박스" className={styles.textboxImage} />
 
-      {/* 선택지 (시퀀스 4) */}
-      {showChoices && (
-        <div className={styles.airportchoicescontainer}>
-          {AIRPORT_CHOICES.map((choice) => (
-            <button
-              key={choice.id}
-              className={styles.airportchoicebutton}
-              onClick={() => handleChoiceClick(choice.id)}
-            >
-              <img
-                src={choice.imagePath}
-                alt={choice.text}
-                className={styles.choiceBackgroundImage}
-              />
-              <span className={styles.choiceTextOverlay}>
-                {choice.text}
-              </span>
-            </button>
-          ))}
+          {(() => {
+            const hasLineBreak = current.text.includes("\n"); // 대사 줄바꿈 유무
+            const isBigText = current.id === null;
+
+            return (
+              <div
+                className={[
+                  styles.textboxContent, // 텍스트 박스 안에 있는 텍스트 위치 분기 
+                  !current.speaker ? styles.centerText : "",           // 기본 (화자 X)
+                  current.speaker && !hasLineBreak ? styles.noLineBreak : "",  // 화자 O, 대사 줄바꿈 X
+                  current.speaker && (hasLineBreak || isBigText) ? styles.yesLineBreak : "" // 화자 O, 대사 줄바꿈 O (줄바꿈은 없지만 대사 크기가 큰 경우도 포함)
+                ].join(" ").trim()}
+              >
+
+                {/* 화자와 대사 출력 */}
+                {current.speaker && (
+                  <div className={styles.speaker}>{current.speaker}</div>
+                )}
+                <div className={styles.content}>{displayedText}</div>
+              </div>
+            );
+          })()}
+
         </div>
       )}
+
+
+      {current.choice && ( // 선택지
+        <div className={`${styles.choiceWrap} ${Array.isArray(current.choice.text)
+          ? current.choice.text.length === 2
+            ? styles.choiceWrapDouble // 선택지가 2개
+            : styles.choiceWrapTriple // 선택지가 3개
+          : styles.choiceWrapSingle // 선택지가 1개
+          }`}>
+          {Array.isArray(current.choice.text) ? ( // 선택지가 2개 or 3개
+            <div className={styles.choiceList}>
+              {current.choice.text.map((label, i) => (
+                <div
+                  key={i}
+                  className={styles.choiceItem}
+                  onClick={() => handleNext(i)}
+                >
+                  <img
+                    src={choicebox}
+                    alt="선택지박스"
+                    className={styles.choiceImage}
+                  />
+                  <div className={styles.choiceText}>{label}</div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div // 선택지가 1개
+              className={styles.choiceItem}
+              onClick={() => handleNext()}
+            >
+              <img
+                src={choicebox}
+                alt="선택지박스"
+                className={styles.choiceImage}
+              />
+              <div className={styles.choiceText}>{current.choice.text}</div>
+            </div>
+          )}
+        </div>
+      )}
+
+      {current.popup && ( // 팝업창(아이템)
+        <div className={styles.popupWrap}>
+          <div className={styles.circle}></div>
+
+          {current.popup && (
+            <img src={current.popup} alt="인터랙션아이콘"
+              className={styles.popupInterImage}
+              onClick={() => handleNext()}
+            />
+          )}
+        </div>
+      )}
+
     </div>
   );
 }
-
-export default Airport;
