@@ -8,12 +8,19 @@ import npc3 from "../assets/char/마을축제_춤추는 행인3.svg";
 import npc4 from "../assets/char/마을축제_춤추는 행인4.svg";
 import npc5 from "../assets/char/마을축제_춤추는 행인5.svg";
 import textbox from "../assets/obj/text_box.svg";
+import { useCharacterControl } from "../hooks/useCharacterControl";
 import styles from "./Scene.module.css";
 
 export default function MarketChoice1() {
   const navigate = useNavigate();
   const [idx, setIdx] = useState(0);
   const [isFading, setIsFading] = useState(false);
+
+  // 통합 조작 시스템 (상호작용 키만 사용)
+  const { isInteractionKey } = useCharacterControl({
+    enableMovement: false,
+    enableJump: false,
+  });
   const storyCuts = [
     {
       id: 140,
@@ -130,7 +137,7 @@ export default function MarketChoice1() {
 
   useEffect(() => {
     const onKey = (e) => {
-      if (e.key !== " ") return;
+      if (!isInteractionKey(e)) return;
       e.preventDefault();
 
       if (isTyping) {
@@ -143,7 +150,7 @@ export default function MarketChoice1() {
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [isTyping, current.text, idx]);
+  }, [isTyping, current.text, idx, isInteractionKey]);
 
   const bgStyle = typeof current.bg === "string" && current.bg.startsWith("#")
     ? { backgroundColor: current.bg }
