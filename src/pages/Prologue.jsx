@@ -376,10 +376,12 @@ const handleDialogueAdvance = useCallback(() => {
   }, [handleInteraction, canMove, gameAreaWidth, keysRef]); // gameAreaWidth, keysRef 의존성 추가
 
   // --- 캐릭터 실제 이동 처리 (useCharacterControl 사용) ---
+  const lastTimeRef = useRef(performance.now());
+
   useEffect(() => {
     if (!canMove) return;
 
-    const lastTimeRef = { current: performance.now() };
+    lastTimeRef.current = performance.now();
     let animationId;
 
     const animate = () => {
