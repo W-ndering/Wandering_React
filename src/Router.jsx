@@ -29,6 +29,9 @@ import { useState } from "react";
 import Suggest from "./pages/Suggest";
 import SuggestCustom from "./pages/SuggestCustom";
 import SuggestDetail from "./pages/SuggestDetail";
+import BusChoice1 from "./pages/BusChoice1";
+import BusChoice2 from "./pages/BusChoice2";
+import BusChoice3 from "./pages/BusChoice3";
 
 const Router = () => {
   const [bgmEnabled, setBgmEnabled] = useState(false); // bgm 활성화 가능 유무
@@ -61,6 +64,9 @@ const Router = () => {
         <Route path="/result" element={<Result />} />
         <Route path="/bus-stop" element={<BusStop />} />
         <Route path="/bus-stop-memory" element={<BusStopMemory />} />
+        <Route path="/market-choice-1" element={<MarketChoice1 />} />
+        <Route path="/market-choice-2" element={<MarketChoice2 />} />
+        <Route path="/market-choice-3" element={<MarketChoice3 />} />
         <Route path="/in-bus" element={<InBus />} />
         <Route path="/market" element={<Market />} />
         <Route path="/market-choice-1" element={<MarketChoice1 />} />
