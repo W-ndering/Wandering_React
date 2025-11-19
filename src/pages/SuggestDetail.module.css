@@ -1,0 +1,128 @@
+/* DetailInfo.module.css */
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mainBox {
+    /* SuggestCustom과 동일하게 배경 SVG를 사용하여 도형 모양을 만듭니다. */
+    width: 80vw;
+    height: 70vh;
+    max-width: 90%;
+    position: relative; 
+    /* mainBox 자체는 배경 이미지를 가지고 있지만, 내부 콘텐츠를 위해 투명하게 할 수 있음. */
+}
+
+/* --- 2. 헤더 바 (SuggestCustom과 동일하게 텍스트를 이미지 위에 배치) --- */
+.headerBar {
+    position: relative;
+    width: 100%;
+    height: 15vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
+}
+
+.shapeTwo {
+    position: absolute;
+    top: -10vh; 
+    left: 0;
+    width: 100%; 
+    height: auto; 
+    z-index: 10; 
+}
+
+.headerText {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    font-size: 4rem; /* 적절한 폰트 크기 설정 */
+    font-weight: bold;
+    color: white; /* 💡 이미지 위에 잘 보이도록 색상 변경 (가정에 따라) */
+    white-space: nowrap; /* 텍스트가 줄 바꿈되는 것을 방지 */
+    background-color: #9F6D53;
+    
+    z-index: 20; 
+}
+
+/* --- 3. 상세 내용 영역 --- */
+.contentArea {
+    position: absolute;
+    top: 20%; /* 헤더 아래에서 시작 */
+    left: 10%;
+    width: 80%;
+    height: 82%;
+    z-index: 30; /* 중앙 박스 위에 배치 */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* 3-1. 아이콘 + 추천 이름 */
+.nameSection {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.categoryIcon {
+    width: 40px; 
+    height: 40px;
+}
+
+.recommendedName {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+}
+
+/* 3-2. 추천 이유 */
+.reasonSection {
+    /* flex grow: 남은 공간을 차지하도록 설정 (버튼 그룹을 하단에 밀어냄) */
+    flex-grow: 1; 
+    overflow-y: auto; /* 내용이 길면 스크롤 가능 */
+}
+
+.reasonTitle {
+    font-size: 30px;
+    font-weight: 600;
+    color: #000;
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.reasonText {
+    font-size: 30px;
+    line-height: 1.6;
+    color: #656565;
+    /* 피그마 이미지의 텍스트 영역 가이드라인을 참고하여 높이 제한 가능 */
+}
+
+/* 3-3. 예시 버튼 */
+.exampleButtons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    top: -500px;
+    padding-bottom: 10px;
+}
+
+.exampleButton {
+    background-color: #FBFBFB;
+    border: 3px solid #E2E2E2;
+    border-radius: 20px;
+    padding: 8px 15px;
+    font-size: 1.5rem;
+    color: #6B6B6B;
+    font-family: 'RoundedFixedsys';
+    cursor: pointer;
+    white-space: nowrap;
+}

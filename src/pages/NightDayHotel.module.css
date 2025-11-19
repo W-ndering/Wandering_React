@@ -1,43 +1,20 @@
 .viewport {
     position: fixed;
-    inset: 0;
-    background: #0e0f12;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-}
-
-.stage {
-    position: relative;
+    top: 50%;
+    left: 50%;
     width: 2560px;
     height: 1440px;
-    overflow: hidden;
-    pointer-events: none;
 
-    /* ✅ 비율 유지 스케일 적용 */
     transform: scale(var(--scale)) translate(-50%, -50%);
     transform-origin: top left;
 
-    /* ✅ 화면 중앙 정렬 */
-    position: absolute;
-    top: 50%;
-    left: 50%;
-
-    /* ✅ GPU 최적화 */
-    will-change: transform;
+    overflow: hidden;
 }
 
 .background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 2560px;
-    height: 1440px;
-    object-fit: contain;
     user-select: none;
-    z-index: 0;
     pointer-events: none;
+    z-index: 0;
 }
 
 .character {
@@ -49,14 +26,22 @@
     pointer-events: none;
 }
 
+.charNPC {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    user-select: none;
+    z-index: 2;
+    pointer-events: none;
+}
+
 .textboxWrap {
     position: absolute;
-    left: 50%;
     top: 28%;
+    left: 50%;
     transform: translate(-50%, -50%);
-    cursor: pointer;
+    user-select: none;
     z-index: 3;
-    text-align: center;
 }
 
 .textboxImage {
@@ -64,27 +49,27 @@
     width: 1440px;
     height: 1440px;
     pointer-events: none;
-    user-select: none;
-    z-index: 0;
 }
 
 .textboxContent {
     position: absolute;
-    left: 50%;
     top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
     pointer-events: none;
-    z-index: 1;
     width: 1150px;
-    text-align: left;
 }
 
 .centerText {
     text-align: center;
 }
 
-.upText {
+.noLineBreak {
     top: 46%;
+}
+
+.yesLineBreak {
+    top: 49%;
 }
 
 .speaker {
@@ -110,21 +95,35 @@
     letter-spacing: 2%;
 }
 
-.choiceWrap {
+.choiceWrapSingle {
     position: absolute;
     top: 53%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 4;
-    pointer-events: auto;
+    z-index: 3;
+}
+
+.choiceWrapDouble {
+    position: absolute;
+    top: 62%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    text-align: center;
+}
+
+.choiceWrapTriple {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
     text-align: center;
 }
 
 .choiceImage {
     display: block;
     height: auto;
-    user-select: none;
-    pointer-events: auto;
     cursor: pointer;
 }
 
@@ -135,13 +134,27 @@
     transform: translate(-50%, -50%);
     white-space: pre-wrap;
     pointer-events: none;
-    font-family: "RoundedFixedsys";
+    font-family: 'RoundedFixedsys';
     font-weight: 400;
     font-size: 48px;
     line-height: 140%;
     letter-spacing: 2%;
     text-align: center;
     color: white;
+    width: 1225px;
+}
+
+.choiceList {
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+    align-items: center;
+}
+
+.choiceItem {
+    position: relative;
+    pointer-events: auto;
+    cursor: pointer;
 }
 
 .popupWrap {
@@ -149,46 +162,68 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 3;
-    pointer-events: none;
+    z-index: 5;
     text-align: center;
     width: 1440px;
     height: 1440px;
 }
 
-.popupImage {
+.bgDim {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    user-select: none;
-    pointer-events: auto;
-    cursor: pointer;
-    z-index: 1;
+    width: 2560px;
+    height: 1440px;
+    background: #00000066;
+    z-index: 3;
+    pointer-events: none;
 }
 
-.popupText {
-    position: absolute;
-    top: 79%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    white-space: pre-wrap;
-    pointer-events: none;
-    font-family: "RoundedFixedsys";
+.titleText {
+    font-family: 'RoundedFixedsys';
     font-weight: 400;
-    font-size: 60px;
+    font-size: 120px;
     line-height: 140%;
     letter-spacing: 2%;
-    color: black;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     z-index: 2;
+    color: white;
+}
+
+.circle {
+    position: absolute;
+    top: 60%;
+    left: 105%;
+    width: 192px;
+    height: 192px;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 50%;
+    box-shadow: -11px -5px 9.4px -1px #00000033 inset;
+    z-index: 10;
+}
+
+.popupInterImage {
+    position: absolute;
+    top: 60%;
+    left: 105%;
+    width: 120px;
+    height: 120px;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    cursor: pointer;
+    pointer-events: auto;
 }
 
 .popupObjImage {
     width: 720px;
     height: 720px;
     position: absolute;
-    top: 38%;
+    top: 34%;
     left: 50%;
     transform: translate(-50%, -50%);
     pointer-events: none;
@@ -204,13 +239,18 @@
     font-size: 52px;
 }
 
-.bgDim {
+.popupText {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 2560px;
-    height: 1440px;
-    background: #00000066;
-    z-index: 3;
+    top: 79%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: pre-wrap;
     pointer-events: none;
+    font-family: 'RoundedFixedsys';
+    font-weight: 400;
+    font-size: 60px;
+    line-height: 140%;
+    letter-spacing: 2%;
+    color: black;
+    z-index: 2;
 }

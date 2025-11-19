@@ -1,11 +1,18 @@
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { useCharacterControl } from "../hooks/useCharacterControl";
 import styles from "./Scene.module.css";
 
 export default function Credits() {
-    const nickname = sessionStorage.getItem('NICKNAME') || '나';
+  const nickname = sessionStorage.getItem('NICKNAME') || '나';
   const navigate = useNavigate();
   const [idx, setIdx] = useState(0);
+
+  // 통합 조작 시스템 (상호작용 키만 사용)
+  const { isInteractionKey } = useCharacterControl({
+    enableMovement: false,
+    enableJump: false,
+  });
 
   const credits = [
     {
@@ -32,28 +39,17 @@ export default function Credits() {
 
   const current = credits[idx];
 
+  // 자동 스크롤 (3초마다 다음 크레딧으로 이동)
   useEffect(() => {
-    const onClick = () => {
+    const timer = setTimeout(() => {
       if (idx < credits.length - 1) {
         setIdx(idx + 1);
       } else {
         navigate("/");
       }
-    };
+    }, 3000); // 3초 후 다음 화면
 
-    const onKey = (e) => {
-      if (e.key === " " || e.key === "Enter") {
-        onClick();
-      }
-    };
-
-    window.addEventListener("click", onClick);
-    window.addEventListener("keydown", onKey);
-
-    return () => {
-      window.removeEventListener("click", onClick);
-      window.removeEventListener("keydown", onKey);
-    };
+    return () => clearTimeout(timer);
   }, [idx, navigate]);
 
   return (
