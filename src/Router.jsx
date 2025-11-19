@@ -64,9 +64,9 @@ const Router = () => {
         <Route path="/result" element={<Result />} />
         <Route path="/bus-stop" element={<BusStop />} />
         <Route path="/bus-stop-memory" element={<BusStopMemory />} />
-        <Route path="/market-choice-1" element={<MarketChoice1 />} />
-        <Route path="/market-choice-2" element={<MarketChoice2 />} />
-        <Route path="/market-choice-3" element={<MarketChoice3 />} />
+        <Route path="/bus-choice-1" element={<BusChoice1 />} />
+        <Route path="/bus-choice-2" element={<BusChoice2 />} />
+        <Route path="/bus-choice-3" element={<BusChoice3 />} />
         <Route path="/in-bus" element={<InBus />} />
         <Route path="/market" element={<Market />} />
         <Route path="/market-choice-1" element={<MarketChoice1 />} />
