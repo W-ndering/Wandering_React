@@ -5,9 +5,9 @@ import char1 from "../assets/char/기본_주인공1.svg";
 import npc1 from "../assets/char/Npc1.svg";
 import npc2 from "../assets/char/Npc2.svg";
 import npc4 from "../assets/char/Npc4.svg";
-import busimg from "../assets/obj/버스.svg";
-import textbox from "../assets/obj/text_box.svg";
+import busImg from "../assets/obj/버스.svg";
 import choicebox from "../assets/obj/선택지.svg";
+import textbox from "../assets/obj/text_box.svg";
 import styles from "./Scene.module.css";
 
 export default function BusStop() {
@@ -42,10 +42,10 @@ export default function BusStop() {
         { src: npc4, left: 1974, top: 960 }
       ],
       text: "기다리기에 나쁘지 않은 시간이다.",
-
+      popup: { type: "text", src: textbox }
     },
-        {
-      id: 36,
+    {
+      id: 35,
       bg: bg1,
       char: char1,
       npc: [
@@ -53,53 +53,34 @@ export default function BusStop() {
         { src: npc2, left: 1628, top: 960 },
         { src: npc4, left: 1974, top: 960 }
       ],
+      obj: [],
       dim: "rgba(0, 0, 0, 0.4)",
       text: "지나다니는 사람들을 보며\n이 동네는 어떤 곳일까 생각에 잠긴다.",
-      popup: { type: "text", src: textbox }
+      popup: { type: "text", src: textbox },
+      textStyle: { textAlign: "center", width: "1104px", left: "calc(50% - 1104px/2)", top: "44.17%", fontSize: "60px", letterSpacing: "0.02em" }
     },
-        {
-          id: 37,
-          bg: bg1,
-          char: char1,
-                npc: [
-        { src: npc1, left: 2302, top: 960 },
-        { src: npc2, left: 1628, top: 960 },
-        { src: npc4, left: 1974, top: 960 }
-      ],
-      dim: "rgba(0, 0, 0, 0.4)",
-          text: "아버지는 잘 계시려나.",
-          popup: { type: "text", src: textbox }
-        },
-            {
-              id: 38,
-              bg: bg1,
-              char: char1,
-                    npc: [
-        { src: npc1, left: 2302, top: 960 },
-        { src: npc2, left: 1628, top: 960 },
-        { src: npc4, left: 1974, top: 960 }
-      ],
-      dim: "rgba(0, 0, 0, 0.4)",
-              text: "...",
-              popup: { type: "text", src: textbox }
-            },
     {
-      id: 39,
+      id: 40,
       bg: bg1,
       char: char1,
-            npc: [
-        { src: npc1, left: 2302, top: 960 },
-        { src: npc2, left: 1628, top: 960 },
-        { src: npc4, left: 1974, top: 960 }
-      ],
+      obj: [],
+      text: "아버지는 잘 계시려나.",
+      popup: { type: "text", src: textbox }
+    },
+    {
+      id: 43,
+      bg: bg1,
+      char: char1,
+      obj: [],
+      text: "...",
+      popup: { type: "text", src: textbox }
+    },
+    {
+      id: 44,
+      bg: bg1,
+      char: char1,
+      obj: [{ src: busImg, left: 30, top: 812, width: 720, height: 720 }],
       text: "버스가 도착했다.",
-      obj: [{
-        src: busimg, 
-        width: 1000, 
-        height: 1000,
-        left: 100,  // (원하는 위치로 값을 조정하세요)
-        top: 600     // (원하는 위치로 값을 조정하세요)
-      }],
       choice: {
         src: choicebox,
         text: "버스에 탑승한다"
@@ -218,16 +199,34 @@ export default function BusStop() {
         )}
 
         {current.char && (
-          <img
-            src={current.char}
-            alt="캐릭터"
-            className={styles.character}
-            style={{
-              position: "absolute",
-              left: "734px",
-              top: "960px",
-            }}
-          />
+          Array.isArray(current.char) ? (
+            current.char.map((char, i) => (
+              <img
+                key={i}
+                src={char.src}
+                alt={`캐릭터${i + 1}`}
+                className={styles.character}
+                style={{
+                  position: "absolute",
+                  left: `${char.left}px`,
+                  top: `${char.top}px`,
+                  width: `${char.width}px`,
+                  height: `${char.height}px`,
+                }}
+              />
+            ))
+          ) : (
+            <img
+              src={current.char}
+              alt="캐릭터"
+              className={styles.character}
+              style={{
+                position: "absolute",
+                left: "734px",
+                top: "960px",
+              }}
+            />
+          )
         )}
 
         {Array.isArray(current.npc) && current.npc.map((npc, i) => (

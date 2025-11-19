@@ -43,16 +43,16 @@ export const useCharacterControl = ({
     setIsJumping(true);
     velocityRef.current = jumpVelocity;
 
-    const startY = charY; // 점프 시작 시의 Y 위치 저장
-    let currentY = startY;
+    const startTime = performance.now();
 
-    const animate = () => {
+    const animate = (currentTime) => {
+      const elapsed = (currentTime - startTime) / 1000;
       const deltaTime = 1 / 60; // 약 60 FPS
 
       velocityRef.current -= gravity * deltaTime;
-      currentY += velocityRef.current * deltaTime;
+      const newY = charY + velocityRef.current * deltaTime;
 
-      if (currentY <= groundLevel) {
+      if (newY <= groundLevel) {
         setCharY(groundLevel);
         setIsJumping(false);
         velocityRef.current = 0;
@@ -61,7 +61,7 @@ export const useCharacterControl = ({
           jumpAnimationRef.current = null;
         }
       } else {
-        setCharY(currentY);
+        setCharY(newY);
         jumpAnimationRef.current = requestAnimationFrame(animate);
       }
     };
