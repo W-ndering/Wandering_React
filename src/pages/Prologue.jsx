@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import DialogueBox from '../components/DialogueBox';
+import { useCharacterControl } from '../hooks/useCharacterControl';
 
 import styles from './Prologue.module.css'; // 프롤로그 전용 CSS
 
@@ -15,8 +16,9 @@ import homebg from '../assets/bg/1_프롤로그_집.svg';
 // (캐릭터 애셋이 있다면 여기에 임포트)
 
 import playerSprite from '../assets/char/편한옷_주인공1.svg';
-
 import playerSprite2 from '../assets/char/기본_주인공1.svg';
+import playerSprite2_walk1 from '../assets/char/기본_주인공2.svg';
+import playerSprite2_walk2 from '../assets/char/기본_주인공3.svg';
 
 import statusUI from '../assets/obj/상태창.svg';
 
@@ -134,6 +136,11 @@ function Prologue() {
 
   const [canMove, setCanMove] = useState(false);
 
+  // 걷기 애니메이션 상태
+  const [walkFrame, setWalkFrame] = useState(0); // 0: sprite2_1, 1: sprite2_2
+  const [isMoving, setIsMoving] = useState(false);
+  const walkAnimTimerRef = useRef(null);
+
   // ⭐ 화면 너비 상태 추가
 
   const [gameAreaWidth, setGameAreaWidth] = useState(0);
@@ -143,6 +150,26 @@ function Prologue() {
   const gameAreaRef = useRef(null);
 
   const navigate = useNavigate();
+
+  // 통합 조작 시스템 (이동, 점프, 상호작용 모두 사용)
+  const {
+    keysRef,
+    getMovementDirection,
+    getVelocity,
+    getClampedPosition,
+    charY,
+    jump,
+    isInteractionKey
+  } = useCharacterControl({
+    enableMovement: true,
+    enableJump: true,
+    speed: 500,
+    minX: 0,
+    maxX: 2560,
+    gravity: 1500,
+    jumpVelocity: 600,
+    groundLevel: 0,
+  });
 
 
 
@@ -298,7 +325,7 @@ const handleDialogueAdvance = useCallback(() => {
 
     const handleKeyDown = (e) => {
 
-      if (e.key === ' ' && !canMove) { // 이동 상태가 아닐 때만 스페이스바 상호작용
+      if (isInteractionKey(e) && !canMove) { // 이동 상태가 아닐 때만 상호작용 키
 
         e.preventDefault();
 
@@ -308,33 +335,104 @@ const handleDialogueAdvance = useCallback(() => {
 
 
 
-      // 이동
+      // 이동 및 점프 키 입력 처리 (useCharacterControl의 keysRef 업데이트)
 
       if (canMove) {
 
-        const step = 10;
-
-        const maxMove = (gameAreaWidth - 100) - (gameAreaWidth * 0.1);
-
-
-
-        if (e.key === 'ArrowRight') setPlayerX((x) => Math.min(x + step, maxMove));
-
-        if (e.key === 'ArrowLeft') setPlayerX((x) => Math.max(x - step, 0)); // 최소 0 (중앙)
+        if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') {
+          keysRef.current.left = true;
+        }
+        if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') {
+          keysRef.current.right = true;
+        }
+        // 점프 키 (ArrowUp, W)
+        if (e.key === 'ArrowUp' || e.key === 'w' || e.key === 'W') {
+          jump();
+        }
 
       }
 
     };
 
+    const handleKeyUp = (e) => {
+      if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') {
+        keysRef.current.left = false;
+      }
+      if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') {
+        keysRef.current.right = false;
+      }
+    };
+
 
 
     gameArea.addEventListener('keydown', handleKeyDown);
+    gameArea.addEventListener('keyup', handleKeyUp);
 
-    return () => gameArea.removeEventListener('keydown', handleKeyDown);
+    return () => {
+      gameArea.removeEventListener('keydown', handleKeyDown);
+      gameArea.removeEventListener('keyup', handleKeyUp);
+    };
 
-  }, [handleInteraction, canMove, gameAreaWidth]); // gameAreaWidth 의존성 추가
+  }, [handleInteraction, canMove, gameAreaWidth, keysRef]); // gameAreaWidth, keysRef 의존성 추가
 
+  // --- 캐릭터 실제 이동 처리 (useCharacterControl 사용) ---
+  const lastTimeRef = useRef(performance.now());
 
+  useEffect(() => {
+    if (!canMove) return;
+
+    lastTimeRef.current = performance.now();
+    let animationId;
+
+    const animate = () => {
+      const now = performance.now();
+      const deltaTime = (now - lastTimeRef.current) / 1000;
+      lastTimeRef.current = now;
+
+      const velocity = getVelocity(deltaTime);
+      if (velocity !== 0) {
+        setIsMoving(true);
+        const maxMove = (gameAreaWidth - 100) - (gameAreaWidth * 0.1);
+        setPlayerX(prev => {
+          const newX = prev + velocity;
+          return Math.max(0, Math.min(maxMove, newX));
+        });
+      } else {
+        setIsMoving(false);
+      }
+
+      animationId = requestAnimationFrame(animate);
+    };
+
+    animationId = requestAnimationFrame(animate);
+
+    return () => {
+      if (animationId) cancelAnimationFrame(animationId);
+    };
+  }, [canMove, getVelocity, gameAreaWidth]);
+
+  // --- 걷기 애니메이션 프레임 전환 ---
+  useEffect(() => {
+    if (!isMoving) {
+      if (walkAnimTimerRef.current) {
+        clearInterval(walkAnimTimerRef.current);
+        walkAnimTimerRef.current = null;
+      }
+      setWalkFrame(0);
+      return;
+    }
+
+    walkAnimTimerRef.current = setInterval(() => {
+      setWalkFrame(prev => (prev === 0 ? 1 : 0));
+    }, 150);
+
+    return () => {
+      if (walkAnimTimerRef.current) {
+        clearInterval(walkAnimTimerRef.current);
+        walkAnimTimerRef.current = null;
+      }
+    };
+  }, [isMoving]);
 
   // --- 이동 감지: 우측 끝 도달 ---
 
@@ -432,9 +530,13 @@ const handleDialogueAdvance = useCallback(() => {
 
           style={{
 
-            backgroundImage: `url(${sequenceStep >= 2 ? playerSprite2 : playerSprite})`,
+            backgroundImage: `url(${
+              canMove && isMoving
+                ? (walkFrame === 0 ? playerSprite2_walk1 : playerSprite2_walk2)
+                : (sequenceStep >= 2 ? playerSprite2 : playerSprite)
+            })`,
 
-            bottom: '10px',
+            bottom: `${10 - charY}px`,
 
             // playerX가 0일 때 중앙, 양수일 때 오른쪽으로 이동
 

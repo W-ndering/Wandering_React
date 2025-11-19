@@ -3,8 +3,11 @@ import { useNavigate } from "react-router-dom";
 import bg from "../assets/bg/23-9_2번선택지.svg";
 import char2 from "../assets/char/기본_주인공2.svg";
 import char3 from "../assets/char/기본_주인공3.svg";
+import char3_walk1 from "../assets/char/기본_주인공2.svg"; // 걷기 애니메이션
+import char3_walk2 from "../assets/char/기본_주인공3.svg"; // 걷기 애니메이션
 import npc5 from "../assets/char/Npc5.svg";
 import textbox from "../assets/obj/text_box.svg";
+import { useCharacterControl } from "../hooks/useCharacterControl";
 import styles from "./Scene.module.css";
 
 export default function MarketChoice2() {
@@ -12,14 +15,25 @@ export default function MarketChoice2() {
   const [idx, setIdx] = useState(0);
   const [isFading, setIsFading] = useState(false);
   const [charX, setCharX] = useState(599); // 23.4% of 2560 = 599
-  const keysRef = useRef({ left: false, right: false });
   const navigatedRef = useRef(false);
-  const moveTimerRef = useRef(null);
-  const lastTimeRef = useRef(null);
 
-  const SPEED = 500;
-  const minX = 0;
-  const maxX = 2160;
+  // 통합 조작 시스템 (이동, 점프, 상호작용 모두 사용)
+  const {
+    keysRef,
+    getVelocity,
+    charY,
+    jump,
+    isInteractionKey
+  } = useCharacterControl({
+    enableMovement: true,
+    enableJump: true,
+    speed: 500,
+    minX: 0,
+    maxX: 2160,
+    gravity: 1500,
+    jumpVelocity: 600,
+    groundLevel: 0,
+  });
 
   const storyCuts = [
     {
@@ -50,9 +64,18 @@ export default function MarketChoice2() {
       id: 145,
       bg: bg,
       char: { src: char3, left: 599, top: 978, width: 400, height: 400 },
-      text: "더할 나위 없이 덩달아 흥겨워지는 풍경이다.",
+      text: "더할 나위 없이 덩달아 흥겨워지는 풍경이다.\n(오른쪽으로 이동하자)",
       popup: { type: "text", src: textbox },
       textStyle: { textAlign: "center", width: "827px"},
+      movable: false
+    },
+    {
+      id: 146,
+      bg: bg,
+      char: { src: char3, left: 599, top: 978, width: 400, height: 400 },
+      text: "오른쪽으로 이동하자.",
+      popup: { type: "text", src: textbox },
+      textStyle: { textAlign: "center", width: "600px"},
       movable: true
     }
   ];
@@ -66,6 +89,11 @@ export default function MarketChoice2() {
   const [displayedText, setDisplayedText] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const typingTimerRef = useRef(null);
+
+  // 걷기 애니메이션 상태
+  const [walkFrame, setWalkFrame] = useState(0);
+  const [isMoving, setIsMoving] = useState(false);
+  const walkAnimTimerRef = useRef(null);
 
   useEffect(() => {
     const text = current.text;
@@ -132,7 +160,7 @@ export default function MarketChoice2() {
   // Enter키로 다음 컷으로 이동 (마지막 컷 제외)
   useEffect(() => {
     const onKey = (e) => {
-      if (e.key !== " ") return;
+      if (!isInteractionKey(e)) return;
       e.preventDefault();
       if (current.movable) return; // 이동 가능한 씬에서는 Enter 무시
 
@@ -146,23 +174,53 @@ export default function MarketChoice2() {
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [isTyping, current.text, idx, current.movable]);
+  }, [isTyping, current.text, idx, current.movable, isInteractionKey]);
 
-  // 키 입력 등록 (마지막 씬에서만)
+  // 걷기 애니메이션 프레임 전환
+  useEffect(() => {
+    if (!isMoving) {
+      if (walkAnimTimerRef.current) {
+        clearInterval(walkAnimTimerRef.current);
+        walkAnimTimerRef.current = null;
+      }
+      setWalkFrame(0);
+      return;
+    }
+
+    walkAnimTimerRef.current = setInterval(() => {
+      setWalkFrame(prev => (prev === 0 ? 1 : 0));
+    }, 150);
+
+    return () => {
+      if (walkAnimTimerRef.current) {
+        clearInterval(walkAnimTimerRef.current);
+        walkAnimTimerRef.current = null;
+      }
+    };
+  }, [isMoving]);
+
+  // 키 입력 등록 (마지막 씬에서만, useCharacterControl의 keysRef 사용)
   useEffect(() => {
     if (!current.movable) return;
 
     const down = (e) => {
-      if (e.key === "a" || e.key === "ArrowLeft") {
-        if (!keysRef.current.left) keysRef.current.left = true;
+      if (e.key === "ArrowLeft" || e.key === "a" || e.key === "A") {
+        keysRef.current.left = true;
       }
-      if (e.key === "d" || e.key === "ArrowRight") {
-        if (!keysRef.current.right) keysRef.current.right = true;
+      if (e.key === "ArrowRight" || e.key === "d" || e.key === "D") {
+        keysRef.current.right = true;
+      }
+      if (e.key === "ArrowUp" || e.key === "w" || e.key === "W") {
+        jump();
       }
     };
     const up = (e) => {
-      if (e.key === "a" || e.key === "ArrowLeft") keysRef.current.left = false;
-      if (e.key === "d" || e.key === "ArrowRight") keysRef.current.right = false;
+      if (e.key === "ArrowLeft" || e.key === "a" || e.key === "A") {
+        keysRef.current.left = false;
+      }
+      if (e.key === "ArrowRight" || e.key === "d" || e.key === "D") {
+        keysRef.current.right = false;
+      }
     };
     window.addEventListener("keydown", down);
     window.addEventListener("keyup", up);
@@ -170,54 +228,42 @@ export default function MarketChoice2() {
       window.removeEventListener("keydown", down);
       window.removeEventListener("keyup", up);
     };
-  }, [current.movable]);
+  }, [current.movable, keysRef, jump]);
 
-  // 이동 루프 (마지막 씬에서만)
+  // 이동 루프 (마지막 씬에서만, useCharacterControl의 getVelocity 사용)
   useEffect(() => {
-    if (!current.movable) {
-        // 이동 가능하지 않은 씬에서는 타이머를 확실히 제거합니다.
-        if (moveTimerRef.current) {
-            clearInterval(moveTimerRef.current);
-            moveTimerRef.current = null;
-        }
-        return;
-    }
+    if (!current.movable) return;
 
-    // 루프 시작 시 초기화
-    lastTimeRef.current = null;
-    if (moveTimerRef.current) {
-      clearInterval(moveTimerRef.current);
-      moveTimerRef.current = null;
-    }
+    const lastTimeRef = { current: performance.now() };
+    let animationId;
 
-    moveTimerRef.current = setInterval(() => {
+    const animate = () => {
       const now = performance.now();
-      if (lastTimeRef.current == null) {
-        lastTimeRef.current = now;
-        return;
-      }
-      const dt = (now - lastTimeRef.current) / 1000;
+      const deltaTime = (now - lastTimeRef.current) / 1000;
       lastTimeRef.current = now;
 
-      const { left, right } = keysRef.current;
-      const dir = (left ? -1 : 0) + (right ? 1 : 0);
-      if (dir !== 0) {
-        setCharX(x => Math.max(minX, Math.min(maxX, x + dir * SPEED * dt)));
+      const velocity = getVelocity(deltaTime);
+      if (velocity !== 0) {
+        setIsMoving(true);
+        setCharX(x => Math.max(0, Math.min(2160, x + velocity)));
+      } else {
+        setIsMoving(false);
       }
-    }, 16);
+
+      animationId = requestAnimationFrame(animate);
+    };
+
+    animationId = requestAnimationFrame(animate);
 
     return () => {
-      if (moveTimerRef.current) {
-        clearInterval(moveTimerRef.current);
-        moveTimerRef.current = null;
-      }
+      if (animationId) cancelAnimationFrame(animationId);
     };
-  }, [current.movable, SPEED, minX, maxX]);
+  }, [current.movable, getVelocity]);
 
   // 마지막 컷에서 우측 끝 도달 시 fade out & navigate
   useEffect(() => {
-    if (current.id !== 145) return;
-    const EDGE = maxX - 5;
+    if (current.id !== 146) return;
+    const EDGE = 2160 - 5;
     if (!navigatedRef.current && charX >= EDGE) {
       navigatedRef.current = true;
       setIsFading(true);
@@ -225,22 +271,32 @@ export default function MarketChoice2() {
         navigate("/hut");
       }, 1000); // 1초 후 페이지 이동
     }
-  }, [current.id, charX, maxX, navigate]);
+  }, [current.id, charX, navigate]);
 
   const renderChar = (char) => {
     if (!char) return null;
     // 'movable' 상태에 따라 'left' 값을 'charX' 또는 'char.left'로 결정
     const charLeft = current.movable ? charX : char.left;
+
+    // 걷기 애니메이션 적용 (movable 씬에서만)
+    const charSrc = current.movable && isMoving
+      ? (walkFrame === 0 ? char3_walk1 : char3_walk2)
+      : char.src;
+
+    // charY는 점프 높이 (위로 올라가므로 top에서 빼줌)
+    const charTop = current.movable
+      ? (typeof char.top === "number" ? char.top - charY : char.top)
+      : char.top;
+
     return (
       <img
-        src={char.src}
+        src={charSrc}
         alt="character"
-        className={styles.character} // ❗️ 수정 2: 올바른 CSS 클래스 사용
+        className={styles.character}
         style={{
           position: "absolute",
-          // 'charLeft'가 숫자면 'px'를 붙이고 문자열(예: '23.4%')이면 그대로 사용
           left: typeof charLeft === "string" ? charLeft : `${charLeft}px`,
-          top: typeof char.top === "string" ? char.top : `${char.top}px`,
+          top: typeof charTop === "string" ? charTop : `${charTop}px`,
           width: typeof char.width === "string" ? char.width : `${char.width}px`,
           height: typeof char.height === "string" ? char.height : `${char.height}px`,
         }}

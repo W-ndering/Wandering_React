@@ -1,0 +1,79 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mainContent {
+  position: relative; 
+  width: 80vw; /* QHD 환경에 맞춰 크기 지정 */
+  height: 70vh;
+  max-width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.shapeOne {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10; /* 가장 아래 */
+}
+
+/* 2️⃣ 두 번째 도형 (겹치기) */
+.shapeTwo {
+  position: absolute;
+  left: 5%;
+  top: -37%;
+  width: 90%; /* 부모보다 2rem 작게 */
+  height: 80%;
+  z-index: 20; /* 첫 번째 도형 위 */
+}
+
+.buttonGroupContainer{
+    position: absolute;
+    height: 30vh;
+    width: 100%;
+    top : 300px;
+    z-index: 30;
+    display: flex;
+    justify-content: center;
+}
+
+.buttonList{
+    display: flex;
+    gap: 50px;
+}
+
+.button {
+    height: 100%;
+    padding: 30px;
+    border: none;
+    border-radius: 40px;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.button:hover{
+    cursor: pointer;
+    background-color: #EFEFEF;
+}
+
+.buttonImage{
+    width: 150px;
+    height: 150px;
+    background-color: #EFEFEF;
+    border-radius: 30px;
+}
+
+.buttonText{
+    font-size: 50px;
+    font-family :'RoundedFixedsys';
+}
